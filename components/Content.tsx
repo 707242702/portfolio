@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Section, Project, AiItem } from '../types';
-import { PROJECTS, AI_ITEMS } from '../constants';
+import { PROJECTS, AI_ITEMS, COLORS } from '../constants';
 
 interface ContentProps {
   section: Section;
@@ -61,6 +61,64 @@ const useScrollMenuLogic = (onToggleMenu: (visible: boolean) => void) => {
 };
 
 // --- Sub-Components ---
+
+const ImageCard = ({ src, index }: { src: string, index: number }) => {
+    // Pick a random system color for the hover border
+    const systemColors = [COLORS.RED, COLORS.BLUE, COLORS.GREEN, COLORS.ORANGE];
+    const borderColor = systemColors[index % systemColors.length];
+
+    return (
+        <motion.div 
+            className="relative w-full aspect-square overflow-hidden bg-white rounded-sm shadow-sm border border-[#D9D9D9] cursor-pointer group"
+            initial="initial"
+            whileHover="hover"
+        >
+            {/* The Image */}
+            <motion.img 
+                src={src} 
+                alt={`Illustration ${index + 1}`}
+                className="w-full h-full object-cover"
+                variants={{
+                    initial: { scale: 1, filter: 'sepia(80%) grayscale(20%)' },
+                    hover: { scale: 1.08, filter: 'sepia(0%) grayscale(0%)' }
+                }}
+                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+            />
+            
+            {/* Sepia/Noise Overlay - Fades out on hover */}
+            <motion.div 
+                className="absolute inset-0 bg-[#E5DED0] mix-blend-color pointer-events-none"
+                variants={{
+                    initial: { opacity: 0.6 },
+                    hover: { opacity: 0 }
+                }}
+                transition={{ duration: 0.4 }}
+            />
+
+            {/* Colored Border Reveal */}
+            <motion.div 
+                className="absolute inset-0 border-[6px] pointer-events-none z-10"
+                style={{ borderColor: borderColor }}
+                variants={{
+                    initial: { opacity: 0, scale: 0.95 },
+                    hover: { opacity: 1, scale: 1 }
+                }}
+                transition={{ duration: 0.3 }}
+            />
+            
+            {/* Caption Tag */}
+            <motion.div
+                className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 z-20"
+                variants={{
+                    initial: { opacity: 0, y: 10 },
+                    hover: { opacity: 1, y: 0 }
+                }}
+            >
+                <span className="text-[10px] font-mono font-bold text-[#1D3557]">FIG 0{index + 1}</span>
+            </motion.div>
+        </motion.div>
+    );
+};
 
 const HomeContent = ({ onToggleMenu }: { onToggleMenu: (v: boolean) => void }) => {
   const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
@@ -251,9 +309,44 @@ const ProjectDetail = ({ project, onClose, onToggleMenu }: { project: Project; o
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
                     <div className="md:col-span-8 bg-white/40 border border-[#D9D9D9] p-8 rounded-sm backdrop-blur-sm h-fit shadow-sm">
                         <p className="text-xl font-medium leading-relaxed text-stone-800 mb-12">{project.description}</p>
-                        <div className="space-y-6 text-stone-600 font-serif text-lg leading-relaxed">
+                        <div className="space-y-6 text-stone-600 font-serif text-lg leading-relaxed mb-12">
                             {project.content.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
                         </div>
+
+                        {/* Image Grid Section */}
+                        {project.images && project.images.length > 0 && (
+                             <div className="space-y-8 border-t border-stone-200 pt-8 mt-12">
+                                <h3 className="text-xs font-mono font-bold text-[#1D3557] tracking-widest uppercase mb-6">Featured Works</h3>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    {project.images.map((imgSrc, idx) => (
+                                        <ImageCard key={idx} src={imgSrc} index={idx} />
+                                    ))}
+                                </div>
+                             </div>
+                        )}
+
+                        {/* Video Section */}
+                        {project.videos && project.videos.length > 0 && (
+                            <div className="space-y-8 border-t border-stone-200 pt-8 mt-8">
+                                <h3 className="text-xs font-mono font-bold text-[#1D3557] tracking-widest uppercase mb-6">Visual Documentation</h3>
+                                <div className="grid grid-cols-1 gap-8">
+                                    {project.videos.map((videoId, index) => (
+                                        <div key={index} className="w-full aspect-video bg-black/5 rounded-sm overflow-hidden border border-[#D9D9D9] shadow-sm">
+                                            <iframe 
+                                                width="100%" 
+                                                height="100%" 
+                                                src={`https://www.youtube.com/embed/${videoId}`} 
+                                                title={`Project Video ${index + 1}`} 
+                                                frameBorder="0" 
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                                referrerPolicy="strict-origin-when-cross-origin" 
+                                                allowFullScreen
+                                            ></iframe>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

@@ -15,6 +15,8 @@ export interface Project {
   role: string;
   description: string;
   content: string[]; // Array of paragraphs for the mockup
+  videos?: string[]; // Array of YouTube Video IDs
+  images?: string[]; // Array of Image URLs
 }
 
 export interface AiItem {

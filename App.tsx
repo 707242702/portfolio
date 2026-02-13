@@ -4,6 +4,7 @@ import { TubeSystem } from './components/TubeSystem';
 import { Navigation } from './components/Navigation';
 import { Content } from './components/Content';
 import { BlendCursor } from './components/BlendCursor';
+import { ClickExplosion } from './components/ClickExplosion';
 import { Section, Project, AiItem } from './types';
 import { NAV_ITEMS } from './constants';
 import { motion } from 'framer-motion';
@@ -86,6 +87,7 @@ const App: React.FC = () => {
       
       {/* Interactive Cursor */}
       <BlendCursor />
+      <ClickExplosion />
 
       {/* Visual System Layer - Reacts to Detail Mode */}
       <TubeSystem activeSection={currentVisualState} onNavigate={handleNavigate} />
