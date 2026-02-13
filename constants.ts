@@ -239,14 +239,9 @@ export const PROJECTS: Project[] = [
       "Recent work includes a series of stylized pet illustrations exploring color theory and character expression, balancing sharp geometry with organic textures."
     ],
     images: [
-      "https://cdn.discordapp.com/attachments/972234586820575292/1342674251216519188/IMG_4507.jpg?ex=67b92bb0&is=67b7da30&hm=895692383827ec56f8749a94156c71553c613c01c0c32906b3e34b22c7595350&",
-      "https://cdn.discordapp.com/attachments/972234586820575292/1342674251946328135/IMG_4506.jpg?ex=67b92bb0&is=67b7da30&hm=94086d267329598a39c81152a5f6e622b7d597036d07d1bd2925f69f448ad52c&",
-      "https://cdn.discordapp.com/attachments/972234586820575292/1342674252634329129/IMG_4502.jpg?ex=67b92bb1&is=67b7da31&hm=44c489c67035aa3265811c79a2965383f58a36f56e0ba1d3b015e12f9eb89a59&",
-      "https://cdn.discordapp.com/attachments/972234586820575292/1342674253330317375/IMG_4503.jpg?ex=67b92bb1&is=67b7da31&hm=7098e91409f58dd83015941c2c8f85d2633005a764796328771b95b8d2685731&",
-      "https://cdn.discordapp.com/attachments/972234586820575292/1342674254009933865/IMG_4504.jpg?ex=67b92bb1&is=67b7da31&hm=31e59e9594f8e3f4e15777103239a589f2db542c554e44f8f4a1f6a1d82136e0&",
-      "https://cdn.discordapp.com/attachments/972234586820575292/1342674254425030767/IMG_4508.jpg?ex=67b92bb1&is=67b7da31&hm=084050d53c3e660eb0097c5506a782b8f395786f34f711c2105156a738c82a51&",
-      "https://cdn.discordapp.com/attachments/972234586820575292/1342674254949187654/IMG_4505.jpg?ex=67b92bb1&is=67b7da31&hm=871787c88001e1493b821434c3826f0490b62d854964645224e757a3e5c0242a&",
-      "https://cdn.discordapp.com/attachments/972234586820575292/1342674255591047248/IMG_4509.jpg?ex=67b92bb1&is=67b7da31&hm=591605f63d6438096f9f257d07963d699049ed4e0c459f0f9b6e3f364024c088&"
+      "https://i.ibb.co/sdr3sLgF/Untitled-Artwork-8.jpg",
+      "https://i.ibb.co/Ts1N7Fc/Untitled-Artwork-39.jpg",
+      "https://i.ibb.co/hRpkhcc8/Untitled-Artwork.jpg"
     ]
   },
   {
