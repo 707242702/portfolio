@@ -239,9 +239,9 @@ export const PROJECTS: Project[] = [
       "Recent work includes a series of stylized pet illustrations exploring color theory and character expression, balancing sharp geometry with organic textures."
     ],
     images: [
-      "https://i.ibb.co/sdr3sLgF/Untitled-Artwork-8.jpg",
-      "https://i.ibb.co/Ts1N7Fc/Untitled-Artwork-39.jpg",
-      "https://i.ibb.co/hRpkhcc8/Untitled-Artwork.jpg"
+      "/images/artwork-1.jpg",
+      "/images/artwork-2.jpg",
+      "/images/artwork-3.jpg"
     ]
   },
   {
