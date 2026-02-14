@@ -3,8 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Continuum System</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Yuqi Lu — Illustrator & Designer</title>
+    <meta name="description" content="Yuqi Lu — Illustrator & Designer. Illustration systems, visual design, motion, and spatial art." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Yuqi Lu — Illustrator & Designer" />
+    <meta property="og:description" content="Illustration systems, visual design, motion, and spatial art." />
+    <meta property="og:image" content="https://yuqilu.com/og-image.png" />
+    <meta property="og:url" content="https://yuqilu.com" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yuqi Lu — Illustrator & Designer" />
+    <meta name="twitter:description" content="Illustration systems, visual design, motion, and spatial art." />
+    <meta name="twitter:image" content="https://yuqilu.com/og-image.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -31,19 +49,9 @@
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "framer-motion": "https://esm.sh/framer-motion@^12.33.0"
-  }
-}
-</script>
 </head>
   <body>
     <div id="root"></div>
-    <div class="noise-overlay"></div>
+    <div class="noise-overlay"></div><script type="module" src="/index.tsx"></script>
   </body>
 </html>
