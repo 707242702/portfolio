@@ -22,7 +22,7 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigat
         transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <div className="flex flex-col gap-1">
-        <h1 className="text-xs md:text-sm font-mono font-bold tracking-widest mb-6">VISUAL SYSTEM v1.0</h1>
+        <h1 className="text-xs md:text-sm font-mono font-bold tracking-widest mb-6">VISUAL_SYSTEM v1.0</h1>
         {NAV_ITEMS.map((item) => (
           <button
             key={item.id}

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { TubeSystem } from './components/TubeSystem';
 import { Navigation } from './components/Navigation';
 import { Content } from './components/Content';
@@ -14,8 +14,12 @@ const App: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedAiItem, setSelectedAiItem] = useState<AiItem | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  // New state for menu visibility
   const [isMenuVisible, setIsMenuVisible] = useState(true);
+
+  // Scroll resistance refs
+  const scrollAccumulator = useRef(0);
+  const scrollTimeout = useRef<number | null>(null);
+  const BASE_THRESHOLD = 300; 
 
   // When a project OR an AI item is selected, we switch visual system to DETAIL mode
   const currentVisualState = (selectedProject || selectedAiItem) ? Section.DETAIL : activeSection;
@@ -31,14 +35,17 @@ const App: React.FC = () => {
 
     setActiveSection(section);
     setIsTransitioning(true);
-    // Reset menu visibility when navigating
     setIsMenuVisible(true);
-    setTimeout(() => setIsTransitioning(false), 1000); // Debounce interactions
+    
+    // Reset scroll accumulator on navigate
+    scrollAccumulator.current = 0;
+
+    setTimeout(() => setIsTransitioning(false), 1000); 
   }, [activeSection, isTransitioning, selectedProject, selectedAiItem]);
 
   const handleSelectProject = (project: Project) => {
       setSelectedProject(project);
-      setIsMenuVisible(true); // Ensure menu is visible when opening detail
+      setIsMenuVisible(true);
   };
   
   const handleSelectAiItem = (item: AiItem) => {
@@ -56,25 +63,59 @@ const App: React.FC = () => {
     setIsMenuVisible(visible);
   };
 
-  // Scroll/Wheel support for Main Navigation only
+  // Scroll/Wheel support with RESISTANCE
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      // Disable section switching via scroll if we are in a detail view
-      if (isTransitioning || selectedProject || selectedAiItem) return;
-
-      const currentIndex = NAV_ITEMS.findIndex(item => item.id === activeSection);
-      let nextIndex = currentIndex;
-
-      if (e.deltaY > 50) {
-        // Scroll Down
-        nextIndex = (currentIndex + 1) % NAV_ITEMS.length;
-      } else if (e.deltaY < -50) {
-        // Scroll Up
-        nextIndex = (currentIndex - 1 + NAV_ITEMS.length) % NAV_ITEMS.length;
+      // Disable section switching via scroll if we are in a detail view or transitioning
+      if (isTransitioning || selectedProject || selectedAiItem) {
+          scrollAccumulator.current = 0;
+          return;
       }
 
-      if (nextIndex !== currentIndex) {
-        handleNavigate(NAV_ITEMS[nextIndex].id);
+      // Reset accumulator if scrolling in opposite direction
+      if (Math.sign(e.deltaY) !== Math.sign(scrollAccumulator.current) && scrollAccumulator.current !== 0) {
+          scrollAccumulator.current = 0;
+      }
+
+      // Accumulate scroll delta
+      scrollAccumulator.current += e.deltaY;
+
+      // Clear accumulator if user stops scrolling for a bit
+      if (scrollTimeout.current) window.clearTimeout(scrollTimeout.current);
+      // Increased timeout slightly to allow for "double swipe" gestures to accumulate
+      scrollTimeout.current = window.setTimeout(() => {
+          scrollAccumulator.current = 0;
+      }, 300);
+
+      // Determine threshold based on section and direction
+      let currentThreshold = BASE_THRESHOLD;
+      
+      // Increase resistance for AI -> WORK and WORK -> ABOUT
+      // Assuming forward navigation is positive deltaY
+      if (e.deltaY > 0) {
+          if (activeSection === Section.AI || activeSection === Section.WORK) {
+              currentThreshold = 1000; // Significantly higher resistance
+          }
+      }
+
+      // Check threshold
+      if (Math.abs(scrollAccumulator.current) > currentThreshold) {
+          const currentIndex = NAV_ITEMS.findIndex(item => item.id === activeSection);
+          let nextIndex = currentIndex;
+
+          if (scrollAccumulator.current > 0) {
+            // Scroll Down / Next
+            nextIndex = (currentIndex + 1) % NAV_ITEMS.length;
+          } else {
+            // Scroll Up / Prev
+            nextIndex = (currentIndex - 1 + NAV_ITEMS.length) % NAV_ITEMS.length;
+          }
+
+          if (nextIndex !== currentIndex) {
+            handleNavigate(NAV_ITEMS[nextIndex].id);
+            // Reset after successful navigation
+            scrollAccumulator.current = 0; 
+          }
       }
     };
 

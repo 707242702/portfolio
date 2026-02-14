@@ -17,6 +17,7 @@ export interface Project {
   content: string[]; // Array of paragraphs for the mockup
   videos?: string[]; // Array of YouTube Video IDs
   images?: string[]; // Array of Image URLs
+  client?: string;   // Optional client name override
 }
 
 export interface AiItem {
@@ -28,6 +29,7 @@ export interface AiItem {
   content: string[];
   tags: string[];
   metrics?: { label: string; value: string }[];
+  customHtml?: string;
 }
 
 export interface PathDefinition {
