@@ -1,7 +1,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Section, Project, AiItem } from '../types';
+import { Section, Project, AiItem, ProjectModule } from '../types';
 import { PROJECTS, AI_ITEMS, COLORS } from '../constants';
 
 interface ContentProps {
@@ -62,8 +62,15 @@ const useScrollMenuLogic = (onToggleMenu: (visible: boolean) => void) => {
 
 // --- Sub-Components ---
 
-const ShatterChar = ({ char, magnitude = 300 }: { char: string, magnitude?: number }) => {
+interface ShatterCharProps {
+  char: string;
+  magnitude?: number;
+  enableColor?: boolean;
+}
+
+const ShatterChar: React.FC<ShatterCharProps> = ({ char, magnitude = 300, enableColor = true }) => {
     const [animState, setAnimState] = useState({ x: 0, y: 0, rotate: 0, scale: 1, opacity: 1 });
+    const [color, setColor] = useState<string>('inherit');
     
     const handleEnter = () => {
         // Calculate dynamic random values for every interaction
@@ -71,21 +78,30 @@ const ShatterChar = ({ char, magnitude = 300 }: { char: string, magnitude?: numb
         const newY = (Math.random() - 0.5) * magnitude; 
         const newR = (Math.random() - 0.5) * 120;
         const newS = 0.5 + Math.random() * 0.5;
+        
+        // Pick a random system color for fun
+        if (enableColor) {
+            const systemColors = [COLORS.RED, COLORS.BLUE, COLORS.GREEN, COLORS.ORANGE];
+            const randomColor = systemColors[Math.floor(Math.random() * systemColors.length)];
+            setColor(randomColor);
+        }
 
         // Shatter State
-        setAnimState({ x: newX, y: newY, rotate: newR, scale: newS, opacity: 0.4 });
+        setAnimState({ x: newX, y: newY, rotate: newR, scale: newS, opacity: 0.8 });
 
         // Auto-Reset after delay
         setTimeout(() => {
             setAnimState({ x: 0, y: 0, rotate: 0, scale: 1, opacity: 1 });
+            setColor('inherit');
         }, 700);
     };
 
     return (
         <motion.span
-            className="inline-block cursor-pointer select-none"
+            className="inline-block cursor-pointer select-none transition-colors duration-300"
             onMouseEnter={handleEnter}
             animate={animState}
+            style={{ color }}
             transition={{ 
                 type: "spring", 
                 stiffness: 250, 
@@ -98,24 +114,66 @@ const ShatterChar = ({ char, magnitude = 300 }: { char: string, magnitude?: numb
     );
 };
 
-const ShatterTitle = ({ text, className, magnitude = 300 }: { text: string, className?: string, magnitude?: number }) => {
+interface ShatterTitleProps {
+  text: string;
+  className?: string;
+  magnitude?: number;
+  enableColor?: boolean;
+}
+
+const ShatterTitle: React.FC<ShatterTitleProps> = ({ text, className, magnitude = 300, enableColor = true }) => {
     return (
         <div className={className}>
             {text.split("").map((char, i) => (
-                <ShatterChar key={i} char={char} magnitude={magnitude} />
+                <ShatterChar key={i} char={char} magnitude={magnitude} enableColor={enableColor} />
             ))}
         </div>
     );
 };
 
-const ImageCard = ({ src, index }: { src: string, index: number }) => {
+// Playful Tag Component for About Page
+const PlayfulTag: React.FC<{ text: string }> = ({ text }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const [hoverColor, setHoverColor] = useState(COLORS.TEXT);
+
+    return (
+        <motion.span
+            className="text-[10px] uppercase font-mono bg-stone-300/30 text-stone-600 px-2 py-1 rounded-sm cursor-pointer inline-block select-none border border-transparent"
+            onMouseEnter={() => {
+                setIsHovered(true);
+                // Pick random color from system colors
+                const colors = [COLORS.RED, COLORS.BLUE, COLORS.GREEN, COLORS.ORANGE];
+                setHoverColor(colors[Math.floor(Math.random() * colors.length)]);
+            }}
+            onMouseLeave={() => setIsHovered(false)}
+            animate={{
+                scale: isHovered ? 1.1 : 1,
+                rotate: isHovered ? (Math.random() * 6 - 3) : 0, // Random tilt +/- 3deg
+                color: isHovered ? hoverColor : '#57534e', // stone-600
+                backgroundColor: isHovered ? '#ffffff' : 'rgba(214, 211, 209, 0.3)',
+                borderColor: isHovered ? hoverColor : 'transparent'
+            }}
+            transition={{ type: "spring", stiffness: 400, damping: 12 }}
+        >
+            {text}
+        </motion.span>
+    );
+};
+
+interface ImageCardProps {
+  src: string;
+  index: number;
+  aspectClass?: string;
+}
+
+const ImageCard: React.FC<ImageCardProps> = ({ src, index, aspectClass }) => {
     // Pick a random system color for the hover border
     const systemColors = [COLORS.RED, COLORS.BLUE, COLORS.GREEN, COLORS.ORANGE];
     const borderColor = systemColors[index % systemColors.length];
 
     return (
         <motion.div 
-            className="relative w-full aspect-square overflow-hidden bg-white rounded-sm shadow-sm border border-[#D9D9D9] cursor-pointer group"
+            className={`relative w-full overflow-hidden bg-white rounded-sm shadow-sm border border-white cursor-pointer group ${aspectClass || 'h-full'}`}
             initial="initial"
             whileHover="hover"
         >
@@ -131,7 +189,7 @@ const ImageCard = ({ src, index }: { src: string, index: number }) => {
                 transition={{ duration: 0.5, ease: "easeOut" }}
             />
             
-            {/* Colored Border Reveal - Thinner (2px) to match other boxes */}
+            {/* Colored Border Reveal */}
             <motion.div 
                 className="absolute inset-0 border-[2px] pointer-events-none z-10"
                 style={{ borderColor: borderColor }}
@@ -145,30 +203,167 @@ const ImageCard = ({ src, index }: { src: string, index: number }) => {
     );
 };
 
+interface ModuleCardProps {
+    module: ProjectModule;
+    index: number;
+    minimal?: boolean; // New prop for minimalist frame
+}
+
+const ModuleCard: React.FC<ModuleCardProps> = ({ module, index, minimal = false }) => {
+    // Cycle system colors
+    const colors = [COLORS.RED, COLORS.BLUE, COLORS.GREEN, COLORS.ORANGE];
+    const hoverColor = colors[index % colors.length];
+
+    if (minimal) {
+        return (
+            <motion.div 
+                className="group relative flex flex-col gap-2 cursor-pointer"
+                initial="initial"
+                whileHover="hover"
+            >
+                {/* Minimalist Tech Frame */}
+                <div className="relative w-full aspect-square overflow-hidden bg-stone-100 border border-[#D9D9D9] p-1">
+                    {module.image && (
+                        <motion.img 
+                            src={module.image} 
+                            alt={module.title}
+                            className="w-full h-full object-cover opacity-90 grayscale group-hover:grayscale-0 transition-all duration-500"
+                        />
+                    )}
+                    {/* Technical Crosshairs */}
+                    <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-stone-400 opacity-50" />
+                    <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-stone-400 opacity-50" />
+                </div>
+                
+                {/* Minimalist Metadata */}
+                <div className="flex justify-between items-end font-mono text-[9px] text-stone-500">
+                    <div className="flex flex-col">
+                        <span className="uppercase text-[#1D3557] font-bold group-hover:text-[var(--hover-color)] transition-colors" style={{ "--hover-color": hoverColor } as React.CSSProperties}>
+                            {module.title}
+                        </span>
+                        <span className="opacity-70">{module.description}</span>
+                    </div>
+                    <span>0{index + 1}</span>
+                </div>
+            </motion.div>
+        );
+    }
+
+    return (
+        <motion.div 
+            className="group relative flex flex-col gap-4 cursor-pointer"
+            initial="initial"
+            whileHover="hover"
+            style={{ "--hover-color": hoverColor } as React.CSSProperties}
+        >
+            {/* Image Container - High Contrast System Look */}
+            <div className="relative w-full aspect-[16/10] overflow-hidden bg-stone-900 rounded-sm">
+                {/* The Image */}
+                {module.image && (
+                    <motion.img 
+                        src={module.image} 
+                        alt={module.title}
+                        className="w-full h-full object-cover opacity-90"
+                        variants={{
+                            initial: { scale: 1, filter: "grayscale(100%) contrast(1.2)" },
+                            hover: { scale: 1.05, filter: "grayscale(0%) contrast(1.1)", opacity: 1 }
+                        }}
+                        transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+                    />
+                )}
+                
+                {/* System Overlay Grid/Scanline */}
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgNDBMMCAwSDQwIiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIiAvPjwvc3ZnPg==')] opacity-30 pointer-events-none" />
+                
+                {/* Scan Bar Animation */}
+                <motion.div 
+                    className="absolute inset-0 w-full h-[2px] bg-white/50 shadow-[0_0_10px_rgba(255,255,255,0.8)] z-10"
+                    variants={{
+                        initial: { top: "-10%", opacity: 0 },
+                        hover: { top: "110%", opacity: 1 }
+                    }}
+                    transition={{ duration: 1.5, ease: "linear", repeat: Infinity, repeatDelay: 0.2 }}
+                />
+
+                {/* Corner Markers */}
+                <div className="absolute top-0 left-0 p-2 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+                     <div className="w-1.5 h-1.5 bg-white shadow-sm" />
+                </div>
+                <div className="absolute bottom-0 right-0 p-2 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+                     <div className="w-1.5 h-1.5 bg-white shadow-sm" />
+                </div>
+            </div>
+            
+            {/* Typography & Info */}
+            <div className="flex flex-col">
+                <div className="flex items-center gap-3 mb-2">
+                    <span className="text-[9px] font-mono text-stone-400 uppercase tracking-widest group-hover:text-[var(--hover-color)] transition-colors">SYS_0{index + 1}</span>
+                    <motion.div 
+                        className="h-[1px] bg-stone-300 flex-grow origin-left"
+                        variants={{ initial: { scaleX: 0.2 }, hover: { scaleX: 1 } }}
+                        transition={{ duration: 0.4 }}
+                    />
+                </div>
+                
+                <h3 className="text-xl font-bold text-[#1D3557] mb-1 group-hover:text-black transition-colors">{module.title}</h3>
+                <p className="text-sm text-stone-500 font-medium leading-relaxed max-w-xs">{module.description}</p>
+                
+                {/* Interactive Tags */}
+                <div className="flex flex-wrap gap-2 mt-3">
+                    {module.tags?.map((tag) => (
+                        <span 
+                            key={tag} 
+                            className="text-[10px] font-mono uppercase tracking-wide transition-colors duration-300 text-[#a8a29e] group-hover:text-[var(--hover-color)]"
+                        >
+                            #{tag}
+                        </span>
+                    ))}
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
+
 // --- Glass Card Component ---
 // Manages the smooth transition of blur and opacity for "silky" feel
-const GlassCard = ({ 
+
+interface GlassCardProps {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: (e: React.MouseEvent) => void;
+  delay?: number;
+  hoverEffect?: boolean;
+  initialBlur?: string;
+  targetBlur?: string;
+  borderColor?: string;
+  backgroundColor?: string;
+  hoverBackgroundColor?: string;
+  hoverBlur?: string;
+  hoverScale?: number;
+  mixBlendMode?: 'normal' | 'multiply' | 'screen' | 'overlay' | 'darken' | 'lighten' | 'difference'; // New prop
+}
+
+const GlassCard: React.FC<GlassCardProps> = ({ 
     children, 
     className = "", 
     onClick,
     delay = 0,
     hoverEffect = false,
     initialBlur = "0px",
-    targetBlur = "12px"
-}: { 
-    children: React.ReactNode; 
-    className?: string;
-    onClick?: (e: React.MouseEvent) => void;
-    delay?: number;
-    hoverEffect?: boolean;
-    initialBlur?: string;
-    targetBlur?: string;
+    targetBlur = "12px",
+    borderColor = "border-[#D9D9D9]",
+    backgroundColor = "rgba(229, 222, 208, 0.6)",
+    hoverBackgroundColor = "rgba(255, 255, 255, 0.8)",
+    hoverBlur = "16px",
+    hoverScale = 1.01,
+    mixBlendMode = 'normal'
 }) => {
     return (
         <motion.div
             onClick={onClick}
             className={`
-                relative border border-[#D9D9D9] 
+                relative border ${borderColor} 
                 shadow-[inset_0_0_20px_rgba(255,255,255,0.1)] 
                 rounded-sm overflow-hidden 
                 ${hoverEffect ? 'cursor-pointer group' : ''}
@@ -177,17 +372,17 @@ const GlassCard = ({
             initial={{ 
                 opacity: 0, 
                 backdropFilter: `blur(${initialBlur})`,
-                backgroundColor: "rgba(229, 222, 208, 0)" 
+                backgroundColor: backgroundColor.replace('0.6', '0') // Start transparent-ish
             }}
             animate={{ 
                 opacity: 1, 
                 backdropFilter: `blur(${targetBlur})`,
-                backgroundColor: "rgba(229, 222, 208, 0.6)" 
+                backgroundColor: backgroundColor
             }}
             whileHover={hoverEffect ? { 
-                scale: 1.01, 
-                backgroundColor: "rgba(255, 255, 255, 0.8)",
-                backdropFilter: "blur(16px)",
+                scale: hoverScale, 
+                backgroundColor: hoverBackgroundColor,
+                backdropFilter: `blur(${hoverBlur})`,
                 transition: { duration: 0.4, ease: "easeOut" }
             } : {}}
             transition={{ 
@@ -195,7 +390,10 @@ const GlassCard = ({
                 ease: [0.2, 0, 0.2, 1], // Cubic-bezier for smooth 'fogging' up
                 delay: delay
             }}
-            style={{ willChange: "transform, opacity, backdrop-filter" }}
+            style={{ 
+                willChange: "transform, opacity, backdrop-filter",
+                mixBlendMode: mixBlendMode // Apply blend mode
+            }}
         >
             {children}
         </motion.div>
@@ -204,7 +402,11 @@ const GlassCard = ({
 
 // --- Section Components ---
 
-const HomeContent = ({ onToggleMenu }: { onToggleMenu: (v: boolean) => void }) => {
+interface HomeContentProps {
+  onToggleMenu: (v: boolean) => void;
+}
+
+const HomeContent: React.FC<HomeContentProps> = ({ onToggleMenu }) => {
   const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
   
   return (
@@ -214,23 +416,32 @@ const HomeContent = ({ onToggleMenu }: { onToggleMenu: (v: boolean) => void }) =
         className="w-full h-full flex flex-col justify-center items-center pt-24 md:pt-0 overflow-y-auto overflow-x-hidden"
       >
         <div className="relative z-10 text-center mix-blend-multiply cursor-default flex flex-col items-center">
-            {/* Static Title (No Animation) */}
-            <h1 className="text-[15vw] font-bold tracking-tighter text-[#1D3557] leading-[0.9] select-none flex flex-wrap justify-center gap-2 md:gap-4">
-                YUQI LU
-            </h1>
+             {/* Interactive Main Title - Colors Enabled */}
+             <ShatterTitle 
+                text="YUQI LU"
+                className="text-[15vw] font-bold tracking-tighter text-[#1D3557] leading-[0.9] select-none flex flex-wrap justify-center gap-2 md:gap-4"
+                magnitude={150}
+                enableColor={true}
+            />
             
-            {/* Animated Subtitle (Keep Shatter Effect) */}
+            {/* Animated Subtitle - Motion ONLY, No Color Change */}
              <ShatterTitle 
                 text="Illustrator & Designer"
                 className="text-lg md:text-2xl font-mono text-stone-500 tracking-[0.2em] mt-4 uppercase select-none"
                 magnitude={50}
+                enableColor={false}
             />
         </div>
       </div>
   );
 };
 
-const AIContent = ({ onSelect, onToggleMenu }: { onSelect: (item: AiItem) => void, onToggleMenu: (v: boolean) => void }) => {
+interface AIContentProps {
+  onSelect: (item: AiItem) => void;
+  onToggleMenu: (v: boolean) => void;
+}
+
+const AIContent: React.FC<AIContentProps> = ({ onSelect, onToggleMenu }) => {
   const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
   
   return (
@@ -261,7 +472,12 @@ const AIContent = ({ onSelect, onToggleMenu }: { onSelect: (item: AiItem) => voi
   );
 };
 
-const WorkContent = ({ onSelect, onToggleMenu }: { onSelect: (p: Project) => void, onToggleMenu: (v: boolean) => void }) => {
+interface WorkContentProps {
+  onSelect: (p: Project) => void;
+  onToggleMenu: (v: boolean) => void;
+}
+
+const WorkContent: React.FC<WorkContentProps> = ({ onSelect, onToggleMenu }) => {
   const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
 
   return (
@@ -283,16 +499,27 @@ const WorkContent = ({ onSelect, onToggleMenu }: { onSelect: (p: Project) => voi
                 delay={0.1 + (i * 0.1)}
                 hoverEffect={true}
                 className="p-6"
+                // Removed borderColor="border-white" to use default #D9D9D9 like AI page
             >
-                <div className="flex flex-col md:flex-row md:items-start justify-between relative z-10 gap-4">
-                    <span className="font-mono text-xs text-stone-400 pt-1 md:pt-2">0{i + 1}</span>
+                <div className="flex flex-col md:flex-row md:items-start justify-between relative z-10 gap-6 md:gap-8">
+                    {/* Index */}
+                    <span className="font-mono text-xs text-stone-400 pt-1 md:pt-2 w-8 shrink-0">0{i + 1}</span>
                     
+                    {/* Main Content */}
                     <div className="flex-1 flex flex-col">
-                         <h3 className="text-2xl md:text-4xl font-bold text-stone-500 group-hover:text-[#1D3557] transition-colors duration-300 leading-tight">{project.title}</h3>
-                         <p className="text-base md:text-lg text-stone-400 group-hover:text-stone-600 transition-colors duration-300 mt-2 leading-relaxed font-normal">{project.description}</p>
+                         <h3 className="text-2xl md:text-4xl font-bold text-stone-500 group-hover:text-[#1D3557] transition-colors duration-300 leading-tight uppercase">{project.title}</h3>
+                         {/* Removed uppercase, reduced size */}
+                         <p className="text-sm md:text-base text-stone-400 group-hover:text-stone-600 transition-colors duration-300 mt-2 leading-relaxed font-normal max-w-2xl tracking-wide">
+                            {project.description}
+                         </p>
                     </div>
 
-                    <span className="font-mono text-xs text-stone-500 pt-1 md:pt-2 group-hover:text-[#EB431D] text-right md:w-48">{project.category}</span>
+                    {/* Right Column: Category - Removed [VIEW CASE STUDY] */}
+                    <div className="flex flex-col items-end pt-1 md:pt-2 md:w-64 shrink-0 gap-3">
+                        <span className="font-mono text-xs text-stone-500 group-hover:text-[#EB431D] text-right transition-colors uppercase tracking-tight leading-snug">
+                            {project.category}
+                        </span>
+                    </div>
                 </div>
             </GlassCard>
         ))}
@@ -301,7 +528,11 @@ const WorkContent = ({ onSelect, onToggleMenu }: { onSelect: (p: Project) => voi
   );
 };
 
-const AboutContent = ({ onToggleMenu }: { onToggleMenu: (v: boolean) => void }) => {
+interface AboutContentProps {
+  onToggleMenu: (v: boolean) => void;
+}
+
+const AboutContent: React.FC<AboutContentProps> = ({ onToggleMenu }) => {
   const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
 
   return (
@@ -319,9 +550,12 @@ const AboutContent = ({ onToggleMenu }: { onToggleMenu: (v: boolean) => void }) 
             <div className="flex-1 flex flex-col">
                 <div>
                     <span className="block text-xs font-mono text-stone-400 mb-6 tracking-widest">PROFILE</span>
-                    <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-[#1D3557] leading-[0.9] mb-6">
-                        YUQI LU
-                    </h2>
+                    <ShatterTitle 
+                        text="YUQI LU" 
+                        className="text-5xl md:text-7xl font-bold tracking-tight text-[#1D3557] leading-[0.9] mb-6 flex flex-wrap gap-x-4 cursor-default"
+                        magnitude={30} // Less explosive than home
+                        enableColor={true} // Default to true
+                    />
                     <div className="font-mono text-sm text-[#1D3557] space-y-1 mb-12">
                         <p className="font-bold">Visual Systems Designer</p>
                         <p className="text-stone-600">Illustration & Structured Workflows</p>
@@ -333,37 +567,57 @@ const AboutContent = ({ onToggleMenu }: { onToggleMenu: (v: boolean) => void }) 
                     <h4 className="text-xs font-mono font-bold text-[#1D3557] pb-2 border-b border-stone-200/50 w-fit">TOOLS & SYSTEMS</h4>
                     <div className="flex flex-wrap gap-2">
                         {['Figma', 'Workflow Design', 'Illustration Systems', 'Visual Governance', 'Generative Exploration', 'Cross-Team Collaboration'].map(tag => (
-                            <span key={tag} className="text-[10px] uppercase font-mono bg-stone-300/30 text-stone-600 px-2 py-1 rounded-sm">{tag}</span>
+                            <PlayfulTag key={tag} text={tag} />
                         ))}
                     </div>
                 </div>
                 
                 <div className="hidden md:flex gap-6 mt-auto pt-8">
-                    <a href="#" className="text-xs font-bold text-stone-400 hover:text-[#EB431D]">TWITTER</a>
-                    <a href="#" className="text-xs font-bold text-stone-400 hover:text-[#1156D0]">GITHUB</a>
-                    <a href="#" className="text-xs font-bold text-stone-400 hover:text-[#1A824E]">EMAIL</a>
+                    {['TWITTER', 'GITHUB', 'EMAIL'].map((social) => (
+                        <a key={social} href="#" className="text-xs font-bold text-stone-400 hover:text-stone-600 transition-colors flex">
+                             <ShatterTitle text={social} magnitude={5} enableColor={true} />
+                        </a>
+                    ))}
                 </div>
             </div>
             
             {/* RIGHT COLUMN */}
             <div className="flex-1 border-t md:border-t-0 md:border-l border-stone-300/50 pt-8 md:pt-0 md:pl-12 flex flex-col">
                 <div className="text-base font-medium text-stone-800 leading-relaxed mb-8 space-y-4">
-                    <p>I design visual systems that support clarity at scale.</p>
-                    <p>My work centers on building structured illustration frameworks, aligning multi-contributor output, and translating complex ideas into accessible visual language.</p>
-                    <p>I’m interested in how design decisions sustain over time — across teams, tools, and evolving production environments.</p>
+                    <motion.p whileHover={{ x: 5, color: COLORS.BLUE }} transition={{ type: 'spring', stiffness: 300 }} className="cursor-default">
+                        I design visual systems that support clarity at scale.
+                    </motion.p>
+                    <motion.p whileHover={{ x: 5, color: COLORS.RED }} transition={{ type: 'spring', stiffness: 300 }} className="cursor-default">
+                        My work centers on building structured illustration frameworks, aligning multi-contributor output, and translating complex ideas into accessible visual language.
+                    </motion.p>
+                    <motion.p whileHover={{ x: 5, color: COLORS.GREEN }} transition={{ type: 'spring', stiffness: 300 }} className="cursor-default">
+                        I’m interested in how design decisions sustain over time — across teams, tools, and evolving production environments.
+                    </motion.p>
                     
                     <div className="pt-2">
                         <p className="mb-2">Rather than focusing on individual outputs, I focus on:</p>
-                        <ul className="list-none space-y-1 text-stone-600 pl-4 border-l-2 border-[#1D3557]/20">
-                            <li>• repeatable visual logic</li>
-                            <li>• consistency across contributors</li>
-                            <li>• documentation that supports alignment</li>
-                            <li>• workflows that allow iteration without fragmentation</li>
+                        <ul className="list-none space-y-1 text-stone-600 pl-4 border-l-2 border-[#1D3557]/20 hover:border-[#1D3557] transition-colors">
+                            {['repeatable visual logic', 'consistency across contributors', 'documentation that supports alignment', 'workflows that allow iteration without fragmentation'].map(item => (
+                                <motion.li 
+                                    key={item} 
+                                    whileHover={{ x: 5, color: COLORS.ORANGE }}
+                                    className="cursor-default"
+                                >
+                                    • {item}
+                                </motion.li>
+                            ))}
                         </ul>
                     </div>
 
-                    <p>Emerging tools are part of my process, but structure remains the foundation.</p>
-                    <p className="font-bold text-[#1D3557]">Strong design is not only expressive — it is durable.</p>
+                    <motion.p whileHover={{ x: 5, color: COLORS.TEXT }} transition={{ type: 'spring', stiffness: 300 }} className="cursor-default">
+                        Emerging tools are part of my process, but structure remains the foundation.
+                    </motion.p>
+                    <motion.p 
+                        className="font-bold text-[#1D3557] cursor-default"
+                        whileHover={{ scale: 1.02, originX: 0 }}
+                    >
+                        Strong design is not only expressive — it is durable.
+                    </motion.p>
                 </div>
 
                 {/* Mobile social links */}
@@ -378,13 +632,54 @@ const AboutContent = ({ onToggleMenu }: { onToggleMenu: (v: boolean) => void }) 
   );
 };
 
-const ProjectDetail = ({ project, onClose, onSelectProject, onToggleMenu }: { project: Project; onClose: () => void; onSelectProject: (p:Project) => void; onToggleMenu: (v: boolean) => void }) => {
+interface ProjectDetailProps {
+  project: Project;
+  onClose: () => void;
+  onSelectProject: (p: Project) => void;
+  onToggleMenu: (v: boolean) => void;
+}
+
+const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelectProject, onToggleMenu }) => {
     const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
     
     useEffect(() => { if(scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0; }, [project, scrollContainerRef]);
 
-    const nextIndex = (PROJECTS.findIndex(p => p.id === project.id) + 1) % PROJECTS.length;
+    const currentIndex = PROJECTS.findIndex(p => p.id === project.id);
+    const nextIndex = (currentIndex + 1) % PROJECTS.length;
+    const prevIndex = (currentIndex - 1 + PROJECTS.length) % PROJECTS.length;
+    
     const nextProject = PROJECTS[nextIndex];
+    const prevProject = PROJECTS[prevIndex];
+
+    // Determine layout config based on project type
+    const getLayoutConfig = (id: string) => {
+        if (id === 'work-personal') {
+             return { 
+                 containerClass: 'columns-2 md:columns-4 gap-4 space-y-4', 
+                 itemClass: 'mb-4 break-inside-avoid aspect-auto' 
+             };
+        }
+        if (id === 'work-illustration') {
+             return { 
+                 containerClass: 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6', 
+                 itemClass: 'aspect-square' 
+             };
+        }
+        if (['work-marketing', 'work-spatial'].includes(id)) {
+             return { 
+                 containerClass: 'grid grid-cols-1 md:grid-cols-2 gap-6', 
+                 itemClass: 'aspect-[4/3]' 
+             };
+        }
+        // Fallback
+        return { 
+            containerClass: 'flex flex-col gap-8', 
+            itemClass: 'aspect-video w-full' 
+        };
+    };
+
+    const layout = getLayoutConfig(project.id);
+    const isMotionProject = project.id === 'work-motion';
 
     return (
         <motion.div 
@@ -398,72 +693,134 @@ const ProjectDetail = ({ project, onClose, onSelectProject, onToggleMenu }: { pr
             className="fixed inset-0 w-full h-full flex flex-col pt-24 px-8 md:px-24 pointer-events-auto overflow-y-auto overflow-x-hidden cursor-pointer z-20"
             onWheel={(e) => e.stopPropagation()} 
         >
-            <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="fixed top-8 right-8 z-50 text-xs font-mono font-bold tracking-widest text-stone-500 hover:text-[#EB431D] transition-colors flex items-center gap-2 bg-white/80 border border-[#D9D9D9] px-4 py-2 rounded-full backdrop-blur-sm shadow-sm cursor-pointer">
+            <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="fixed top-8 right-8 z-50 text-xs font-mono font-bold tracking-widest text-stone-500 hover:text-[#EB431D] transition-colors flex items-center gap-2 bg-white/80 border border-white px-4 py-2 rounded-full backdrop-blur-sm shadow-sm cursor-pointer">
                 CLOSE <span className="text-lg">×</span>
             </button>
             <div className="max-w-4xl mx-auto w-full pb-64 pt-16 md:pt-0 cursor-auto" onClick={(e) => e.stopPropagation()}>
-                <GlassCard className="mb-16 p-8 !border-0" delay={0.2} initialBlur="0px" targetBlur="20px">
-                    <span className="text-xs font-mono text-stone-400 mb-4 block tracking-widest">
+                {/* TITLE CARD */}
+                <GlassCard 
+                    className="mb-16 p-8 border-0 shadow-none" 
+                    delay={0.2} 
+                    initialBlur="0px" 
+                    targetBlur="0px"
+                    backgroundColor="transparent"
+                    borderColor="border-transparent"
+                    hoverEffect={false}
+                >
+                    <span className="text-xs font-mono text-stone-400 mb-4 block tracking-widest uppercase">
                         {project.id === 'work-personal' ? 'Self-Initiated Work / Ongoing Series' : `${project.year} — ${project.category}`}
                     </span>
-                    <h1 className="text-5xl md:text-7xl font-bold text-[#1D3557] leading-[0.9] mb-8">{project.title}</h1>
+                    <h1 className="text-5xl md:text-7xl font-bold text-[#1D3557] leading-[0.9] mb-8 uppercase">{project.title}</h1>
                     <div className="flex flex-wrap gap-4 text-xs font-mono">
-                        <span className="bg-[#1D3557] text-white px-3 py-1 rounded-sm">{project.role}</span>
-                        <span className="bg-white/80 border border-stone-200/50 px-3 py-1 text-stone-500 rounded-sm">
-                            {project.client ? project.client : 'CLIENT: CONFIDENTIAL'}
+                        <span className="bg-[#1D3557] text-white px-3 py-1 rounded-sm uppercase">{project.role}</span>
+                        <span className="bg-white/80 border border-white px-3 py-1 text-stone-500 rounded-sm uppercase">
+                            {project.client}
                         </span>
                     </div>
                 </GlassCard>
                 
-                <GlassCard className="w-full p-8 h-fit" delay={0.4} initialBlur="0px" targetBlur="20px">
-                    <p className="text-xl font-medium leading-relaxed text-stone-800 mb-12">{project.description}</p>
-                    {/* UPDATED: Typography matches About Content (sans-serif, medium weight, stone-800) */}
-                    <div className="space-y-4 text-base font-medium text-stone-800 leading-relaxed mb-12">
-                        {project.content.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
-                    </div>
-
-                    {project.images && project.images.length > 0 && (
-                            <div className="space-y-8 border-t border-stone-200 pt-8 mt-12">
-                            <h3 className="text-xs font-mono font-bold text-[#1D3557] tracking-widest uppercase mb-6">Featured Works</h3>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                {project.images.map((imgSrc, idx) => (
-                                    <ImageCard key={idx} src={imgSrc} index={idx} />
-                                ))}
-                            </div>
-                            </div>
+                {/* CONTENT CARD */}
+                <GlassCard 
+                    className="w-full p-8 h-fit transition-colors duration-300" 
+                    delay={0.4} 
+                    initialBlur="0px" 
+                    targetBlur="0px" 
+                    backgroundColor="rgba(229, 222, 208, 0)" 
+                    hoverEffect={false}
+                    hoverScale={1}
+                    borderColor="border-transparent"
+                >
+                    <p className="text-xl font-medium leading-relaxed text-stone-800 mb-12 uppercase">{project.description}</p>
+                    
+                    {/* SECTION 1: MODULES / GIF GRID */}
+                    {project.modules && project.modules.length > 0 && (
+                         <div className={`mb-16 ${isMotionProject ? 'grid grid-cols-1 md:grid-cols-3 gap-4' : layout.containerClass}`}>
+                            {project.modules.map((module, i) => (
+                                <ModuleCard 
+                                    key={module.id} 
+                                    module={module} 
+                                    index={i} 
+                                    minimal={isMotionProject} // Use minimal frame for Motion project
+                                />
+                            ))}
+                         </div>
                     )}
 
+                     {/* SECTION 2: IMAGES (Non-Motion) */}
+                    {project.images && project.images.length > 0 && (
+                        <div className={`mb-16 ${layout.containerClass}`}>
+                             {project.images.map((img, i) => (
+                                <div key={i} className={layout.itemClass}>
+                                    <ImageCard src={img} index={i} aspectClass={layout.itemClass} />
+                                </div>
+                             ))}
+                        </div>
+                    )}
+
+                    {/* SECTION 3: VIDEOS (YouTube Embeds) */}
                     {project.videos && project.videos.length > 0 && (
-                        <div className="space-y-8 border-t border-stone-200 pt-8 mt-8">
-                            <h3 className="text-xs font-mono font-bold text-[#1D3557] tracking-widest uppercase mb-6">Visual Documentation</h3>
-                            <div className="grid grid-cols-1 gap-8">
-                                {project.videos.map((videoId, index) => (
-                                    <div key={index} className="w-full aspect-video bg-black/5 rounded-sm overflow-hidden border border-[#D9D9D9] shadow-sm">
-                                        <iframe 
+                        <div className="flex flex-col gap-12 mb-16">
+                            {project.videos.map((videoId, i) => (
+                                <div key={i} className="flex flex-col gap-2">
+                                     {/* Video Container in GlassCard with Multiply Blend Mode */}
+                                     <GlassCard 
+                                        className="w-full aspect-video p-0 rounded-sm overflow-hidden" 
+                                        mixBlendMode="multiply" // Applies the "printed" effect
+                                        initialBlur="4px"
+                                        targetBlur="0px"
+                                        borderColor="border-transparent"
+                                        backgroundColor="rgba(255,255,255,0.1)"
+                                     >
+                                         <iframe 
                                             width="100%" 
                                             height="100%" 
                                             src={`https://www.youtube.com/embed/${videoId}`} 
-                                            title={`Project Video ${index + 1}`} 
+                                            title={`Project Video ${i + 1}`} 
                                             frameBorder="0" 
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                             referrerPolicy="strict-origin-when-cross-origin" 
                                             allowFullScreen
                                         ></iframe>
-                                    </div>
-                                ))}
-                            </div>
+                                     </GlassCard>
+                                     <span className="font-mono text-[9px] text-stone-400 tracking-widest uppercase">
+                                        [VIDEO_REF_{i+1}]: YOUTUBE_EMBED_PROTOCOL // {videoId}
+                                     </span>
+                                </div>
+                            ))}
                         </div>
                     )}
+
+                    <div className="space-y-4 text-base font-medium text-stone-800 leading-relaxed mb-12">
+                        {project.content.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
+                    </div>
                 </GlassCard>
 
-                <div className="w-full mt-24 pt-12 border-t-2 border-[#1D3557]/10 flex flex-col items-end">
+                {/* Navigation Footer */}
+                <div className="w-full mt-12 flex justify-between items-center px-4">
+                     {/* PREVIOUS PROJECT */}
+                     <button 
+                        onClick={(e) => { e.stopPropagation(); onSelectProject(prevProject); }}
+                        className="group text-left flex items-center justify-start gap-6 cursor-pointer"
+                     >
+                        <span className="text-2xl text-[#1D3557] group-hover:text-[#EB431D] group-hover:-translate-x-2 transition-all duration-300">
+                           &larr;
+                        </span>
+                        <div className="flex flex-col items-start">
+                            <span className="block text-xs font-mono text-stone-400 tracking-widest group-hover:text-[#EB431D] transition-colors mb-1">PREV PROJECT</span>
+                             <span className="block text-xs font-mono font-bold tracking-widest text-[#1D3557] group-hover:text-[#EB431D] transition-colors duration-300 uppercase">
+                                {prevProject.title}
+                             </span>
+                        </div>
+                     </button>
+
+                     {/* NEXT PROJECT */}
                      <button 
                         onClick={(e) => { e.stopPropagation(); onSelectProject(nextProject); }}
-                        className="group text-right w-full md:w-auto flex items-center justify-end gap-6 cursor-pointer"
+                        className="group text-right flex items-center justify-end gap-6 cursor-pointer"
                      >
                         <div className="flex flex-col items-end">
                             <span className="block text-xs font-mono text-stone-400 tracking-widest group-hover:text-[#EB431D] transition-colors mb-1">NEXT PROJECT</span>
-                             <span className="block text-xs font-mono font-bold tracking-widest text-[#1D3557] group-hover:text-[#EB431D] transition-colors duration-300">
+                             <span className="block text-xs font-mono font-bold tracking-widest text-[#1D3557] group-hover:text-[#EB431D] transition-colors duration-300 uppercase">
                                 {nextProject.title}
                              </span>
                         </div>
@@ -477,10 +834,8 @@ const ProjectDetail = ({ project, onClose, onSelectProject, onToggleMenu }: { pr
     );
 };
 
-const AiDetail = ({ item, onClose, onToggleMenu }: { item: AiItem; onClose: () => void, onToggleMenu: (v: boolean) => void }) => {
+const AiDetail: React.FC<{ item: AiItem; onClose: () => void; onToggleMenu: (v: boolean) => void }> = ({ item, onClose, onToggleMenu }) => {
     const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
-    
-    useEffect(() => { if(scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0; }, [item, scrollContainerRef]);
 
     return (
         <motion.div 
@@ -490,129 +845,119 @@ const AiDetail = ({ item, onClose, onToggleMenu }: { item: AiItem; onClose: () =
             transition={{ duration: 0.8, ease: "easeOut" }}
             ref={scrollContainerRef}
             onScroll={handleScroll}
-            onClick={onClose}
+            onClick={onClose} 
             className="fixed inset-0 w-full h-full flex flex-col pt-24 px-8 md:px-24 pointer-events-auto overflow-y-auto overflow-x-hidden cursor-pointer z-20"
             onWheel={(e) => e.stopPropagation()} 
         >
-            <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="fixed top-8 right-8 z-50 text-xs font-mono font-bold tracking-widest text-stone-500 hover:text-[#1156D0] transition-colors flex items-center gap-2 bg-white/80 border border-[#D9D9D9] px-4 py-2 rounded-full backdrop-blur-sm shadow-sm cursor-pointer">
+            <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="fixed top-8 right-8 z-50 text-xs font-mono font-bold tracking-widest text-stone-500 hover:text-[#EB431D] transition-colors flex items-center gap-2 bg-white/80 border border-white px-4 py-2 rounded-full backdrop-blur-sm shadow-sm cursor-pointer">
                 CLOSE <span className="text-lg">×</span>
             </button>
+            
             <div className="max-w-4xl mx-auto w-full pb-64 pt-16 md:pt-0 cursor-auto" onClick={(e) => e.stopPropagation()}>
-                <GlassCard className="mb-16 p-8 !border-0" delay={0.2} initialBlur="0px" targetBlur="20px">
-                    <span className="text-xs font-mono text-stone-400 mb-4 block tracking-widest">SYSTEM_MODULE — {item.subtitle}</span>
-                    <h1 className="text-5xl md:text-7xl font-bold text-[#1D3557] leading-[0.9] mb-8">{item.title}</h1>
-                    <div className="flex flex-wrap gap-2">
-                        {item.tags.map(tag => (
-                            <span key={tag} className="text-[10px] font-mono border border-[#1D3557] text-[#1D3557] px-2 py-1 rounded-sm uppercase">{tag}</span>
-                        ))}
+                {/* HEADER */}
+                <GlassCard 
+                    className="mb-16 p-8 border-0 shadow-none" 
+                    delay={0.2} 
+                    initialBlur="0px" 
+                    targetBlur="0px"
+                    backgroundColor="transparent"
+                    borderColor="border-transparent"
+                    hoverEffect={false}
+                >
+                    <span className="text-xs font-mono text-stone-400 mb-4 block tracking-widest uppercase">{item.subtitle}</span>
+                    <h1 className="text-5xl md:text-7xl font-bold text-[#1D3557] leading-[0.9] mb-8 uppercase">{item.title}</h1>
+                    <div className="flex flex-wrap gap-4 text-xs font-mono">
+                         {item.tags.map(tag => (
+                             <span key={tag} className="bg-[#1D3557] text-white px-3 py-1 rounded-sm uppercase">{tag}</span>
+                         ))}
                     </div>
                 </GlassCard>
-                {item.customHtml ? (
-                    <div dangerouslySetInnerHTML={{ __html: item.customHtml }} />
-                ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-                        <GlassCard className="md:col-span-8 p-8 h-fit" delay={0.4} initialBlur="0px" targetBlur="20px">
-                            <p className="text-xl font-medium leading-relaxed text-stone-800 mb-12">{item.fullDescription}</p>
-                            <div className="space-y-4 text-base font-medium text-stone-800 leading-relaxed">
-                                {item.content.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
-                            </div>
-                        </GlassCard>
-                        
-                        {item.metrics && item.metrics.length > 0 && (
-                            <div className="md:col-span-4 space-y-4">
-                                <GlassCard className="p-4" delay={0.6} initialBlur="0px" targetBlur="20px">
-                                    <h4 className="text-xs font-bold text-[#1156D0] mb-4">METRICS</h4>
-                                    <div className="space-y-4">
-                                        {item.metrics.map((metric, i) => (
-                                            <div key={i}>
-                                                <span className="block text-[10px] font-mono text-stone-500 uppercase tracking-wider mb-1">{metric.label}</span>
-                                                <span className="block text-lg font-bold text-[#1D3557]">{metric.value}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </GlassCard>
-                            </div>
-                        )}
+
+                {/* CONTENT */}
+                <GlassCard 
+                    className="w-full p-8 h-fit transition-colors duration-300" 
+                    delay={0.4} 
+                    initialBlur="0px" 
+                    targetBlur="0px" 
+                    backgroundColor="rgba(229, 222, 208, 0)" 
+                    hoverEffect={false}
+                    hoverScale={1}
+                    borderColor="border-transparent"
+                >
+                    <p className="text-xl font-medium leading-relaxed text-stone-800 mb-12">{item.fullDescription || item.description}</p>
+                    
+                    {/* METRICS */}
+                    {item.metrics && (
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 pb-12 border-b border-stone-300">
+                            {item.metrics.map((m, i) => (
+                                <div key={i}>
+                                    <p className="text-xs font-mono text-stone-500 mb-1 uppercase">{m.label}</p>
+                                    <p className="text-xl font-bold text-[#1D3557]">{m.value}</p>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* CUSTOM HTML (For the orchestrated page) */}
+                    {item.customHtml && (
+                        <div className="mb-12" dangerouslySetInnerHTML={{ __html: item.customHtml }} />
+                    )}
+
+                    {/* TEXT CONTENT */}
+                    <div className="space-y-4 text-base font-medium text-stone-800 leading-relaxed mb-12">
+                        {item.content.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
                     </div>
-                )}
+                </GlassCard>
             </div>
         </motion.div>
     );
 };
 
-// --- Main Component ---
-
-export const Content: React.FC<ContentProps> = ({ section, activeProject, activeAiItem, onSelectProject, onSelectAiItem, onClose, onToggleMenu }) => {
+export const Content: React.FC<ContentProps> = ({ 
+  section, 
+  activeProject, 
+  activeAiItem, 
+  onSelectProject, 
+  onSelectAiItem, 
+  onClose,
+  onToggleMenu 
+}) => {
   return (
-    <div className={`fixed inset-0 z-10 flex ${section === Section.DETAIL ? 'items-start' : 'items-center'} justify-center pointer-events-none`}>
-      <AnimatePresence mode="wait">
-        {section === Section.HOME && (
-             <motion.div 
-               key="home" 
-               className="w-full h-full pointer-events-auto"
-               variants={contentVariants}
-               initial="hidden"
-               animate="visible"
-               exit="exit"
-             >
-               <HomeContent onToggleMenu={onToggleMenu} />
-             </motion.div>
-        )}
-        {section === Section.AI && !activeAiItem && (
-             <motion.div 
-               key="ai" 
-               className="w-full h-full pointer-events-auto"
-               variants={contentVariants}
-               initial="hidden"
-               animate="visible"
-               exit="exit"
-             >
-               <AIContent onSelect={onSelectAiItem} onToggleMenu={onToggleMenu} />
-             </motion.div>
-        )}
-        {section === Section.WORK && (
-             <motion.div 
-               key="work" 
-               className="w-full h-full pointer-events-auto"
-               variants={contentVariants}
-               initial="hidden"
-               animate="visible"
-               exit="exit"
-             >
-               <WorkContent onSelect={onSelectProject} onToggleMenu={onToggleMenu} />
-             </motion.div>
-        )}
-        {section === Section.ABOUT && (
-             <motion.div 
-               key="about" 
-               className="w-full h-full pointer-events-auto"
-               variants={contentVariants}
-               initial="hidden"
-               animate="visible"
-               exit="exit"
-             >
-               <AboutContent onToggleMenu={onToggleMenu} />
-             </motion.div>
-        )}
-        {/* Note: Detail views are no longer wrapped in generic motion.div because they handle their own full-screen entrance now */}
-        {section === Section.DETAIL && activeProject && (
-             <ProjectDetail 
-                key="detail"
-                project={activeProject} 
-                onClose={onClose} 
-                onSelectProject={onSelectProject}
-                onToggleMenu={onToggleMenu} 
-             />
-        )}
-        {section === Section.DETAIL && activeAiItem && (
-             <AiDetail 
-                key="ai-detail"
-                item={activeAiItem} 
-                onClose={onClose} 
-                onToggleMenu={onToggleMenu} 
-            />
-        )}
-      </AnimatePresence>
-    </div>
+    <AnimatePresence mode="wait">
+      {activeProject && (
+        <ProjectDetail 
+            key="project-detail" 
+            project={activeProject} 
+            onClose={onClose} 
+            onSelectProject={onSelectProject}
+            onToggleMenu={onToggleMenu}
+        />
+      )}
+      
+      {activeAiItem && !activeProject && (
+        <AiDetail 
+            key="ai-detail"
+            item={activeAiItem}
+            onClose={onClose}
+            onToggleMenu={onToggleMenu}
+        />
+      )}
+
+      {!activeProject && !activeAiItem && (
+        <motion.div
+            key={section}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={contentVariants}
+            className="fixed inset-0 w-full h-full pointer-events-auto z-10"
+        >
+            {section === Section.HOME && <HomeContent onToggleMenu={onToggleMenu} />}
+            {section === Section.AI && <AIContent onSelect={onSelectAiItem} onToggleMenu={onToggleMenu} />}
+            {section === Section.WORK && <WorkContent onSelect={onSelectProject} onToggleMenu={onToggleMenu} />}
+            {section === Section.ABOUT && <AboutContent onToggleMenu={onToggleMenu} />}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };

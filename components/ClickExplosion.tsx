@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { COLORS } from '../constants';
@@ -13,7 +12,12 @@ const PARTICLE_COUNT = 16;
 // Add bright colors to the mix
 const BURST_COLORS = [COLORS.RED, COLORS.BLUE, COLORS.GREEN, COLORS.ORANGE, '#FF6B6B', '#4ECDC4'];
 
-const Particle = ({ color, index }: { color: string; index: number }) => {
+interface ParticleProps {
+  color: string;
+  index: number;
+}
+
+const Particle: React.FC<ParticleProps> = ({ color, index }) => {
   // Random physics for "cute pop"
   // Distribute mostly efficiently but with randomness
   const angle = (index / PARTICLE_COUNT) * Math.PI * 2 + (Math.random() * 0.5 - 0.25);
@@ -49,7 +53,13 @@ const Particle = ({ color, index }: { color: string; index: number }) => {
   );
 };
 
-const BurstGroup = ({ x, y, onComplete }: { x: number; y: number; onComplete: () => void }) => {
+interface BurstGroupProps {
+  x: number;
+  y: number;
+  onComplete: () => void;
+}
+
+const BurstGroup: React.FC<BurstGroupProps> = ({ x, y, onComplete }) => {
   useEffect(() => {
     const timer = setTimeout(onComplete, 1000); 
     return () => clearTimeout(timer);

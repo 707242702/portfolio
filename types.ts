@@ -7,6 +7,14 @@ export enum Section {
   DETAIL = 'DETAIL' // Used for both Work and AI details to clear the center
 }
 
+export interface ProjectModule {
+  id: string;
+  title: string;
+  description: string;
+  tags?: string[];
+  image?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -18,6 +26,7 @@ export interface Project {
   videos?: string[]; // Array of YouTube Video IDs
   images?: string[]; // Array of Image URLs
   client?: string;   // Optional client name override
+  modules?: ProjectModule[]; // New: Sub-sections/Modules
 }
 
 export interface AiItem {

@@ -186,10 +186,10 @@ export const AI_ITEMS: AiItem[] = [
     <p style="font-size:20px;font-weight:500;line-height:1.55;color:#1D3557;margin:0 0 16px;">
       Built as a modular, AI-driven web system.
     </p>
-    <p style="font-size:18px;line-height:1.75;color:#57534e;margin:0 0 12px;">
+    <p style="font-family:Georgia,serif;font-size:18px;line-height:1.75;color:#57534e;margin:0 0 12px;">
       This project documents how I built, deployed, and optimized yuqilu.com through generative tools, structured prompts, and a controlled deployment pipeline — without writing code manually.
     </p>
-    <p style="font-size:18px;line-height:1.75;color:#57534e;margin:0;">
+    <p style="font-family:Georgia,serif;font-size:18px;line-height:1.75;color:#57534e;margin:0;">
       The process shifts the role of the designer from pixel-pusher to system director — defining rules, aesthetic constraints, and interaction models that the AI executes.
     </p>
   </div>
@@ -226,7 +226,7 @@ export const AI_ITEMS: AiItem[] = [
   </div>
 
   <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">System Architecture</p>
-  <p style="font-size:16px;color:#78716c;margin:0 0 24px;">Prompt → Generate → Version → Deploy → Domain</p>
+  <p style="font-family:Georgia,serif;font-size:16px;color:#78716c;margin:0 0 24px;">Prompt → Generate → Version → Deploy → Domain</p>
 
   <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;margin-bottom:8px;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
     <img src="/images/ai-orchestrated/aistudio-interface.webp" alt="AI Studio interface" style="display:block;width:100%;height:auto;">
@@ -409,7 +409,7 @@ export const AI_ITEMS: AiItem[] = [
     <p style="font-size:18px;line-height:1.65;color:#1D3557;margin:0 0 8px;">
       This project reframes frontend development as system orchestration.
     </p>
-    <p style="font-size:16px;line-height:1.7;color:#78716c;margin:0;">
+    <p style="font-family:Georgia,serif;font-size:16px;line-height:1.7;color:#78716c;margin:0;">
       The output is not just a website — it's a reusable production model:
     </p>
   </div>
@@ -440,37 +440,100 @@ export const PROJECTS: Project[] = [
   {
     id: 'work-illustration',
     title: 'ILLUSTRATION SYSTEMS',
-    category: 'Illustration / Visual Consistency',
+    category: 'Alphabet / Numeric / Characters',
     year: '2024',
-    role: 'Lead Illustrator',
-    description: 'Long-form series & character development',
+    role: 'SYSTEM ARCHITECT',
+    client: 'STATUS: SELF-INITIATED RESEARCH',
+    description: 'Systematic explorations in modular geometry and visual logic.',
     content: [
-      "Developing comprehensive illustration systems that scale across hundreds of assets. This work focuses on creating consistent character models, environment rules, and style guides that allow multiple contributors to maintain a unified aesthetic.",
-      "The approach prioritizes modularity—building assets that can be reconfigured without losing their visual identity. This ensures longevity and adaptability for large-scale publishing and digital products."
+      "A series of rule-based experiments defining new visual systems.",
+      "This section demonstrates the construction of visual languages through rigorous grid adherence and modular repetition."
+    ],
+    modules: [
+        {
+          id: 'alphabet',
+          title: 'ALPHABET_SYS',
+          description: 'MODULAR TYPOGRAPHY CONSTRUCTED FROM PRIMITIVES',
+          tags: ['TYPOGRAPHY', 'GRID', 'SYSTEM'],
+          image: 'https://picsum.photos/seed/sys_alpha/600/400'
+        },
+        {
+          id: 'numeric',
+          title: 'NUMERIC_SYS',
+          description: 'NUMERAL SETS FOR DATA CLARITY',
+          tags: ['DATA', 'UI', 'CLARITY'],
+          image: 'https://picsum.photos/seed/sys_num/600/400'
+        },
+        {
+          id: 'character',
+          title: 'CHAR_IP',
+          description: 'SCALABLE ANATOMICAL RULES',
+          tags: ['IDENTITY', 'MASCOT', 'EMOTION'],
+          image: 'https://picsum.photos/seed/sys_char/600/400'
+        },
+        {
+          id: 'iconography',
+          title: 'ICON_SET',
+          description: 'REDUCTIVE SYMBOLIC LANGUAGE',
+          tags: ['ICON', 'UI', 'VECTOR'],
+          image: 'https://picsum.photos/seed/sys_icon/600/400'
+        }
     ]
   },
   {
     id: 'work-marketing',
-    title: 'MARKETING & VISUAL DESIGN',
-    category: 'Marketing / Brand / Digital',
+    title: 'INFORMATION STRUCTURES',
+    category: 'Maps / Books / Packaging',
     year: '2024',
-    role: 'Visual Designer',
-    description: 'Campaign assets, infographics, and brand alignment',
+    role: 'VISUAL DESIGNER',
+    client: 'STATUS: SELF-INITIATED RESEARCH',
+    description: 'Systematic explorations in modular geometry and visual logic.',
     content: [
-      "Translating brand strategy into compelling visual narratives. From social media campaigns to complex infographics, this body of work ensures that every touchpoint reinforces the core brand identity.",
-      "Emphasis is placed on clarity and hierarchy, ensuring that marketing materials are not just visually striking, but also effectively communicate the intended message to the target audience."
+      "A series of rule-based experiments defining new visual systems.",
+      "Focusing on the translation of complex data into accessible visual narratives through spatial organization."
+    ],
+    images: [
+      "https://picsum.photos/seed/info_1/1200/800",
+      "https://picsum.photos/seed/info_2/1200/800",
+      "https://picsum.photos/seed/info_3/1200/800",
+      "https://picsum.photos/seed/info_4/1200/800"
     ]
   },
   {
     id: 'work-motion',
-    title: 'MOTION & ANIMATION',
-    category: 'Motion / Interaction',
+    title: 'MOTION SYSTEMS',
+    category: 'Loops / Patterns / Generative',
     year: '2023',
-    role: 'Motion Designer',
-    description: '2D motion, GIF systems, and visual experiments',
+    role: 'MOTION DESIGNER',
+    client: 'STATUS: SELF-INITIATED RESEARCH',
+    description: 'Systematic explorations in modular geometry and visual logic.',
     content: [
-      "Bringing static systems to life through calculated motion. This collection explores how animation can enhance user experience and storytelling without becoming a distraction.",
-      "Projects range from UI micro-interactions to narrative GIF series, all governed by a physics-based animation language that feels natural and responsive."
+      "A series of rule-based experiments defining new visual systems.",
+      "Exploring the temporal dimension of static systems through repetition, rhythm, and procedural generation."
+    ],
+    // New modules for GIF grid
+    modules: [
+        {
+          id: 'loop-01',
+          title: 'KINETIC_01',
+          description: '[SYSTEM_TYPE: RHYTHMIC_LOOP]',
+          tags: ['GENERATIVE', 'PHYSICS'],
+          image: 'https://picsum.photos/seed/motion_gif_1/400/400' 
+        },
+        {
+          id: 'loop-02',
+          title: 'FLUID_SIM',
+          description: '[ENGINE: PARTICLE_FLOW]',
+          tags: ['SIMULATION', 'NOISE'],
+          image: 'https://picsum.photos/seed/motion_gif_2/400/400' 
+        },
+        {
+          id: 'loop-03',
+          title: 'GRID_PULSE',
+          description: '[BEHAVIOR: REACTIVE]',
+          tags: ['AUDIO', 'VISUALIZER'],
+          image: 'https://picsum.photos/seed/motion_gif_3/400/400' 
+        }
     ],
     videos: [
         '_Qt3sRB3gh4', // Main video
@@ -480,38 +543,45 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'work-personal',
-    title: 'PERSONAL WORK',
-    category: 'Self-Initiated Work',
-    year: 'Ongoing Series',
-    role: 'Illustrator & Visual Designer',
-    description: 'Character studies and stylized pet illustrations',
-    client: 'Independent Project',
+    title: 'NARRATIVE ARCHIVES',
+    category: 'Memory / Documentation / Portrait',
+    year: 'ONGOING',
+    role: 'ARCHIVIST',
+    client: 'STATUS: SELF-INITIATED RESEARCH',
+    description: 'Systematic explorations in modular geometry and visual logic.',
     content: [
-      "This collection brings together a series of self-initiated illustrations focused on character personality, color structure, and simplified form.",
-      "The work explores how geometry and texture can coexist — combining bold color contrast with soft surface details to create expressive yet structured compositions.",
-      "Each piece functions both as a finished illustration and as part of an ongoing visual study, refining proportion, rhythm, and material quality across a consistent system."
+      "A series of rule-based experiments defining new visual systems.",
+      "Documenting personal narratives through repeatable visual motifs and structured composition."
     ],
     images: [
-      "https://picsum.photos/seed/10/800/600",
-      "https://picsum.photos/seed/24/800/600",
-      "https://picsum.photos/seed/56/800/600",
-      "https://picsum.photos/seed/42/800/600",
-      "https://picsum.photos/seed/99/800/600",
-      "https://picsum.photos/seed/11/800/600",
-      "https://picsum.photos/seed/73/800/600",
-      "https://picsum.photos/seed/88/800/600"
+      "https://picsum.photos/seed/p_10/600/600",
+      "https://picsum.photos/seed/p_24/600/600",
+      "https://picsum.photos/seed/p_56/600/600",
+      "https://picsum.photos/seed/p_42/600/600",
+      "https://picsum.photos/seed/p_99/600/600",
+      "https://picsum.photos/seed/p_11/600/600",
+      "https://picsum.photos/seed/p_73/600/600",
+      "https://picsum.photos/seed/p_88/600/600",
+      "https://picsum.photos/seed/p_12/600/600",
+      "https://picsum.photos/seed/p_13/600/600"
     ]
   },
   {
     id: 'work-spatial',
-    title: 'INSTALLATION & SPATIAL ART',
-    category: 'Spatial / Concept Development',
+    title: 'SPATIAL NARRATIVES',
+    category: 'Scenography / 3D Concepts',
     year: '2022',
-    role: 'Concept Artist',
-    description: 'Digital rendering and large-scale visual concepts',
+    role: 'CONCEPT ARTIST',
+    client: 'STATUS: SELF-INITIATED RESEARCH',
+    description: 'Systematic explorations in modular geometry and visual logic.',
     content: [
-      "Exploring the intersection of digital aesthetics and physical space. These concepts visualize large-scale installations and environmental graphics.",
-      "Using 3D rendering tools, I simulate how light, texture, and form interact in spatial contexts, proposing immersive experiences that challenge conventional architectural surfaces."
+      "A series of rule-based experiments defining new visual systems.",
+      "Extruding 2D visual logic into 3D environments to test spatial coherence."
+    ],
+    images: [
+      "https://picsum.photos/seed/spatial_1/1200/800",
+      "https://picsum.photos/seed/spatial_2/1200/800",
+      "https://picsum.photos/seed/spatial_3/1200/800"
     ]
   }
 ];
