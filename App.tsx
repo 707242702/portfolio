@@ -6,7 +6,11 @@ import { Content } from './components/Content';
 import { BlendCursor } from './components/BlendCursor';
 import { ClickExplosion } from './components/ClickExplosion';
 import { Section, Project, AiItem } from './types';
-import { NAV_ITEMS } from './constants';
+import { NAV_ITEMS, AI_ITEMS, PROJECTS } from './constants';
+
+// Convert title to URL slug: "MARKETING & VISUAL DESIGN" → "marketing-visual-design"
+const toSlug = (title: string) =>
+  title.replace(/\n/g, ' ').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 import { motion } from 'framer-motion';
 
 const App: React.FC = () => {
@@ -15,6 +19,40 @@ const App: React.FC = () => {
   const [selectedAiItem, setSelectedAiItem] = useState<AiItem | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
+
+  // --- URL Hash Routing ---
+  // Update hash when state changes
+  useEffect(() => {
+    if (selectedProject) {
+      window.location.hash = `/work/${toSlug(selectedProject.title)}`;
+    } else if (selectedAiItem) {
+      window.location.hash = `/ai/${toSlug(selectedAiItem.title)}`;
+    } else if (activeSection === Section.HOME) {
+      history.replaceState(null, '', window.location.pathname);
+    } else {
+      window.location.hash = `/${activeSection.toLowerCase()}`;
+    }
+  }, [activeSection, selectedProject, selectedAiItem]);
+
+  // Read hash on initial load
+  useEffect(() => {
+    const hash = window.location.hash.replace('#/', '').replace('#', '');
+    if (!hash) return;
+    const parts = hash.split('/');
+    const sectionName = parts[0]?.toUpperCase();
+    const slug = parts[1];
+
+    if (slug && sectionName === 'WORK') {
+      const proj = PROJECTS.find(p => toSlug(p.title) === slug);
+      if (proj) { setActiveSection(Section.WORK); setSelectedProject(proj); return; }
+    }
+    if (slug && sectionName === 'AI') {
+      const ai = AI_ITEMS.find(a => toSlug(a.title) === slug);
+      if (ai) { setActiveSection(Section.AI); setSelectedAiItem(ai); return; }
+    }
+    const sec = Object.values(Section).find(s => s === sectionName);
+    if (sec && sec !== Section.DETAIL) setActiveSection(sec);
+  }, []);
 
   // Scroll resistance refs
   const scrollAccumulator = useRef(0);
