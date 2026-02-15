@@ -6,11 +6,7 @@ import { Content } from './components/Content';
 import { BlendCursor } from './components/BlendCursor';
 import { ClickExplosion } from './components/ClickExplosion';
 import { Section, Project, AiItem } from './types';
-import { NAV_ITEMS, AI_ITEMS, PROJECTS } from './constants';
-
-// Convert title to URL slug: "MARKETING & VISUAL DESIGN" → "marketing-visual-design"
-const toSlug = (title: string) =>
-  title.replace(/\n/g, ' ').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+import { NAV_ITEMS } from './constants';
 import { motion } from 'framer-motion';
 
 const App: React.FC = () => {
@@ -20,44 +16,15 @@ const App: React.FC = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
 
-  // --- URL Hash Routing ---
-  // Update hash when state changes
-  useEffect(() => {
-    if (selectedProject) {
-      window.location.hash = `/work/${toSlug(selectedProject.title)}`;
-    } else if (selectedAiItem) {
-      window.location.hash = `/ai/${toSlug(selectedAiItem.title)}`;
-    } else if (activeSection === Section.HOME) {
-      history.replaceState(null, '', window.location.pathname);
-    } else {
-      window.location.hash = `/${activeSection.toLowerCase()}`;
-    }
-  }, [activeSection, selectedProject, selectedAiItem]);
-
-  // Read hash on initial load
-  useEffect(() => {
-    const hash = window.location.hash.replace('#/', '').replace('#', '');
-    if (!hash) return;
-    const parts = hash.split('/');
-    const sectionName = parts[0]?.toUpperCase();
-    const slug = parts[1];
-
-    if (slug && sectionName === 'WORK') {
-      const proj = PROJECTS.find(p => toSlug(p.title) === slug);
-      if (proj) { setActiveSection(Section.WORK); setSelectedProject(proj); return; }
-    }
-    if (slug && sectionName === 'AI') {
-      const ai = AI_ITEMS.find(a => toSlug(a.title) === slug);
-      if (ai) { setActiveSection(Section.AI); setSelectedAiItem(ai); return; }
-    }
-    const sec = Object.values(Section).find(s => s === sectionName);
-    if (sec && sec !== Section.DETAIL) setActiveSection(sec);
-  }, []);
-
   // Scroll resistance refs
   const scrollAccumulator = useRef(0);
+  const swipeCount = useRef(0); // Track number of valid swipes
   const scrollTimeout = useRef<number | null>(null);
-  const BASE_THRESHOLD = 300; 
+  
+  // Threshold for a single swipe gesture
+  const SINGLE_SWIPE_THRESHOLD = 200; 
+  // Required swipes to trigger navigation
+  const REQUIRED_SWIPES = 2;
 
   // When a project OR an AI item is selected, we switch visual system to DETAIL mode
   const currentVisualState = (selectedProject || selectedAiItem) ? Section.DETAIL : activeSection;
@@ -75,8 +42,9 @@ const App: React.FC = () => {
     setIsTransitioning(true);
     setIsMenuVisible(true);
     
-    // Reset scroll accumulator on navigate
+    // Reset mechanisms on navigate
     scrollAccumulator.current = 0;
+    swipeCount.current = 0;
 
     setTimeout(() => setIsTransitioning(false), 1000); 
   }, [activeSection, isTransitioning, selectedProject, selectedAiItem]);
@@ -101,58 +69,63 @@ const App: React.FC = () => {
     setIsMenuVisible(visible);
   };
 
-  // Scroll/Wheel support with RESISTANCE
+  // Scroll/Wheel support with "Double Swipe" Logic
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       // Disable section switching via scroll if we are in a detail view or transitioning
       if (isTransitioning || selectedProject || selectedAiItem) {
           scrollAccumulator.current = 0;
+          swipeCount.current = 0;
           return;
       }
 
-      // Reset accumulator if scrolling in opposite direction
+      // 1. Accumulate Delta
+      // Reset accumulator if scrolling in opposite direction of current accumulation
       if (Math.sign(e.deltaY) !== Math.sign(scrollAccumulator.current) && scrollAccumulator.current !== 0) {
           scrollAccumulator.current = 0;
       }
-
-      // Accumulate scroll delta
       scrollAccumulator.current += e.deltaY;
 
-      // Clear accumulator if user stops scrolling for a bit
+      // 2. Clear accumulator AND swipe count if user stops scrolling
       if (scrollTimeout.current) window.clearTimeout(scrollTimeout.current);
-      // Increased timeout slightly to allow for "double swipe" gestures to accumulate
+      
       scrollTimeout.current = window.setTimeout(() => {
           scrollAccumulator.current = 0;
-      }, 300);
+          swipeCount.current = 0; // Reset swipe count on idle
+      }, 800); // 800ms idle resets the "double swipe" requirement
 
-      // Determine threshold based on section and direction
-      let currentThreshold = BASE_THRESHOLD;
-      
-      // Increase resistance for AI -> WORK and WORK -> ABOUT
-      // Assuming forward navigation is positive deltaY
-      if (e.deltaY > 0) {
-          if (activeSection === Section.AI || activeSection === Section.WORK) {
-              currentThreshold = 1000; // Significantly higher resistance
-          }
-      }
+      // 3. Detect a Single Swipe
+      if (Math.abs(scrollAccumulator.current) > SINGLE_SWIPE_THRESHOLD) {
+          // We detected ONE swipe gesture
+          const direction = Math.sign(scrollAccumulator.current);
+          
+          // Check if direction matches previous swipe (if any) or if it's the first
+          // This logic simplifies to just counting valid threshold breaches in the accumulated direction
+          
+          swipeCount.current += 1;
+          
+          // Reset accumulator to detect the *next* swipe cleanly within the same timeout window
+          scrollAccumulator.current = 0; 
 
-      // Check threshold
-      if (Math.abs(scrollAccumulator.current) > currentThreshold) {
-          const currentIndex = NAV_ITEMS.findIndex(item => item.id === activeSection);
-          let nextIndex = currentIndex;
+          // 4. Check if we reached required swipes
+          if (swipeCount.current >= REQUIRED_SWIPES) {
+              const currentIndex = NAV_ITEMS.findIndex(item => item.id === activeSection);
+              let nextIndex = currentIndex;
 
-          if (scrollAccumulator.current > 0) {
-            // Scroll Down / Next
-            nextIndex = (currentIndex + 1) % NAV_ITEMS.length;
-          } else {
-            // Scroll Up / Prev
-            nextIndex = (currentIndex - 1 + NAV_ITEMS.length) % NAV_ITEMS.length;
-          }
+              if (direction > 0) {
+                // Scroll Down / Next
+                nextIndex = (currentIndex + 1) % NAV_ITEMS.length;
+              } else {
+                // Scroll Up / Prev
+                nextIndex = (currentIndex - 1 + NAV_ITEMS.length) % NAV_ITEMS.length;
+              }
 
-          if (nextIndex !== currentIndex) {
-            handleNavigate(NAV_ITEMS[nextIndex].id);
-            // Reset after successful navigation
-            scrollAccumulator.current = 0; 
+              if (nextIndex !== currentIndex) {
+                handleNavigate(NAV_ITEMS[nextIndex].id);
+                // Reset everything after successful navigation
+                scrollAccumulator.current = 0; 
+                swipeCount.current = 0;
+              }
           }
       }
     };
@@ -201,9 +174,9 @@ const App: React.FC = () => {
                 SYS_STATUS: ONLINE
             </motion.div>
             
-            {/* Footer Left */}
+            {/* Footer Left - Lowered z-index to ensure content scrolls over it */}
             <motion.div 
-                className="fixed bottom-8 left-8 flex flex-col gap-2 pointer-events-auto"
+                className="fixed bottom-8 left-8 flex flex-col gap-2 pointer-events-auto z-0"
                 animate={{ y: isMenuVisible ? 0 : 100, opacity: isMenuVisible ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
             >

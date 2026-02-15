@@ -725,10 +725,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelec
                     delay={0.4} 
                     initialBlur="0px" 
                     targetBlur="0px" 
-                    backgroundColor="rgba(229, 222, 208, 0)" 
+                    backgroundColor="rgba(253, 252, 250, 0.92)" 
                     hoverEffect={false}
                     hoverScale={1}
-                    borderColor="border-transparent"
+                    borderColor="border-[#E5E5E5]"
                 >
                     <p className="text-xl font-medium leading-relaxed text-stone-800 mb-12 uppercase">{project.description}</p>
                     
