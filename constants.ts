@@ -505,7 +505,7 @@ export const AI_ITEMS: AiItem[] = [
 
   <!-- Asset Library -->
   <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;">
-    <img src="/images/ai-style/assets-library.webp" alt="Character asset library — poses, expressions, environments" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;">
+    <img src="/images/ai-style/assets-library.webp" alt="Character asset library — poses, expressions, environments" style="display:block;width:100%;height:auto;">
   </div>
   <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 24px;text-transform:uppercase;">Prompt-based identity control across characters, poses &amp; environments</p>
 
@@ -584,7 +584,7 @@ export const AI_ITEMS: AiItem[] = [
 
   <!-- GPT Workflow Screenshot -->
   <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;">
-    <img src="/images/ai-style/gpt-workflow.webp" alt="Custom GPT interface — Re-create Decodable Book Assistant" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;">
+    <img src="/images/ai-style/gpt-workflow.webp" alt="Custom GPT interface — Re-create Decodable Book Assistant" style="display:block;width:100%;height:auto;">
   </div>
   <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 48px;text-transform:uppercase;">Custom GPT Interface: Programming narrative constraints into the generation engine</p>
 
@@ -625,7 +625,7 @@ export const AI_ITEMS: AiItem[] = [
 
   <!-- Copy-Safe Area Diagram -->
   <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;">
-    <img src="/images/ai-style/copy-safe-area.webp" alt="AI-generated spreads with copy-safe text zones marked" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;">
+    <img src="/images/ai-style/copy-safe-area.webp" alt="AI-generated spreads with copy-safe text zones marked" style="display:block;width:100%;height:auto;">
   </div>
   <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 48px;text-transform:uppercase;">Layout Integration: AI-generated assets with pre-planned copy-safe areas (pink dashed = text zone)</p>
 
@@ -698,8 +698,8 @@ export const AI_ITEMS: AiItem[] = [
   </div>
 
   <!-- Refinement Evolution Image -->
-  <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;background:#fff;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;">
-    <img src="/images/ai-production/character-evolution.webp" alt="Character refinement evolution — MidJourney raw output to first manual refinement to final character design" style="display:block;max-width:100%;max-height:100%;object-fit:contain;">
+  <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;background:#fff;">
+    <img src="/images/ai-production/character-evolution.webp" alt="Character refinement evolution — MidJourney raw output to first manual refinement to final character design" style="display:block;width:100%;height:auto;">
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-bottom:8px;">
     <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#c0392b;text-transform:uppercase;margin:0;font-weight:600;">01 &#8212; MidJourney Raw</p>
@@ -723,8 +723,8 @@ export const AI_ITEMS: AiItem[] = [
   </div>
 
   <!-- Character Matrix Image -->
-  <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:#fff;">
-    <img src="/images/ai-illustration/character-consistency.webp" alt="Character audit matrix — multiple characters maintaining consistent identity across different scenes, poses, and environments" style="display:block;max-width:100%;max-height:100%;object-fit:contain;">
+  <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;background:#fff;">
+    <img src="/images/ai-illustration/character-consistency.webp" alt="Character audit matrix — multiple characters maintaining consistent identity across different scenes, poses, and environments" style="display:block;width:100%;height:auto;">
   </div>
   <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 48px;text-transform:uppercase;">Zero identity drift: characters verified across scenes, poses &amp; environments</p>
 
@@ -856,17 +856,14 @@ export const AI_ITEMS: AiItem[] = [
   </div>
 
   <!-- Academic Review Evidence -->
-  <div style="margin:24px 0 32px;padding:0 48px;">
-    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Academic Designer Feedback</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+  <div style="margin:24px 0 32px;display:flex;justify-content:flex-end;padding:0 48px;">
+    <div style="width:calc(50% - 36px);max-width:440px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Academic Designer Feedback</p>
       <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
         <img src="/images/ai-production/academic-annotation.webp" alt="Storyboard sketch with Academic Designer feedback — adjusting teacher expression for age-appropriate tone" style="display:block;width:100%;height:auto;">
       </div>
-      <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-        <img src="/images/ai-production/academic-review.webp" alt="Figma review comments from Academic Designer verifying decodable text compliance" style="display:block;width:100%;height:auto;">
-      </div>
+      <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">Academic Designer reviews every spread in Figma &#8212; verifying vocabulary constraints, character expressions, and educational tone before illustration proceeds.</p>
     </div>
-    <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">Academic Designer reviews every spread in Figma &#8212; verifying vocabulary constraints, character expressions, and educational tone before illustration proceeds.</p>
   </div>
 
   <!-- Step 05 -->
@@ -899,15 +896,6 @@ export const AI_ITEMS: AiItem[] = [
     <div class="pw-node" style="border-color:#EB431D;color:#EB431D;">07</div>
   </div>
 
-  <!-- Character Audit Matrix -->
-  <div style="margin:24px 0 32px;padding:0 48px;">
-    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Character Audit &#8212; Identity Consistency Across 72 Books</p>
-    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 4px 16px rgba(0,0,0,0.06);background:#fff;">
-      <img src="/images/ai-illustration/character-consistency.webp" alt="Character audit matrix — multiple characters maintaining consistent identity across different scenes, poses, and environments" style="display:block;width:100%;height:auto;">
-    </div>
-    <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">Every character maintains locked proportions, color palette, and facial features across all scenes &#8212; verified by the Re-create Decodable Book Assistant.</p>
-  </div>
-
   <!-- ===== PHASE 3: INTEGRATION ===== -->
   <div class="pw-phase"><span class="pw-phase-tag" style="color:#1A824E;border-color:#1A824E;">08&#8211;10 Integration</span></div>
 
@@ -922,12 +910,14 @@ export const AI_ITEMS: AiItem[] = [
   </div>
 
   <!-- Copy-Safe Zone Demonstration -->
-  <div style="margin:24px 0 32px;padding:0 48px;">
-    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Copy-Safe Zone &#8212; Text Integration Ready</p>
-    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
-      <img src="/images/ai-production/copy-safe-area.webp" alt="Finished illustration spreads with copy-safe text zones marked — pink dashed areas reserved for InDesign text placement" style="display:block;width:100%;height:auto;">
+  <div style="margin:24px 0 32px;display:flex;justify-content:flex-end;padding:0 48px;">
+    <div style="width:calc(50% - 36px);max-width:440px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Copy-Safe Zone &#8212; Text Integration Ready</p>
+      <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+        <img src="/images/ai-production/copy-safe-area.webp" alt="Finished illustration spreads with copy-safe text zones marked — pink dashed areas reserved for InDesign text placement" style="display:block;width:100%;height:auto;">
+      </div>
+      <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">Pre-allocated text zones (pink) ensure every illustration is delivery-ready for in-house InDesign layout &#8212; no repositioning needed.</p>
     </div>
-    <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">Pre-allocated text zones (pink) ensure every illustration is delivery-ready for in-house InDesign layout &#8212; no repositioning needed.</p>
   </div>
 
   <!-- Step 09 -->
@@ -952,24 +942,20 @@ export const AI_ITEMS: AiItem[] = [
 
 </div>
 
-<!-- ==================== METRICS ==================== -->
-<p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:32px 0 16px;text-transform:uppercase;">Pipeline Metrics</p>
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:48px;">
+<!-- ==================== OPERATIONAL EFFICIENCY ==================== -->
+<p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:32px 0 16px;text-transform:uppercase;">Operational_Efficiency</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:48px;">
   <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;backdrop-filter:blur(10px);">
     <p style="font-size:28px;font-weight:700;color:#1156D0;margin:0;">10</p>
-    <p style="font-size:12px;color:#78716c;margin:4px 0 0;">Pipeline Steps</p>
+    <p style="font-size:12px;color:#78716c;margin:4px 0 0;">Sequential Stages</p>
   </div>
   <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;backdrop-filter:blur(10px);">
-    <p style="font-size:28px;font-weight:700;color:#EB431D;margin:0;">3</p>
-    <p style="font-size:12px;color:#78716c;margin:4px 0 0;">Revision Rounds</p>
+    <p style="font-size:28px;font-weight:700;color:#EB431D;margin:0;">5X</p>
+    <p style="font-size:12px;color:#78716c;margin:4px 0 0;">Faster Delivery</p>
   </div>
   <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;backdrop-filter:blur(10px);">
-    <p style="font-size:28px;font-weight:700;color:#1A824E;margin:0;">300</p>
-    <p style="font-size:12px;color:#78716c;margin:4px 0 0;">DPI Output</p>
-  </div>
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;backdrop-filter:blur(10px);">
-    <p style="font-size:28px;font-weight:700;color:#F3B013;margin:0;">2</p>
-    <p style="font-size:12px;color:#78716c;margin:4px 0 0;">GPT Agents</p>
+    <p style="font-size:28px;font-weight:700;color:#1A824E;margin:0;">100%</p>
+    <p style="font-size:12px;color:#78716c;margin:4px 0 0;">Print-Ready</p>
   </div>
 </div>
 
@@ -1163,13 +1149,13 @@ export const AI_ITEMS: AiItem[] = [
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:48px;">
     <div style="padding:16px;border:1px solid #D9D9D9;border-top:none;border-radius:0 0 0 2px;background:rgba(0,0,0,0.02);">
       <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;">
-        <img src="/images/ai-orchestrated/wix-before.webp" alt="Old Wix website" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;">
+        <img src="/images/ai-orchestrated/wix-before.webp" alt="Old Wix website" style="display:block;width:100%;height:auto;">
       </div>
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:8px 0 0;text-transform:uppercase;">Wix template — previous version</p>
     </div>
     <div style="padding:16px;border:1px solid #D9D9D9;border-top:none;border-left:none;border-radius:0 0 2px 0;background:rgba(255,255,255,0.3);">
       <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;">
-        <img src="/images/ai-orchestrated/site-after.webp" alt="New website" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;">
+        <img src="/images/ai-orchestrated/site-after.webp" alt="New website" style="display:block;width:100%;height:auto;">
       </div>
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:8px 0 0;text-transform:uppercase;">yuqilu.com — AI-orchestrated version</p>
     </div>
