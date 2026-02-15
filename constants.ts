@@ -140,291 +140,218 @@ export const AI_ITEMS: AiItem[] = [
     ],
     customHtml: `<div style="width:100%;">
 
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:32px;border-radius:2px;margin-bottom:32px;backdrop-filter:blur(4px);">
+  <!-- ==================== INTRO ==================== -->
+  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:32px;border-radius:2px;margin-bottom:48px;backdrop-filter:blur(4px);">
     <p style="font-size:20px;font-weight:500;line-height:1.55;color:#1D3557;margin:0 0 16px;">
       Scaling Pedagogical Storytelling
     </p>
-    <p style="font-family:Georgia,serif;font-size:18px;line-height:1.75;color:#57534e;margin:0 0 12px;">
-      From hand-drawn storyboards to AI-integrated visual systems \u2014 a 72-book evolution for Decodable Phonics.
-    </p>
     <p style="font-family:Georgia,serif;font-size:18px;line-height:1.75;color:#57534e;margin:0;">
-      However, it was time-intensive and not scalable for a 72-book pipeline. The system needed to evolve.
+      A 72-book evolution from hand-drawn storyboards to AI-integrated visual systems for Decodable Phonics \u2014 encoding pedagogical intent directly into AI instructions while preserving the artistic soul required for educational publishing.
     </p>
   </div>
 
-  <!-- ==================== 1. PHASE 1 vs PHASE 4 COMPARISON ==================== -->
-  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 16px;text-transform:uppercase;">Evolution Comparison</p>
+  <!-- ==================== 01 \u2014 EVOLUTION OF PEDAGOGICAL CONTROL ==================== -->
+  <div style="display:flex;gap:0;margin-bottom:24px;">
+    <div style="width:56px;flex-shrink:0;background:#EB431D;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">01</span>
+    </div>
+    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Evolution of Pedagogical Control</p>
+      <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 12px;">From Hand-drawn Logic to AI Integration</p>
+      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
+        The transition from Phase 1 to Phase 4 was not about replacing the illustrator, but about encoding pedagogical intent. We moved from physical storyboarding to a system where narrative constraints are embedded directly into AI instructions.
+      </p>
+    </div>
+  </div>
 
+  <!-- Phase Comparison Grid -->
+  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 12px;text-transform:uppercase;font-weight:600;">Three-Stage Evolution</p>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-bottom:8px;">
     <div style="padding:20px;border:1px solid #D9D9D9;border-radius:2px 0 0 0;background:rgba(0,0,0,0.02);">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c0392b;margin:0;text-transform:uppercase;font-weight:600;min-height:32px;display:flex;align-items:flex-end;">Phase 1 \u2014 Hand-Drawn</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c0392b;margin:0;text-transform:uppercase;font-weight:600;min-height:32px;display:flex;align-items:flex-end;">Phase 1 \u2014 Manual</p>
       <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-top:12px;">
         <img src="/images/ai-illustration/phase1-storyboard.webp" alt="Hand-drawn storyboard" style="display:block;width:100%;height:auto;">
       </div>
-      <p style="font-size:12px;color:#78716c;margin:12px 0 0;line-height:1.6;">Full manual storyboarding. Narrative control through hand-drawn composition and spatial pacing.</p>
+      <p style="font-size:12px;color:#78716c;margin:12px 0 0;line-height:1.6;">Full manual storyboarding. Pedagogical intent controlled through hand-drawn composition and spatial pacing.</p>
     </div>
     <div style="padding:20px;border:1px solid #D9D9D9;border-left:none;background:rgba(0,0,0,0.02);">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#F3B013;margin:0;text-transform:uppercase;font-weight:600;min-height:32px;display:flex;align-items:flex-end;">Phase 2 \u2014 AI 70% Draft</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#F3B013;margin:0;text-transform:uppercase;font-weight:600;min-height:32px;display:flex;align-items:flex-end;">Phase 2 \u2014 AI Draft</p>
       <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-top:12px;">
         <img src="/images/ai-illustration/phase4-ai-draft.webp" alt="AI-generated 70% draft" style="display:block;width:100%;height:auto;">
       </div>
-      <p style="font-size:12px;color:#78716c;margin:12px 0 0;line-height:1.6;">Prompt-driven generation via Nanobanana. 70% complete, but surface too smooth.</p>
+      <p style="font-size:12px;color:#78716c;margin:12px 0 0;line-height:1.6;">Prompt-driven generation via Nanobanana. 70% complete \u2014 structurally sound but surface too smooth for publishing.</p>
     </div>
     <div style="padding:20px;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 0 0;background:rgba(0,0,0,0.02);">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1A824E;margin:0;text-transform:uppercase;font-weight:600;min-height:32px;display:flex;align-items:flex-end;">Phase 3 \u2014 Refined Final</p>
       <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-top:12px;">
         <img src="/images/ai-illustration/phase-final-refined.webp" alt="Manually refined final illustration" style="display:block;width:100%;height:auto;">
       </div>
-      <p style="font-size:12px;color:#78716c;margin:12px 0 0;line-height:1.6;">30% illustrator refinement: texture, brush edges, and hand-drawn feel restored.</p>
+      <p style="font-size:12px;color:#78716c;margin:12px 0 0;line-height:1.6;">30% illustrator refinement: texture, brush edges, and hand-drawn feel restored for print-ready output.</p>
     </div>
   </div>
-  <div style="background:rgba(17,86,208,0.05);border:1px solid #D9D9D9;border-top:none;border-radius:0 0 2px 2px;padding:16px 20px;margin-bottom:48px;display:flex;align-items:center;gap:12px;">
-    <span style="font-size:20px;color:#1156D0;font-weight:700;flex-shrink:0;">\u2192</span>
-    <p style="font-size:13px;color:#1D3557;margin:0;font-weight:500;">Same scene, three stages: from hand-drawn storyboard to AI draft to refined print-ready illustration. The tools changed, but compositional discipline and storytelling expertise remain consistent.</p>
+  <div style="background:rgba(235,67,29,0.05);border:1px solid #D9D9D9;border-top:none;border-radius:0 0 2px 2px;padding:16px 20px;margin-bottom:48px;display:flex;align-items:center;gap:12px;">
+    <span style="font-size:20px;color:#EB431D;font-weight:700;flex-shrink:0;">\u2192</span>
+    <p style="font-size:13px;color:#1D3557;margin:0;font-weight:500;">The tools changed, but compositional discipline and storytelling expertise remain consistent. Pedagogical intent is now encoded, not drawn.</p>
   </div>
 
-  <!-- ==================== EVOLUTION TIMELINE ==================== -->
-  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 16px;text-transform:uppercase;">Evolution Timeline</p>
-
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:48px;">
-    <div style="padding:24px;border:1px solid #D9D9D9;border-radius:2px 0 0 2px;background:rgba(255,255,255,0.3);position:relative;">
-      <div style="position:absolute;top:12px;right:12px;width:8px;height:8px;border-radius:50%;background:#EB431D;"></div>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;font-weight:600;">Phase 1</p>
-      <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 4px;">Hand-Drawn Era</p>
-      <p style="font-size:12px;color:#78716c;margin:0;line-height:1.6;">Foundational Phase: 30\u201340 storyboard books drawn manually to establish narrative logic, compositional standards, and pedagogical scaffolding.</p>
+  <!-- ==================== 02 \u2014 VISUAL LANGUAGE RULES ==================== -->
+  <div style="display:flex;gap:0;margin-bottom:24px;">
+    <div style="width:56px;flex-shrink:0;background:#1156D0;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">02</span>
     </div>
-    <div style="padding:24px;border:1px solid #D9D9D9;border-left:none;background:rgba(255,255,255,0.3);position:relative;">
-      <div style="position:absolute;top:12px;right:12px;width:8px;height:8px;border-radius:50%;background:#F3B013;"></div>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;font-weight:600;">Phase 2</p>
-      <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 4px;">AI-Assisted Sketch</p>
-      <p style="font-size:12px;color:#78716c;margin:0;line-height:1.6;">AI image + hand sketch hybrid approach begins.</p>
-    </div>
-    <div style="padding:24px;border:1px solid #D9D9D9;border-left:none;background:rgba(255,255,255,0.3);position:relative;">
-      <div style="position:absolute;top:12px;right:12px;width:8px;height:8px;border-radius:50%;background:#1156D0;"></div>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;font-weight:600;">Phase 3</p>
-      <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 4px;">AI 70% Completion</p>
-      <p style="font-size:12px;color:#78716c;margin:0;line-height:1.6;">AI draft \u2248 70% complete. Illustrator refinement \u2248 30%.</p>
-    </div>
-    <div style="padding:24px;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;background:rgba(255,255,255,0.3);position:relative;">
-      <div style="position:absolute;top:12px;right:12px;width:8px;height:8px;border-radius:50%;background:#1A824E;"></div>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;font-weight:600;">Phase 4</p>
-      <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 4px;">Prompt Architecture</p>
-      <p style="font-size:12px;color:#78716c;margin:0;line-height:1.6;">System Maturity: Customized GPT prompt architecture. Physical storyboarding is eliminated as narrative constraints are now embedded directly into the AI instructions.</p>
+    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Visual Language Rules for K-2</p>
+      <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">Designed for early readers</p>
+      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
+        A visual specification system built around the cognitive needs of K-2 learners \u2014 eliminating AI smoothness and visual noise to create warm, readable illustrations.
+      </p>
     </div>
   </div>
 
-  <!-- ==================== 4. VISUAL PIPELINE DIAGRAM ==================== -->
-  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 16px;text-transform:uppercase;">Production Pipeline</p>
-
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:32px 24px;border-radius:2px;margin-bottom:48px;">
-    <div style="display:flex;align-items:stretch;gap:0;">
-
-      <div style="flex:1;text-align:center;position:relative;">
-        <div style="width:64px;height:64px;margin:0 auto 12px;border-radius:50%;background:rgba(29,53,87,0.08);border:2px solid #1D3557;display:flex;align-items:center;justify-content:center;">
-          <span style="font-size:24px;">&#128196;</span>
-        </div>
-        <p style="font-size:12px;font-weight:600;color:#1D3557;margin:0 0 4px;">Academic Manuscript</p>
-        <p style="font-size:10px;color:#a8a29e;margin:0;">Phonics-based scripts & pedagogical constraints</p>
-        <div style="position:absolute;top:32px;right:-8px;width:16px;height:2px;background:#D9D9D9;"></div>
-      </div>
-
-      <div style="flex:1;text-align:center;position:relative;">
-        <div style="width:64px;height:64px;margin:0 auto 12px;border-radius:50%;background:rgba(17,86,208,0.08);border:2px solid #1156D0;display:flex;align-items:center;justify-content:center;">
-          <span style="font-size:24px;">&#129504;</span>
-        </div>
-        <p style="font-size:12px;font-weight:600;color:#1156D0;margin:0 0 4px;">Custom GPT</p>
-        <p style="font-size:10px;color:#a8a29e;margin:0;">Parse + prompt gen</p>
-        <div style="position:absolute;top:32px;right:-8px;width:16px;height:2px;background:#D9D9D9;"></div>
-      </div>
-
-      <div style="flex:1;text-align:center;position:relative;">
-        <div style="width:64px;height:64px;margin:0 auto 12px;border-radius:50%;background:rgba(243,176,19,0.1);border:2px solid #F3B013;display:flex;align-items:center;justify-content:center;">
-          <span style="font-size:24px;">&#9997;&#65039;</span>
-        </div>
-        <p style="font-size:12px;font-weight:600;color:#1D3557;margin:0 0 4px;">Nanobanana</p>
-        <p style="font-size:10px;color:#a8a29e;margin:0;">AI generation (70%)</p>
-        <div style="position:absolute;top:32px;right:-8px;width:16px;height:2px;background:#D9D9D9;"></div>
-      </div>
-
-      <div style="flex:1;text-align:center;position:relative;">
-        <div style="width:64px;height:64px;margin:0 auto 12px;border-radius:50%;background:rgba(235,67,29,0.08);border:2px solid #EB431D;display:flex;align-items:center;justify-content:center;">
-          <span style="font-size:24px;">&#128396;</span>
-        </div>
-        <p style="font-size:12px;font-weight:600;color:#1D3557;margin:0 0 4px;">Illustrator</p>
-        <p style="font-size:10px;color:#a8a29e;margin:0;">Refinement (30%)</p>
-        <div style="position:absolute;top:32px;right:-8px;width:16px;height:2px;background:#D9D9D9;"></div>
-      </div>
-
-      <div style="flex:1;text-align:center;">
-        <div style="width:64px;height:64px;margin:0 auto 12px;border-radius:50%;background:rgba(26,130,78,0.08);border:2px solid #1A824E;display:flex;align-items:center;justify-content:center;">
-          <span style="font-size:24px;">&#128214;</span>
-        </div>
-        <p style="font-size:12px;font-weight:600;color:#1A824E;margin:0 0 4px;">Print-Ready</p>
-        <p style="font-size:10px;color:#a8a29e;margin:0;">Layout-Ready Assets: Optimized with copy-safe areas for seamless in-house InDesign integration.</p>
-      </div>
-
-    </div>
-
-    <div style="display:flex;justify-content:space-between;margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.06);">
-      <div style="display:flex;align-items:center;gap:6px;">
-        <div style="width:8px;height:8px;border-radius:50%;background:#D9D9D9;"></div>
-        <span style="font-size:10px;color:#a8a29e;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;">INPUT</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <div style="width:8px;height:8px;border-radius:50%;background:#1156D0;"></div>
-        <span style="font-size:10px;color:#a8a29e;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;">AI PROCESSING</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <div style="width:8px;height:8px;border-radius:50%;background:#EB431D;"></div>
-        <span style="font-size:10px;color:#a8a29e;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;">HUMAN REFINEMENT</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <div style="width:8px;height:8px;border-radius:50%;background:#1A824E;"></div>
-        <span style="font-size:10px;color:#a8a29e;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;">OUTPUT</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== VISUAL LANGUAGE RULES ==================== -->
-  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 16px;text-transform:uppercase;">Visual Language Rules</p>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-    <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:24px;border-radius:2px;">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:700;">Style Origin</p>
-      <p style="font-size:14px;color:#1D3557;font-weight:500;margin:0 0 8px;">Initial direction generated in MidJourney</p>
+  <!-- Style Origin & Comfort -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;">
+    <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-radius:2px 0 0 2px;padding:24px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:700;">A \u2014 Style Origin & Comfort</p>
+      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
+        We use rough brush edges and visible textures to eliminate the \u201Cuncanny valley\u201D of AI smoothness, providing a warm, hand-drawn feel that reduces visual fatigue for children.
+      </p>
       <div style="display:flex;flex-wrap:wrap;gap:6px;">
-        <span style="font-size:11px;color:#78716c;background:rgba(0,0,0,0.04);padding:4px 10px;border-radius:2px;">Hand-drawn feel</span>
-        <span style="font-size:11px;color:#78716c;background:rgba(0,0,0,0.04);padding:4px 10px;border-radius:2px;">Rough brush edges</span>
-        <span style="font-size:11px;color:#78716c;background:rgba(0,0,0,0.04);padding:4px 10px;border-radius:2px;">Visible texture</span>
-        <span style="font-size:11px;color:#78716c;background:rgba(0,0,0,0.04);padding:4px 10px;border-radius:2px;">Clear light\u2013shadow</span>
-        <span style="font-size:11px;color:#78716c;background:rgba(0,0,0,0.04);padding:4px 10px;border-radius:2px;">No line art</span>
+        <span style="font-size:11px;color:#1156D0;background:rgba(17,86,208,0.06);padding:4px 10px;border-radius:2px;font-weight:500;">Rough Brush Edges</span>
+        <span style="font-size:11px;color:#1156D0;background:rgba(17,86,208,0.06);padding:4px 10px;border-radius:2px;font-weight:500;">Visible Textures</span>
+        <span style="font-size:11px;color:#1156D0;background:rgba(17,86,208,0.06);padding:4px 10px;border-radius:2px;font-weight:500;">Hand-drawn Feel</span>
       </div>
     </div>
-    <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:24px;border-radius:2px;">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:700;">Proportional Logic</p>
-      <p style="font-size:14px;color:#1D3557;font-weight:500;margin:0 0 8px;">Three-line proportional structure</p>
+    <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:24px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:700;">B \u2014 Strategic Simplification</p>
+      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
+        No Line Art Policy. By removing harsh outlines, we reduce visual noise, allowing students to focus on core character actions and their correspondence with the text.
+      </p>
       <div style="display:flex;flex-wrap:wrap;gap:6px;">
-        <span style="font-size:11px;color:#78716c;background:rgba(0,0,0,0.04);padding:4px 10px;border-radius:2px;">Head-body ratio</span>
-        <span style="font-size:11px;color:#78716c;background:rgba(0,0,0,0.04);padding:4px 10px;border-radius:2px;">Relative scale</span>
-        <span style="font-size:11px;color:#78716c;background:rgba(0,0,0,0.04);padding:4px 10px;border-radius:2px;">Implicit system</span>
+        <span style="font-size:11px;color:#1156D0;background:rgba(17,86,208,0.06);padding:4px 10px;border-radius:2px;font-weight:500;">No Line Art</span>
+        <span style="font-size:11px;color:#1156D0;background:rgba(17,86,208,0.06);padding:4px 10px;border-radius:2px;font-weight:500;">Reduced Visual Noise</span>
+        <span style="font-size:11px;color:#1156D0;background:rgba(17,86,208,0.06);padding:4px 10px;border-radius:2px;font-weight:500;">Focus on Action</span>
       </div>
-      <p style="font-size:12px;color:#78716c;margin:12px 0 0;line-height:1.6;">Cognitive Clarity: Compositions are designed to support word-decoding, ensuring visuals assist rather than distract from the learning process.</p>
     </div>
   </div>
 
-  <!-- ==================== 2. TEXTURE COMPARISON ==================== -->
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:24px;border-radius:2px;margin-bottom:16px;">
-    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:700;">Texture & Brush Rules \u2014 Controlled Imperfection</p>
-    <p style="font-size:14px;color:#1D3557;font-weight:500;margin:0 0 16px;">MidJourney outputs were too smooth. Refinement is not cosmetic; it is about removing AI-generated 'visual noise' to meet professional publishing standards.</p>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:16px;">
-      <div style="border:1px solid #D9D9D9;border-radius:2px 0 0 2px;overflow:hidden;">
-        <div style="padding:10px 16px;background:rgba(192,57,43,0.06);border-bottom:1px solid #D9D9D9;">
-          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#c0392b;margin:0;text-transform:uppercase;font-weight:600;">Raw AI Output \u2014 Too Smooth</p>
-        </div>
-        <div style="padding:0;">
-          <img src="/images/ai-illustration/texture-ai-raw.webp" alt="Raw MidJourney output with smooth gradients" style="display:block;width:100%;height:auto;">
-        </div>
+  <!-- Texture Comparison -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:8px;">
+    <div style="border:1px solid #D9D9D9;border-radius:2px 0 0 2px;overflow:hidden;">
+      <div style="padding:10px 16px;background:rgba(192,57,43,0.06);border-bottom:1px solid #D9D9D9;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#c0392b;margin:0;text-transform:uppercase;font-weight:600;">Raw AI Output \u2014 Too Smooth</p>
       </div>
-      <div style="border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;overflow:hidden;">
-        <div style="padding:10px 16px;background:rgba(26,130,78,0.06);border-bottom:1px solid #D9D9D9;">
-          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#1A824E;margin:0;text-transform:uppercase;font-weight:600;">After Refinement \u2014 Hand-Drawn Feel</p>
-        </div>
-        <div style="padding:0;">
-          <img src="/images/ai-illustration/texture-refined.webp" alt="Refined with brush irregularity and texture" style="display:block;width:100%;height:auto;">
-        </div>
+      <div style="padding:0;">
+        <img src="/images/ai-illustration/texture-ai-raw.webp" alt="Raw MidJourney output with smooth gradients" style="display:block;width:100%;height:auto;">
       </div>
     </div>
+    <div style="border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;overflow:hidden;">
+      <div style="padding:10px 16px;background:rgba(26,130,78,0.06);border-bottom:1px solid #D9D9D9;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#1A824E;margin:0;text-transform:uppercase;font-weight:600;">After Refinement \u2014 Hand-Drawn Feel</p>
+      </div>
+      <div style="padding:0;">
+        <img src="/images/ai-illustration/texture-refined.webp" alt="Refined with brush irregularity and texture" style="display:block;width:100%;height:auto;">
+      </div>
+    </div>
+  </div>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 48px;text-transform:uppercase;">Eliminating AI smoothness to meet K-2 visual comfort standards</p>
 
+  <!-- ==================== 03 \u2014 COGNITIVE & LAYOUT LOGIC ==================== -->
+  <div style="display:flex;gap:0;margin-bottom:24px;">
+    <div style="width:56px;flex-shrink:0;background:#F3B013;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">03</span>
+    </div>
+    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#F3B013;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Cognitive & Layout Logic</p>
+      <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">Engineering visual flow for young minds</p>
+      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
+        Every illustration is structurally designed to support word-decoding and phonics reading, ensuring visuals assist rather than distract from the learning process.
+      </p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;">
+    <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-radius:2px 0 0 2px;padding:24px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#F3B013;margin:0 0 16px;text-transform:uppercase;font-weight:700;">A \u2014 Proportional Logic</p>
+      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
+        Standardized head-to-body ratios for all K-2 characters to ensure emotional expressions and physical actions are exaggerated and easily decodable by young minds.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="font-size:11px;color:#78716c;background:rgba(243,176,19,0.08);padding:4px 10px;border-radius:2px;font-weight:500;">Head-body Ratio</span>
+        <span style="font-size:11px;color:#78716c;background:rgba(243,176,19,0.08);padding:4px 10px;border-radius:2px;font-weight:500;">Exaggerated Expression</span>
+        <span style="font-size:11px;color:#78716c;background:rgba(243,176,19,0.08);padding:4px 10px;border-radius:2px;font-weight:500;">Cognitive Clarity</span>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:24px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#F3B013;margin:0 0 16px;text-transform:uppercase;font-weight:700;">B \u2014 Copy-Safe Composition</p>
+      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
+        Every illustration systemically reserves negative space for text. The visual flow is engineered to guide the eye from left to right, mirroring the phonics reading path.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="font-size:11px;color:#78716c;background:rgba(243,176,19,0.08);padding:4px 10px;border-radius:2px;font-weight:500;">Negative Space</span>
+        <span style="font-size:11px;color:#78716c;background:rgba(243,176,19,0.08);padding:4px 10px;border-radius:2px;font-weight:500;">Left-to-Right Flow</span>
+        <span style="font-size:11px;color:#78716c;background:rgba(243,176,19,0.08);padding:4px 10px;border-radius:2px;font-weight:500;">Phonics Path</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Character Consistency Image -->
+  <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;">
+    <img src="/images/ai-illustration/character-consistency.webp" alt="Character proportional consistency across the K-2 series" style="display:block;width:100%;height:auto;">
+  </div>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 48px;text-transform:uppercase;">Standardized proportions \u2014 consistent across characters, scenes & books</p>
+
+  <!-- ==================== 04 \u2014 THE ART DIRECTOR'S REFINEMENT ==================== -->
+  <div style="display:flex;gap:0;margin-bottom:24px;">
+    <div style="width:56px;flex-shrink:0;background:#1A824E;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">04</span>
+    </div>
+    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1A824E;margin:0 0 16px;text-transform:uppercase;font-weight:600;">The Art Director's Refinement</p>
+      <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 12px;">Controlled Imperfection</p>
+      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
+        AI-generated outputs often suffer from \u201Cover-polishing.\u201D Our system includes a mandatory 30% Human Refinement stage to restore organic irregularities, ensuring the final print-ready assets possess the artistic soul required for educational publishing.
+      </p>
+    </div>
+  </div>
+
+  <!-- Before / After Refinement -->
+  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1A824E;margin:0 0 12px;text-transform:uppercase;font-weight:600;">30% Human Refinement \u2014 Before & After</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:8px;">
+    <div style="border:1px solid #D9D9D9;border-radius:2px 0 0 2px;overflow:hidden;">
+      <div style="padding:10px 16px;background:rgba(243,176,19,0.06);border-bottom:1px solid #D9D9D9;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#F3B013;margin:0;text-transform:uppercase;font-weight:600;">AI Output \u2014 Over-polished</p>
+      </div>
+      <div style="padding:0;">
+        <img src="/images/ai-illustration/phase4-ai-draft-2.webp" alt="AI-generated output before refinement" style="display:block;width:100%;height:auto;">
+      </div>
+    </div>
+    <div style="border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;overflow:hidden;">
+      <div style="padding:10px 16px;background:rgba(26,130,78,0.06);border-bottom:1px solid #D9D9D9;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#1A824E;margin:0;text-transform:uppercase;font-weight:600;">After Refinement \u2014 Artistic Soul Restored</p>
+      </div>
+      <div style="padding:0;">
+        <img src="/images/ai-illustration/phase-final-refined-2.webp" alt="Final print-ready illustration with organic imperfections" style="display:block;width:100%;height:auto;">
+      </div>
+    </div>
+  </div>
+
+  <div style="background:rgba(26,130,78,0.05);border:1px solid #D9D9D9;border-top:none;border-radius:0 0 2px 2px;padding:16px 20px;margin-bottom:48px;">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
       <div>
-        <p style="font-size:12px;color:#c0392b;font-weight:500;margin:0 0 6px;">Problems in raw output:</p>
+        <p style="font-size:12px;color:#F3B013;font-weight:500;margin:0 0 6px;">Over-polished symptoms:</p>
         <div style="display:flex;flex-wrap:wrap;gap:4px;">
-          <span style="font-size:10px;color:#78716c;background:rgba(192,57,43,0.06);padding:3px 8px;border-radius:2px;">Artificial gradients</span>
-          <span style="font-size:10px;color:#78716c;background:rgba(192,57,43,0.06);padding:3px 8px;border-radius:2px;">Over-polished surface</span>
-          <span style="font-size:10px;color:#78716c;background:rgba(192,57,43,0.06);padding:3px 8px;border-radius:2px;">Plastic-like edges</span>
+          <span style="font-size:10px;color:#78716c;background:rgba(243,176,19,0.06);padding:3px 8px;border-radius:2px;">Artificial gradients</span>
+          <span style="font-size:10px;color:#78716c;background:rgba(243,176,19,0.06);padding:3px 8px;border-radius:2px;">Plastic surface</span>
+          <span style="font-size:10px;color:#78716c;background:rgba(243,176,19,0.06);padding:3px 8px;border-radius:2px;">Generic feel</span>
         </div>
       </div>
       <div>
-        <p style="font-size:12px;color:#1A824E;font-weight:500;margin:0 0 6px;">Manual corrections applied:</p>
+        <p style="font-size:12px;color:#1A824E;font-weight:500;margin:0 0 6px;">Restored qualities:</p>
         <div style="display:flex;flex-wrap:wrap;gap:4px;">
-          <span style="font-size:10px;color:#78716c;background:rgba(26,130,78,0.06);padding:3px 8px;border-radius:2px;">Brush irregularity</span>
-          <span style="font-size:10px;color:#78716c;background:rgba(26,130,78,0.06);padding:3px 8px;border-radius:2px;">Edge breakage</span>
-          <span style="font-size:10px;color:#78716c;background:rgba(26,130,78,0.06);padding:3px 8px;border-radius:2px;">Organic texture</span>
+          <span style="font-size:10px;color:#78716c;background:rgba(26,130,78,0.06);padding:3px 8px;border-radius:2px;">Organic irregularity</span>
+          <span style="font-size:10px;color:#78716c;background:rgba(26,130,78,0.06);padding:3px 8px;border-radius:2px;">Brush texture</span>
+          <span style="font-size:10px;color:#78716c;background:rgba(26,130,78,0.06);padding:3px 8px;border-radius:2px;">Artistic soul</span>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:24px;border-radius:2px;margin-bottom:48px;">
-    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:700;">Color & Lighting</p>
-    <p style="font-size:14px;color:#1D3557;font-weight:500;margin:0 0 8px;">Human-directed palettes</p>
-    <p style="font-size:13px;color:#78716c;line-height:1.7;margin:0;">Indoor and outdoor palettes defined by humans. AI does not auto-decide color. Lighting is AI-generated first, then manually adjusted. Flexibility preferred over strict enforcement.</p>
-  </div>
-
-  <!-- ==================== 3. CHARACTER CONSISTENCY ARCHIVE ==================== -->
-  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 16px;text-transform:uppercase;">Character Consistency System</p>
-
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:28px;border-radius:2px;margin-bottom:16px;">
-    <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 20px;">Customized GPT enforces identity control across books</p>
-
-    <div style="display:grid;grid-template-columns:1fr 2fr;gap:24px;margin-bottom:24px;">
-
-      <div style="background:rgba(17,86,208,0.04);border:1px solid #D9D9D9;border-radius:2px;padding:20px;">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#1156D0;margin:0 0 14px;text-transform:uppercase;font-weight:600;">GPT-Extracted Traits</p>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <div style="width:16px;height:16px;border-radius:50%;background:#F4C7A3;border:1px solid #D9D9D9;flex-shrink:0;"></div>
-            <span style="font-size:12px;color:#1D3557;font-weight:500;">Skin tone</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <div style="width:16px;height:16px;border-radius:50%;background:#C85A2F;border:1px solid #D9D9D9;flex-shrink:0;"></div>
-            <span style="font-size:12px;color:#1D3557;font-weight:500;">Hair color</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <div style="width:16px;height:16px;border-radius:50%;background:#5B8C5A;border:1px solid #D9D9D9;flex-shrink:0;"></div>
-            <span style="font-size:12px;color:#1D3557;font-weight:500;">Clothing palette</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <div style="width:16px;height:16px;border-radius:2px;background:rgba(0,0,0,0.06);border:1px solid #D9D9D9;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;color:#78716c;">K2</div>
-            <span style="font-size:12px;color:#1D3557;font-weight:500;">Age range</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <div style="width:16px;height:16px;border-radius:2px;background:rgba(0,0,0,0.06);border:1px solid #D9D9D9;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;color:#78716c;">\u263A</div>
-            <span style="font-size:12px;color:#1D3557;font-weight:500;">Personality traits</span>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Same Characters \u2014 Multiple Scenes, Poses & Dynamics</p>
-        <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-          <img src="/images/ai-illustration/character-consistency.webp" alt="Character consistency across multiple scenes and poses" style="display:block;width:100%;height:auto;">
-        </div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:8px 0 0;text-transform:uppercase;">Prompt-based identity control across books</p>
-      </div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid #D9D9D9;border-radius:2px;overflow:hidden;">
-      <div style="padding:16px;text-align:center;background:rgba(17,86,208,0.05);border-right:1px solid #D9D9D9;">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#a8a29e;margin:0 0 6px;text-transform:uppercase;letter-spacing:0.1em;">Step 1</p>
-        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Upload Reference</p>
-      </div>
-      <div style="padding:16px;text-align:center;background:rgba(17,86,208,0.03);border-right:1px solid #D9D9D9;">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#a8a29e;margin:0 0 6px;text-transform:uppercase;letter-spacing:0.1em;">Step 2</p>
-        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">GPT Extracts Traits</p>
-      </div>
-      <div style="padding:16px;text-align:center;background:rgba(17,86,208,0.05);border-right:1px solid #D9D9D9;">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#a8a29e;margin:0 0 6px;text-transform:uppercase;letter-spacing:0.1em;">Step 3</p>
-        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Generate Prompt</p>
-      </div>
-      <div style="padding:16px;text-align:center;background:rgba(17,86,208,0.03);border-right:1px solid #D9D9D9;">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#a8a29e;margin:0 0 6px;text-transform:uppercase;letter-spacing:0.1em;">Step 4</p>
-        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Reuse Across Pages</p>
-      </div>
-      <div style="padding:16px;text-align:center;background:rgba(17,86,208,0.05);">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#a8a29e;margin:0 0 6px;text-transform:uppercase;letter-spacing:0.1em;">Result</p>
-        <p style="font-size:13px;font-weight:600;color:#1A824E;margin:0;">Consistent Identity</p>
       </div>
     </div>
   </div>
@@ -452,7 +379,7 @@ export const AI_ITEMS: AiItem[] = [
       AI tools were not used as replacements. They functioned as accelerators.
     </p>
     <p style="font-family:Georgia,serif;font-size:16px;line-height:1.7;color:#78716c;margin:0;">
-      The challenge wasn't just illustration; it was maintaining pedagogical integrity at scale. This system evolved from manual craftsmanship into a high-efficiency engine that turned 72 complex decodable books into a streamlined production reality.
+      The challenge wasn\u2019t just illustration; it was maintaining pedagogical integrity at scale. This system evolved from manual craftsmanship into a high-efficiency engine that turned 72 complex decodable books into a streamlined production reality.
     </p>
   </div>
 
@@ -462,257 +389,246 @@ export const AI_ITEMS: AiItem[] = [
     id: 'ai-style',
     title: 'Style & Asset Architecture',
     subtitle: 'SYNTHETIC',
-    description: 'How the system is organized \u2014 character libraries, prompt architecture, and layout templates.',
+    description: 'Genetic-level prompt control \u2014 encoding visual DNA into AI instructions for zero-drift synthetic generation.',
     fullDescription: '',
     content: [],
-    tags: ['Visual Guides', 'Color Theory', 'Standardization'],
+    tags: ['Synthetic Generation', 'Identity Tokens', 'Prompt Architecture'],
     customHtml: `<div style="width:100%;">
 
-  <!-- INTRO SECTION -->
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:32px;border-radius:2px;margin-bottom:48px;backdrop-filter:blur(4px);">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
-      <div style="background:#EB431D;padding:4px 12px;border-radius:2px;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:white;text-transform:uppercase;font-weight:600;">V1.0</span>
-      </div>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#a8a29e;text-transform:uppercase;">Visual System</span>
+  <!-- ==================== LEAD-IN ==================== -->
+  <div style="margin-bottom:48px;">
+    <p style="font-family:Georgia,serif;font-size:22px;line-height:1.6;color:#1D3557;margin:0 0 20px;font-weight:400;">
+      From manual compositing to genetic-level instruction control.
+    </p>
+    <p style="font-family:Georgia,serif;font-size:16px;line-height:1.8;color:#78716c;margin:0 0 24px;">
+      A dynamic prompt-based architecture that encodes artistic DNA into the generative process, ensuring zero visual drift across 72 books without the need for manual compositing.
+    </p>
+    <div style="background:rgba(0,0,0,0.03);border:1px solid #D9D9D9;border-radius:2px;padding:16px 20px;display:flex;align-items:center;gap:12px;">
+      <div style="width:3px;height:36px;background:#1156D0;border-radius:1px;flex-shrink:0;"></div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#1D3557;margin:0;line-height:1.6;">Every visual decision \u2014 character identity, material texture, environmental lighting \u2014 is written as an instruction the AI cannot override.</p>
     </div>
-    <p style="font-size:20px;font-weight:500;line-height:1.55;color:#1D3557;margin:0 0 16px;">
-      Large-Scale AI Industrialization for Educational Publishing
-    </p>
-    <p style="font-family:Georgia,serif;font-size:18px;line-height:1.75;color:#57534e;margin:0;">
-      A structured asset framework that replaces traditional static style guides with prompt-based identity encoding &#8212; automating the alignment between visual style and pedagogical objectives across a 72-book production pipeline.
-    </p>
   </div>
 
-  <!-- ==================== 01 — ASSET ARCHITECTURE ==================== -->
-  <div style="display:flex;gap:0;margin-bottom:24px;">
-    <div style="width:56px;flex-shrink:0;background:#EB431D;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">01</span>
-    </div>
-    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Asset Architecture Logic</p>
-      <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 12px;">Structured framework for 72-book visual consistency</p>
-      <p style="font-size:14px;color:#78716c;line-height:1.7;margin:0 0 20px;">
-        To ensure visual unity across 72 books in a long-cycle pipeline, I built a structured asset framework. The system replaces traditional static character sheets with prompt-based identity encoding &#8212; automating alignment between visual style and pedagogical goals, reducing visual drift to near zero.
-      </p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="font-size:11px;color:#EB431D;background:rgba(235,67,29,0.06);padding:4px 12px;border-radius:2px;font-weight:500;">Identity Encoding</span>
-        <span style="font-size:11px;color:#EB431D;background:rgba(235,67,29,0.06);padding:4px 12px;border-radius:2px;font-weight:500;">Zero Visual Drift</span>
-        <span style="font-size:11px;color:#EB431D;background:rgba(235,67,29,0.06);padding:4px 12px;border-radius:2px;font-weight:500;">Scalable Framework</span>
+  <!-- ==================== MODULE 01 \u2014 CHARACTER DNA ENCODING ==================== -->
+  <div style="margin-bottom:56px;border-left:3px solid #EB431D;padding-left:24px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:white;background:#EB431D;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">01</span>
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#EB431D;margin:0 0 2px;text-transform:uppercase;font-weight:600;">Character DNA Encoding</p>
+        <p style="font-size:16px;font-weight:500;color:#1D3557;margin:0;">Cross-Book Identity Control</p>
       </div>
     </div>
-  </div>
 
-  <!-- Asset Library -->
-  <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;">
-    <img src="/images/ai-style/assets-library.webp" alt="Character asset library — poses, expressions, environments" style="display:block;width:100%;height:auto;">
-  </div>
-  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 24px;text-transform:uppercase;">Prompt-based identity control across characters, poses &amp; environments</p>
+    <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 20px;">
+      Managing consistency for 72 books requires more than a style guide \u2014 it requires Trait Hard-coding. We translate visual DNA (skin tone, hair texture, body proportions) into immutable Identity Tokens. The AI doesn\u2019t just \u201Cdraw\u201D Max; it executes a fixed genetic script, ensuring the same character emerges in every single generation.
+    </p>
 
-  <!-- Identity Encoding: Same character across scenes -->
-  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 12px;text-transform:uppercase;font-weight:600;">Identity Encoding &#8212; Max across scenes</p>
-  <div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:0;margin-bottom:8px;">
-    <div style="border:1px solid #D9D9D9;border-radius:2px 0 0 2px;overflow:hidden;width:160px;">
-      <img src="/images/ai-style/max-reference.webp" alt="Max — character reference" style="display:block;width:100%;height:100%;object-fit:cover;">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#EB431D;background:rgba(235,67,29,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(235,67,29,0.12);letter-spacing:0.05em;">Identity_Tokens</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#EB431D;background:rgba(235,67,29,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(235,67,29,0.12);letter-spacing:0.05em;">Trait_Extraction</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#EB431D;background:rgba(235,67,29,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(235,67,29,0.12);letter-spacing:0.05em;">Zero_Manual_Compositing</span>
     </div>
-    <div style="border:1px solid #D9D9D9;border-left:none;overflow:hidden;">
-      <img src="/images/ai-style/max-cafeteria.webp" alt="Max in cafeteria scene" style="display:block;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Encoding Pipeline -->
+    <div style="display:flex;align-items:stretch;gap:2px;margin-bottom:28px;">
+      <div style="flex:1;background:#EB431D;padding:14px 16px;border-radius:2px 0 0 2px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.7);margin:0 0 4px;text-transform:uppercase;letter-spacing:0.08em;">Step 01</p>
+        <p style="font-size:13px;color:white;margin:0;font-weight:500;">Trait Extraction</p>
+        <p style="font-size:11px;color:rgba(255,255,255,0.7);margin:6px 0 0;line-height:1.5;">GPT translates visual DNA: age, skin, hair, proportions</p>
+      </div>
+      <div style="flex:1;background:rgba(235,67,29,0.82);padding:14px 16px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.7);margin:0 0 4px;text-transform:uppercase;letter-spacing:0.08em;">Step 02</p>
+        <p style="font-size:13px;color:white;margin:0;font-weight:500;">Token Hard-coding</p>
+        <p style="font-size:11px;color:rgba(255,255,255,0.7);margin:6px 0 0;line-height:1.5;">Traits encoded as locked instructions</p>
+      </div>
+      <div style="flex:1;background:rgba(235,67,29,0.64);padding:14px 16px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.7);margin:0 0 4px;text-transform:uppercase;letter-spacing:0.08em;">Step 03</p>
+        <p style="font-size:13px;color:white;margin:0;font-weight:500;">Seed Management</p>
+        <p style="font-size:11px;color:rgba(255,255,255,0.7);margin:6px 0 0;line-height:1.5;">Fixed seeds for structural stability</p>
+      </div>
+      <div style="flex:1;background:rgba(235,67,29,0.46);padding:14px 16px;border-radius:0 2px 2px 0;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.8);margin:0 0 4px;text-transform:uppercase;letter-spacing:0.08em;">Step 04</p>
+        <p style="font-size:13px;color:white;margin:0;font-weight:500;">Stress Test</p>
+        <p style="font-size:11px;color:rgba(255,255,255,0.8);margin:6px 0 0;line-height:1.5;">Extreme perspectives to verify token</p>
+      </div>
     </div>
-    <div style="border:1px solid #D9D9D9;border-left:none;overflow:hidden;">
-      <img src="/images/ai-style/max-clay-art.webp" alt="Max doing clay art" style="display:block;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Character proof -->
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 10px;text-transform:uppercase;">Same Identity Token \u2014 Max across 4 scenes</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2px;margin-bottom:6px;">
+      <div style="border-radius:2px;overflow:hidden;height:180px;background:#fff;"><img src="/images/ai-style/max-reference.webp" alt="Max reference" style="display:block;width:100%;height:100%;object-fit:contain;"></div>
+      <div style="border-radius:2px;overflow:hidden;height:180px;"><img src="/images/ai-style/max-cafeteria.webp" alt="Max cafeteria" style="display:block;width:100%;height:100%;object-fit:cover;"></div>
+      <div style="border-radius:2px;overflow:hidden;height:180px;"><img src="/images/ai-style/max-clay-art.webp" alt="Max art class" style="display:block;width:100%;height:100%;object-fit:cover;"></div>
+      <div style="border-radius:2px;overflow:hidden;height:180px;"><img src="/images/ai-style/max-clay-spill.webp" alt="Max reaction" style="display:block;width:100%;height:100%;object-fit:cover;"></div>
     </div>
-    <div style="border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;overflow:hidden;">
-      <img src="/images/ai-style/max-clay-spill.webp" alt="Max reacting to spill" style="display:block;width:100%;height:100%;object-fit:cover;">
-    </div>
-  </div>
-  <div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:0;margin-bottom:48px;">
-    <div style="width:160px;padding:8px 12px;">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#EB431D;margin:0;text-transform:uppercase;font-weight:600;">Reference</p>
-    </div>
-    <div style="padding:8px 12px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#EB431D;margin:0;text-transform:uppercase;font-weight:600;">Reference Seed</p>
       <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#a8a29e;margin:0;text-transform:uppercase;">Cafeteria</p>
-    </div>
-    <div style="padding:8px 12px;">
       <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#a8a29e;margin:0;text-transform:uppercase;">Art Class</p>
-    </div>
-    <div style="padding:8px 12px;">
       <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#a8a29e;margin:0;text-transform:uppercase;">Reaction</p>
     </div>
   </div>
 
-  <!-- ==================== 02 — PROPRIETARY AI AGENTS ==================== -->
-  <div style="display:flex;gap:0;margin-bottom:24px;">
-    <div style="width:56px;flex-shrink:0;background:#1156D0;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">02</span>
-    </div>
-    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Proprietary AI Agents</p>
-      <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">Two complementary Custom GPTs as system engines</p>
-      <p style="font-size:14px;color:#78716c;line-height:1.7;margin:0;">
-        The core of the system is driven by two complementary Custom GPTs that handle logic transformation and consistency enforcement respectively.
-      </p>
-    </div>
-  </div>
-
-  <!-- Two GPT Agent Cards -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;">
-    <div style="border:1px solid #D9D9D9;border-radius:2px 0 0 2px;padding:24px;background:rgba(17,86,208,0.03);">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-        <div style="width:8px;height:8px;border-radius:50%;background:#1156D0;"></div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#1156D0;margin:0;text-transform:uppercase;font-weight:700;">Agent 01</p>
-      </div>
-      <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 4px;">PEDAGOGICAL_TRANSLATOR</p>
-      <p style="font-size:12px;color:#1156D0;margin:0 0 16px;font-weight:500;">Decodable K-2 Illustration Assistant</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#a8a29e;margin:0 0 6px;text-transform:uppercase;letter-spacing:0.1em;">Role</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0 0 16px;">Bridges academic manuscripts and visual production.</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#a8a29e;margin:0 0 6px;text-transform:uppercase;letter-spacing:0.1em;">Logic</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Parses decodable reader scripts, converts academic constraints (e.g., avoiding specific letter-combination interference) into AI rendering instructions &#8212; ensuring each illustration functions as a pedagogical scaffold.</p>
-    </div>
-    <div style="border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:24px;background:rgba(26,130,78,0.03);">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-        <div style="width:8px;height:8px;border-radius:50%;background:#1A824E;"></div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#1A824E;margin:0;text-transform:uppercase;font-weight:700;">Agent 02</p>
-      </div>
-      <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 4px;">CONSISTENCY_ENFORCER</p>
-      <p style="font-size:12px;color:#1A824E;margin:0 0 16px;font-weight:500;">Re-create Decodable Book Assistant</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#a8a29e;margin:0 0 6px;text-transform:uppercase;letter-spacing:0.1em;">Role</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0 0 16px;">Locks visual asset reproducibility.</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#a8a29e;margin:0 0 6px;text-transform:uppercase;letter-spacing:0.1em;">Logic</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Manages cross-page character identity control. Encodes character traits, lighting rules, and copy-safe areas into reusable prompt seeds &#8212; ensuring protagonist appearance and compositional logic remain consistent across 72 books.</p>
-    </div>
-  </div>
-
-  <!-- GPT Workflow Screenshot -->
-  <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;">
-    <img src="/images/ai-style/gpt-workflow.webp" alt="Custom GPT interface — Re-create Decodable Book Assistant" style="display:block;width:100%;height:auto;">
-  </div>
-  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 48px;text-transform:uppercase;">Custom GPT Interface: Programming narrative constraints into the generation engine</p>
-
-  <!-- ==================== 03 — PROMPT ENGINEERING ==================== -->
-  <div style="display:flex;gap:0;margin-bottom:24px;">
-    <div style="width:56px;flex-shrink:0;background:#F3B013;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">03</span>
-    </div>
-    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#F3B013;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Prompt Engineering Architecture</p>
-      <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">Systematized instruction components</p>
-      <p style="font-size:14px;color:#78716c;line-height:1.7;margin:0;">
-        Every prompt is constructed from three core modules that together produce layout-ready assets directly from AI generation.
-      </p>
-    </div>
-  </div>
-
-  <!-- Prompt Components - Code Style -->
-  <div style="background:rgba(0,0,0,0.03);border:1px solid #D9D9D9;padding:0;border-radius:2px;margin-bottom:24px;overflow:hidden;">
-    <div style="padding:12px 24px;border-bottom:1px solid rgba(0,0,0,0.06);background:rgba(0,0,0,0.02);">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#a8a29e;margin:0;letter-spacing:0.1em;">// SYSTEMATIZED INSTRUCTION COMPONENTS</p>
-    </div>
-    <div style="padding:24px;">
-      <div style="margin-bottom:20px;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#EB431D;">IDENTITY_ENCODING</span>
-        <p style="font-size:13px;color:#78716c;line-height:1.6;margin:8px 0 0;">Lock 5 key dimensions: skin tone, hairstyle, clothing, body proportions, personality expression.</p>
-      </div>
-      <div style="margin-bottom:20px;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#1156D0;">ENVIRONMENT_PRESETS</span>
-        <p style="font-size:13px;color:#78716c;line-height:1.6;margin:8px 0 0;">Standardize warm, clear, low-cognitive-load lighting required for K-2 age range.</p>
-      </div>
+  <!-- ==================== MODULE 02 \u2014 ENVIRONMENTAL DNA ==================== -->
+  <div style="margin-bottom:56px;border-left:3px solid #1156D0;padding-left:24px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:white;background:#1156D0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">02</span>
       <div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#1A824E;">LAYOUT_AWARE</span>
-        <p style="font-size:13px;color:#78716c;line-height:1.6;margin:8px 0 0;">Explicitly define copy-safe zones within prompts, ensuring AI output is layout-ready.</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#1156D0;margin:0 0 2px;text-transform:uppercase;font-weight:600;">Environmental DNA & Visual Anchors</p>
+        <p style="font-size:16px;font-weight:500;color:#1D3557;margin:0;">Synthetic Environment Control</p>
       </div>
     </div>
-  </div>
 
-  <!-- Copy-Safe Area Diagram -->
-  <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;">
-    <img src="/images/ai-style/copy-safe-area.webp" alt="AI-generated spreads with copy-safe text zones marked" style="display:block;width:100%;height:auto;">
-  </div>
-  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 48px;text-transform:uppercase;">Layout Integration: AI-generated assets with pre-planned copy-safe areas (pink dashed = text zone)</p>
-
-  <!-- ==================== 04 — VERSION EVOLUTION ==================== -->
-  <div style="display:flex;gap:0;margin-bottom:24px;">
-    <div style="width:56px;flex-shrink:0;background:#1A824E;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">04</span>
-    </div>
-    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1A824E;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Version Evolution</p>
-      <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">From manual intuition to architectural production</p>
-      <p style="font-size:14px;color:#78716c;line-height:1.7;margin:0;">
-        Four production model iterations, each building on the last.
-      </p>
-    </div>
-  </div>
-
-  <!-- Version Table -->
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-radius:2px;overflow:hidden;margin-bottom:48px;">
-    <table style="width:100%;border-collapse:collapse;">
-      <thead>
-        <tr style="border-bottom:1px solid rgba(0,0,0,0.1);">
-          <th style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;text-align:left;padding:14px 20px;color:#a8a29e;font-weight:500;width:80px;">Version</th>
-          <th style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;text-align:left;padding:14px 20px;color:#a8a29e;font-weight:500;">Production Model</th>
-          <th style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;text-align:left;padding:14px 20px;color:#a8a29e;font-weight:500;">Core Driver</th>
-          <th style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;text-align:right;padding:14px 20px;color:#a8a29e;font-weight:500;width:100px;">Efficiency</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid rgba(0,0,0,0.05);">
-          <td style="padding:16px 20px;font-size:14px;font-weight:700;color:#a8a29e;">v1.0</td>
-          <td style="padding:16px 20px;font-size:14px;color:#1D3557;font-weight:500;">Pure Hand-Drawn Storyboard</td>
-          <td style="padding:16px 20px;font-size:14px;color:#78716c;">Artistic Intuition</td>
-          <td style="padding:16px 20px;font-size:14px;color:#a8a29e;text-align:right;font-family:'JetBrains Mono',monospace;">Baseline</td>
-        </tr>
-        <tr style="border-bottom:1px solid rgba(0,0,0,0.05);">
-          <td style="padding:16px 20px;font-size:14px;font-weight:700;color:#F3B013;">v2.0</td>
-          <td style="padding:16px 20px;font-size:14px;color:#1D3557;font-weight:500;">AI Reference + Hand-Drawn Hybrid</td>
-          <td style="padding:16px 20px;font-size:14px;color:#78716c;">Mixed Mode</td>
-          <td style="padding:16px 20px;font-size:14px;color:#F3B013;text-align:right;font-family:'JetBrains Mono',monospace;font-weight:600;">2x</td>
-        </tr>
-        <tr style="border-bottom:1px solid rgba(0,0,0,0.05);">
-          <td style="padding:16px 20px;font-size:14px;font-weight:700;color:#1156D0;">v3.0</td>
-          <td style="padding:16px 20px;font-size:14px;color:#1D3557;font-weight:500;">AI Generation + 30% Refinement</td>
-          <td style="padding:16px 20px;font-size:14px;color:#78716c;">Streamlined Production</td>
-          <td style="padding:16px 20px;font-size:14px;color:#1156D0;text-align:right;font-family:'JetBrains Mono',monospace;font-weight:600;">5x</td>
-        </tr>
-        <tr>
-          <td style="padding:16px 20px;font-size:14px;font-weight:700;color:#1A824E;">v4.0</td>
-          <td style="padding:16px 20px;font-size:14px;color:#1D3557;font-weight:500;">Architectural Production</td>
-          <td style="padding:16px 20px;font-size:14px;color:#78716c;">GPT Agent Workflow</td>
-          <td style="padding:16px 20px;font-size:14px;color:#1A824E;text-align:right;font-family:'JetBrains Mono',monospace;font-weight:600;">10x</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- KEY METRICS -->
-  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 16px;text-transform:uppercase;">System Metrics</p>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:48px;">
-    <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;">
-      <p style="font-size:28px;font-weight:700;color:#EB431D;margin:0;">2</p>
-      <p style="font-size:12px;color:#78716c;margin:4px 0 0;">Custom GPT Agents</p>
-    </div>
-    <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;">
-      <p style="font-size:28px;font-weight:700;color:#1156D0;margin:0;">5</p>
-      <p style="font-size:12px;color:#78716c;margin:4px 0 0;">Identity Dimensions</p>
-    </div>
-    <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;">
-      <p style="font-size:28px;font-weight:700;color:#1A824E;margin:0;">10x</p>
-      <p style="font-size:12px;color:#78716c;margin:4px 0 0;">Efficiency Gain</p>
-    </div>
-    <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;">
-      <p style="font-size:28px;font-weight:700;color:#F3B013;margin:0;">0</p>
-      <p style="font-size:12px;color:#78716c;margin:4px 0 0;">Manual Prompts</p>
-    </div>
-  </div>
-
-  <!-- OUTCOME -->
-  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 16px;text-transform:uppercase;">Outcome</p>
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:32px;border-radius:2px;">
-    <p style="font-size:18px;line-height:1.65;color:#1D3557;margin:0 0 12px;">
-      The system transformed illustration production from an artisan craft into an engineered pipeline.
+    <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 20px;">
+      We eliminated the need for manual compositing by developing a system of Visual Anchors. Instead of a physical library of props, we use a Prompt-based Material Registry. By hard-coding environmental variables \u2014 such as \u2018Matte Ceramic Texture\u2019 or \u2018Soft K-2 Classroom Lighting\u2019 \u2014 into the global architecture, the AI generates consistent objects and backgrounds directly within the scene.
     </p>
-    <p style="font-family:Georgia,serif;font-size:16px;line-height:1.7;color:#78716c;margin:0;">
-      By encoding artistic decisions into reusable prompt architecture and AI agents, the most complex challenge shifted from manual illustration to designing systems that ensure consistency, scalability, and pedagogical alignment at industrial scale.
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#1156D0;background:rgba(17,86,208,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(17,86,208,0.12);letter-spacing:0.05em;">Material_Anchors</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#1156D0;background:rgba(17,86,208,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(17,86,208,0.12);letter-spacing:0.05em;">Lighting_Presets</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#1156D0;background:rgba(17,86,208,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(17,86,208,0.12);letter-spacing:0.05em;">Latent_Space_Consistency</span>
+    </div>
+
+    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;margin-bottom:8px;">
+      <img src="/images/ai-style/classroom-settings.png" alt="AI-generated classroom environment objects \u2014 furniture, windows, materials locked via environmental prompts" style="display:block;width:100%;height:auto;">
+    </div>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0;text-transform:uppercase;">Environmental anchors \u2014 objects generated from prompt instructions, not assembled from a library</p>
+  </div>
+
+  <!-- ==================== MODULE 03 \u2014 SOURCE OF TRUTH ==================== -->
+  <div style="margin-bottom:56px;border-left:3px solid #F3B013;padding-left:24px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:white;background:#F3B013;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">03</span>
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#F3B013;margin:0 0 2px;text-transform:uppercase;font-weight:600;">The Source of Truth</p>
+        <p style="font-size:16px;font-weight:500;color:#1D3557;margin:0;">Master Prompt Architecture</p>
+      </div>
+    </div>
+
+    <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 24px;">
+      The Master Template is the single source of truth that enables 6 illustrators to produce unified results. Our architecture uses Global Style Variables \u2014 a fixed technical suffix appended to every prompt \u2014 to enforce brush weight, color temperature, and edge treatment automatically.
     </p>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#F3B013;background:rgba(243,176,19,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(243,176,19,0.12);letter-spacing:0.05em;">Global_Style_Variables</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#F3B013;background:rgba(243,176,19,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(243,176,19,0.12);letter-spacing:0.05em;">Modular_Prompting</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#F3B013;background:rgba(243,176,19,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(243,176,19,0.12);letter-spacing:0.05em;">Structural_Enforcement</span>
+    </div>
+
+    <!-- Prompt Architecture Diagram -->
+    <div style="background:rgba(29,53,87,0.03);border:1px solid #D9D9D9;border-radius:2px;overflow:hidden;margin-bottom:24px;">
+      <div style="padding:10px 20px;border-bottom:1px solid rgba(0,0,0,0.06);background:rgba(0,0,0,0.02);">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#a8a29e;margin:0;letter-spacing:0.08em;">prompt_architecture.config</p>
+      </div>
+      <div style="padding:20px;">
+        <div style="display:flex;align-items:center;gap:4px;margin-bottom:16px;">
+          <div style="background:#EB431D;padding:8px 16px;border-radius:2px;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:white;margin:0;font-weight:600;">[Subject]</p>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#D9D9D9;">+</span>
+          <div style="background:#1156D0;padding:8px 16px;border-radius:2px;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:white;margin:0;font-weight:600;">[Action]</p>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#D9D9D9;">+</span>
+          <div style="background:#F3B013;padding:8px 16px;border-radius:2px;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:white;margin:0;font-weight:600;">[Env Anchor]</p>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#D9D9D9;">+</span>
+          <div style="background:#1A824E;padding:8px 16px;border-radius:2px;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:white;margin:0;font-weight:600;">[Global Style Suffix]</p>
+          </div>
+        </div>
+        <div style="border-top:1px solid rgba(0,0,0,0.06);padding-top:16px;">
+          <div style="display:flex;gap:16px;">
+            <div style="flex:1;">
+              <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#a8a29e;margin:0 0 6px;text-transform:uppercase;letter-spacing:0.08em;">Variable components</p>
+              <p style="font-size:12px;color:#78716c;line-height:1.6;margin:0;">Subject, Action, and Environment change per scene. Written by individual illustrators.</p>
+            </div>
+            <div style="width:1px;background:#D9D9D9;flex-shrink:0;"></div>
+            <div style="flex:1;">
+              <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#1A824E;margin:0 0 6px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">Fixed component</p>
+              <p style="font-size:12px;color:#78716c;line-height:1.6;margin:0;">The Global Style Suffix never changes. It enforces brush weight, color temperature, edge treatment, and texture rules automatically.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;margin-bottom:8px;">
+      <img src="/images/ai-style/gpt-workflow.webp" alt="GPT interface enforcing the Master Prompt Architecture" style="display:block;width:100%;height:auto;">
+    </div>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0;text-transform:uppercase;">GPT interface \u2014 enforcing global style variables as the single source of truth</p>
+  </div>
+
+  <!-- ==================== MODULE 04 \u2014 TECHNICAL AUDIT ==================== -->
+  <div style="margin-bottom:56px;border-left:3px solid #1A824E;padding-left:24px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:white;background:#1A824E;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">04</span>
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#1A824E;margin:0 0 2px;text-transform:uppercase;font-weight:600;">Technical Audit Metrics</p>
+        <p style="font-size:16px;font-weight:500;color:#1D3557;margin:0;">Prompt Drift Detection</p>
+      </div>
+    </div>
+
+    <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 20px;">
+      Our audit process focuses on System Integrity. We don\u2019t check for \u201Ccompositing errors\u201D because there is no manual assembly. Instead, we monitor Prompt Drift \u2014 detecting if the AI has deviated from the established Visual DNA. If a character looks off, we recalibrate the instruction, ensuring the entire pipeline remains stable and scalable.
+    </p>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#1A824E;background:rgba(26,130,78,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(26,130,78,0.12);letter-spacing:0.05em;">Identity_Retention</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#1A824E;background:rgba(26,130,78,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(26,130,78,0.12);letter-spacing:0.05em;">Pedagogical_Alignment</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#1A824E;background:rgba(26,130,78,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(26,130,78,0.12);letter-spacing:0.05em;">Prompt_Drift_Check</span>
+    </div>
+
+    <!-- Audit Flow -->
+    <div style="border:1px solid #D9D9D9;border-radius:2px;overflow:hidden;margin-bottom:28px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+        <div style="padding:20px;border-right:1px solid #D9D9D9;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#1A824E;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Check 01</p>
+          <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 6px;">Identity Retention</p>
+          <p style="font-size:12px;color:#78716c;line-height:1.6;margin:0;">Does the kid look the same? If the token drifted, recalibrate the instruction.</p>
+        </div>
+        <div style="padding:20px;border-right:1px solid #D9D9D9;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#1156D0;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Check 02</p>
+          <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 6px;">Pedagogical Alignment</p>
+          <p style="font-size:12px;color:#78716c;line-height:1.6;margin:0;">Is the action clear? Actions must map to the decodable text.</p>
+        </div>
+        <div style="padding:20px;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#F3B013;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Check 03</p>
+          <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 6px;">Prompt Drift</p>
+          <p style="font-size:12px;color:#78716c;line-height:1.6;margin:0;">Did the AI deviate from the Global Style Variables?</p>
+        </div>
+      </div>
+      <div style="padding:14px 20px;background:rgba(26,130,78,0.04);border-top:1px solid #D9D9D9;display:flex;align-items:center;gap:10px;">
+        <div style="width:3px;height:20px;background:#1A824E;border-radius:1px;flex-shrink:0;"></div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#1D3557;margin:0;font-weight:500;">Principle: Fix the instruction, not the output.</p>
+      </div>
+    </div>
+
+    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;margin-bottom:8px;">
+      <img src="/images/ai-style/character-audit.webp" alt="Character audit \u2014 verifying identity tokens and detecting prompt drift" style="display:block;width:100%;height:auto;">
+    </div>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0;text-transform:uppercase;">Audit matrix \u2014 detecting prompt drift across characters, scenes & environments</p>
+  </div>
+
+  <!-- ==================== SYSTEM METRICS ==================== -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:48px;">
+    <div style="background:rgba(235,67,29,0.04);padding:24px;text-align:center;">
+      <p style="font-size:32px;font-weight:700;color:#EB431D;margin:0;">4</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716c;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Encoding Steps</p>
+    </div>
+    <div style="background:rgba(17,86,208,0.04);padding:24px;text-align:center;">
+      <p style="font-size:32px;font-weight:700;color:#1156D0;margin:0;">6</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716c;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Illustrators Aligned</p>
+    </div>
+    <div style="background:rgba(26,130,78,0.04);padding:24px;text-align:center;">
+      <p style="font-size:32px;font-weight:700;color:#1A824E;margin:0;">3</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716c;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Audit Checks</p>
+    </div>
+    <div style="background:rgba(243,176,19,0.04);padding:24px;text-align:center;">
+      <p style="font-size:32px;font-weight:700;color:#F3B013;margin:0;">0</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716c;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Manual Patches</p>
+    </div>
   </div>
 
 </div>`
@@ -721,241 +637,245 @@ export const AI_ITEMS: AiItem[] = [
     id: 'ai-production',
     title: 'Production Workflow',
     subtitle: 'STRUCTURED',
-    description: 'AI integrated into traditional publishing \u2014 a 10-step pipeline from manuscript to print-ready assets.',
+    description: 'A synchronized 10-step pipeline managing 72 books with the 70/30 human-AI rule, 6-illustrator scalability, and zero style drift.',
     fullDescription: '',
     content: [],
-    tags: ['Pipeline Integration', 'Manual Correction', 'Print Ready'],
+    tags: ['Pipeline Integration', 'Efficiency Metrics', 'Scalability'],
     customHtml: `<div style="width:100%;">
 
-<style>
-.pw-pipeline{position:relative;padding:0 0 16px}
-.pw-pipeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:#D9D9D9;transform:translateX(-50%)}
-.pw-step{display:flex;padding:12px 0;position:relative}
-.pw-step-l{justify-content:flex-start}
-.pw-step-r{justify-content:flex-end}
-.pw-card{width:calc(50% - 36px);background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-radius:2px;padding:24px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background 0.3s ease,border-color 0.3s ease}
-.pw-card:hover{background:rgba(255,255,255,0.85);border-color:#a8a29e}
-.pw-node{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;z-index:2;background:#E5DED0}
-.pw-phase{text-align:center;padding:32px 0 16px;position:relative;z-index:2}
-.pw-phase-tag{display:inline-block;background:#E5DED0;padding:6px 20px;border:1px solid;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600}
-.pw-nav-link{text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#a8a29e;transition:color 0.2s ease}
-.pw-nav-link:hover{color:#1D3557}
-@media(max-width:768px){
-.pw-pipeline::before{left:24px}
-.pw-step{justify-content:flex-end!important}
-.pw-card{width:calc(100% - 64px)!important}
-.pw-node{left:24px!important}
-}
-</style>
-
-<!-- INTRO -->
-<div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:32px;border-radius:2px;margin-bottom:48px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">
-  <p style="font-size:20px;font-weight:500;line-height:1.55;color:#1D3557;margin:0 0 16px;">
-    10-Step Precision Integration Pipeline
+<!-- ==================== LEAD-IN ==================== -->
+<div style="margin-bottom:56px;">
+  <p style="font-family:Georgia,serif;font-size:22px;line-height:1.6;color:#1D3557;margin:0 0 16px;font-weight:400;">
+    Systematic Production Cycle
   </p>
-  <p style="font-family:Georgia,serif;font-size:18px;line-height:1.75;color:#57534e;margin:0 0 12px;">
-    AI tools were integrated into an existing publishing pipeline &#8212; not as replacements, but as accelerators. From manuscript parsing to 300 DPI print-ready export, the workflow balances automation with manual oversight across 10 precisely defined stages.
-  </p>
-  <p style="font-family:Georgia,serif;font-size:18px;line-height:1.75;color:#57534e;margin:0;">
-    Automation supported the work. It did not override design judgment.
+  <p style="font-family:Georgia,serif;font-size:16px;line-height:1.8;color:#78716c;margin:0;">
+    To manage a 72-book series, we moved beyond individual creativity to a Synchronized Pipeline. This workflow ensures that whether it's Book 1 or Book 72, the quality remains indistinguishable.
   </p>
 </div>
 
-<!-- ==================== PIPELINE ==================== -->
-<div class="pw-pipeline">
-
-  <!-- ===== PHASE 1: FOUNDATIONAL ===== -->
-  <div class="pw-phase"><span class="pw-phase-tag" style="color:#1156D0;border-color:#1156D0;">01&#8211;03 Foundational</span></div>
-
-  <!-- Step 01 -->
-  <div class="pw-step pw-step-l">
-    <div class="pw-card">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 8px;text-transform:uppercase;font-weight:600;">Academic Manuscript</p>
-      <p style="font-size:14px;font-weight:500;color:#1D3557;margin:0 0 6px;">Parse decodable reading scripts</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Structured manuscript from Academic Designer defines narrative, vocabulary constraints, and page-by-page educational goals for K&#8211;K2 readers.</p>
-    </div>
-    <div class="pw-node" style="border-color:#1156D0;color:#1156D0;">01</div>
-  </div>
-
-  <!-- Step 02 -->
-  <div class="pw-step pw-step-r">
-    <div class="pw-card">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 8px;text-transform:uppercase;font-weight:600;">Prompt Engineering</p>
-      <p style="font-size:14px;font-weight:500;color:#1D3557;margin:0 0 6px;">Decodable Illustration Assistant transforms documents</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Utilizing the custom <strong>Decodable Illustration Assistant</strong>, academic 'phonics constraints' are automatically encoded into precise visual prompts.</p>
-    </div>
-    <div class="pw-node" style="border-color:#1156D0;color:#1156D0;">02</div>
-  </div>
-
-  <!-- Step 03 -->
-  <div class="pw-step pw-step-l">
-    <div class="pw-card">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 8px;text-transform:uppercase;font-weight:600;">Base Generation</p>
-      <p style="font-size:14px;font-weight:500;color:#1D3557;margin:0 0 6px;">AI produces initial 70% draft</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Prompts fed to Nanobanana for single-page AI illustration generation. Output is approximately 70% complete &#8212; structurally sound but surface too smooth.</p>
-    </div>
-    <div class="pw-node" style="border-color:#1156D0;color:#1156D0;">03</div>
-  </div>
-
-  <!-- ===== PHASE 2: QUALITY CONTROL ===== -->
-  <div class="pw-phase"><span class="pw-phase-tag" style="color:#EB431D;border-color:#EB431D;">04&#8211;07 Quality Control</span></div>
-
-  <!-- Step 04 -->
-  <div class="pw-step pw-step-r">
-    <div class="pw-card">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 8px;text-transform:uppercase;font-weight:600;">Academic Compliance Verification</p>
-      <p style="font-size:14px;font-weight:500;color:#1D3557;margin:0 0 6px;">Academic compliance verification</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Academic Designer reviews AI output for educational accuracy &#8212; verifying vocabulary constraints, age-appropriateness, and alignment with decodable reading standards.</p>
-    </div>
-    <div class="pw-node" style="border-color:#EB431D;color:#EB431D;">04</div>
-  </div>
-
-  <!-- Academic Review Evidence: Right Side Alignment -->
-  <div style="margin:12px 0 32px;display:flex;justify-content:flex-end;">
-    <div style="width:calc(50% - 36px);">
-        <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);background:#fff;margin-bottom:12px;">
-            <img src="/images/ai-production/academic-review.webp" alt="Academic Designer Feedback" style="display:block;width:100%;height:auto;">
-        </div>
-        <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;line-height:1.6;">Academic Designer reviews every spread in Figma &#8212; verifying vocabulary constraints, character expressions, and educational tone before illustration proceeds.</p>
+<!-- ==================== MODULE 01 ==================== -->
+<div style="margin-bottom:64px;">
+  <div style="border-top:4px solid #1156D0;padding-top:20px;margin-bottom:24px;">
+    <div style="display:flex;align-items:baseline;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:#1156D0;line-height:1;">01</span>
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#1156D0;margin:0 0 4px;text-transform:uppercase;font-weight:600;">The 10-Step Industrial Pipeline</p>
+        <p style="font-size:16px;font-weight:500;color:#1D3557;margin:0;">Systematic Production Cycle</p>
+      </div>
     </div>
   </div>
 
-  <!-- Step 05 -->
-  <div class="pw-step pw-step-l">
-    <div class="pw-card">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 8px;text-transform:uppercase;font-weight:600;">Digital Refinement</p>
-      <p style="font-size:14px;font-weight:500;color:#1D3557;margin:0 0 6px;">Illustrator correction in Figma</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Illustrators correct compositional errors, fix anatomical issues, and adjust proportions through 3 revision rounds in Figma workspace.</p>
+  <!-- 10-Step Pipeline Grid: 2 columns x 5 rows -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #D9D9D9;border-radius:2px;overflow:hidden;">
+    <div style="padding:16px 20px;border-bottom:1px solid #D9D9D9;border-right:1px solid #D9D9D9;display:flex;align-items:center;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;background:#1156D0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">01</span>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Manuscript Analysis</p>
+        <p style="font-size:11px;color:#78716c;margin:2px 0 0;">Script & Keywords</p>
+      </div>
     </div>
-    <div class="pw-node" style="border-color:#EB431D;color:#EB431D;">05</div>
-  </div>
-
-  <!-- Character Evolution: 3-Step Refinement -->
-  <div style="margin:24px 0 32px;padding:0 48px;">
-    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Refinement Evolution</p>
-    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 4px 16px rgba(0,0,0,0.06);background:#fff;">
-      <img src="/images/ai-production/character-evolution.webp" alt="Character refinement evolution — MidJourney raw output to first manual refinement to final character design" style="display:block;width:100%;height:auto;">
+    <div style="padding:16px 20px;border-bottom:1px solid #D9D9D9;display:flex;align-items:center;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;background:#1156D0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">02</span>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">GPT Prompt Synthesis</p>
+        <p style="font-size:11px;color:#78716c;margin:2px 0 0;">Auto-generation</p>
+      </div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:8px;">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#c0392b;text-transform:uppercase;margin:0;font-weight:600;">01 &#8212; MidJourney Raw</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#F3B013;text-transform:uppercase;margin:0;text-align:center;font-weight:600;">02 &#8212; First Refine</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#1A824E;text-transform:uppercase;margin:0;text-align:right;font-weight:600;">03 &#8212; Final Design</p>
+    <div style="padding:16px 20px;border-bottom:1px solid #D9D9D9;border-right:1px solid #D9D9D9;display:flex;align-items:center;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;background:#1156D0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">03</span>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Asset Batching</p>
+        <p style="font-size:11px;color:#78716c;margin:2px 0 0;">Nanobanana Cloud</p>
+      </div>
     </div>
-    <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">The 30% manual refinement transforms AI output from generic to publication-ready &#8212; correcting proportions, adding hand-drawn texture, and locking character identity.</p>
-  </div>
-
-  <!-- Step 06 -->
-  <div class="pw-step pw-step-r">
-    <div class="pw-card">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 8px;text-transform:uppercase;font-weight:600;">Texture Injection</p>
-      <p style="font-size:14px;font-weight:500;color:#1D3557;margin:0 0 6px;">Hand-drawn texture restoration</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">The 30% manual refinement is not merely cosmetic; it is strictly about removing AI-generated 'visual noise' to meet rigorous professional publishing standards.</p>
+    <div style="padding:16px 20px;border-bottom:1px solid #D9D9D9;display:flex;align-items:center;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;background:#EB431D;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">04</span>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Initial AI Rendering</p>
+        <p style="font-size:11px;color:#78716c;margin:2px 0 0;">70% Completion</p>
+      </div>
     </div>
-    <div class="pw-node" style="border-color:#EB431D;color:#EB431D;">06</div>
-  </div>
-
-  <!-- Step 07 -->
-  <div class="pw-step pw-step-l">
-    <div class="pw-card">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 8px;text-transform:uppercase;font-weight:600;">Consistency Check</p>
-      <p style="font-size:14px;font-weight:500;color:#1D3557;margin:0 0 6px;">Re-create Assistant locks character identity</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;"><strong>Re-create Decodable Book Assistant</strong> locks the 'Character Audit', ensuring zero identity drift across the entire 72-book series.</p>
+    <div style="padding:16px 20px;border-bottom:1px solid #D9D9D9;border-right:1px solid #D9D9D9;display:flex;align-items:center;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;background:#EB431D;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">05</span>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Pedagogical Review</p>
+        <p style="font-size:11px;color:#78716c;margin:2px 0 0;">Alignment Check</p>
+      </div>
     </div>
-    <div class="pw-node" style="border-color:#EB431D;color:#EB431D;">07</div>
-  </div>
-
-  <!-- Character Audit Matrix: Cropped -->
-  <div style="margin:24px 0 32px;padding:0 48px;">
-    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Character Audit &#8212; Identity Consistency Across 72 Books</p>
-    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 4px 16px rgba(0,0,0,0.06);background:#fff;">
-      <img src="/images/ai-illustration/character-consistency.webp" alt="Character audit matrix" style="display:block;width:100%;height:220px;object-fit:cover;object-position:top;">
+    <div style="padding:16px 20px;border-bottom:1px solid #D9D9D9;display:flex;align-items:center;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;background:#EB431D;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">06</span>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Human Refinement</p>
+        <p style="font-size:11px;color:#78716c;margin:2px 0 0;">Textures & Edges</p>
+      </div>
     </div>
-    <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">Every character maintains locked proportions, color palette, and facial features across all scenes &#8212; verified by the Re-create Decodable Book Assistant.</p>
-  </div>
-
-  <!-- ===== PHASE 3: INTEGRATION ===== -->
-  <div class="pw-phase"><span class="pw-phase-tag" style="color:#1A824E;border-color:#1A824E;">08&#8211;10 Integration</span></div>
-
-  <!-- Step 08 -->
-  <div class="pw-step pw-step-r">
-    <div class="pw-card">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1A824E;margin:0 0 8px;text-transform:uppercase;font-weight:600;">Layout-Aware Prep</p>
-      <p style="font-size:14px;font-weight:500;color:#1D3557;margin:0 0 6px;">Pre-planned copy-safe text zones</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">System pre-allocates <strong>Copy-Safe Zones</strong>, ensuring 100% compatibility with in-house InDesign templates for seamless handoff.</p>
+    <div style="padding:16px 20px;border-bottom:1px solid #D9D9D9;border-right:1px solid #D9D9D9;display:flex;align-items:center;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;background:#EB431D;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">07</span>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Character Audit</p>
+        <p style="font-size:11px;color:#78716c;margin:2px 0 0;">Identity Consistency</p>
+      </div>
     </div>
-    <div class="pw-node" style="border-color:#1A824E;color:#1A824E;">08</div>
-  </div>
-
-  <!-- Copy-Safe Zone Demonstration -->
-  <div style="margin:24px 0 32px;padding:0 48px;">
-    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Copy-Safe Zone &#8212; Text Integration Ready</p>
-    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
-      <img src="/images/ai-production/copy-safe-area.webp" alt="Finished illustration spreads with copy-safe text zones marked — pink dashed areas reserved for InDesign text placement" style="display:block;width:100%;height:auto;">
+    <div style="padding:16px 20px;border-bottom:1px solid #D9D9D9;display:flex;align-items:center;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;background:#1A824E;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">08</span>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Layout Integration</p>
+        <p style="font-size:11px;color:#78716c;margin:2px 0 0;">InDesign Copy-Safe</p>
+      </div>
     </div>
-    <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">Pre-allocated text zones (pink) ensure every illustration is delivery-ready for in-house InDesign layout &#8212; no repositioning needed.</p>
-  </div>
-
-  <!-- Step 09 -->
-  <div class="pw-step pw-step-l">
-    <div class="pw-card">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1A824E;margin:0 0 8px;text-transform:uppercase;font-weight:600;">Editorial Approval</p>
-      <p style="font-size:14px;font-weight:500;color:#1D3557;margin:0 0 6px;">Final review via Smartsheet</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Designer and Academic Designer approve final assets through Smartsheet review workflow. Status tracking ensures nothing ships without dual sign-off.</p>
+    <div style="padding:16px 20px;border-right:1px solid #D9D9D9;display:flex;align-items:center;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;background:#1A824E;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">09</span>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Final Proofing</p>
+        <p style="font-size:11px;color:#78716c;margin:2px 0 0;">Visual Logic</p>
+      </div>
     </div>
-    <div class="pw-node" style="border-color:#1A824E;color:#1A824E;">09</div>
-  </div>
-
-  <!-- Step 10 -->
-  <div class="pw-step pw-step-r">
-    <div class="pw-card">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1A824E;margin:0 0 8px;text-transform:uppercase;font-weight:600;">Final Asset Export</p>
-      <p style="font-size:14px;font-weight:500;color:#1D3557;margin:0 0 6px;">300 DPI print-ready output</p>
-      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Approved assets exported at 300 DPI for print production. In-house design team integrates into InDesign templates for final book layout.</p>
+    <div style="padding:16px 20px;display:flex;align-items:center;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;background:#1A824E;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">10</span>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#1D3557;margin:0;">Export & Delivery</p>
+        <p style="font-size:11px;color:#78716c;margin:2px 0 0;">Print-Ready Assets</p>
+      </div>
     </div>
-    <div class="pw-node" style="border-color:#1A824E;color:#1A824E;">10</div>
   </div>
 
-</div>
-
-<!-- ==================== METRICS ==================== -->
-<p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:32px 0 16px;text-transform:uppercase;">Pipeline Metrics</p>
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:48px;">
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;backdrop-filter:blur(10px);">
-    <p style="font-size:28px;font-weight:700;color:#1156D0;margin:0;">10</p>
-    <p style="font-size:12px;color:#78716c;margin:4px 0 0;">Pipeline Steps</p>
-  </div>
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;backdrop-filter:blur(10px);">
-    <p style="font-size:28px;font-weight:700;color:#EB431D;margin:0;">3</p>
-    <p style="font-size:12px;color:#78716c;margin:4px 0 0;">Revision Rounds</p>
-  </div>
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;backdrop-filter:blur(10px);">
-    <p style="font-size:28px;font-weight:700;color:#1A824E;margin:0;">300</p>
-    <p style="font-size:12px;color:#78716c;margin:4px 0 0;">DPI Output</p>
-  </div>
-  <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;backdrop-filter:blur(10px);">
-    <p style="font-size:28px;font-weight:700;color:#F3B013;margin:0;">2</p>
-    <p style="font-size:12px;color:#78716c;margin:4px 0 0;">GPT Agents</p>
+  <!-- Phase Legend -->
+  <div style="display:flex;gap:20px;margin-top:12px;">
+    <div style="display:flex;align-items:center;gap:6px;">
+      <div style="width:10px;height:10px;background:#1156D0;border-radius:1px;"></div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#78716c;margin:0;letter-spacing:0.06em;text-transform:uppercase;">01-03 Foundation</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <div style="width:10px;height:10px;background:#EB431D;border-radius:1px;"></div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#78716c;margin:0;letter-spacing:0.06em;text-transform:uppercase;">04-07 Quality Control</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <div style="width:10px;height:10px;background:#1A824E;border-radius:1px;"></div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#78716c;margin:0;letter-spacing:0.06em;text-transform:uppercase;">08-10 Integration</p>
+    </div>
   </div>
 </div>
 
-<!-- ==================== CRITICAL INSIGHT ==================== -->
-<div style="background:rgba(17,86,208,0.05);border:1px solid #D9D9D9;border-left:3px solid #1156D0;padding:28px 28px 28px 32px;border-radius:2px;margin-bottom:48px;backdrop-filter:blur(10px);">
-  <p style="font-size:16px;font-weight:500;color:#1D3557;margin:0 0 12px;">
-    Technical Summary
+<!-- ==================== MODULE 02 ==================== -->
+<div style="margin-bottom:64px;">
+  <div style="border-top:4px solid #EB431D;padding-top:20px;margin-bottom:24px;">
+    <div style="display:flex;align-items:baseline;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:#EB431D;line-height:1;">02</span>
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#EB431D;margin:0 0 4px;text-transform:uppercase;font-weight:600;">Human-AI Collaboration Ratio</p>
+        <p style="font-size:16px;font-weight:500;color:#1D3557;margin:0;">Efficiency Metrics: 70/30 Rule</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 70/30 Split Bar -->
+  <div style="display:flex;height:48px;border-radius:2px;overflow:hidden;margin-bottom:20px;">
+    <div style="width:70%;background:#1156D0;display:flex;align-items:center;padding:0 20px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:white;margin:0;">AI 70%</p>
+    </div>
+    <div style="width:30%;background:#EB431D;display:flex;align-items:center;padding:0 16px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:white;margin:0;">Human 30%</p>
+    </div>
+  </div>
+
+  <!-- Breakdown -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+    <div style="padding:20px;background:rgba(17,86,208,0.04);border-radius:2px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#1156D0;margin:0 0 10px;text-transform:uppercase;font-weight:600;">AI Handles</p>
+      <p style="font-size:13px;color:#78716c;line-height:1.7;margin:0;">Lighting, base coloring, perspective, and initial composition.</p>
+    </div>
+    <div style="padding:20px;background:rgba(235,67,29,0.04);border-radius:2px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#EB431D;margin:0 0 10px;text-transform:uppercase;font-weight:600;">Human Focuses On</p>
+      <p style="font-size:13px;color:#78716c;line-height:1.7;margin:0;">High-value tasks: emotional expression, pedagogical accuracy, and artistic texture.</p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div style="border:1px solid #D9D9D9;border-radius:2px;padding:24px;text-align:center;">
+      <p style="font-size:36px;font-weight:700;color:#1156D0;margin:0;">65%</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716c;margin:8px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Time Saved Per Book</p>
+      <p style="font-size:12px;color:#a8a29e;margin:4px 0 0;">vs. traditional methods</p>
+    </div>
+    <div style="border:1px solid #D9D9D9;border-radius:2px;padding:24px;text-align:center;">
+      <p style="font-size:36px;font-weight:700;color:#1A824E;margin:0;">98%</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716c;margin:8px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Consistency Rate</p>
+      <p style="font-size:12px;color:#a8a29e;margin:4px 0 0;">initial character audit pass</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MODULE 03 ==================== -->
+<div style="margin-bottom:64px;">
+  <div style="border-top:4px solid #F3B013;padding-top:20px;margin-bottom:24px;">
+    <div style="display:flex;align-items:baseline;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:#F3B013;line-height:1;">03</span>
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#F3B013;margin:0 0 4px;text-transform:uppercase;font-weight:600;">Scalability & Team Management</p>
+        <p style="font-size:16px;font-weight:500;color:#1D3557;margin:0;">Managing 6 Illustrators at Scale</p>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 24px;">
+    The system acts as a "Central Brain". Instead of 6 illustrators drawing in 6 different styles, they act as Refinement Experts within a unified AI-driven framework.
   </p>
-  <p style="font-family:Georgia,serif;font-size:15px;line-height:1.75;color:#78716c;margin:0;">
-    The challenge wasn't just illustration details, but designing and stabilizing the Custom GPT prompt architecture. Once the architecture was locked, production achieved linear scalability.
-  </p>
+
+  <!-- Advantages -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div style="border:1px solid #D9D9D9;border-radius:2px;padding:24px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#F3B013;margin:0 0 10px;text-transform:uppercase;font-weight:600;">Onboarding Speed</p>
+      <p style="font-size:28px;font-weight:700;color:#1D3557;margin:0 0 6px;">48 hrs</p>
+      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">New illustrators match the series style using Prompt Architecture.</p>
+    </div>
+    <div style="border:1px solid #D9D9D9;border-radius:2px;padding:24px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#F3B013;margin:0 0 10px;text-transform:uppercase;font-weight:600;">Parallel Production</p>
+      <p style="font-size:28px;font-weight:700;color:#1D3557;margin:0 0 6px;">12 books</p>
+      <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Simultaneous development per production cycle.</p>
+    </div>
+  </div>
 </div>
 
-<!-- ==================== BOTTOM NAVIGATION ==================== -->
-<div style="display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:1px solid #D9D9D9;">
-  <a class="pw-nav-link" href="/#/ai/style-asset-architecture" style="color:#a8a29e;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;">
-    &#8592; PREVIOUS: STYLE &amp; ASSET ARCHITECTURE
-  </a>
-  <a class="pw-nav-link" href="/#/work" style="color:#a8a29e;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;">
-    NEXT: PERSONAL WORK &#8594;
-  </a>
+<!-- ==================== MODULE 04 ==================== -->
+<div style="margin-bottom:48px;">
+  <div style="border-top:4px solid #1A824E;padding-top:20px;margin-bottom:24px;">
+    <div style="display:flex;align-items:baseline;gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:#1A824E;line-height:1;">04</span>
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#1A824E;margin:0 0 4px;text-transform:uppercase;font-weight:600;">Quality Control & Error Handling</p>
+        <p style="font-size:16px;font-weight:500;color:#1D3557;margin:0;">The "Kill-Switch" for AI Noise</p>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 24px;">
+    Production isn't just about speed; it's about Stability. Our workflow includes a "Style Drift" check every 5 books to ensure the AI doesn't evolve away from the established pedagogical standards.
+  </p>
+
+  <!-- QC Process -->
+  <div style="border:1px solid #D9D9D9;border-radius:2px;overflow:hidden;">
+    <div style="display:flex;">
+      <div style="flex:1;padding:20px;border-right:1px solid #D9D9D9;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#1A824E;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Every 5 Books</p>
+        <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 4px;">Style Drift Check</p>
+        <p style="font-size:12px;color:#78716c;line-height:1.6;margin:0;">Compare current output against locked Visual DNA parameters.</p>
+      </div>
+      <div style="flex:1;padding:20px;border-right:1px solid #D9D9D9;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#EB431D;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">If Drift Detected</p>
+        <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 4px;">Recalibrate Prompt</p>
+        <p style="font-size:12px;color:#78716c;line-height:1.6;margin:0;">Adjust instruction tokens, not the output. Fix the source.</p>
+      </div>
+      <div style="flex:1;padding:20px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#1156D0;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Result</p>
+        <p style="font-size:14px;font-weight:600;color:#1D3557;margin:0 0 4px;">Pipeline Stable</p>
+        <p style="font-size:12px;color:#78716c;line-height:1.6;margin:0;">72 books, zero cumulative visual deviation.</p>
+      </div>
+    </div>
+    <div style="padding:14px 20px;background:rgba(26,130,78,0.04);border-top:1px solid #D9D9D9;display:flex;align-items:center;gap:10px;">
+      <div style="width:3px;height:20px;background:#1A824E;border-radius:1px;flex-shrink:0;"></div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#1D3557;margin:0;font-weight:500;">Principle: Fix the instruction, not the output.</p>
+    </div>
+  </div>
 </div>
 
 </div>`
@@ -1128,13 +1048,13 @@ export const AI_ITEMS: AiItem[] = [
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:48px;">
     <div style="padding:16px;border:1px solid #D9D9D9;border-top:none;border-radius:0 0 0 2px;background:rgba(0,0,0,0.02);">
       <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;">
-        <img src="/images/ai-orchestrated/wix-before.webp" alt="Old Wix website" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;">
+        <img src="/images/ai-orchestrated/wix-before.webp" alt="Old Wix website" style="display:block;width:100%;height:auto;">
       </div>
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:8px 0 0;text-transform:uppercase;">Wix template — previous version</p>
     </div>
     <div style="padding:16px;border:1px solid #D9D9D9;border-top:none;border-left:none;border-radius:0 0 2px 0;background:rgba(255,255,255,0.3);">
       <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;">
-        <img src="/images/ai-orchestrated/site-after.webp" alt="New website" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;">
+        <img src="/images/ai-orchestrated/site-after.webp" alt="New website" style="display:block;width:100%;height:auto;">
       </div>
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:8px 0 0;text-transform:uppercase;">yuqilu.com — AI-orchestrated version</p>
     </div>
