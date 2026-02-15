@@ -810,6 +810,20 @@ export const AI_ITEMS: AiItem[] = [
     <div class="pw-node" style="border-color:#EB431D;color:#EB431D;">04</div>
   </div>
 
+  <!-- Academic Review Evidence -->
+  <div style="margin:24px 0 32px;padding:0 48px;">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Academic Designer Feedback</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+        <img src="/images/ai-production/academic-annotation.webp" alt="Storyboard sketch with Academic Designer feedback — adjusting teacher expression for age-appropriate tone" style="display:block;width:100%;height:auto;">
+      </div>
+      <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+        <img src="/images/ai-production/academic-review.webp" alt="Figma review comments from Academic Designer verifying decodable text compliance" style="display:block;width:100%;height:auto;">
+      </div>
+    </div>
+    <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">Academic Designer reviews every spread in Figma &#8212; verifying vocabulary constraints, character expressions, and educational tone before illustration proceeds.</p>
+  </div>
+
   <!-- Step 05 -->
   <div class="pw-step pw-step-l">
     <div class="pw-card">
@@ -818,6 +832,20 @@ export const AI_ITEMS: AiItem[] = [
       <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Illustrators correct compositional errors, fix anatomical issues, and adjust proportions through 3 revision rounds in Figma workspace.</p>
     </div>
     <div class="pw-node" style="border-color:#EB431D;color:#EB431D;">05</div>
+  </div>
+
+  <!-- Character Evolution: 3-Step Refinement -->
+  <div style="margin:24px 0 32px;padding:0 48px;">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Refinement Evolution</p>
+    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 4px 16px rgba(0,0,0,0.06);background:#fff;">
+      <img src="/images/ai-production/character-evolution.webp" alt="Character refinement evolution — MidJourney raw output to first manual refinement to final character design" style="display:block;width:100%;height:auto;">
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:8px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#c0392b;text-transform:uppercase;margin:0;font-weight:600;">01 &#8212; MidJourney Raw</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#F3B013;text-transform:uppercase;margin:0;text-align:center;font-weight:600;">02 &#8212; First Refine</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#1A824E;text-transform:uppercase;margin:0;text-align:right;font-weight:600;">03 &#8212; Final Design</p>
+    </div>
+    <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">The 30% manual refinement transforms AI output from generic to publication-ready &#8212; correcting proportions, adding hand-drawn texture, and locking character identity.</p>
   </div>
 
   <!-- Step 06 -->
@@ -840,6 +868,15 @@ export const AI_ITEMS: AiItem[] = [
     <div class="pw-node" style="border-color:#EB431D;color:#EB431D;">07</div>
   </div>
 
+  <!-- Character Audit Matrix -->
+  <div style="margin:24px 0 32px;padding:0 48px;">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Character Audit &#8212; Identity Consistency Across 72 Books</p>
+    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 4px 16px rgba(0,0,0,0.06);background:#fff;">
+      <img src="/images/ai-illustration/character-consistency.webp" alt="Character audit matrix — multiple characters maintaining consistent identity across different scenes, poses, and environments" style="display:block;width:100%;height:auto;">
+    </div>
+    <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">Every character maintains locked proportions, color palette, and facial features across all scenes &#8212; verified by the Re-create Decodable Book Assistant.</p>
+  </div>
+
   <!-- ===== PHASE 3: INTEGRATION ===== -->
   <div class="pw-phase"><span class="pw-phase-tag" style="color:#1A824E;border-color:#1A824E;">08&#8211;10 Integration</span></div>
 
@@ -851,6 +888,15 @@ export const AI_ITEMS: AiItem[] = [
       <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">System pre-allocates <strong>Copy-Safe Zones</strong>, ensuring 100% compatibility with in-house InDesign templates for seamless handoff.</p>
     </div>
     <div class="pw-node" style="border-color:#1A824E;color:#1A824E;">08</div>
+  </div>
+
+  <!-- Copy-Safe Zone Demonstration -->
+  <div style="margin:24px 0 32px;padding:0 48px;">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Copy-Safe Zone &#8212; Text Integration Ready</p>
+    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
+      <img src="/images/ai-production/copy-safe-area.webp" alt="Finished illustration spreads with copy-safe text zones marked — pink dashed areas reserved for InDesign text placement" style="display:block;width:100%;height:auto;">
+    </div>
+    <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">Pre-allocated text zones (pink) ensure every illustration is delivery-ready for in-house InDesign layout &#8212; no repositioning needed.</p>
   </div>
 
   <!-- Step 09 -->
