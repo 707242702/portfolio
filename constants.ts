@@ -489,7 +489,7 @@ export const AI_ITEMS: AiItem[] = [
     <div style="width:56px;flex-shrink:0;background:#EB431D;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
       <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">01</span>
     </div>
-    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
+    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);max-width:440px;">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Asset Architecture Logic</p>
       <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 12px;">Structured framework for 72-book visual consistency</p>
       <p style="font-size:14px;color:#78716c;line-height:1.7;margin:0 0 20px;">
@@ -505,7 +505,7 @@ export const AI_ITEMS: AiItem[] = [
 
   <!-- Asset Library -->
   <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;">
-    <img src="/images/ai-style/assets-library.webp" alt="Character asset library — poses, expressions, environments" style="display:block;width:100%;height:auto;">
+    <img src="/images/ai-style/assets-library.webp" alt="Character asset library — poses, expressions, environments" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;">
   </div>
   <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 24px;text-transform:uppercase;">Prompt-based identity control across characters, poses &amp; environments</p>
 
@@ -545,7 +545,7 @@ export const AI_ITEMS: AiItem[] = [
     <div style="width:56px;flex-shrink:0;background:#1156D0;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
       <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">02</span>
     </div>
-    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
+    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);max-width:440px;">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Proprietary AI Agents</p>
       <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">Two complementary Custom GPTs as system engines</p>
       <p style="font-size:14px;color:#78716c;line-height:1.7;margin:0;">
@@ -584,7 +584,7 @@ export const AI_ITEMS: AiItem[] = [
 
   <!-- GPT Workflow Screenshot -->
   <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;">
-    <img src="/images/ai-style/gpt-workflow.webp" alt="Custom GPT interface — Re-create Decodable Book Assistant" style="display:block;width:100%;height:auto;">
+    <img src="/images/ai-style/gpt-workflow.webp" alt="Custom GPT interface — Re-create Decodable Book Assistant" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;">
   </div>
   <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 48px;text-transform:uppercase;">Custom GPT Interface: Programming narrative constraints into the generation engine</p>
 
@@ -593,7 +593,7 @@ export const AI_ITEMS: AiItem[] = [
     <div style="width:56px;flex-shrink:0;background:#F3B013;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
       <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">03</span>
     </div>
-    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
+    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);max-width:440px;">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#F3B013;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Prompt Engineering Architecture</p>
       <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">Systematized instruction components</p>
       <p style="font-size:14px;color:#78716c;line-height:1.7;margin:0;">
@@ -625,7 +625,7 @@ export const AI_ITEMS: AiItem[] = [
 
   <!-- Copy-Safe Area Diagram -->
   <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;">
-    <img src="/images/ai-style/copy-safe-area.webp" alt="AI-generated spreads with copy-safe text zones marked" style="display:block;width:100%;height:auto;">
+    <img src="/images/ai-style/copy-safe-area.webp" alt="AI-generated spreads with copy-safe text zones marked" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;">
   </div>
   <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 48px;text-transform:uppercase;">Layout Integration: AI-generated assets with pre-planned copy-safe areas (pink dashed = text zone)</p>
 
@@ -634,7 +634,7 @@ export const AI_ITEMS: AiItem[] = [
     <div style="width:56px;flex-shrink:0;background:#1A824E;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
       <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">04</span>
     </div>
-    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
+    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);max-width:440px;">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1A824E;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Version Evolution</p>
       <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">From manual intuition to architectural production</p>
       <p style="font-size:14px;color:#78716c;line-height:1.7;margin:0;">
@@ -682,6 +682,51 @@ export const AI_ITEMS: AiItem[] = [
       </tbody>
     </table>
   </div>
+
+  <!-- ==================== 05 — VISUAL DEFINITION & STABILITY ==================== -->
+  <div style="display:flex;gap:0;margin-bottom:24px;">
+    <div style="width:56px;flex-shrink:0;background:#c0392b;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">05</span>
+    </div>
+    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);max-width:440px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c0392b;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Refinement Evolution</p>
+      <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">From AI raw output to publication-ready character</p>
+      <p style="font-size:14px;color:#78716c;line-height:1.7;margin:0;">
+        The 30% manual refinement is not cosmetic &#8212; it is the quality gate that transforms generic AI output into print-standard illustration. Each character passes through three defined stages.
+      </p>
+    </div>
+  </div>
+
+  <!-- Refinement Evolution Image -->
+  <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;background:#fff;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;">
+    <img src="/images/ai-production/character-evolution.webp" alt="Character refinement evolution — MidJourney raw output to first manual refinement to final character design" style="display:block;max-width:100%;max-height:100%;object-fit:contain;">
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-bottom:8px;">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#c0392b;text-transform:uppercase;margin:0;font-weight:600;">01 &#8212; MidJourney Raw</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#F3B013;text-transform:uppercase;margin:0;text-align:center;font-weight:600;">02 &#8212; First Refine</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#1A824E;text-transform:uppercase;margin:0;text-align:right;font-weight:600;">03 &#8212; Final Design</p>
+  </div>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 48px;text-transform:uppercase;">Correcting proportions, adding hand-drawn texture, and locking character identity</p>
+
+  <!-- Character Audit Matrix -->
+  <div style="display:flex;gap:0;margin-bottom:24px;">
+    <div style="width:56px;flex-shrink:0;background:#c0392b;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">06</span>
+    </div>
+    <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);max-width:440px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c0392b;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Character Audit</p>
+      <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">Identity consistency verified across 72 books</p>
+      <p style="font-size:14px;color:#78716c;line-height:1.7;margin:0;">
+        Every character maintains locked proportions, color palette, and facial features across all scenes and environments &#8212; verified by the Re-create Decodable Book Assistant.
+      </p>
+    </div>
+  </div>
+
+  <!-- Character Matrix Image -->
+  <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:8px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:#fff;">
+    <img src="/images/ai-illustration/character-consistency.webp" alt="Character audit matrix — multiple characters maintaining consistent identity across different scenes, poses, and environments" style="display:block;max-width:100%;max-height:100%;object-fit:contain;">
+  </div>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 48px;text-transform:uppercase;">Zero identity drift: characters verified across scenes, poses &amp; environments</p>
 
   <!-- KEY METRICS -->
   <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 16px;text-transform:uppercase;">System Metrics</p>
@@ -733,7 +778,7 @@ export const AI_ITEMS: AiItem[] = [
 .pw-step{display:flex;padding:12px 0;position:relative}
 .pw-step-l{justify-content:flex-start}
 .pw-step-r{justify-content:flex-end}
-.pw-card{width:calc(50% - 36px);background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-radius:2px;padding:24px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background 0.3s ease,border-color 0.3s ease}
+.pw-card{width:calc(50% - 36px);max-width:440px;background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-radius:2px;padding:24px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background 0.3s ease,border-color 0.3s ease}
 .pw-card:hover{background:rgba(255,255,255,0.85);border-color:#a8a29e}
 .pw-node{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;z-index:2;background:#E5DED0}
 .pw-phase{text-align:center;padding:32px 0 16px;position:relative;z-index:2}
@@ -832,20 +877,6 @@ export const AI_ITEMS: AiItem[] = [
       <p style="font-size:13px;color:#78716c;line-height:1.6;margin:0;">Illustrators correct compositional errors, fix anatomical issues, and adjust proportions through 3 revision rounds in Figma workspace.</p>
     </div>
     <div class="pw-node" style="border-color:#EB431D;color:#EB431D;">05</div>
-  </div>
-
-  <!-- Character Evolution: 3-Step Refinement -->
-  <div style="margin:24px 0 32px;padding:0 48px;">
-    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">Refinement Evolution</p>
-    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;box-shadow:0 4px 16px rgba(0,0,0,0.06);background:#fff;">
-      <img src="/images/ai-production/character-evolution.webp" alt="Character refinement evolution — MidJourney raw output to first manual refinement to final character design" style="display:block;width:100%;height:auto;">
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:8px;">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#c0392b;text-transform:uppercase;margin:0;font-weight:600;">01 &#8212; MidJourney Raw</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#F3B013;text-transform:uppercase;margin:0;text-align:center;font-weight:600;">02 &#8212; First Refine</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#1A824E;text-transform:uppercase;margin:0;text-align:right;font-weight:600;">03 &#8212; Final Design</p>
-    </div>
-    <p style="font-family:Georgia,serif;font-size:13px;color:#a8a29e;margin:8px 0 0;line-height:1.6;">The 30% manual refinement transforms AI output from generic to publication-ready &#8212; correcting proportions, adding hand-drawn texture, and locking character identity.</p>
   </div>
 
   <!-- Step 06 -->
