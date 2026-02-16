@@ -145,7 +145,7 @@ export const AI_ITEMS: AiItem[] = [
     <p style="font-size:20px;font-weight:500;line-height:1.55;color:#1D3557;margin:0 0 16px;">
       Scaling Pedagogical Storytelling
     </p>
-    <p style="font-family:Georgia,serif;font-size:18px;line-height:1.75;color:#57534e;margin:0;">
+    <p style="font-family:inherit;font-size:18px;line-height:1.75;color:#57534e;margin:0;">
       A 72-book evolution from hand-drawn storyboards to AI-integrated visual systems for Decodable Phonics \u2014 encoding pedagogical intent directly into AI instructions while preserving the artistic soul required for educational publishing.
     </p>
   </div>
@@ -158,7 +158,7 @@ export const AI_ITEMS: AiItem[] = [
     <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Evolution of Pedagogical Control</p>
       <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 12px;">From Hand-drawn Logic to AI Integration</p>
-      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
+      <p style="font-family:inherit;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
         The transition from Phase 1 to Phase 4 was not about replacing the illustrator, but about encoding pedagogical intent. We moved from physical storyboarding to a system where narrative constraints are embedded directly into AI instructions.
       </p>
     </div>
@@ -202,7 +202,7 @@ export const AI_ITEMS: AiItem[] = [
     <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Visual Language Rules for K-2</p>
       <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">Designed for early readers</p>
-      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
+      <p style="font-family:inherit;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
         A visual specification system built around the cognitive needs of K-2 learners \u2014 eliminating AI smoothness and visual noise to create warm, readable illustrations.
       </p>
     </div>
@@ -212,7 +212,7 @@ export const AI_ITEMS: AiItem[] = [
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;">
     <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-radius:2px 0 0 2px;padding:24px;">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:700;">A \u2014 Style Origin & Comfort</p>
-      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
+      <p style="font-family:inherit;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
         We use rough brush edges and visible textures to eliminate the \u201Cuncanny valley\u201D of AI smoothness, providing a warm, hand-drawn feel that reduces visual fatigue for children.
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:6px;">
@@ -223,7 +223,7 @@ export const AI_ITEMS: AiItem[] = [
     </div>
     <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:24px;">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:700;">B \u2014 Strategic Simplification</p>
-      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
+      <p style="font-family:inherit;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
         No Line Art Policy. By removing harsh outlines, we reduce visual noise, allowing students to focus on core character actions and their correspondence with the text.
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:6px;">
@@ -263,7 +263,7 @@ export const AI_ITEMS: AiItem[] = [
     <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#F3B013;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Cognitive & Layout Logic</p>
       <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 8px;">Engineering visual flow for young minds</p>
-      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
+      <p style="font-family:inherit;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
         Every illustration is structurally designed to support word-decoding and phonics reading, ensuring visuals assist rather than distract from the learning process.
       </p>
     </div>
@@ -272,7 +272,7 @@ export const AI_ITEMS: AiItem[] = [
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;">
     <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-radius:2px 0 0 2px;padding:24px;">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#F3B013;margin:0 0 16px;text-transform:uppercase;font-weight:700;">A \u2014 Proportional Logic</p>
-      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
+      <p style="font-family:inherit;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
         Standardized head-to-body ratios for all K-2 characters to ensure emotional expressions and physical actions are exaggerated and easily decodable by young minds.
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:6px;">
@@ -283,7 +283,7 @@ export const AI_ITEMS: AiItem[] = [
     </div>
     <div style="background:rgba(255,255,255,0.4);border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:24px;">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#F3B013;margin:0 0 16px;text-transform:uppercase;font-weight:700;">B \u2014 Copy-Safe Composition</p>
-      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
+      <p style="font-family:inherit;font-size:14px;color:#78716c;line-height:1.7;margin:0 0 16px;">
         Every illustration systemically reserves negative space for text. The visual flow is engineered to guide the eye from left to right, mirroring the phonics reading path.
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:6px;">
@@ -308,7 +308,7 @@ export const AI_ITEMS: AiItem[] = [
     <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1A824E;margin:0 0 16px;text-transform:uppercase;font-weight:600;">The Art Director's Refinement</p>
       <p style="font-size:15px;font-weight:500;color:#1D3557;margin:0 0 12px;">Controlled Imperfection</p>
-      <p style="font-family:Georgia,serif;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
+      <p style="font-family:inherit;font-size:14px;color:#78716c;line-height:1.7;margin:0;">
         AI-generated outputs often suffer from \u201Cover-polishing.\u201D Our system includes a mandatory 30% Human Refinement stage to restore organic irregularities, ensuring the final print-ready assets possess the artistic soul required for educational publishing.
       </p>
     </div>
@@ -378,7 +378,7 @@ export const AI_ITEMS: AiItem[] = [
     <p style="font-size:18px;line-height:1.65;color:#1D3557;margin:0 0 12px;">
       AI tools were not used as replacements. They functioned as accelerators.
     </p>
-    <p style="font-family:Georgia,serif;font-size:16px;line-height:1.7;color:#78716c;margin:0;">
+    <p style="font-family:inherit;font-size:16px;line-height:1.7;color:#78716c;margin:0;">
       The challenge wasn\u2019t just illustration; it was maintaining pedagogical integrity at scale. This system evolved from manual craftsmanship into a high-efficiency engine that turned 72 complex decodable books into a streamlined production reality.
     </p>
   </div>
@@ -397,10 +397,10 @@ export const AI_ITEMS: AiItem[] = [
 
   <!-- ==================== LEAD-IN ==================== -->
   <div style="margin-bottom:48px;">
-    <p style="font-family:Georgia,serif;font-size:22px;line-height:1.6;color:#1D3557;margin:0 0 20px;font-weight:400;">
+    <p style="font-family:inherit;font-size:22px;line-height:1.6;color:#1D3557;margin:0 0 20px;font-weight:400;">
       From manual compositing to genetic-level instruction control.
     </p>
-    <p style="font-family:Georgia,serif;font-size:16px;line-height:1.8;color:#78716c;margin:0 0 24px;">
+    <p style="font-family:inherit;font-size:16px;line-height:1.8;color:#78716c;margin:0 0 24px;">
       A dynamic prompt-based architecture that encodes artistic DNA into the generative process, ensuring zero visual drift across 72 books without the need for manual compositing.
     </p>
     <div style="background:rgba(0,0,0,0.03);border:1px solid #D9D9D9;border-radius:2px;padding:16px 20px;display:flex;align-items:center;gap:12px;">
@@ -419,7 +419,7 @@ export const AI_ITEMS: AiItem[] = [
       </div>
     </div>
 
-    <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 20px;">
+    <p style="font-family:inherit;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 20px;">
       Managing consistency for 72 books requires more than a style guide \u2014 it requires Trait Hard-coding. We translate visual DNA (skin tone, hair texture, body proportions) into immutable Identity Tokens. The AI doesn\u2019t just \u201Cdraw\u201D Max; it executes a fixed genetic script, ensuring the same character emerges in every single generation.
     </p>
 
@@ -479,7 +479,7 @@ export const AI_ITEMS: AiItem[] = [
       </div>
     </div>
 
-    <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 20px;">
+    <p style="font-family:inherit;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 20px;">
       We eliminated the need for manual compositing by developing a system of Visual Anchors. Instead of a physical library of props, we use a Prompt-based Material Registry. By hard-coding environmental variables \u2014 such as \u2018Matte Ceramic Texture\u2019 or \u2018Soft K-2 Classroom Lighting\u2019 \u2014 into the global architecture, the AI generates consistent objects and backgrounds directly within the scene.
     </p>
 
@@ -505,7 +505,7 @@ export const AI_ITEMS: AiItem[] = [
       </div>
     </div>
 
-    <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 24px;">
+    <p style="font-family:inherit;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 24px;">
       The Master Template is the single source of truth that enables 6 illustrators to produce unified results. Our architecture uses Global Style Variables \u2014 a fixed technical suffix appended to every prompt \u2014 to enforce brush weight, color temperature, and edge treatment automatically.
     </p>
 
@@ -570,7 +570,7 @@ export const AI_ITEMS: AiItem[] = [
       </div>
     </div>
 
-    <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 20px;">
+    <p style="font-family:inherit;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 20px;">
       Our audit process focuses on System Integrity. We don\u2019t check for \u201Ccompositing errors\u201D because there is no manual assembly. Instead, we monitor Prompt Drift \u2014 detecting if the AI has deviated from the established Visual DNA. If a character looks off, we recalibrate the instruction, ensuring the entire pipeline remains stable and scalable.
     </p>
 
@@ -645,10 +645,10 @@ export const AI_ITEMS: AiItem[] = [
 
 <!-- ==================== LEAD-IN ==================== -->
 <div style="margin-bottom:56px;">
-  <p style="font-family:Georgia,serif;font-size:22px;line-height:1.6;color:#1D3557;margin:0 0 16px;font-weight:400;">
+  <p style="font-family:inherit;font-size:22px;line-height:1.6;color:#1D3557;margin:0 0 16px;font-weight:400;">
     Systematic Production Cycle
   </p>
-  <p style="font-family:Georgia,serif;font-size:16px;line-height:1.8;color:#78716c;margin:0;">
+  <p style="font-family:inherit;font-size:16px;line-height:1.8;color:#78716c;margin:0;">
     To manage a 72-book series, we moved beyond individual creativity to a Synchronized Pipeline. This workflow ensures that whether it's Book 1 or Book 72, the quality remains indistinguishable.
   </p>
 </div>
@@ -817,7 +817,7 @@ export const AI_ITEMS: AiItem[] = [
     </div>
   </div>
 
-  <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 24px;">
+  <p style="font-family:inherit;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 24px;">
     The system acts as a "Central Brain". Instead of 6 illustrators drawing in 6 different styles, they act as Refinement Experts within a unified AI-driven framework.
   </p>
 
@@ -848,7 +848,7 @@ export const AI_ITEMS: AiItem[] = [
     </div>
   </div>
 
-  <p style="font-family:Georgia,serif;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 24px;">
+  <p style="font-family:inherit;font-size:15px;color:#78716c;line-height:1.8;margin:0 0 24px;">
     Production isn't just about speed; it's about Stability. Our workflow includes a "Style Drift" check every 5 books to ensure the AI doesn't evolve away from the established pedagogical standards.
   </p>
 
@@ -894,10 +894,10 @@ export const AI_ITEMS: AiItem[] = [
     <p style="font-size:20px;font-weight:500;line-height:1.55;color:#1D3557;margin:0 0 16px;">
       Built as a modular, AI-driven web system.
     </p>
-    <p style="font-family:Georgia,serif;font-size:18px;line-height:1.75;color:#57534e;margin:0 0 12px;">
+    <p style="font-family:inherit;font-size:18px;line-height:1.75;color:#57534e;margin:0 0 12px;">
       This project documents how I built, deployed, and optimized yuqilu.com through generative tools, structured prompts, and a controlled deployment pipeline — without writing code manually.
     </p>
-    <p style="font-family:Georgia,serif;font-size:18px;line-height:1.75;color:#57534e;margin:0;">
+    <p style="font-family:inherit;font-size:18px;line-height:1.75;color:#57534e;margin:0;">
       The process shifts the role of the designer from pixel-pusher to system director — defining rules, aesthetic constraints, and interaction models that the AI executes.
     </p>
   </div>
@@ -934,7 +934,7 @@ export const AI_ITEMS: AiItem[] = [
   </div>
 
   <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#a8a29e;margin:0 0 12px;text-transform:uppercase;">System Architecture</p>
-  <p style="font-family:Georgia,serif;font-size:16px;color:#78716c;margin:0 0 24px;">Prompt → Generate → Version → Deploy → Domain</p>
+  <p style="font-family:inherit;font-size:16px;color:#78716c;margin:0 0 24px;">Prompt → Generate → Version → Deploy → Domain</p>
 
   <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;margin-bottom:8px;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
     <img src="/images/ai-orchestrated/aistudio-interface.webp" alt="AI Studio interface" style="display:block;width:100%;height:auto;">
@@ -1117,7 +1117,7 @@ export const AI_ITEMS: AiItem[] = [
     <p style="font-size:18px;line-height:1.65;color:#1D3557;margin:0 0 8px;">
       This project reframes frontend development as system orchestration.
     </p>
-    <p style="font-family:Georgia,serif;font-size:16px;line-height:1.7;color:#78716c;margin:0;">
+    <p style="font-family:inherit;font-size:16px;line-height:1.7;color:#78716c;margin:0;">
       The output is not just a website — it's a reusable production model:
     </p>
   </div>
@@ -1139,6 +1139,269 @@ export const AI_ITEMS: AiItem[] = [
       <p style="font-size:13px;font-weight:500;color:#1D3557;margin:0;">Fast Iteration</p>
     </div>
   </div>
+
+</div>`
+  },
+  {
+    id: 'ai-app-gallery',
+    title: 'AI Studio\nApp Gallery',
+    subtitle: 'INTERNAL TOOLING',
+    description: 'If the right tool doesn\'t exist, I build it.',
+    fullDescription: ' ',
+    content: [],
+    tags: ['AI Studio', 'Gemini API', 'React', 'Internal Tools'],
+    customHtml: `<div style="width:100%;">
+
+<style>
+  .app-tab-radio { display:none; }
+  .app-panel-1, .app-panel-2, .app-panel-3 { display:none; }
+  #appTab1:checked ~ .app-tab-panels .app-panel-1 { display:block; }
+  #appTab2:checked ~ .app-tab-panels .app-panel-2 { display:block; }
+  #appTab3:checked ~ .app-tab-panels .app-panel-3 { display:block; }
+  .app-gallery-img { cursor:pointer;transition:opacity 0.2s; }
+  .app-gallery-img:hover { opacity:0.85; }
+  .app-lightbox { display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;cursor:pointer; }
+  .app-lightbox:target { display:flex; }
+  .app-lightbox img { max-width:90vw;max-height:90vh;object-fit:contain;border-radius:2px; }
+  .app-lightbox-close { position:fixed;top:20px;right:24px;font-size:24px;color:white;text-decoration:none;font-family:'JetBrains Mono',monospace;z-index:10000; }
+  .app-tab-label { cursor:pointer;flex:1;padding:14px 20px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:#78716c;background:rgba(0,0,0,0.03);border:1px solid #D9D9D9;border-radius:2px;transition:all 0.3s;text-align:center; }
+  .app-tab-label:hover { color:#1D3557;background:rgba(0,0,0,0.06); }
+  #appTab1:checked ~ .app-tab-bar .app-label-1 { color:white;background:#EB431D;border-color:#EB431D; }
+  #appTab2:checked ~ .app-tab-bar .app-label-2 { color:white;background:#1156D0;border-color:#1156D0; }
+  #appTab3:checked ~ .app-tab-bar .app-label-3 { color:white;background:#1A824E;border-color:#1A824E; }
+</style>
+
+<!-- THE MINDSET -->
+<div style="margin-bottom:40px;">
+  <p style="font-size:22px;font-weight:600;color:#1D3557;margin:0 0 16px;line-height:1.4;">
+    "If the shoe doesn't fit, I make my own."
+  </p>
+  <p style="font-size:14px;color:#57534e;line-height:1.85;margin:0;">
+    Every app here was born from a real obstacle I hit in work or life. Instead of waiting for existing software to catch up, I'd rather grab raw materials like Gemini API and assemble exactly the productivity I need. This shift from "user" to "creator" has been my biggest takeaway from the AI era.
+  </p>
+</div>
+
+<!-- TAB SYSTEM (CSS-only) -->
+<input type="radio" name="appTabs" id="appTab1" class="app-tab-radio" checked>
+<input type="radio" name="appTabs" id="appTab2" class="app-tab-radio">
+<input type="radio" name="appTabs" id="appTab3" class="app-tab-radio">
+
+<!-- TAB BAR -->
+<div class="app-tab-bar" style="display:flex;gap:12px;margin-bottom:32px;">
+  <label for="appTab1" class="app-tab-label app-label-1">01 Texture_Lab</label>
+  <label for="appTab2" class="app-tab-label app-label-2">02 IP_Engine</label>
+  <label for="appTab3" class="app-tab-label app-label-3">03 Video_Deco</label>
+</div>
+
+<!-- TAB PANELS -->
+<div class="app-tab-panels">
+
+  <!-- ==================== TAB 1: TEXTURE_LAB ==================== -->
+  <div class="app-panel-1">
+
+    <div style="display:flex;gap:0;margin-bottom:24px;">
+      <div style="width:56px;flex-shrink:0;background:#EB431D;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">01</span>
+      </div>
+      <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Texture Lab — Illustration Texture Converter</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;font-size:13px;line-height:1.7;color:#57534e;">
+          <div style="padding-right:16px;border-right:1px solid #e7e5e4;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#c0392b;margin:0 0 6px;text-transform:uppercase;font-weight:600;">The Itch</p>
+            <p style="margin:0;">AI-generated images always have that unmistakable "plastic" smoothness you can't unsee.</p>
+          </div>
+          <div style="padding:0 16px;border-right:1px solid #e7e5e4;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#EB431D;margin:0 0 6px;text-transform:uppercase;font-weight:600;">The Fix</p>
+            <p style="margin:0;">I taught it to read edges. Instead of scattering noise across the whole image, it adds rough brush strokes precisely where objects meet backgrounds.</p>
+          </div>
+          <div style="padding-left:16px;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#1A824E;margin:0 0 6px;text-transform:uppercase;font-weight:600;">The Outcome</p>
+            <p style="margin:0;">That hand-drawn warmth helped us preserve the illustration soul across all 72 children's books.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- App Interface -->
+    <div style="border-radius:2px;overflow:hidden;border:1px solid #D9D9D9;margin-bottom:8px;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
+      <img src="/images/ai-app-gallery/texture-lab-ui.jpg" alt="Texture Lab interface — Upload, Artistic Settings, Art Canvas with comparison slider" style="display:block;width:100%;height:auto;">
+    </div>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 32px;text-transform:uppercase;">Texture Lab UI — brush roughness, edge interlock, stroke density & paper grain controls</p>
+
+    <!-- Before / After Comparison -->
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#EB431D;margin:0 0 12px;text-transform:uppercase;font-weight:600;">Output Comparison — Same Input, Two Styles</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-bottom:8px;">
+      <div style="border:1px solid #D9D9D9;border-radius:2px 0 0 2px;overflow:hidden;">
+        <div style="padding:10px 16px;background:rgba(192,57,43,0.06);border-bottom:1px solid #D9D9D9;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#c0392b;margin:0;text-transform:uppercase;font-weight:600;">Original — AI Generated</p>
+        </div>
+        <div style="padding:0;"><img src="/images/ai-app-gallery/texture-lab-original.jpg" alt="Original AI-generated illustration" style="display:block;width:100%;height:auto;"></div>
+      </div>
+      <div style="border:1px solid #D9D9D9;border-left:none;overflow:hidden;">
+        <div style="padding:10px 16px;background:rgba(235,67,29,0.06);border-bottom:1px solid #D9D9D9;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#EB431D;margin:0;text-transform:uppercase;font-weight:600;">Style A — Oil Texture</p>
+        </div>
+        <div style="padding:0;"><img src="/images/ai-app-gallery/texture-lab-oil.jpg" alt="Oil painting texture output" style="display:block;width:100%;height:auto;"></div>
+      </div>
+      <div style="border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;overflow:hidden;">
+        <div style="padding:10px 16px;background:rgba(26,130,78,0.06);border-bottom:1px solid #D9D9D9;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#1A824E;margin:0;text-transform:uppercase;font-weight:600;">Style B — Dry Brush</p>
+        </div>
+        <div style="padding:0;"><img src="/images/ai-app-gallery/texture-lab-subtle.jpg" alt="Subtle dry brush texture output" style="display:block;width:100%;height:auto;"></div>
+      </div>
+    </div>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 32px;text-transform:uppercase;">Same character — AI smoothness eliminated through edge-aware texture injection</p>
+
+  </div>
+
+  <!-- ==================== TAB 2: IP_ENGINE ==================== -->
+  <div class="app-panel-2">
+
+    <div style="display:flex;gap:0;margin-bottom:24px;">
+      <div style="width:56px;flex-shrink:0;background:#1156D0;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">02</span>
+      </div>
+      <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 16px;text-transform:uppercase;font-weight:600;">IP Engine — 3D Asset Inflation Engine</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;font-size:13px;line-height:1.7;color:#57534e;">
+          <div style="padding-right:16px;border-right:1px solid #e7e5e4;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#c0392b;margin:0 0 6px;text-transform:uppercase;font-weight:600;">The Itch</p>
+            <p style="margin:0;">Tired of the mindless grind from flat art to 3D to mockup rendering.</p>
+          </div>
+          <div style="padding:0 16px;border-right:1px solid #e7e5e4;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#1156D0;margin:0 0 6px;text-transform:uppercase;font-weight:600;">The Fix</p>
+            <p style="margin:0;">Give it one image. It inflates the character into 3D, generates tri-view sheets, and composites a full set of poster mockups.</p>
+          </div>
+          <div style="padding-left:16px;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#1A824E;margin:0 0 6px;text-transform:uppercase;font-weight:600;">The Outcome</p>
+            <p style="margin:0;">One person, one afternoon — that's all it takes to build what used to require a team and a full week.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case Studies: 2D → Full 3D Kit -->
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1156D0;margin:0 0 12px;text-transform:uppercase;font-weight:600;">Case Studies — 2D Reference → Full 3D Asset Kit</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:32px;">
+      <a href="#lb-ip-elephant" class="app-gallery-img" style="display:block;border:1px solid #D9D9D9;border-radius:2px;overflow:hidden;">
+        <img src="/images/ai-app-gallery/ip-combined-elephant.jpg" alt="Elephant — 2D reference to full 3D asset kit" style="display:block;width:100%;height:auto;">
+      </a>
+      <a href="#lb-ip-star" class="app-gallery-img" style="display:block;border:1px solid #D9D9D9;border-radius:2px;overflow:hidden;">
+        <img src="/images/ai-app-gallery/ip-combined-star.jpg" alt="Star character — 2D reference to full 3D asset kit" style="display:block;width:100%;height:auto;">
+      </a>
+      <a href="#lb-ip-boy" class="app-gallery-img" style="display:block;border:1px solid #D9D9D9;border-radius:2px;overflow:hidden;">
+        <img src="/images/ai-app-gallery/ip-combined-boy.jpg" alt="Boy character — 2D reference to full 3D asset kit" style="display:block;width:100%;height:auto;">
+      </a>
+    </div>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#a8a29e;margin:0 0 32px;text-transform:uppercase;">Click any image to view full resolution</p>
+
+    <!-- Metrics -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="background:rgba(17,86,208,0.04);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;">
+        <p style="font-size:32px;font-weight:700;color:#1156D0;margin:0;">1</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716c;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Input Image</p>
+      </div>
+      <div style="background:rgba(17,86,208,0.04);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;">
+        <p style="font-size:32px;font-weight:700;color:#1156D0;margin:0;">6-7</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716c;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Action Poses</p>
+      </div>
+      <div style="background:rgba(26,130,78,0.04);border:1px solid #D9D9D9;padding:20px;border-radius:2px;text-align:center;">
+        <p style="font-size:32px;font-weight:700;color:#1A824E;margin:0;">Min</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716c;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">vs. Days/Weeks</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LIGHTBOXES -->
+  <div id="lb-ip-elephant" class="app-lightbox" onclick="window.location.hash=''"><a href="#" class="app-lightbox-close">&times;</a><img src="/images/ai-app-gallery/ip-combined-elephant.jpg" alt="Elephant full kit"></div>
+  <div id="lb-ip-star" class="app-lightbox" onclick="window.location.hash=''"><a href="#" class="app-lightbox-close">&times;</a><img src="/images/ai-app-gallery/ip-combined-star.jpg" alt="Star character full kit"></div>
+  <div id="lb-ip-boy" class="app-lightbox" onclick="window.location.hash=''"><a href="#" class="app-lightbox-close">&times;</a><img src="/images/ai-app-gallery/ip-combined-boy.jpg" alt="Boy character full kit"></div>
+  <div id="lb-storyboard" class="app-lightbox" onclick="window.location.hash=''"><a href="#" class="app-lightbox-close">&times;</a><img src="/images/ai-app-gallery/video-deco-storyboard.jpg" alt="Storyboard analysis full"></div>
+
+  <!-- ==================== TAB 3: VIDEO_DECO ==================== -->
+  <div class="app-panel-3">
+
+    <div style="display:flex;gap:0;margin-bottom:24px;">
+      <div style="width:56px;flex-shrink:0;background:#1A824E;border-radius:2px 0 0 2px;display:flex;align-items:flex-start;justify-content:center;padding-top:28px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:white;">03</span>
+      </div>
+      <div style="flex:1;border:1px solid #D9D9D9;border-left:none;border-radius:0 2px 2px 0;padding:28px;background:rgba(255,255,255,0.4);">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#1A824E;margin:0 0 16px;text-transform:uppercase;font-weight:600;">Video Deco — Video Reverse Engineering</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;font-size:13px;line-height:1.7;color:#57534e;">
+          <div style="padding-right:16px;border-right:1px solid #e7e5e4;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#c0392b;margin:0 0 6px;text-transform:uppercase;font-weight:600;">The Itch</p>
+            <p style="margin:0;">Great videos are easy to admire but impossible to reverse-engineer into actionable production notes.</p>
+          </div>
+          <div style="padding:0 16px;border-right:1px solid #e7e5e4;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#1A824E;margin:0 0 6px;text-transform:uppercase;font-weight:600;">The Fix</p>
+            <p style="margin:0;">It dissects videos like surgery — auto-extracting storyboards, analyzing camera language, and reverse-engineering the matching prompts.</p>
+          </div>
+          <div style="padding-left:16px;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#1A824E;margin:0 0 6px;text-transform:uppercase;font-weight:600;">The Outcome</p>
+            <p style="margin:0;">Turns gut-level "I like this" into a rational playbook — giving our future video work a solid logical foundation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Source Video & Storyboard Output -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;">
+      <div style="border:1px solid #D9D9D9;border-radius:2px;overflow:hidden;">
+        <div style="padding:10px 16px;background:rgba(26,130,78,0.06);border-bottom:1px solid #D9D9D9;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#1A824E;margin:0;text-transform:uppercase;font-weight:600;">Input — Source Video</p>
+        </div>
+        <video controls playsinline style="display:block;width:100%;height:auto;background:#000;">
+          <source src="/images/ai-app-gallery/video-deco-source.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div style="border:1px solid #D9D9D9;border-radius:2px;overflow:hidden;">
+        <div style="padding:10px 16px;background:rgba(26,130,78,0.06);border-bottom:1px solid #D9D9D9;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#1A824E;margin:0;text-transform:uppercase;font-weight:600;">Output — Storyboard Analysis</p>
+        </div>
+        <a href="#lb-storyboard" class="app-gallery-img"><img src="/images/ai-app-gallery/video-deco-storyboard.jpg" alt="Video Deco storyboard output" style="display:block;width:100%;height:auto;"></a>
+      </div>
+    </div>
+
+    <!-- Output Modules -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:24px;">
+      <div style="background:rgba(26,130,78,0.04);border:1px solid #D9D9D9;padding:14px;border-radius:2px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#1A824E;margin:0 0 4px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">01</p>
+        <p style="font-size:12px;font-weight:600;color:#1D3557;margin:0;">Storyboard Script</p>
+      </div>
+      <div style="background:rgba(26,130,78,0.04);border:1px solid #D9D9D9;padding:14px;border-radius:2px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#1A824E;margin:0 0 4px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">02</p>
+        <p style="font-size:12px;font-weight:600;color:#1D3557;margin:0;">Keyframe Extraction</p>
+      </div>
+      <div style="background:rgba(26,130,78,0.04);border:1px solid #D9D9D9;padding:14px;border-radius:2px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#1A824E;margin:0 0 4px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">03</p>
+        <p style="font-size:12px;font-weight:600;color:#1D3557;margin:0;">Camera Analysis</p>
+      </div>
+      <div style="background:rgba(26,130,78,0.04);border:1px solid #D9D9D9;padding:14px;border-radius:2px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#1A824E;margin:0 0 4px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">04</p>
+        <p style="font-size:12px;font-weight:600;color:#1D3557;margin:0;">Replication Prompt</p>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#1A824E;background:rgba(26,130,78,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(26,130,78,0.12);letter-spacing:0.05em;">Gemini_API</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#1A824E;background:rgba(26,130,78,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(26,130,78,0.12);letter-spacing:0.05em;">Video_Analysis</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#1A824E;background:rgba(26,130,78,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(26,130,78,0.12);letter-spacing:0.05em;">Reverse_Engineering</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#1A824E;background:rgba(26,130,78,0.06);padding:5px 12px;border-radius:2px;border:1px solid rgba(26,130,78,0.12);letter-spacing:0.05em;">Prompt_Generation</span>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- THE GROWING TOOLBOX -->
+<div style="margin-top:48px;padding:28px;border:1px solid #D9D9D9;border-radius:2px;background:rgba(255,255,255,0.4);">
+  <p style="font-size:16px;font-weight:600;color:#1D3557;margin:0 0 12px;">And much more...</p>
+  <p style="font-size:14px;color:#57534e;line-height:1.8;margin:0;">
+    This is just the tip of the iceberg. My AI Studio library holds 10+ custom apps for different scenarios — stick figure motion analysis, market trend scanning, automated batch renaming, and more. For me, AI isn't just a paintbrush. It's a machine that builds machines.
+  </p>
+</div>
 
 </div>`
   }

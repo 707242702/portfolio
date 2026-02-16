@@ -443,30 +443,52 @@ interface AIContentProps {
 
 const AIContent: React.FC<AIContentProps> = ({ onSelect, onToggleMenu }) => {
   const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
-  
+
+  const decodableItems = AI_ITEMS.filter(item => ['ai-illustration', 'ai-style', 'ai-production'].includes(item.id));
+  const infraItems = AI_ITEMS.filter(item => ['ai-orchestrated', 'ai-app-gallery'].includes(item.id));
+
+  const renderCard = (item: AiItem, i: number, delay: number) => (
+    <GlassCard
+        key={item.id}
+        onClick={() => onSelect(item)}
+        delay={delay}
+        hoverEffect={true}
+        hoverScale={1.02}
+        className="p-8 flex flex-col h-full"
+    >
+        <h3 className="text-xs font-mono text-stone-500 mb-4 tracking-[0.1em] group-hover:text-[#EB431D] transition-colors duration-300">{item.subtitle}</h3>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#1D3557] mb-4 leading-none whitespace-pre-line group-hover:text-black transition-colors duration-300">{item.title}</h2>
+        <p className="text-sm font-mono text-stone-600 mb-6 flex-grow group-hover:text-stone-800 transition-colors duration-300">{item.description}</p>
+        <div className="flex justify-end mt-auto">
+            <span className="text-xs font-bold text-[#EB431D] opacity-0 group-hover:opacity-100 transition-opacity duration-300">ACCESS &rarr;</span>
+        </div>
+    </GlassCard>
+  );
+
   return (
-    <div 
+    <div
         ref={scrollContainerRef}
         onScroll={handleScroll}
-        className="w-full h-full flex flex-col justify-start xl:justify-center px-8 md:px-24 pt-56 xl:pt-32 overflow-y-auto overflow-x-hidden" 
+        className="w-full h-full flex flex-col justify-start px-8 md:px-24 pt-48 md:pt-64 overflow-y-auto overflow-x-hidden"
     >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-32 md:pb-12 max-w-6xl mx-auto">
-        {AI_ITEMS.map((item, i) => (
-            <GlassCard 
-                key={item.id} 
-                onClick={() => onSelect(item)}
-                delay={i * 0.1}
-                hoverEffect={true}
-                className="p-8 flex flex-col h-full"
-            >
-                <h3 className="text-xs font-mono text-stone-500 mb-4 tracking-widest">{item.subtitle}</h3>
-                <h2 className="text-3xl md:text-4xl font-bold text-[#1D3557] mb-4 leading-none">{item.title}</h2>
-                <p className="text-sm font-mono text-stone-600 mb-6 flex-grow">{item.description}</p>
-                <div className="flex justify-end mt-auto">
-                    <span className="text-xs font-bold text-[#1156D0] opacity-0 group-hover:opacity-100 transition-opacity">ACCESS &rarr;</span>
-                </div>
-            </GlassCard>
-        ))}
+        <div className="pb-32 md:pb-12 max-w-6xl mx-auto w-full">
+            {/* Group A: Decodable Illustration System */}
+            <div className="mb-5 flex items-center gap-3">
+                <div className="w-1 h-5 rounded-full bg-[#EB431D]"></div>
+                <span className="text-xs font-mono text-[#EB431D] font-semibold tracking-[0.08em] uppercase">A — Decodable Illustration System</span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                {decodableItems.map((item, i) => renderCard(item, i, i * 0.1))}
+            </div>
+
+            {/* Group B: AI Infrastructure */}
+            <div className="mb-5 flex items-center gap-3">
+                <div className="w-1 h-5 rounded-full bg-[#1156D0]"></div>
+                <span className="text-xs font-mono text-[#1156D0] font-semibold tracking-[0.08em] uppercase">B — AI Infrastructure</span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {infraItems.map((item, i) => renderCard(item, i, 0.3 + i * 0.1))}
+            </div>
         </div>
     </div>
   );
@@ -834,8 +856,20 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelec
     );
 };
 
-const AiDetail: React.FC<{ item: AiItem; onClose: () => void; onToggleMenu: (v: boolean) => void }> = ({ item, onClose, onToggleMenu }) => {
+const StableHtml: React.FC<{ html: string }> = React.memo(({ html }) => {
+    const ref = useRef<HTMLDivElement>(null);
+    useEffect(() => { if (ref.current) ref.current.innerHTML = html; }, [html]);
+    return <div ref={ref} className="mb-12" />;
+});
+
+const AiDetail: React.FC<{ item: AiItem; onClose: () => void; onSelectAiItem: (item: AiItem) => void; onToggleMenu: (v: boolean) => void }> = ({ item, onClose, onSelectAiItem, onToggleMenu }) => {
     const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
+
+    useEffect(() => { if(scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0; }, [item, scrollContainerRef]);
+
+    const currentIndex = AI_ITEMS.findIndex(a => a.id === item.id);
+    const prevItem = AI_ITEMS[(currentIndex - 1 + AI_ITEMS.length) % AI_ITEMS.length];
+    const nextItem = AI_ITEMS[(currentIndex + 1) % AI_ITEMS.length];
 
     return (
         <motion.div 
@@ -864,7 +898,7 @@ const AiDetail: React.FC<{ item: AiItem; onClose: () => void; onToggleMenu: (v: 
                     borderColor="border-transparent"
                     hoverEffect={false}
                 >
-                    <span className="text-xs font-mono text-stone-400 mb-4 block tracking-widest uppercase">{item.subtitle}</span>
+                    <span className="text-xs font-mono text-stone-400 mb-4 block tracking-[0.1em] uppercase">{item.subtitle}</span>
                     <h1 className="text-5xl md:text-7xl font-bold text-[#1D3557] leading-[0.9] mb-8 uppercase">{item.title}</h1>
                     <div className="flex flex-wrap gap-4 text-xs font-mono">
                          {item.tags.map(tag => (
@@ -898,9 +932,9 @@ const AiDetail: React.FC<{ item: AiItem; onClose: () => void; onToggleMenu: (v: 
                         </div>
                     )}
 
-                    {/* CUSTOM HTML (For the orchestrated page) */}
+                    {/* CUSTOM HTML — use ref to prevent scroll re-renders from resetting radio buttons */}
                     {item.customHtml && (
-                        <div className="mb-12" dangerouslySetInnerHTML={{ __html: item.customHtml }} />
+                        <StableHtml html={item.customHtml} />
                     )}
 
                     {/* TEXT CONTENT */}
@@ -908,6 +942,39 @@ const AiDetail: React.FC<{ item: AiItem; onClose: () => void; onToggleMenu: (v: 
                         {item.content.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
                     </div>
                 </GlassCard>
+
+                {/* Navigation Footer */}
+                <div className="w-full mt-12 flex justify-between items-center px-4">
+                     <button
+                        onClick={(e) => { e.stopPropagation(); onSelectAiItem(prevItem); }}
+                        className="group text-left flex items-center justify-start gap-6 cursor-pointer"
+                     >
+                        <span className="text-2xl text-[#1D3557] group-hover:text-[#EB431D] group-hover:-translate-x-2 transition-all duration-300">
+                           &larr;
+                        </span>
+                        <div className="flex flex-col items-start">
+                            <span className="block text-xs font-mono text-stone-400 tracking-[0.1em] group-hover:text-[#EB431D] transition-colors mb-1">PREV</span>
+                             <span className="block text-xs font-mono font-bold tracking-[0.1em] text-[#1D3557] group-hover:text-[#EB431D] transition-colors duration-300 uppercase whitespace-pre-line">
+                                {prevItem.title}
+                             </span>
+                        </div>
+                     </button>
+
+                     <button
+                        onClick={(e) => { e.stopPropagation(); onSelectAiItem(nextItem); }}
+                        className="group text-right flex items-center justify-end gap-6 cursor-pointer"
+                     >
+                        <div className="flex flex-col items-end">
+                            <span className="block text-xs font-mono text-stone-400 tracking-[0.1em] group-hover:text-[#EB431D] transition-colors mb-1">NEXT</span>
+                             <span className="block text-xs font-mono font-bold tracking-[0.1em] text-[#1D3557] group-hover:text-[#EB431D] transition-colors duration-300 uppercase whitespace-pre-line">
+                                {nextItem.title}
+                             </span>
+                        </div>
+                        <span className="text-2xl text-[#1D3557] group-hover:text-[#EB431D] group-hover:translate-x-2 transition-all duration-300">
+                           &rarr;
+                        </span>
+                     </button>
+                </div>
             </div>
         </motion.div>
     );
@@ -935,10 +1002,11 @@ export const Content: React.FC<ContentProps> = ({
       )}
       
       {activeAiItem && !activeProject && (
-        <AiDetail 
+        <AiDetail
             key="ai-detail"
             item={activeAiItem}
             onClose={onClose}
+            onSelectAiItem={onSelectAiItem}
             onToggleMenu={onToggleMenu}
         />
       )}

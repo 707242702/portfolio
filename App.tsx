@@ -18,13 +18,16 @@ const App: React.FC = () => {
 
   // Scroll resistance refs
   const scrollAccumulator = useRef(0);
-  const swipeCount = useRef(0); // Track number of valid swipes
+  const swipeCount = useRef(0);
   const scrollTimeout = useRef<number | null>(null);
-  
+  const lastSwipeTime = useRef(0); // Cooldown between swipes
+
   // Threshold for a single swipe gesture
-  const SINGLE_SWIPE_THRESHOLD = 200; 
+  const SINGLE_SWIPE_THRESHOLD = 350;
   // Required swipes to trigger navigation
   const REQUIRED_SWIPES = 2;
+  // Minimum pause between counted swipes (ms)
+  const SWIPE_COOLDOWN = 400;
 
   // When a project OR an AI item is selected, we switch visual system to DETAIL mode
   const currentVisualState = (selectedProject || selectedAiItem) ? Section.DETAIL : activeSection;
@@ -96,15 +99,16 @@ const App: React.FC = () => {
 
       // 3. Detect a Single Swipe
       if (Math.abs(scrollAccumulator.current) > SINGLE_SWIPE_THRESHOLD) {
-          // We detected ONE swipe gesture
           const direction = Math.sign(scrollAccumulator.current);
-          
-          // Check if direction matches previous swipe (if any) or if it's the first
-          // This logic simplifies to just counting valid threshold breaches in the accumulated direction
-          
-          swipeCount.current += 1;
-          
-          // Reset accumulator to detect the *next* swipe cleanly within the same timeout window
+          const now = Date.now();
+
+          // Only count this swipe if enough time passed since last one (prevents inertia double-count)
+          if (now - lastSwipeTime.current > SWIPE_COOLDOWN) {
+              swipeCount.current += 1;
+              lastSwipeTime.current = now;
+          }
+
+          // Reset accumulator to detect the *next* swipe cleanly
           scrollAccumulator.current = 0; 
 
           // 4. Check if we reached required swipes
