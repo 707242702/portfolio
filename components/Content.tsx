@@ -203,21 +203,12 @@ const ImageCard: React.FC<ImageCardProps> = ({ src, index, aspectClass }) => {
     );
 };
 
-// Grid background helpers
-const WHITE_GRID = `url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='g' width='24' height='24' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 24V0H24' fill='none' stroke='rgba(255%2C255%2C255%2C0.18)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E")`;
-const DARK_GRID  = `url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='g' width='24' height='24' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 24V0H24' fill='none' stroke='rgba(0%2C0%2C0%2C0.07)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E")`;
-
-// Single letter cell with hover-to-play + grid fade (no color filter)
+// Single letter cell — hover plays video, nothing else
 const LetterCell: React.FC<{ src: string; letter: string }> = ({ src, letter }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
-    const [active, setActive] = useState(false);
 
-    const handleEnter = () => {
-        setActive(true);
-        videoRef.current?.play();
-    };
+    const handleEnter = () => { videoRef.current?.play(); };
     const handleLeave = () => {
-        setActive(false);
         if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; }
     };
 
@@ -227,12 +218,6 @@ const LetterCell: React.FC<{ src: string; letter: string }> = ({ src, letter }) 
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
         >
-            {/* Grid overlay — fades on hover */}
-            <div
-                className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-300"
-                style={{ backgroundImage: WHITE_GRID, opacity: active ? 0 : 1 }}
-            />
-            {/* Video — no filter or scale, pure color */}
             <video
                 ref={videoRef}
                 src={src}
@@ -241,11 +226,7 @@ const LetterCell: React.FC<{ src: string; letter: string }> = ({ src, letter }) 
                 playsInline
                 className="w-full h-full object-cover"
             />
-            {/* Letter label */}
-            <span
-                className="absolute bottom-1.5 left-2 font-mono text-[9px] font-bold z-20 select-none transition-opacity duration-200"
-                style={{ color: 'rgba(255,255,255,0.5)', opacity: active ? 1 : 0.5 }}
-            >
+            <span className="absolute bottom-1.5 left-2 font-mono text-[9px] font-bold z-20 select-none text-white/40">
                 {letter}
             </span>
         </div>
@@ -320,18 +301,14 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                             ))}
                         </div>
                     ) : module.image ? (
-                        // Other tabs: static placeholder, grid deepens on hover
-                        <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm group cursor-pointer">
-                            <div
-                                className="absolute inset-0 z-10 pointer-events-none"
-                                style={{ backgroundImage: DARK_GRID, opacity: 0.6 }}
-                            />
+                        // Other tabs: static, original color, no overlay
+                        <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm">
                             <img
                                 src={module.image}
                                 alt={module.title}
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute top-3 left-3 z-20 font-mono text-[8px] tracking-[0.15em] text-stone-500 bg-white/80 px-2 py-1 uppercase">
+                            <div className="absolute top-3 left-3 font-mono text-[8px] tracking-[0.15em] text-stone-500 bg-white/80 px-2 py-1 uppercase">
                                 Media — Pending Upload
                             </div>
                         </div>
