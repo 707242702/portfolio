@@ -1425,11 +1425,11 @@ export const PROJECTS: Project[] = [
           id: 'alphabet',
           title: 'ALPHABET_SYS',
           tagline: '[REVISIT & EVOLVE]',
-          description: 'A stylistic overhaul of legacy character studies. By re-aligning diverse forms to a standard 24px icon grid, I\'ve unified organic expression into a structured visual language.',
+          description: "A complete overhaul of my earlier character studies. I've brought these diverse forms into a standardized 24-unit icon grid, bridging the gap between freeform illustration and the disciplined logic of interface design.",
           tags: ['TYPOGRAPHY', 'GRID', 'SYSTEM'],
           image: 'https://picsum.photos/seed/sys_alpha/600/400',
           specs: [
-            { label: 'Grid System', value: 'Standardized 24-unit Icon Matrix (Scaled to 1920px)' },
+            { label: 'Grid System', value: '24-unit Icon Matrix (1920px Canvas)' },
             { label: 'Construction', value: 'Native Geometric Keylines' },
             { label: 'Logic', value: 'Precision Alignment + High-Fidelity Illustration' }
           ],
@@ -1456,13 +1456,19 @@ export const PROJECTS: Project[] = [
           id: 'numeric',
           title: 'NUMERIC_SYS',
           tagline: '[DATA CLARITY]',
-          description: 'An exploration of numeral sets designed for maximum legibility within constrained spaces. This system focuses on the mathematical balance between stroke weight and negative space.',
+          description: 'An exploration of 0–9 numerals within the same 24-unit grid. This set focuses on the balance between stroke weight and negative space, ensuring the numerals feel like a natural extension of the alphabet system.',
           tags: ['DATA', 'UI', 'CLARITY'],
           image: 'https://picsum.photos/seed/sys_num/600/400',
           specs: [
-            { label: 'Grid', value: '16px Density Grid' },
-            { label: 'Logic', value: 'Optical Balance + Geometric Precision' },
-            { label: 'Status', value: 'In-Progress / Prototype v0.8' }
+            { label: 'Grid System', value: '24-unit Icon Matrix (1920px Canvas)' },
+            { label: 'Construction', value: 'Native Geometric Keylines' },
+            { label: 'Logic', value: 'Optical Balance + Structural Integrity' }
+          ],
+          localImages: [
+            '/images/numbers/0.jpg', '/images/numbers/1.jpg', '/images/numbers/2.jpg',
+            '/images/numbers/3.jpg', '/images/numbers/4.jpg', '/images/numbers/5.jpg',
+            '/images/numbers/6.jpg', '/images/numbers/7.jpg', '/images/numbers/8.jpg',
+            '/images/numbers/9.jpg'
           ]
         },
         {

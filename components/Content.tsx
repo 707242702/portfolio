@@ -239,6 +239,27 @@ const LetterCell: React.FC<{ src: string; imgSrc?: string; letter: string }> = (
     );
 };
 
+// Numeric cell — static image, CSS-only hover (scale + grid overlay), no color shift
+const NUMERIC_GRID = `url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='g' width='24' height='24' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 24V0H24' fill='none' stroke='rgba(0%2C0%2C0%2C0.08)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E")`;
+
+const NumericCell: React.FC<{ src: string; label: string }> = ({ src, label }) => (
+    <div className="group relative aspect-square overflow-hidden bg-stone-100 cursor-pointer">
+        <img
+            src={src}
+            alt={label}
+            className="w-full h-full object-cover transition-transform duration-100 group-hover:scale-[1.05]"
+        />
+        {/* Grid overlay — appears on hover */}
+        <div
+            className="absolute inset-0 pointer-events-none transition-opacity duration-100 opacity-0 group-hover:opacity-100"
+            style={{ backgroundImage: NUMERIC_GRID }}
+        />
+        <span className="absolute bottom-1.5 left-2 font-mono text-[9px] font-bold z-20 select-none text-black/30">
+            {label}
+        </span>
+    </div>
+);
+
 // Tab system for Illustration Systems project
 const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
     const [activeTab, setActiveTab] = useState(0);
@@ -325,6 +346,13 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                                     imgSrc={module.localImages?.[vi]}
                                     letter={String.fromCharCode(65 + vi)}
                                 />
+                            ))}
+                        </div>
+                    ) : module.localImages ? (
+                        // NUMERIC_SYS: 4 columns, static jpg + CSS hover
+                        <div className="grid grid-cols-4 gap-1">
+                            {module.localImages.map((src, ni) => (
+                                <NumericCell key={ni} src={src} label={String(ni)} />
                             ))}
                         </div>
                     ) : module.image ? (
