@@ -247,27 +247,43 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
 
     return (
         <div>
+            {/* Console label above tabs */}
+            <p className="font-mono text-[9px] text-stone-300 tracking-[0.25em] mb-3 uppercase select-none">
+                // NAVIGATE_SYSTEMS
+            </p>
+
             {/* Tab bar */}
             <div className="flex border-b border-[#D9D9D9] mb-10 overflow-x-auto">
-                {modules.map((module, i) => (
-                    <button
-                        key={module.id}
-                        onClick={() => setActiveTab(i)}
-                        className="relative flex flex-col items-start px-6 py-4 font-mono text-xs tracking-[0.28em] uppercase cursor-pointer whitespace-nowrap shrink-0 bg-transparent border-0 outline-none transition-colors duration-150"
-                        style={{ color: activeTab === i ? tabColors[i] : '#a8a29e' }}
-                    >
-                        <span className="font-bold text-sm tracking-[0.22em] mb-1">{`SYS_0${i + 1}`}</span>
-                        <span>{module.title}</span>
-                        {activeTab === i && (
-                            <motion.div
-                                layoutId="sys-tab-indicator"
-                                className="absolute bottom-0 left-0 right-0 h-[2px]"
-                                style={{ backgroundColor: tabColors[i] }}
-                                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                            />
-                        )}
-                    </button>
-                ))}
+                {modules.map((module, i) => {
+                    const isActive = activeTab === i;
+                    const color = tabColors[i];
+                    return (
+                        <button
+                            key={module.id}
+                            onClick={() => setActiveTab(i)}
+                            className="group relative flex flex-col items-start px-6 py-4 font-mono text-xs tracking-[0.28em] uppercase cursor-pointer whitespace-nowrap shrink-0 border-0 outline-none transition-colors duration-150"
+                            style={{
+                                color: isActive ? color : '#a8a29e',
+                                backgroundColor: isActive ? `${color}10` : 'transparent',
+                                borderBottom: isActive ? `3px solid ${color}` : '3px solid transparent',
+                            }}
+                        >
+                            <span
+                                className="font-bold text-sm tracking-[0.22em] mb-1 transition-colors duration-100"
+                                style={{ color: isActive ? color : undefined }}
+                            >
+                                {`SYS_0${i + 1}`}
+                            </span>
+                            <span className="transition-colors duration-100 group-hover:text-stone-800">
+                                {module.title}
+                            </span>
+                            {/* Hover underline for inactive tabs */}
+                            {!isActive && (
+                                <span className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-200" style={{ backgroundColor: color }} />
+                            )}
+                        </button>
+                    );
+                })}
             </div>
 
             {/* Tab content — instant switch, no animation */}
