@@ -344,11 +344,15 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
             {activeModule && (
                 <div key={activeModule.id}>
 
-                    {/* Tagline */}
+                    {/* Tagline — supports multi-line via \n */}
                     {activeModule.tagline && (
-                        <p className="font-mono text-[10px] text-stone-400 tracking-[0.2em] mb-3 uppercase">
-                            {activeModule.tagline}
-                        </p>
+                        <div className="mb-3">
+                            {activeModule.tagline.split('\n').map((line, i) => (
+                                <p key={i} className="font-mono text-[10px] text-stone-400 tracking-[0.2em] uppercase leading-relaxed">
+                                    {line}
+                                </p>
+                            ))}
+                        </div>
                     )}
 
                     {/* Description */}

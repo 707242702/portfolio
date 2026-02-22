@@ -1501,15 +1501,25 @@ export const PROJECTS: Project[] = [
         {
           id: 'iconography',
           title: 'ICON_SET',
-          tagline: '[REDUCTIVE SEMANTICS]',
-          description: 'A functional icon library built on the same 24px grid system. It translates complex actions into a minimalist symbolic language, maintaining visual harmony with the typographic system.',
+          tagline: '[FUNCTIONAL_SYMBOLS]\n[UI_VISUAL_LANGUAGE]',
+          description: 'A comprehensive iconography set developed for high-density interface applications. This system prioritizes semantic clarity and geometric precision, ensuring each symbol remains legible at small scales while maintaining a consistent 2px stroke DNA.',
           tags: ['ICON', 'UI', 'VECTOR'],
           image: 'https://picsum.photos/seed/sys_icon/600/400',
           specs: [
-            { label: 'Medium', value: '100% Vector-based Geometric Construction' },
-            { label: 'Grid', value: '24px Standard Icon Grid' },
-            { label: 'Stroke', value: '2px Consistent Weight' },
-            { label: 'Logic', value: 'Semantic Simplification' }
+            { label: 'Medium',    value: '100% Vector-based Geometric Construction' },
+            { label: 'Framework', value: '24px Standard Icon Matrix' },
+            { label: 'Style',     value: 'Duotone / Consistent 2px Stroke' },
+            { label: 'Logic',     value: 'Semantic Simplification & Scalability' }
+          ],
+          localImages: [
+            '/images/icons/01.jpg', '/images/icons/02.jpg', '/images/icons/03.jpg',
+            '/images/icons/04.jpg', '/images/icons/05.jpg', '/images/icons/06.jpg',
+            '/images/icons/07.jpg', '/images/icons/08.jpg', '/images/icons/09.jpg',
+            '/images/icons/10.jpg', '/images/icons/11.jpg', '/images/icons/12.jpg',
+            '/images/icons/13.jpg', '/images/icons/14.jpg', '/images/icons/15.jpg',
+            '/images/icons/16.jpg', '/images/icons/17.jpg', '/images/icons/18.jpg',
+            '/images/icons/19.jpg', '/images/icons/20.jpg', '/images/icons/21.jpg',
+            '/images/icons/22.jpg', '/images/icons/23.jpg', '/images/icons/24.jpg'
           ]
         }
     ]
