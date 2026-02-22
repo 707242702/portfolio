@@ -1460,6 +1460,7 @@ export const PROJECTS: Project[] = [
           tags: ['DATA', 'UI', 'CLARITY'],
           image: 'https://picsum.photos/seed/sys_num/600/400',
           specs: [
+            { label: 'Medium', value: '100% Original Hand-drawn Illustration' },
             { label: 'Grid System', value: '24-unit Icon Matrix (1920px Canvas)' },
             { label: 'Construction', value: 'Native Geometric Keylines' },
             { label: 'Logic', value: 'Optical Balance + Structural Integrity' }
@@ -1479,6 +1480,7 @@ export const PROJECTS: Project[] = [
           tags: ['IDENTITY', 'MASCOT', 'EMOTION'],
           image: 'https://picsum.photos/seed/sys_char/600/400',
           specs: [
+            { label: 'Medium', value: '100% Original Hand-drawn Illustration' },
             { label: 'Grid', value: '24-unit Icon Matrix' },
             { label: 'Type', value: 'Vector Construction' },
             { label: 'ID', value: 'Numeric Index 01–12' }
@@ -1504,6 +1506,7 @@ export const PROJECTS: Project[] = [
           tags: ['ICON', 'UI', 'VECTOR'],
           image: 'https://picsum.photos/seed/sys_icon/600/400',
           specs: [
+            { label: 'Medium', value: '100% Vector-based Geometric Construction' },
             { label: 'Grid', value: '24px Standard Icon Grid' },
             { label: 'Stroke', value: '2px Consistent Weight' },
             { label: 'Logic', value: 'Semantic Simplification' }

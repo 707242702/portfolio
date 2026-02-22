@@ -361,9 +361,16 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                         <div className="mb-10 font-mono text-[10px] border-l-2 border-stone-200 pl-4 space-y-2">
                             <p className="text-stone-400 tracking-[0.15em] mb-3 uppercase">[Tech Specs]</p>
                             {activeModule.specs.map(spec => (
-                                <div key={spec.label} className="flex gap-3">
+                                <div key={spec.label} className="flex items-center gap-3">
                                     <span className="text-stone-400 min-w-[8rem] shrink-0">{spec.label}</span>
-                                    <span className="text-stone-500">// {spec.value}</span>
+                                    {spec.label === 'Medium' ? (
+                                        // Red highlight block — only on the value, label stays grey
+                                        <span className="bg-[#EB431D] text-white px-2 py-0.5 font-bold">
+                                            // {spec.value}
+                                        </span>
+                                    ) : (
+                                        <span className="text-stone-400">// {spec.value}</span>
+                                    )}
                                 </div>
                             ))}
                         </div>
