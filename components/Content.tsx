@@ -203,6 +203,166 @@ const ImageCard: React.FC<ImageCardProps> = ({ src, index, aspectClass }) => {
     );
 };
 
+// Grid background helpers
+const WHITE_GRID = `url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='g' width='24' height='24' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 24V0H24' fill='none' stroke='rgba(255%2C255%2C255%2C0.18)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E")`;
+const DARK_GRID  = `url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='g' width='24' height='24' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 24V0H24' fill='none' stroke='rgba(0%2C0%2C0%2C0.07)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E")`;
+
+// Single letter cell with hover-to-play + grid fade
+const LetterCell: React.FC<{ src: string; letter: string }> = ({ src, letter }) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [active, setActive] = useState(false);
+
+    const handleEnter = () => {
+        setActive(true);
+        videoRef.current?.play();
+    };
+    const handleLeave = () => {
+        setActive(false);
+        if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; }
+    };
+
+    return (
+        <div
+            className="relative aspect-square overflow-hidden bg-stone-900 cursor-pointer"
+            onMouseEnter={handleEnter}
+            onMouseLeave={handleLeave}
+        >
+            {/* Grid overlay — fades on hover */}
+            <div
+                className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-500"
+                style={{ backgroundImage: WHITE_GRID, opacity: active ? 0 : 1 }}
+            />
+            {/* Video */}
+            <video
+                ref={videoRef}
+                src={src}
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover transition-all duration-500"
+                style={{
+                    filter: active ? 'grayscale(0%) contrast(1)' : 'grayscale(60%) contrast(1.1)',
+                    transform: active ? 'scale(1.06)' : 'scale(1)',
+                }}
+            />
+            {/* Letter label */}
+            <span
+                className="absolute bottom-1.5 left-2 font-mono text-[9px] font-bold z-20 transition-all duration-300 select-none"
+                style={{ color: active ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.3)' }}
+            >
+                {letter}
+            </span>
+        </div>
+    );
+};
+
+// Tab system for Illustration Systems project
+const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
+    const [activeTab, setActiveTab] = useState(0);
+    const tabColors = [COLORS.RED, COLORS.BLUE, COLORS.GREEN, COLORS.ORANGE];
+    const modules = project.modules || [];
+
+    return (
+        <div>
+            {/* Tab bar */}
+            <div className="flex border-b border-[#D9D9D9] mb-10 overflow-x-auto">
+                {modules.map((module, i) => (
+                    <button
+                        key={module.id}
+                        onClick={() => setActiveTab(i)}
+                        className="relative flex flex-col items-start px-5 py-3 font-mono text-[9px] tracking-[0.15em] uppercase transition-colors duration-200 cursor-pointer whitespace-nowrap shrink-0 bg-transparent border-0 outline-none"
+                        style={{ color: activeTab === i ? tabColors[i] : '#a8a29e' }}
+                    >
+                        <span className="font-bold mb-0.5">{`SYS_0${i + 1}`}</span>
+                        <span>{module.title}</span>
+                        {activeTab === i && (
+                            <motion.div
+                                layoutId="sys-tab-indicator"
+                                className="absolute bottom-0 left-0 right-0 h-[2px]"
+                                style={{ backgroundColor: tabColors[i] }}
+                                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                            />
+                        )}
+                    </button>
+                ))}
+            </div>
+
+            {/* Tab content */}
+            <AnimatePresence mode="wait">
+                {modules.map((module, i) => activeTab === i && (
+                    <motion.div
+                        key={module.id}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    >
+                        {/* Tagline */}
+                        {module.tagline && (
+                            <p className="font-mono text-[10px] text-stone-400 tracking-[0.2em] mb-3 uppercase">
+                                {module.tagline}
+                            </p>
+                        )}
+
+                        {/* Description */}
+                        <p className="text-base font-medium text-stone-700 leading-relaxed mb-8 max-w-2xl">
+                            {module.description}
+                        </p>
+
+                        {/* Tech specs */}
+                        {module.specs && (
+                            <div className="mb-10 font-mono text-[10px] border-l-2 border-stone-200 pl-4 space-y-2">
+                                <p className="text-stone-400 tracking-[0.15em] mb-3 uppercase">[Tech Specs]</p>
+                                {module.specs.map(spec => (
+                                    <div key={spec.label} className="flex gap-3">
+                                        <span className="text-stone-400 w-20 shrink-0">{spec.label}</span>
+                                        <span className="text-stone-500">// {spec.value}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {/* Visual content */}
+                        {module.localVideos ? (
+                            // ALPHABET_SYS: hover-to-play letter grid
+                            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-7 gap-1">
+                                {module.localVideos.map((src, vi) => (
+                                    <LetterCell key={vi} src={src} letter={String.fromCharCode(65 + vi)} />
+                                ))}
+                            </div>
+                        ) : module.image ? (
+                            // Other tabs: placeholder with grid overlay framework
+                            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm group cursor-pointer">
+                                <div
+                                    className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-0"
+                                    style={{ backgroundImage: DARK_GRID, opacity: 0.8 }}
+                                />
+                                <img
+                                    src={module.image}
+                                    alt={module.title}
+                                    className="w-full h-full object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-[1.02]"
+                                />
+                                <div className="absolute top-3 left-3 z-20 font-mono text-[8px] tracking-[0.15em] text-stone-500 bg-white/80 px-2 py-1 uppercase">
+                                    Media — Pending Upload
+                                </div>
+                            </div>
+                        ) : null}
+                    </motion.div>
+                ))}
+            </AnimatePresence>
+
+            {/* Global System Note */}
+            <div className="mt-16 pt-6 border-t border-stone-100 space-y-1.5">
+                {project.content.map((para, i) => (
+                    <p key={i} className="font-mono text-[9px] text-stone-300 tracking-wide leading-relaxed">
+                        / {para}
+                    </p>
+                ))}
+            </div>
+        </div>
+    );
+};
+
 interface ModuleCardProps {
     module: ProjectModule;
     index: number;
@@ -764,104 +924,103 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelec
                     borderColor="border-[#E5E5E5]"
                 >
                     <p className="text-xl font-medium leading-relaxed text-stone-800 mb-12 uppercase">{project.description}</p>
-                    
-                    {/* SECTION 1: MODULES / GIF GRID */}
-                    {project.modules && project.modules.length > 0 && (
-                        <div className="mb-16">
-                            <div className={`${isMotionProject ? 'grid grid-cols-1 md:grid-cols-3 gap-4' : layout.containerClass}`}>
-                                {project.modules.map((module, i) => (
-                                    <ModuleCard
-                                        key={module.id}
-                                        module={module}
-                                        index={i}
-                                        minimal={isMotionProject}
-                                        isExpanded={expandedModuleId === module.id}
-                                        onClick={module.localVideos ? () => setExpandedModuleId(expandedModuleId === module.id ? null : module.id) : undefined}
-                                    />
-                                ))}
-                            </div>
-                            {/* Expanded video grid */}
-                            <AnimatePresence>
-                                {expandedModuleId && (() => {
-                                    const expandedModule = project.modules?.find(m => m.id === expandedModuleId);
-                                    if (!expandedModule?.localVideos) return null;
-                                    return (
-                                        <motion.div
-                                            key={expandedModuleId}
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: 'auto' }}
-                                            exit={{ opacity: 0, height: 0 }}
-                                            transition={{ duration: 0.4, ease: 'easeInOut' }}
-                                            className="overflow-hidden"
-                                        >
-                                            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-6">
-                                                {expandedModule.localVideos.map((src, i) => (
-                                                    <div key={i} className="aspect-square overflow-hidden rounded-sm bg-stone-100">
-                                                        <video
-                                                            src={src}
-                                                            autoPlay
-                                                            loop
-                                                            muted
-                                                            playsInline
-                                                            className="w-full h-full object-cover"
-                                                        />
+
+                    {project.id === 'work-illustration' ? (
+                        /* Illustration Systems: Tab-based layout */
+                        <IllustrationTabSystem project={project} />
+                    ) : (
+                        <>
+                            {/* SECTION 1: MODULES / GIF GRID */}
+                            {project.modules && project.modules.length > 0 && (
+                                <div className="mb-16">
+                                    <div className={`${isMotionProject ? 'grid grid-cols-1 md:grid-cols-3 gap-4' : layout.containerClass}`}>
+                                        {project.modules.map((module, i) => (
+                                            <ModuleCard
+                                                key={module.id}
+                                                module={module}
+                                                index={i}
+                                                minimal={isMotionProject}
+                                                isExpanded={expandedModuleId === module.id}
+                                                onClick={module.localVideos ? () => setExpandedModuleId(expandedModuleId === module.id ? null : module.id) : undefined}
+                                            />
+                                        ))}
+                                    </div>
+                                    {/* Expanded video grid */}
+                                    <AnimatePresence>
+                                        {expandedModuleId && (() => {
+                                            const expandedModule = project.modules?.find(m => m.id === expandedModuleId);
+                                            if (!expandedModule?.localVideos) return null;
+                                            return (
+                                                <motion.div
+                                                    key={expandedModuleId}
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.4, ease: 'easeInOut' }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-6">
+                                                        {expandedModule.localVideos.map((src, i) => (
+                                                            <div key={i} className="aspect-square overflow-hidden rounded-sm bg-stone-100">
+                                                                <video src={src} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                                                            </div>
+                                                        ))}
                                                     </div>
-                                                ))}
-                                            </div>
-                                        </motion.div>
-                                    );
-                                })()}
-                            </AnimatePresence>
-                        </div>
-                    )}
-
-                     {/* SECTION 2: IMAGES (Non-Motion) */}
-                    {project.images && project.images.length > 0 && (
-                        <div className={`mb-16 ${layout.containerClass}`}>
-                             {project.images.map((img, i) => (
-                                <div key={i} className={layout.itemClass}>
-                                    <ImageCard src={img} index={i} aspectClass={layout.itemClass} />
+                                                </motion.div>
+                                            );
+                                        })()}
+                                    </AnimatePresence>
                                 </div>
-                             ))}
-                        </div>
-                    )}
+                            )}
 
-                    {/* SECTION 3: VIDEOS (YouTube Embeds) */}
-                    {project.videos && project.videos.length > 0 && (
-                        <div className="flex flex-col gap-12 mb-16">
-                            {project.videos.map((videoId, i) => (
-                                <div key={i} className="flex flex-col gap-2">
-                                     {/* Video Container in GlassCard with Multiply Blend Mode */}
-                                     <GlassCard 
-                                        className="w-full aspect-video p-0 rounded-sm overflow-hidden" 
-                                        mixBlendMode="multiply" // Applies the "printed" effect
-                                        initialBlur="4px"
-                                        targetBlur="0px"
-                                        borderColor="border-transparent"
-                                        backgroundColor="rgba(255,255,255,0.1)"
-                                     >
-                                         <iframe 
-                                            width="100%" 
-                                            height="100%" 
-                                            src={`https://www.youtube.com/embed/${videoId}`} 
-                                            title={`Project Video ${i + 1}`} 
-                                            frameBorder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                            referrerPolicy="strict-origin-when-cross-origin" 
-                                            allowFullScreen
-                                        ></iframe>
-                                     </GlassCard>
-                                     <span className="font-mono text-[9px] text-stone-400 tracking-widest uppercase">
-                                        [VIDEO_REF_{i+1}]: YOUTUBE_EMBED_PROTOCOL // {videoId}
-                                     </span>
+                            {/* SECTION 2: IMAGES (Non-Motion) */}
+                            {project.images && project.images.length > 0 && (
+                                <div className={`mb-16 ${layout.containerClass}`}>
+                                    {project.images.map((img, i) => (
+                                        <div key={i} className={layout.itemClass}>
+                                            <ImageCard src={img} index={i} aspectClass={layout.itemClass} />
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
-                    )}
+                            )}
 
-                    <div className="space-y-4 text-base font-medium text-stone-800 leading-relaxed mb-12">
-                        {project.content.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
-                    </div>
+                            {/* SECTION 3: VIDEOS (YouTube Embeds) */}
+                            {project.videos && project.videos.length > 0 && (
+                                <div className="flex flex-col gap-12 mb-16">
+                                    {project.videos.map((videoId, i) => (
+                                        <div key={i} className="flex flex-col gap-2">
+                                            <GlassCard
+                                                className="w-full aspect-video p-0 rounded-sm overflow-hidden"
+                                                mixBlendMode="multiply"
+                                                initialBlur="4px"
+                                                targetBlur="0px"
+                                                borderColor="border-transparent"
+                                                backgroundColor="rgba(255,255,255,0.1)"
+                                            >
+                                                <iframe
+                                                    width="100%"
+                                                    height="100%"
+                                                    src={`https://www.youtube.com/embed/${videoId}`}
+                                                    title={`Project Video ${i + 1}`}
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    referrerPolicy="strict-origin-when-cross-origin"
+                                                    allowFullScreen
+                                                ></iframe>
+                                            </GlassCard>
+                                            <span className="font-mono text-[9px] text-stone-400 tracking-widest uppercase">
+                                                [VIDEO_REF_{i+1}]: YOUTUBE_EMBED_PROTOCOL // {videoId}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
+                            <div className="space-y-4 text-base font-medium text-stone-800 leading-relaxed mb-12">
+                                {project.content.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
+                            </div>
+                        </>
+                    )}
                 </GlassCard>
 
                 {/* Navigation Footer */}

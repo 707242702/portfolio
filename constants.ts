@@ -1424,9 +1424,15 @@ export const PROJECTS: Project[] = [
         {
           id: 'alphabet',
           title: 'ALPHABET_SYS',
-          description: 'MODULAR TYPOGRAPHY CONSTRUCTED FROM PRIMITIVES',
+          tagline: '[REVISIT & EVOLVE]',
+          description: 'A stylistic overhaul of legacy character studies. By re-aligning diverse forms to a standard 24px icon grid, I\'ve unified organic expression into a structured visual language.',
           tags: ['TYPOGRAPHY', 'GRID', 'SYSTEM'],
           image: 'https://picsum.photos/seed/sys_alpha/600/400',
+          specs: [
+            { label: 'Grid', value: '24px Base Unit' },
+            { label: 'Logic', value: 'Modular Geometry + Freehand Expression' },
+            { label: 'Update', value: 'v1.0 (2024 Unified System)' }
+          ],
           localVideos: [
             '/images/alphabet/a.mp4', '/images/alphabet/b.mp4', '/images/alphabet/c.mp4', '/images/alphabet/d.mp4',
             '/images/alphabet/e.mp4', '/images/alphabet/f.mp4', '/images/alphabet/g.mp4', '/images/alphabet/h.mp4',
@@ -1440,23 +1446,41 @@ export const PROJECTS: Project[] = [
         {
           id: 'numeric',
           title: 'NUMERIC_SYS',
-          description: 'NUMERAL SETS FOR DATA CLARITY',
+          tagline: '[DATA CLARITY]',
+          description: 'An exploration of numeral sets designed for maximum legibility within constrained spaces. This system focuses on the mathematical balance between stroke weight and negative space.',
           tags: ['DATA', 'UI', 'CLARITY'],
-          image: 'https://picsum.photos/seed/sys_num/600/400'
+          image: 'https://picsum.photos/seed/sys_num/600/400',
+          specs: [
+            { label: 'Grid', value: '16px Density Grid' },
+            { label: 'Logic', value: 'Optical Balance + Geometric Precision' },
+            { label: 'Status', value: 'In-Progress / Prototype v0.8' }
+          ]
         },
         {
           id: 'character',
           title: 'CHAR_IP',
-          description: 'SCALABLE ANATOMICAL RULES',
+          tagline: '[SCALABLE ANATOMY]',
+          description: 'Developing a modular framework for character design. This set defines the "DNA" of the IP through consistent anatomical rules, ensuring emotional scalability across different media.',
           tags: ['IDENTITY', 'MASCOT', 'EMOTION'],
-          image: 'https://picsum.photos/seed/sys_char/600/400'
+          image: 'https://picsum.photos/seed/sys_char/600/400',
+          specs: [
+            { label: 'Anatomy', value: 'Rule-based Proportions' },
+            { label: 'Logic', value: 'Character Consistency + Emotional Variance' },
+            { label: 'Status', value: 'Conceptual Research' }
+          ]
         },
         {
           id: 'iconography',
           title: 'ICON_SET',
-          description: 'REDUCTIVE SYMBOLIC LANGUAGE',
+          tagline: '[REDUCTIVE SEMANTICS]',
+          description: 'A functional icon library built on the same 24px grid system. It translates complex actions into a minimalist symbolic language, maintaining visual harmony with the typographic system.',
           tags: ['ICON', 'UI', 'VECTOR'],
-          image: 'https://picsum.photos/seed/sys_icon/600/400'
+          image: 'https://picsum.photos/seed/sys_icon/600/400',
+          specs: [
+            { label: 'Grid', value: '24px Standard Icon Grid' },
+            { label: 'Stroke', value: '2px Consistent Weight' },
+            { label: 'Logic', value: 'Semantic Simplification' }
+          ]
         }
     ]
   },

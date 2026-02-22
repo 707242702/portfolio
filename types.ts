@@ -14,6 +14,8 @@ export interface ProjectModule {
   tags?: string[];
   image?: string;
   localVideos?: string[];
+  tagline?: string;
+  specs?: { label: string; value: string }[];
 }
 
 export interface Project {
