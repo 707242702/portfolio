@@ -1475,13 +1475,25 @@ export const PROJECTS: Project[] = [
           id: 'character',
           title: 'CHAR_IP',
           tagline: '[SCALABLE ANATOMY]',
-          description: 'Developing a modular framework for character design. This set defines the "DNA" of the IP through consistent anatomical rules, ensuring emotional scalability across different media.',
+          description: 'Adapting organic forms into the 24-unit matrix. This section explores stylistic unity and structural integrity across a modular character system.',
           tags: ['IDENTITY', 'MASCOT', 'EMOTION'],
           image: 'https://picsum.photos/seed/sys_char/600/400',
           specs: [
-            { label: 'Anatomy', value: 'Rule-based Proportions' },
-            { label: 'Logic', value: 'Character Consistency + Emotional Variance' },
-            { label: 'Status', value: 'Conceptual Research' }
+            { label: 'Grid', value: '24-unit Icon Matrix' },
+            { label: 'Type', value: 'Vector Construction' },
+            { label: 'ID', value: 'Numeric Index 01–12' }
+          ],
+          localImages: [
+            '/images/characters/01.jpg', '/images/characters/02.jpg', '/images/characters/03.jpg',
+            '/images/characters/04.jpg', '/images/characters/05.jpg', '/images/characters/06.jpg',
+            '/images/characters/07.jpg', '/images/characters/08.jpg', '/images/characters/09.jpg',
+            '/images/characters/10.jpg', '/images/characters/11.jpg', '/images/characters/12.jpg'
+          ],
+          localVideos: [
+            '/images/characters/01.mp4', '/images/characters/02.mp4', '/images/characters/03.mp4',
+            '/images/characters/04.mp4', '/images/characters/05.mp4', '/images/characters/06.mp4',
+            '/images/characters/07.mp4', '/images/characters/08.mp4', '/images/characters/09.mp4',
+            '/images/characters/10.mp4', '/images/characters/11.mp4', '/images/characters/12.mp4'
           ]
         },
         {

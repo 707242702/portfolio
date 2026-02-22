@@ -376,14 +376,19 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                     */}
                     {activeModule.localVideos ? (
                         <div className="grid grid-cols-4 gap-1">
-                            {activeModule.localVideos.map((src, vi) => (
-                                <LetterCell
-                                    key={vi}
-                                    src={src}
-                                    imgSrc={activeModule.localImages?.[vi]}
-                                    letter={String.fromCharCode(65 + vi)}
-                                />
-                            ))}
+                            {activeModule.localVideos.map((src, vi) => {
+                                // Derive label from filename: "a.mp4" → "A", "01.mp4" → "01"
+                                const base = src.split('/').pop()?.replace(/\.[^.]+$/, '') ?? '';
+                                const label = base.length === 1 ? base.toUpperCase() : base;
+                                return (
+                                    <LetterCell
+                                        key={vi}
+                                        src={src}
+                                        imgSrc={activeModule.localImages?.[vi]}
+                                        letter={label}
+                                    />
+                                );
+                            })}
                         </div>
                     ) : activeModule.localImages ? (
                         <div className="grid grid-cols-4 gap-1">
