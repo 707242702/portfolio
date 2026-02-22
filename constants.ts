@@ -1520,6 +1520,12 @@ export const PROJECTS: Project[] = [
             '/images/icons/16.jpg', '/images/icons/17.jpg', '/images/icons/18.jpg',
             '/images/icons/19.jpg', '/images/icons/20.jpg', '/images/icons/21.jpg',
             '/images/icons/22.jpg', '/images/icons/23.jpg', '/images/icons/24.jpg'
+          ],
+          localImageLabels: [
+            'MEDIA_HUB', 'JUSTICE', 'ESSENTIALS', 'EASTERN', 'LUXURY', 'NATURE',
+            'TREASURE', 'TO_GO', 'CLIMATE', 'FALL_TRAVEL', 'HAPPY_SUNDAY', 'DEAL',
+            'NEW_ARRIVAL', 'CASH_FLOW', 'INFINITY', 'HYDRATION', 'WALLET', 'COMMUNITY',
+            'SAVINGS', 'MOBILE_SEARCH', 'PRESIDENT_DAY', 'ENERGY', 'NEW_YEAR', 'SHOPPING'
           ]
         }
     ]

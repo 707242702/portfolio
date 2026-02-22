@@ -344,41 +344,44 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
             {activeModule && (
                 <div key={activeModule.id}>
 
-                    {/* Tagline — supports multi-line via \n */}
-                    {activeModule.tagline && (
-                        <div className="mb-3">
-                            {activeModule.tagline.split('\n').map((line, i) => (
-                                <p key={i} className="font-mono text-[10px] text-stone-400 tracking-[0.2em] uppercase leading-relaxed">
-                                    {line}
-                                </p>
-                            ))}
-                        </div>
-                    )}
+                    {/* Fixed-height block so the grid starts at the same position across all tabs */}
+                    <div className="min-h-[300px]">
+                        {/* Tagline — supports multi-line via \n */}
+                        {activeModule.tagline && (
+                            <div className="mb-3">
+                                {activeModule.tagline.split('\n').map((line, i) => (
+                                    <p key={i} className="font-mono text-[10px] text-stone-400 tracking-[0.2em] uppercase leading-relaxed">
+                                        {line}
+                                    </p>
+                                ))}
+                            </div>
+                        )}
 
-                    {/* Description */}
-                    <p className="text-base font-medium text-stone-700 leading-relaxed mb-8 max-w-2xl">
-                        {activeModule.description}
-                    </p>
+                        {/* Description */}
+                        <p className="text-base font-medium text-stone-700 leading-relaxed mb-8 max-w-2xl">
+                            {activeModule.description}
+                        </p>
 
-                    {/* Tech specs */}
-                    {activeModule.specs && (
-                        <div className="mb-10 font-mono text-[10px] border-l-2 border-stone-200 pl-4 space-y-2">
-                            <p className="text-stone-400 tracking-[0.15em] mb-3 uppercase">[Tech Specs]</p>
-                            {activeModule.specs.map(spec => (
-                                <div key={spec.label} className="flex items-center gap-3">
-                                    <span className="text-stone-400 min-w-[8rem] shrink-0">{spec.label}</span>
-                                    {spec.label === 'Medium' ? (
-                                        // Red highlight block — only on the value, label stays grey
-                                        <span className="bg-[#EB431D] text-white px-2 py-0.5 font-bold">
-                                            // {spec.value}
-                                        </span>
-                                    ) : (
-                                        <span className="text-stone-400">// {spec.value}</span>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    )}
+                        {/* Tech specs */}
+                        {activeModule.specs && (
+                            <div className="mb-10 font-mono text-[10px] border-l-2 border-stone-200 pl-4 space-y-2">
+                                <p className="text-stone-400 tracking-[0.15em] mb-3 uppercase">[Tech Specs]</p>
+                                {activeModule.specs.map(spec => (
+                                    <div key={spec.label} className="flex items-center gap-3">
+                                        <span className="text-stone-400 min-w-[8rem] shrink-0">{spec.label}</span>
+                                        {spec.label === 'Medium' ? (
+                                            // Red highlight block — only on the value, label stays grey
+                                            <span className="bg-[#EB431D] text-white px-2 py-0.5 font-bold">
+                                                // {spec.value}
+                                            </span>
+                                        ) : (
+                                            <span className="text-stone-400">// {spec.value}</span>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
 
                     {/* Visual grid
                         - Has localVideos  → LetterCell (static jpg + hover plays mp4)
@@ -404,7 +407,11 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                     ) : activeModule.localImages ? (
                         <div className="grid grid-cols-4 gap-1">
                             {activeModule.localImages.map((src, ni) => (
-                                <NumericCell key={ni} src={src} label={String(ni)} />
+                                <NumericCell
+                                    key={ni}
+                                    src={src}
+                                    label={activeModule.localImageLabels?.[ni] ?? String(ni + 1)}
+                                />
                             ))}
                         </div>
                     ) : activeModule.image ? (

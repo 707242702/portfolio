@@ -15,6 +15,7 @@ export interface ProjectModule {
   image?: string;
   localVideos?: string[];
   localImages?: string[];
+  localImageLabels?: string[];
   tagline?: string;
   specs?: { label: string; value: string }[];
 }
