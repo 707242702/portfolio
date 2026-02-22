@@ -13,6 +13,7 @@ export interface ProjectModule {
   description: string;
   tags?: string[];
   image?: string;
+  localVideos?: string[];
 }
 
 export interface Project {

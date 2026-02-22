@@ -1426,7 +1426,16 @@ export const PROJECTS: Project[] = [
           title: 'ALPHABET_SYS',
           description: 'MODULAR TYPOGRAPHY CONSTRUCTED FROM PRIMITIVES',
           tags: ['TYPOGRAPHY', 'GRID', 'SYSTEM'],
-          image: 'https://picsum.photos/seed/sys_alpha/600/400'
+          image: 'https://picsum.photos/seed/sys_alpha/600/400',
+          localVideos: [
+            '/images/alphabet/a.mp4', '/images/alphabet/b.mp4', '/images/alphabet/c.mp4', '/images/alphabet/d.mp4',
+            '/images/alphabet/e.mp4', '/images/alphabet/f.mp4', '/images/alphabet/g.mp4', '/images/alphabet/h.mp4',
+            '/images/alphabet/i.mp4', '/images/alphabet/j.mp4', '/images/alphabet/k.mp4', '/images/alphabet/l.mp4',
+            '/images/alphabet/m.mp4', '/images/alphabet/n.mp4', '/images/alphabet/o.mp4', '/images/alphabet/p.mp4',
+            '/images/alphabet/q.mp4', '/images/alphabet/r.mp4', '/images/alphabet/s.mp4', '/images/alphabet/t.mp4',
+            '/images/alphabet/u.mp4', '/images/alphabet/v.mp4', '/images/alphabet/w.mp4', '/images/alphabet/x.mp4',
+            '/images/alphabet/y.mp4', '/images/alphabet/z.mp4'
+          ]
         },
         {
           id: 'numeric',

@@ -206,10 +206,12 @@ const ImageCard: React.FC<ImageCardProps> = ({ src, index, aspectClass }) => {
 interface ModuleCardProps {
     module: ProjectModule;
     index: number;
-    minimal?: boolean; // New prop for minimalist frame
+    minimal?: boolean;
+    onClick?: () => void;
+    isExpanded?: boolean;
 }
 
-const ModuleCard: React.FC<ModuleCardProps> = ({ module, index, minimal = false }) => {
+const ModuleCard: React.FC<ModuleCardProps> = ({ module, index, minimal = false, onClick, isExpanded = false }) => {
     // Cycle system colors
     const colors = [COLORS.RED, COLORS.BLUE, COLORS.GREEN, COLORS.ORANGE];
     const hoverColor = colors[index % colors.length];
@@ -250,11 +252,12 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index, minimal = false 
     }
 
     return (
-        <motion.div 
+        <motion.div
             className="group relative flex flex-col gap-4 cursor-pointer"
             initial="initial"
             whileHover="hover"
             style={{ "--hover-color": hoverColor } as React.CSSProperties}
+            onClick={onClick}
         >
             {/* Image Container - High Contrast System Look */}
             <div className="relative w-full aspect-[16/10] overflow-hidden bg-stone-900 rounded-sm">
@@ -305,14 +308,21 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index, minimal = false 
                     />
                 </div>
                 
-                <h3 className="text-xl font-bold text-[#1D3557] mb-1 group-hover:text-black transition-colors">{module.title}</h3>
+                <div className="flex items-center justify-between">
+                    <h3 className="text-xl font-bold text-[#1D3557] mb-1 group-hover:text-black transition-colors">{module.title}</h3>
+                    {module.localVideos && (
+                        <span className="text-[10px] font-mono text-stone-400 group-hover:text-[var(--hover-color)] transition-colors">
+                            {isExpanded ? '[ − ]' : '[ + ]'}
+                        </span>
+                    )}
+                </div>
                 <p className="text-sm text-stone-500 font-medium leading-relaxed max-w-xs">{module.description}</p>
-                
+
                 {/* Interactive Tags */}
                 <div className="flex flex-wrap gap-2 mt-3">
                     {module.tags?.map((tag) => (
-                        <span 
-                            key={tag} 
+                        <span
+                            key={tag}
                             className="text-[10px] font-mono uppercase tracking-wide transition-colors duration-300 text-[#a8a29e] group-hover:text-[var(--hover-color)]"
                         >
                             #{tag}
@@ -663,8 +673,9 @@ interface ProjectDetailProps {
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelectProject, onToggleMenu }) => {
     const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
-    
-    useEffect(() => { if(scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0; }, [project, scrollContainerRef]);
+    const [expandedModuleId, setExpandedModuleId] = useState<string | null>(null);
+
+    useEffect(() => { if(scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0; setExpandedModuleId(null); }, [project, scrollContainerRef]);
 
     const currentIndex = PROJECTS.findIndex(p => p.id === project.id);
     const nextIndex = (currentIndex + 1) % PROJECTS.length;
@@ -756,16 +767,52 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelec
                     
                     {/* SECTION 1: MODULES / GIF GRID */}
                     {project.modules && project.modules.length > 0 && (
-                         <div className={`mb-16 ${isMotionProject ? 'grid grid-cols-1 md:grid-cols-3 gap-4' : layout.containerClass}`}>
-                            {project.modules.map((module, i) => (
-                                <ModuleCard 
-                                    key={module.id} 
-                                    module={module} 
-                                    index={i} 
-                                    minimal={isMotionProject} // Use minimal frame for Motion project
-                                />
-                            ))}
-                         </div>
+                        <div className="mb-16">
+                            <div className={`${isMotionProject ? 'grid grid-cols-1 md:grid-cols-3 gap-4' : layout.containerClass}`}>
+                                {project.modules.map((module, i) => (
+                                    <ModuleCard
+                                        key={module.id}
+                                        module={module}
+                                        index={i}
+                                        minimal={isMotionProject}
+                                        isExpanded={expandedModuleId === module.id}
+                                        onClick={module.localVideos ? () => setExpandedModuleId(expandedModuleId === module.id ? null : module.id) : undefined}
+                                    />
+                                ))}
+                            </div>
+                            {/* Expanded video grid */}
+                            <AnimatePresence>
+                                {expandedModuleId && (() => {
+                                    const expandedModule = project.modules?.find(m => m.id === expandedModuleId);
+                                    if (!expandedModule?.localVideos) return null;
+                                    return (
+                                        <motion.div
+                                            key={expandedModuleId}
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            transition={{ duration: 0.4, ease: 'easeInOut' }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-6">
+                                                {expandedModule.localVideos.map((src, i) => (
+                                                    <div key={i} className="aspect-square overflow-hidden rounded-sm bg-stone-100">
+                                                        <video
+                                                            src={src}
+                                                            autoPlay
+                                                            loop
+                                                            muted
+                                                            playsInline
+                                                            className="w-full h-full object-cover"
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })()}
+                            </AnimatePresence>
+                        </div>
                     )}
 
                      {/* SECTION 2: IMAGES (Non-Motion) */}
