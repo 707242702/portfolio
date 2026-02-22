@@ -1425,13 +1425,13 @@ export const PROJECTS: Project[] = [
           id: 'alphabet',
           title: 'ALPHABET_SYS',
           tagline: '[REVISIT & EVOLVE]',
-          description: "A complete overhaul of my earlier character studies. I've brought these diverse forms into a standardized 24-unit icon grid, bridging the gap between freeform illustration and the disciplined logic of interface design.",
+          description: 'A series of character studies based on original hand-drawn illustrations. Every brushstroke and texture is manually crafted, then integrated into a standardized 24-unit icon grid. While AI is utilized solely to assist with motion dynamics, the core visual DNA remains 100% human-led.',
           tags: ['TYPOGRAPHY', 'GRID', 'SYSTEM'],
           image: 'https://picsum.photos/seed/sys_alpha/600/400',
           specs: [
-            { label: 'Grid System', value: '24-unit Icon Matrix (1920px Canvas)' },
-            { label: 'Construction', value: 'Native Geometric Keylines' },
-            { label: 'Logic', value: 'Precision Alignment + High-Fidelity Illustration' }
+            { label: 'Medium', value: '100% Original Hand-drawn Illustration' },
+            { label: 'Motion', value: 'AI-Augmented Fluidity' },
+            { label: 'Framework', value: '24-unit Icon Matrix' }
           ],
           localImages: [
             '/images/alphabet/a.jpg', '/images/alphabet/b.jpg', '/images/alphabet/c.jpg', '/images/alphabet/d.jpg',
