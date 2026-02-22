@@ -6,15 +6,46 @@ import { Content } from './components/Content';
 import { BlendCursor } from './components/BlendCursor';
 import { ClickExplosion } from './components/ClickExplosion';
 import { Section, Project, AiItem } from './types';
-import { NAV_ITEMS } from './constants';
+import { NAV_ITEMS, PROJECTS, AI_ITEMS } from './constants';
 import { motion } from 'framer-motion';
 
+// Parse URL hash into initial app state
+const parseHash = () => {
+  const hash = window.location.hash.replace(/^#\/?/, ''); // e.g. "work/work-illustration"
+  const [section, id] = hash.split('/');
+  if (section === 'work') {
+    const project = id ? (PROJECTS.find(p => p.id === id) ?? null) : null;
+    return { section: Section.WORK, project, aiItem: null };
+  }
+  if (section === 'ai') {
+    const aiItem = id ? (AI_ITEMS.find(i => i.id === id) ?? null) : null;
+    return { section: Section.AI, project: null, aiItem };
+  }
+  if (section === 'about') return { section: Section.ABOUT, project: null, aiItem: null };
+  return { section: Section.HOME, project: null, aiItem: null };
+};
+
+const initial = parseHash();
+
 const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<Section>(Section.HOME);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [selectedAiItem, setSelectedAiItem] = useState<AiItem | null>(null);
+  const [activeSection, setActiveSection] = useState<Section>(initial.section);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(initial.project);
+  const [selectedAiItem, setSelectedAiItem] = useState<AiItem | null>(initial.aiItem);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
+
+  // Sync state → URL hash
+  useEffect(() => {
+    let hash = '';
+    if (selectedProject)     hash = `#/work/${selectedProject.id}`;
+    else if (selectedAiItem) hash = `#/ai/${selectedAiItem.id}`;
+    else if (activeSection === Section.WORK)  hash = '#/work';
+    else if (activeSection === Section.AI)    hash = '#/ai';
+    else if (activeSection === Section.ABOUT) hash = '#/about';
+    // HOME: remove hash
+    const current = window.location.hash;
+    if (hash !== current) history.replaceState(null, '', hash || window.location.pathname);
+  }, [activeSection, selectedProject, selectedAiItem]);
 
   // Scroll resistance refs
   const scrollAccumulator = useRef(0);
