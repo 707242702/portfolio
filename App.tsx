@@ -35,14 +35,21 @@ const App: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(true);
 
   // Sync state → URL hash
+  // NOTE: if the current hash already starts with the correct project path,
+  // we leave it alone so sub-components (e.g. IllustrationTabSystem) can
+  // append their own tab segment without being overwritten.
   useEffect(() => {
     let hash = '';
-    if (selectedProject)     hash = `#/work/${selectedProject.id}`;
-    else if (selectedAiItem) hash = `#/ai/${selectedAiItem.id}`;
-    else if (activeSection === Section.WORK)  hash = '#/work';
-    else if (activeSection === Section.AI)    hash = '#/ai';
-    else if (activeSection === Section.ABOUT) hash = '#/about';
-    // HOME: remove hash
+    if (selectedProject) {
+      const base = `#/work/${selectedProject.id}`;
+      if (window.location.hash.startsWith(base)) return; // preserve tab sub-path
+      hash = base;
+    } else if (selectedAiItem) {
+      hash = `#/ai/${selectedAiItem.id}`;
+    } else if (activeSection === Section.WORK)  hash = '#/work';
+    else if (activeSection === Section.AI)      hash = '#/ai';
+    else if (activeSection === Section.ABOUT)   hash = '#/about';
+    // HOME: clear hash
     const current = window.location.hash;
     if (hash !== current) history.replaceState(null, '', hash || window.location.pathname);
   }, [activeSection, selectedProject, selectedAiItem]);

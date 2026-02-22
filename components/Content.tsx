@@ -260,116 +260,148 @@ const NumericCell: React.FC<{ src: string; label: string }> = ({ src, label }) =
     </div>
 );
 
-// Tab system for Illustration Systems project
+// ─── Illustration Systems Tab Component ──────────────────────────────────────
+//
+// URL scheme: #/work/work-illustration/{module.id}
+// e.g. #/work/work-illustration/numeric
+//
+// Each tab updates the URL so users can refresh or share a direct link
+// to a specific system (alphabet, numeric, character, iconography).
+// ─────────────────────────────────────────────────────────────────────────────
+
+const TAB_COLORS = [COLORS.RED, COLORS.BLUE, COLORS.GREEN, COLORS.ORANGE];
+
 const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
-    const [activeTab, setActiveTab] = useState(0);
-    const tabColors = [COLORS.RED, COLORS.BLUE, COLORS.GREEN, COLORS.ORANGE];
     const modules = project.modules || [];
+
+    // Read initial tab index from URL hash segment:
+    // #/work/work-illustration/numeric  →  index of module with id "numeric"
+    const getInitialTab = (): number => {
+        const tabId = window.location.hash.replace(/^#\//, '').split('/')[2];
+        if (tabId) {
+            const idx = modules.findIndex(m => m.id === tabId);
+            if (idx >= 0) return idx;
+        }
+        return 0;
+    };
+
+    const [activeTab, setActiveTab] = useState<number>(getInitialTab);
+
+    // Update tab state + URL when user hovers a tab
+    const handleTabChange = (index: number) => {
+        setActiveTab(index);
+        const moduleId = modules[index]?.id;
+        if (moduleId) {
+            history.replaceState(null, '', `#/work/${project.id}/${moduleId}`);
+        }
+    };
+
+    const activeModule = modules[activeTab];
 
     return (
         <div>
-            {/* Console label above tabs */}
+
+            {/* ── Nav hint ── */}
             <p className="font-mono text-[9px] text-stone-300 tracking-[0.25em] mb-3 uppercase select-none">
                 // NAVIGATE_SYSTEMS
             </p>
 
-            {/* Tab bar */}
+            {/* ── Tab bar ── */}
             <div className="flex border-b border-[#D9D9D9] mb-10 overflow-x-auto">
                 {modules.map((module, i) => {
                     const isActive = activeTab === i;
-                    const color = tabColors[i];
+                    const color = TAB_COLORS[i];
                     return (
                         <button
                             key={module.id}
-                            onMouseEnter={() => setActiveTab(i)}
+                            onMouseEnter={() => handleTabChange(i)}
                             className="group relative flex flex-col items-start px-6 py-4 font-mono text-xs tracking-[0.28em] uppercase cursor-pointer whitespace-nowrap shrink-0 border-0 outline-none transition-colors duration-150"
                             style={{
-                                color: isActive ? color : '#a8a29e',
+                                color:           isActive ? color : '#a8a29e',
                                 backgroundColor: isActive ? `${color}10` : 'transparent',
-                                borderBottom: isActive ? `3px solid ${color}` : '3px solid transparent',
+                                borderBottom:    isActive ? `3px solid ${color}` : '3px solid transparent',
                             }}
                         >
-                            <span
-                                className="font-bold text-sm tracking-[0.22em] mb-1 transition-colors duration-100"
-                                style={{ color: isActive ? color : undefined }}
-                            >
+                            <span className="font-bold text-sm tracking-[0.22em] mb-1">
                                 {`SYS_0${i + 1}`}
                             </span>
-                            <span className="transition-colors duration-100 group-hover:text-stone-800">
+                            <span className="group-hover:text-stone-800 transition-colors duration-100">
                                 {module.title}
                             </span>
-                            {/* Hover underline for inactive tabs */}
+                            {/* Animated underline shown only on inactive hover */}
                             {!isActive && (
-                                <span className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-200" style={{ backgroundColor: color }} />
+                                <span
+                                    className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-200"
+                                    style={{ backgroundColor: color }}
+                                />
                             )}
                         </button>
                     );
                 })}
             </div>
 
-            {/* Tab content — instant switch, no animation */}
-            {modules.map((module, i) => activeTab === i && (
-                <div key={module.id}>
+            {/* ── Tab content (instant switch) ── */}
+            {activeModule && (
+                <div key={activeModule.id}>
+
                     {/* Tagline */}
-                    {module.tagline && (
+                    {activeModule.tagline && (
                         <p className="font-mono text-[10px] text-stone-400 tracking-[0.2em] mb-3 uppercase">
-                            {module.tagline}
+                            {activeModule.tagline}
                         </p>
                     )}
 
                     {/* Description */}
                     <p className="text-base font-medium text-stone-700 leading-relaxed mb-8 max-w-2xl">
-                        {module.description}
+                        {activeModule.description}
                     </p>
 
                     {/* Tech specs */}
-                    {module.specs && (
+                    {activeModule.specs && (
                         <div className="mb-10 font-mono text-[10px] border-l-2 border-stone-200 pl-4 space-y-2">
                             <p className="text-stone-400 tracking-[0.15em] mb-3 uppercase">[Tech Specs]</p>
-                            {module.specs.map(spec => (
+                            {activeModule.specs.map(spec => (
                                 <div key={spec.label} className="flex gap-3">
-                                    <span className="text-stone-400 w-20 shrink-0">{spec.label}</span>
+                                    <span className="text-stone-400 min-w-[8rem] shrink-0">{spec.label}</span>
                                     <span className="text-stone-500">// {spec.value}</span>
                                 </div>
                             ))}
                         </div>
                     )}
 
-                    {/* Visual content */}
-                    {module.localVideos ? (
-                        // ALPHABET_SYS: 4 columns, static jpg + hover video
+                    {/* Visual grid
+                        - Has localVideos  → LetterCell (static jpg + hover plays mp4)
+                        - Has localImages  → NumericCell (static jpg + CSS hover)
+                        - Fallback         → placeholder with "pending upload" label
+                    */}
+                    {activeModule.localVideos ? (
                         <div className="grid grid-cols-4 gap-1">
-                            {module.localVideos.map((src, vi) => (
+                            {activeModule.localVideos.map((src, vi) => (
                                 <LetterCell
                                     key={vi}
                                     src={src}
-                                    imgSrc={module.localImages?.[vi]}
+                                    imgSrc={activeModule.localImages?.[vi]}
                                     letter={String.fromCharCode(65 + vi)}
                                 />
                             ))}
                         </div>
-                    ) : module.localImages ? (
-                        // NUMERIC_SYS: 4 columns, static jpg + CSS hover
+                    ) : activeModule.localImages ? (
                         <div className="grid grid-cols-4 gap-1">
-                            {module.localImages.map((src, ni) => (
+                            {activeModule.localImages.map((src, ni) => (
                                 <NumericCell key={ni} src={src} label={String(ni)} />
                             ))}
                         </div>
-                    ) : module.image ? (
-                        // Other tabs: static, original color, no overlay
+                    ) : activeModule.image ? (
                         <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm">
-                            <img
-                                src={module.image}
-                                alt={module.title}
-                                className="w-full h-full object-cover"
-                            />
+                            <img src={activeModule.image} alt={activeModule.title} className="w-full h-full object-cover" />
                             <div className="absolute top-3 left-3 font-mono text-[8px] tracking-[0.15em] text-stone-500 bg-white/80 px-2 py-1 uppercase">
                                 Media — Pending Upload
                             </div>
                         </div>
                     ) : null}
+
                 </div>
-            ))}
+            )}
 
             {/* Global System Note */}
             <div className="mt-16 pt-6 border-t border-stone-100 space-y-1.5">
