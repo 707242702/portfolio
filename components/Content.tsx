@@ -207,7 +207,7 @@ const ImageCard: React.FC<ImageCardProps> = ({ src, index, aspectClass }) => {
 const WHITE_GRID = `url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='g' width='24' height='24' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 24V0H24' fill='none' stroke='rgba(255%2C255%2C255%2C0.18)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E")`;
 const DARK_GRID  = `url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='g' width='24' height='24' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 24V0H24' fill='none' stroke='rgba(0%2C0%2C0%2C0.07)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E")`;
 
-// Single letter cell with hover-to-play + grid fade
+// Single letter cell with hover-to-play + grid fade (no color filter)
 const LetterCell: React.FC<{ src: string; letter: string }> = ({ src, letter }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [active, setActive] = useState(false);
@@ -229,26 +229,22 @@ const LetterCell: React.FC<{ src: string; letter: string }> = ({ src, letter }) 
         >
             {/* Grid overlay — fades on hover */}
             <div
-                className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-500"
+                className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-300"
                 style={{ backgroundImage: WHITE_GRID, opacity: active ? 0 : 1 }}
             />
-            {/* Video */}
+            {/* Video — no filter or scale, pure color */}
             <video
                 ref={videoRef}
                 src={src}
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover transition-all duration-500"
-                style={{
-                    filter: active ? 'grayscale(0%) contrast(1)' : 'grayscale(60%) contrast(1.1)',
-                    transform: active ? 'scale(1.06)' : 'scale(1)',
-                }}
+                className="w-full h-full object-cover"
             />
             {/* Letter label */}
             <span
-                className="absolute bottom-1.5 left-2 font-mono text-[9px] font-bold z-20 transition-all duration-300 select-none"
-                style={{ color: active ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.3)' }}
+                className="absolute bottom-1.5 left-2 font-mono text-[9px] font-bold z-20 select-none transition-opacity duration-200"
+                style={{ color: 'rgba(255,255,255,0.5)', opacity: active ? 1 : 0.5 }}
             >
                 {letter}
             </span>
@@ -270,10 +266,10 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                     <button
                         key={module.id}
                         onClick={() => setActiveTab(i)}
-                        className="relative flex flex-col items-start px-5 py-3 font-mono text-[9px] tracking-[0.15em] uppercase transition-colors duration-200 cursor-pointer whitespace-nowrap shrink-0 bg-transparent border-0 outline-none"
+                        className="relative flex flex-col items-start px-6 py-4 font-mono text-xs tracking-[0.28em] uppercase cursor-pointer whitespace-nowrap shrink-0 bg-transparent border-0 outline-none transition-colors duration-150"
                         style={{ color: activeTab === i ? tabColors[i] : '#a8a29e' }}
                     >
-                        <span className="font-bold mb-0.5">{`SYS_0${i + 1}`}</span>
+                        <span className="font-bold text-sm tracking-[0.22em] mb-1">{`SYS_0${i + 1}`}</span>
                         <span>{module.title}</span>
                         {activeTab === i && (
                             <motion.div
@@ -287,69 +283,61 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                 ))}
             </div>
 
-            {/* Tab content */}
-            <AnimatePresence mode="wait">
-                {modules.map((module, i) => activeTab === i && (
-                    <motion.div
-                        key={module.id}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -8 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    >
-                        {/* Tagline */}
-                        {module.tagline && (
-                            <p className="font-mono text-[10px] text-stone-400 tracking-[0.2em] mb-3 uppercase">
-                                {module.tagline}
-                            </p>
-                        )}
-
-                        {/* Description */}
-                        <p className="text-base font-medium text-stone-700 leading-relaxed mb-8 max-w-2xl">
-                            {module.description}
+            {/* Tab content — instant switch, no animation */}
+            {modules.map((module, i) => activeTab === i && (
+                <div key={module.id}>
+                    {/* Tagline */}
+                    {module.tagline && (
+                        <p className="font-mono text-[10px] text-stone-400 tracking-[0.2em] mb-3 uppercase">
+                            {module.tagline}
                         </p>
+                    )}
 
-                        {/* Tech specs */}
-                        {module.specs && (
-                            <div className="mb-10 font-mono text-[10px] border-l-2 border-stone-200 pl-4 space-y-2">
-                                <p className="text-stone-400 tracking-[0.15em] mb-3 uppercase">[Tech Specs]</p>
-                                {module.specs.map(spec => (
-                                    <div key={spec.label} className="flex gap-3">
-                                        <span className="text-stone-400 w-20 shrink-0">{spec.label}</span>
-                                        <span className="text-stone-500">// {spec.value}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                    {/* Description */}
+                    <p className="text-base font-medium text-stone-700 leading-relaxed mb-8 max-w-2xl">
+                        {module.description}
+                    </p>
 
-                        {/* Visual content */}
-                        {module.localVideos ? (
-                            // ALPHABET_SYS: hover-to-play letter grid
-                            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-7 gap-1">
-                                {module.localVideos.map((src, vi) => (
-                                    <LetterCell key={vi} src={src} letter={String.fromCharCode(65 + vi)} />
-                                ))}
-                            </div>
-                        ) : module.image ? (
-                            // Other tabs: placeholder with grid overlay framework
-                            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm group cursor-pointer">
-                                <div
-                                    className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-0"
-                                    style={{ backgroundImage: DARK_GRID, opacity: 0.8 }}
-                                />
-                                <img
-                                    src={module.image}
-                                    alt={module.title}
-                                    className="w-full h-full object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-[1.02]"
-                                />
-                                <div className="absolute top-3 left-3 z-20 font-mono text-[8px] tracking-[0.15em] text-stone-500 bg-white/80 px-2 py-1 uppercase">
-                                    Media — Pending Upload
+                    {/* Tech specs */}
+                    {module.specs && (
+                        <div className="mb-10 font-mono text-[10px] border-l-2 border-stone-200 pl-4 space-y-2">
+                            <p className="text-stone-400 tracking-[0.15em] mb-3 uppercase">[Tech Specs]</p>
+                            {module.specs.map(spec => (
+                                <div key={spec.label} className="flex gap-3">
+                                    <span className="text-stone-400 w-20 shrink-0">{spec.label}</span>
+                                    <span className="text-stone-500">// {spec.value}</span>
                                 </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Visual content */}
+                    {module.localVideos ? (
+                        // ALPHABET_SYS: 5 columns
+                        <div className="grid grid-cols-5 gap-1">
+                            {module.localVideos.map((src, vi) => (
+                                <LetterCell key={vi} src={src} letter={String.fromCharCode(65 + vi)} />
+                            ))}
+                        </div>
+                    ) : module.image ? (
+                        // Other tabs: static placeholder, grid deepens on hover
+                        <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm group cursor-pointer">
+                            <div
+                                className="absolute inset-0 z-10 pointer-events-none"
+                                style={{ backgroundImage: DARK_GRID, opacity: 0.6 }}
+                            />
+                            <img
+                                src={module.image}
+                                alt={module.title}
+                                className="w-full h-full object-cover"
+                            />
+                            <div className="absolute top-3 left-3 z-20 font-mono text-[8px] tracking-[0.15em] text-stone-500 bg-white/80 px-2 py-1 uppercase">
+                                Media — Pending Upload
                             </div>
-                        ) : null}
-                    </motion.div>
-                ))}
-            </AnimatePresence>
+                        </div>
+                    ) : null}
+                </div>
+            ))}
 
             {/* Global System Note */}
             <div className="mt-16 pt-6 border-t border-stone-100 space-y-1.5">
