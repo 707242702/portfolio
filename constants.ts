@@ -1433,6 +1433,15 @@ export const PROJECTS: Project[] = [
             { label: 'Logic', value: 'Modular Geometry + Freehand Expression' },
             { label: 'Update', value: 'v1.0 (2024 Unified System)' }
           ],
+          localImages: [
+            '/images/alphabet/a.jpg', '/images/alphabet/b.jpg', '/images/alphabet/c.jpg', '/images/alphabet/d.jpg',
+            '/images/alphabet/e.jpg', '/images/alphabet/f.jpg', '/images/alphabet/g.jpg', '/images/alphabet/h.jpg',
+            '/images/alphabet/i.jpg', '/images/alphabet/j.jpg', '/images/alphabet/k.jpg', '/images/alphabet/l.jpg',
+            '/images/alphabet/m.jpg', '/images/alphabet/n.jpg', '/images/alphabet/o.jpg', '/images/alphabet/p.jpg',
+            '/images/alphabet/q.jpg', '/images/alphabet/r.jpg', '/images/alphabet/s.jpg', '/images/alphabet/t.jpg',
+            '/images/alphabet/u.jpg', '/images/alphabet/v.jpg', '/images/alphabet/w.jpg', '/images/alphabet/x.jpg',
+            '/images/alphabet/y.jpg', '/images/alphabet/z.jpg'
+          ],
           localVideos: [
             '/images/alphabet/a.mp4', '/images/alphabet/b.mp4', '/images/alphabet/c.mp4', '/images/alphabet/d.mp4',
             '/images/alphabet/e.mp4', '/images/alphabet/f.mp4', '/images/alphabet/g.mp4', '/images/alphabet/h.mp4',

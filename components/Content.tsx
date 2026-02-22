@@ -203,30 +203,36 @@ const ImageCard: React.FC<ImageCardProps> = ({ src, index, aspectClass }) => {
     );
 };
 
-// Single letter cell — hover plays video, nothing else
-const LetterCell: React.FC<{ src: string; letter: string }> = ({ src, letter }) => {
+// Single letter cell — static jpg by default, hover plays mp4 on top
+const LetterCell: React.FC<{ src: string; imgSrc?: string; letter: string }> = ({ src, imgSrc, letter }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
+    const [active, setActive] = useState(false);
 
-    const handleEnter = () => { videoRef.current?.play(); };
+    const handleEnter = () => { setActive(true); videoRef.current?.play(); };
     const handleLeave = () => {
+        setActive(false);
         if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; }
     };
 
     return (
         <div
-            className="relative aspect-square overflow-hidden bg-stone-900 cursor-pointer"
+            className="relative aspect-square overflow-hidden bg-stone-100 cursor-pointer"
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
         >
+            {/* Static image */}
+            {imgSrc && <img src={imgSrc} alt={letter} className="absolute inset-0 w-full h-full object-cover" />}
+            {/* Video overlay — fades in on hover */}
             <video
                 ref={videoRef}
                 src={src}
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-200"
+                style={{ opacity: active ? 1 : 0 }}
             />
-            <span className="absolute bottom-1.5 left-2 font-mono text-[9px] font-bold z-20 select-none text-white/40">
+            <span className="absolute bottom-1.5 left-2 font-mono text-[9px] font-bold z-20 select-none text-black/30">
                 {letter}
             </span>
         </div>
@@ -294,10 +300,15 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
 
                     {/* Visual content */}
                     {module.localVideos ? (
-                        // ALPHABET_SYS: 5 columns
-                        <div className="grid grid-cols-5 gap-1">
+                        // ALPHABET_SYS: 4 columns, static jpg + hover video
+                        <div className="grid grid-cols-4 gap-1">
                             {module.localVideos.map((src, vi) => (
-                                <LetterCell key={vi} src={src} letter={String.fromCharCode(65 + vi)} />
+                                <LetterCell
+                                    key={vi}
+                                    src={src}
+                                    imgSrc={module.localImages?.[vi]}
+                                    letter={String.fromCharCode(65 + vi)}
+                                />
                             ))}
                         </div>
                     ) : module.image ? (
