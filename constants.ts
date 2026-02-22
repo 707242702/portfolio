@@ -1429,9 +1429,9 @@ export const PROJECTS: Project[] = [
           tags: ['TYPOGRAPHY', 'GRID', 'SYSTEM'],
           image: 'https://picsum.photos/seed/sys_alpha/600/400',
           specs: [
-            { label: 'Grid', value: '24px Base Unit' },
-            { label: 'Logic', value: 'Modular Geometry + Freehand Expression' },
-            { label: 'Update', value: 'v1.0 (2024 Unified System)' }
+            { label: 'Grid System', value: 'Standardized 24-unit Icon Matrix (Scaled to 1920px)' },
+            { label: 'Construction', value: 'Native Geometric Keylines' },
+            { label: 'Logic', value: 'Precision Alignment + High-Fidelity Illustration' }
           ],
           localImages: [
             '/images/alphabet/a.jpg', '/images/alphabet/b.jpg', '/images/alphabet/c.jpg', '/images/alphabet/d.jpg',

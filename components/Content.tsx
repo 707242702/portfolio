@@ -260,7 +260,7 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                     return (
                         <button
                             key={module.id}
-                            onClick={() => setActiveTab(i)}
+                            onMouseEnter={() => setActiveTab(i)}
                             className="group relative flex flex-col items-start px-6 py-4 font-mono text-xs tracking-[0.28em] uppercase cursor-pointer whitespace-nowrap shrink-0 border-0 outline-none transition-colors duration-150"
                             style={{
                                 color: isActive ? color : '#a8a29e',
