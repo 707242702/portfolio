@@ -1482,7 +1482,7 @@ export const PROJECTS: Project[] = [
           specs: [
             { label: 'Medium', value: '100% Original Hand-drawn Illustration' },
             { label: 'Grid', value: '24-unit Icon Matrix' },
-            { label: 'Type', value: 'Vector Construction' },
+            { label: 'Type', value: 'Character Anatomy' },
             { label: 'ID', value: 'Numeric Index 01–12' }
           ],
           localImages: [
