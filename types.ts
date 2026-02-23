@@ -17,8 +17,10 @@ export interface ProjectModule {
   localImages?: string[];
   localImageLabels?: string[];
   tagline?: string;
-  subHeader?: string;    // Secondary header line, e.g. "(Commercial_Infographic_Archive)"
-  statusLabel?: string;  // Status label shown after the grid, triggers grayscale-default grid mode
+  subHeader?: string;      // Secondary header line, e.g. "(Commercial_Infographic_Archive)"
+  statusLabel?: string;    // Status label shown after the grid, triggers archive-strip grid mode
+  gridMode?: string;       // 'spatial' → 4-col white-box grid; default → NumericCell
+  processVideoId?: string; // YouTube video ID for [PROCESS_EVOLUTION] section
   specs?: { label: string; value: string }[];
 }
 

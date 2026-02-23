@@ -260,6 +260,23 @@ const NumericCell: React.FC<{ src: string; label: string }> = ({ src, label }) =
     </div>
 );
 
+// Spatial cell — white box background, grayscale default, color on hover
+// Used for map asset libraries (STR/ENV elements)
+const SpatialCell: React.FC<{ src: string; label: string }> = ({ src, label }) => (
+    <div className="group flex flex-col gap-1.5">
+        <div className="aspect-square bg-white overflow-hidden p-3">
+            <img
+                src={src}
+                alt={label}
+                className="w-full h-full object-contain transition-all duration-500 grayscale group-hover:grayscale-0"
+            />
+        </div>
+        <span className="font-mono text-[9px] text-stone-300 tracking-[0.2em] uppercase">
+            {label}
+        </span>
+    </div>
+);
+
 // Archive strip — vertical sequence, full-width, original aspect ratio
 // Grayscale + dim by default; hover reveals full color
 const ArchiveStrip: React.FC<{ images: string[]; labels: string[] }> = ({ images, labels }) => (
@@ -414,12 +431,60 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                     </div>
 
                     {/* Visual grid
+                        - gridMode 'spatial'           → SpatialCell 4-col white-box grid + map + video
                         - Has localVideos              → LetterCell (static jpg + hover plays mp4)
-                        - Has localImages + statusLabel → ArchiveCell (grayscale default, color on hover)
+                        - Has localImages + statusLabel → ArchiveStrip (vertical, grayscale default)
                         - Has localImages only          → NumericCell (static jpg + CSS scale hover)
                         - Fallback                     → placeholder
                     */}
-                    {activeModule.localVideos ? (
+                    {activeModule.gridMode === 'spatial' && activeModule.localImages ? (
+                        <>
+                            {/* 4×3 asset grid (STR_01-05 + ENV_06-11) */}
+                            <div className="grid grid-cols-4 gap-3">
+                                {activeModule.localImages.map((src, ni) => (
+                                    <SpatialCell
+                                        key={ni}
+                                        src={src}
+                                        label={activeModule.localImageLabels?.[ni] ?? `ASSET_${String(ni + 1).padStart(2, '0')}`}
+                                    />
+                                ))}
+                            </div>
+
+                            {/* Full campus map — reference assembly */}
+                            {activeModule.image && (
+                                <div className="mt-16">
+                                    <p className="font-mono text-[9px] text-stone-300 tracking-[0.25em] uppercase mb-3">
+                                        [ASSEMBLY_REFERENCE: WHOLE_MAP]
+                                    </p>
+                                    <img
+                                        src={activeModule.image}
+                                        alt="Campus Map"
+                                        className="w-full h-auto block"
+                                    />
+                                </div>
+                            )}
+
+                            {/* [PROCESS_EVOLUTION] video — shown when YouTube ID is provided */}
+                            {activeModule.processVideoId && (
+                                <div className="mt-16 pt-8 border-t border-stone-100">
+                                    <p className="font-mono text-[9px] text-stone-300 tracking-[0.25em] uppercase mb-4">
+                                        [PROCESS_EVOLUTION]
+                                    </p>
+                                    <div className="w-full aspect-video">
+                                        <iframe
+                                            width="100%"
+                                            height="100%"
+                                            src={`https://www.youtube.com/embed/${activeModule.processVideoId}`}
+                                            title="Process Evolution"
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        />
+                                    </div>
+                                </div>
+                            )}
+                        </>
+                    ) : activeModule.localVideos ? (
                         <div className="grid grid-cols-4 gap-1">
                             {activeModule.localVideos.map((src, vi) => {
                                 // Derive label from filename: "a.mp4" → "A", "01.mp4" → "01"

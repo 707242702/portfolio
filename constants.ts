@@ -1547,11 +1547,24 @@ export const PROJECTS: Project[] = [
           id: 'spatial-systems',
           title: 'SPATIAL_SYSTEMS',
           tagline: '[NAVIGATIONAL_CARTOGRAPHY]',
-          description: 'Campus Map Design — A structured approach to institutional navigation through cartographic illustration.',
+          description: 'A systematic approach to institutional navigation. Deconstructing a 140-acre campus into a modular library of 3D structural anchors and 2D environmental assets.',
           specs: [
             { label: 'Context', value: 'Institutional Navigation' },
-            { label: 'Logic',   value: 'Spatial Information Mapping' },
-            { label: 'Medium',  value: 'Cartographic Illustration' }
+            { label: 'Logic',   value: 'Spatial Hierarchy' },
+            { label: 'Medium',  value: 'Vector-based Info-Architecture' }
+          ],
+          gridMode: 'spatial',
+          image: '/images/map/whole_map.jpg',
+          processVideoId: '',   // Add YouTube video ID here when available
+          localImages: [
+            '/images/map/str_01.jpg', '/images/map/str_02.jpg', '/images/map/str_03.jpg',
+            '/images/map/str_04.jpg', '/images/map/str_05.jpg',
+            '/images/map/env_06.jpg', '/images/map/env_07.jpg', '/images/map/env_08.jpg',
+            '/images/map/env_09.jpg', '/images/map/env_10.jpg', '/images/map/env_11.jpg'
+          ],
+          localImageLabels: [
+            'STR_01', 'STR_02', 'STR_03', 'STR_04', 'STR_05',
+            'ENV_06', 'ENV_07', 'ENV_08', 'ENV_09', 'ENV_10', 'ENV_11'
           ]
         },
         {
