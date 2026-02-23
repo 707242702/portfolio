@@ -263,7 +263,7 @@ const NumericCell: React.FC<{ src: string; label: string }> = ({ src, label }) =
 // Archive strip — vertical sequence, full-width, original aspect ratio
 // Grayscale + dim by default; hover reveals full color
 const ArchiveStrip: React.FC<{ images: string[]; labels: string[] }> = ({ images, labels }) => (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-40">
         {images.map((src, i) => (
             <div key={i} className="group">
                 {/* Unit label above image */}

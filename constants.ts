@@ -1559,7 +1559,7 @@ export const PROJECTS: Project[] = [
           title: 'PROCESS_ARCHITECTURE',
           tagline: '[DATA_CHRONICLES]',
           subHeader: '(Archive_v1.0: Multilayered_Process_Mapping)',
-          description: '',
+          description: 'Decoding complex systems through visual modeling. This section explores the architectural transition of information across logical, biological, and historical dimensions.',
           specs: [
             { label: 'Context', value: 'Commercial Production Archive' },
             { label: 'Logic',   value: 'Structural Narrative & Data Hierarchy' },
@@ -1571,14 +1571,20 @@ export const PROJECTS: Project[] = [
             '/images/infographics/02.jpg',
             '/images/infographics/03.jpg',
             '/images/infographics/04.jpg',
-            '/images/infographics/05.jpg'
+            '/images/infographics/05.jpg',
+            '/images/infographics/06.jpg',
+            '/images/infographics/07.jpg',
+            '/images/infographics/08.jpg'
           ],
           localImageLabels: [
             'UNIT 02-01 / CHRONO_ENGINEERING',
-            'UNIT 02-02 / BIOLOGICAL_CONVERSION',
-            'UNIT 02-03 / PATHOGEN_MAPPING',
-            'UNIT 02-04 / LOGISTIC_HIERARCHY',
-            'UNIT 02-05 / HYDRAULIC_MECHANICS'
+            'UNIT 02-02 / DATA_INVENTORY',
+            'UNIT 02-03 / ECOLOGICAL_SYSTEMS',
+            'UNIT 02-04 / AGRONOMIC_LOGIC',
+            'UNIT 02-05 / PATHOGEN_MAPPING',
+            'UNIT 02-06 / LOGISTIC_HIERARCHY',
+            'UNIT 02-07 / ARTISTIC_ANATOMY',
+            'UNIT 02-08 / BIOLOGICAL_PROCESS'
           ]
         },
         {
