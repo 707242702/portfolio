@@ -1532,38 +1532,52 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'work-marketing',
-    title: 'INFORMATION STRUCTURES',
-    category: 'Maps / Infographics / Packaging',
+    title: 'PROCESS ARCHITECTURE',
+    category: 'Commercial Production Archive',
     year: '2024',
     role: 'VISUAL DESIGNER',
-    client: 'STATUS: SELF-INITIATED RESEARCH',
-    description: 'Systematic explorations in modular geometry and visual logic.',
+    client: 'SYS_03: PROCESS_ARCHITECTURE',
+    description: 'A systematic breakdown of complex industrial, biological, and historical processes. This section integrates professional commercial infographics into the system\'s visual DNA, prioritizing structural hierarchy and data clarity over decorative elements.',
     content: [
-      "A series of rule-based experiments defining new visual systems.",
-      "Focusing on the translation of complex data into accessible visual narratives through spatial organization."
+      "Unit IDs follow a sequential indexing protocol: 03-01 through 03-05.",
+      "Each unit maps a distinct process domain — chronological, biological, spatial, logistical, or mechanical.",
+      "Visual DNA is defined per unit and governs default state, hover behavior, and information hierarchy."
     ],
-    // Replace images with modules for subsections
     modules: [
         {
-          id: 'maps',
-          title: 'SPATIAL_MAPS',
-          description: 'CARTOGRAPHIC SYSTEMS',
-          tags: ['WAYFINDING', 'TOPOGRAPHY'],
-          image: 'https://picsum.photos/seed/maps_1/600/400'
+          id: 'chrono-engineering',
+          title: 'CHRONO_ENGINEERING',
+          description: 'Mapping the 1928–1935 chronological progression through archival photography and site logistics.',
+          tags: ['UNIT 03-01', 'HOOVER DAM', 'TIMELINE'],
+          image: 'https://picsum.photos/seed/hoover_dam/600/400'
         },
         {
-          id: 'infographics',
-          title: 'DATA_VIS',
-          description: 'COMPLEX DATA SYNTHESIS',
-          tags: ['QUANTITATIVE', 'FLOW'],
-          image: 'https://picsum.photos/seed/info_1/600/400'
+          id: 'biological-conversion',
+          title: 'BIOLOGICAL_CONVERSION',
+          description: 'A circular narrative mapping the transformation from biological organism to industrial textile.',
+          tags: ['UNIT 03-02', 'SILK PRODUCTION', 'LIFECYCLE'],
+          image: 'https://picsum.photos/seed/silk_cycle/600/400'
         },
         {
-          id: 'packaging',
-          title: 'PACK_SYS',
-          description: 'PHYSICAL INFORMATION ARCHITECTURE',
-          tags: ['TACTILE', 'UNBOXING'],
-          image: 'https://picsum.photos/seed/pack_1/600/400'
+          id: 'pathogen-mapping',
+          title: 'PATHOGEN_MAPPING',
+          description: 'Spatiotemporal visualization of pandemic expansion across geographic boundaries.',
+          tags: ['UNIT 03-03', 'BLACK DEATH', 'SPREAD VECTOR'],
+          image: 'https://picsum.photos/seed/plague_map/600/400'
+        },
+        {
+          id: 'logistic-hierarchy',
+          title: 'LOGISTIC_HIERARCHY',
+          description: 'Structuring multi-layered historical facts into a high-density vertical timeline.',
+          tags: ['UNIT 03-04', '1932 OLYMPICS', 'DATA GRID'],
+          image: 'https://picsum.photos/seed/olympics_32/600/400'
+        },
+        {
+          id: 'hydraulic-systems',
+          title: 'HYDRAULIC_SYSTEMS',
+          description: 'Functional logic and mechanical principles of large-scale infrastructure.',
+          tags: ['UNIT 03-05', 'DAM MECHANICS', 'TECHNICAL'],
+          image: 'https://picsum.photos/seed/dam_systems/600/400'
         }
     ]
   },
