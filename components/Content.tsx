@@ -260,17 +260,23 @@ const NumericCell: React.FC<{ src: string; label: string }> = ({ src, label }) =
     </div>
 );
 
-// Archive cell — grayscale + dim by default, full color revealed on hover
-const ArchiveCell: React.FC<{ src: string; label: string }> = ({ src, label }) => (
-    <div className="group relative aspect-square overflow-hidden bg-stone-100 cursor-pointer">
-        <img
-            src={src}
-            alt={label}
-            className="w-full h-full object-cover transition-all duration-500 grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100"
-        />
-        <span className="absolute bottom-1.5 left-2 font-mono text-[9px] font-bold z-20 select-none text-black/30">
-            {label}
-        </span>
+// Archive strip — vertical sequence, full-width, original aspect ratio
+// Grayscale + dim by default; hover reveals full color
+const ArchiveStrip: React.FC<{ images: string[]; labels: string[] }> = ({ images, labels }) => (
+    <div className="flex flex-col gap-10">
+        {images.map((src, i) => (
+            <div key={i} className="group">
+                {/* Unit label above image */}
+                <p className="font-mono text-[9px] text-stone-300 tracking-[0.25em] uppercase mb-2">
+                    {labels[i] ?? `UNIT ${String(i + 1).padStart(2, '0')}`}
+                </p>
+                <img
+                    src={src}
+                    alt={labels[i]}
+                    className="w-full h-auto block transition-all duration-500 grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100"
+                />
+            </div>
+        ))}
     </div>
 );
 
@@ -358,8 +364,9 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
             {activeModule && (
                 <div key={activeModule.id}>
 
-                    {/* Content block — min-h only when a grid follows (keeps grid at same Y across tabs) */}
-                    <div className={(activeModule.localImages || activeModule.localVideos) ? 'min-h-[300px]' : ''}>
+                    {/* Content block — min-h only for grid tabs (keeps grid at consistent Y position).
+                        Excluded for archive-strip mode (statusLabel) since it's a full-width vertical layout. */}
+                    <div className={(activeModule.localVideos || (activeModule.localImages && !activeModule.statusLabel)) ? 'min-h-[300px]' : ''}>
                         {/* Tagline — supports multi-line via \n */}
                         {activeModule.tagline && (
                             <div className="mb-1">
@@ -429,16 +436,11 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                             })}
                         </div>
                     ) : activeModule.localImages && activeModule.statusLabel ? (
-                        // Archive mode: grayscale default, hover reveals chroma
-                        <div className="grid grid-cols-5 gap-1">
-                            {activeModule.localImages.map((src, ni) => (
-                                <ArchiveCell
-                                    key={ni}
-                                    src={src}
-                                    label={activeModule.localImageLabels?.[ni] ?? String(ni + 1)}
-                                />
-                            ))}
-                        </div>
+                        // Archive strip mode: vertical sequence, original aspect ratio, grayscale default
+                        <ArchiveStrip
+                            images={activeModule.localImages}
+                            labels={activeModule.localImageLabels ?? []}
+                        />
                     ) : activeModule.localImages ? (
                         <div className="grid grid-cols-4 gap-1">
                             {activeModule.localImages.map((src, ni) => (

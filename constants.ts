@@ -1558,27 +1558,27 @@ export const PROJECTS: Project[] = [
           id: 'process-architecture',
           title: 'PROCESS_ARCHITECTURE',
           tagline: '[DATA_CHRONICLES]',
-          subHeader: '(Commercial_Infographic_Archive)',
+          subHeader: '(Archive_v1.0: Multilayered_Process_Mapping)',
           description: '',
           specs: [
-            { label: 'Context', value: 'Commercial Archive' },
-            { label: 'Logic',   value: 'Structural Narrative' },
-            { label: 'Medium',  value: 'Vector Infographic Design' }
+            { label: 'Context', value: 'Commercial Production Archive' },
+            { label: 'Logic',   value: 'Structural Narrative & Data Hierarchy' },
+            { label: 'Medium',  value: 'Visual System Modeling' }
           ],
           statusLabel: '[STATUS: BRAND_PRESERVATION // HOVER_TO_ACTIVATE_CHROMA]',
           localImages: [
-            'https://picsum.photos/seed/hoover_dam/600/600',
-            'https://picsum.photos/seed/silk_cycle/600/600',
-            'https://picsum.photos/seed/plague_map/600/600',
-            'https://picsum.photos/seed/olympics_1932/600/600',
-            'https://picsum.photos/seed/dam_hydraulic/600/600'
+            '/images/infographics/01.jpg',
+            '/images/infographics/02.jpg',
+            '/images/infographics/03.jpg',
+            '/images/infographics/04.jpg',
+            '/images/infographics/05.jpg'
           ],
           localImageLabels: [
-            'CHRONO_ENGINEERING',
-            'BIOLOGICAL_CONVERSION',
-            'PATHOGEN_MAPPING',
-            'LOGISTIC_HIERARCHY',
-            'HYDRAULIC_MECHANICS'
+            'UNIT 02-01 / CHRONO_ENGINEERING',
+            'UNIT 02-02 / BIOLOGICAL_CONVERSION',
+            'UNIT 02-03 / PATHOGEN_MAPPING',
+            'UNIT 02-04 / LOGISTIC_HIERARCHY',
+            'UNIT 02-05 / HYDRAULIC_MECHANICS'
           ]
         },
         {
