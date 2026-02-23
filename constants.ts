@@ -1532,52 +1532,65 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'work-marketing',
-    title: 'PROCESS ARCHITECTURE',
-    category: 'Commercial Production Archive',
+    title: 'INFORMATION STRUCTURES',
+    category: 'Maps / Infographics / Packaging',
     year: '2024',
     role: 'VISUAL DESIGNER',
-    client: 'SYS_03: PROCESS_ARCHITECTURE',
-    description: 'A systematic breakdown of complex industrial, biological, and historical processes. This section integrates professional commercial infographics into the system\'s visual DNA, prioritizing structural hierarchy and data clarity over decorative elements.',
+    client: 'STATUS: SELF-INITIATED RESEARCH',
+    description: 'Systematic explorations in modular geometry and visual logic.',
     content: [
-      "Unit IDs follow a sequential indexing protocol: 03-01 through 03-05.",
-      "Each unit maps a distinct process domain — chronological, biological, spatial, logistical, or mechanical.",
-      "Visual DNA is defined per unit and governs default state, hover behavior, and information hierarchy."
+      "Three systems documented: Spatial navigation, process visualization, and tactile logistics.",
+      "Each module follows a consistent visual DNA protocol governing default state, interaction, and hierarchy."
     ],
     modules: [
         {
-          id: 'chrono-engineering',
-          title: 'CHRONO_ENGINEERING',
-          description: 'Mapping the 1928–1935 chronological progression through archival photography and site logistics.',
-          tags: ['UNIT 03-01', 'HOOVER DAM', 'TIMELINE'],
-          image: 'https://picsum.photos/seed/hoover_dam/600/400'
+          id: 'spatial-systems',
+          title: 'SPATIAL_SYSTEMS',
+          tagline: '[NAVIGATIONAL_CARTOGRAPHY]',
+          description: 'Campus Map Design — A structured approach to institutional navigation through cartographic illustration.',
+          specs: [
+            { label: 'Context', value: 'Institutional Navigation' },
+            { label: 'Logic',   value: 'Spatial Information Mapping' },
+            { label: 'Medium',  value: 'Cartographic Illustration' }
+          ]
         },
         {
-          id: 'biological-conversion',
-          title: 'BIOLOGICAL_CONVERSION',
-          description: 'A circular narrative mapping the transformation from biological organism to industrial textile.',
-          tags: ['UNIT 03-02', 'SILK PRODUCTION', 'LIFECYCLE'],
-          image: 'https://picsum.photos/seed/silk_cycle/600/400'
+          id: 'process-architecture',
+          title: 'PROCESS_ARCHITECTURE',
+          tagline: '[DATA_CHRONICLES]',
+          subHeader: '(Commercial_Infographic_Archive)',
+          description: '',
+          specs: [
+            { label: 'Context', value: 'Commercial Archive' },
+            { label: 'Logic',   value: 'Structural Narrative' },
+            { label: 'Medium',  value: 'Vector Infographic Design' }
+          ],
+          statusLabel: '[STATUS: BRAND_PRESERVATION // HOVER_TO_ACTIVATE_CHROMA]',
+          localImages: [
+            'https://picsum.photos/seed/hoover_dam/600/600',
+            'https://picsum.photos/seed/silk_cycle/600/600',
+            'https://picsum.photos/seed/plague_map/600/600',
+            'https://picsum.photos/seed/olympics_1932/600/600',
+            'https://picsum.photos/seed/dam_hydraulic/600/600'
+          ],
+          localImageLabels: [
+            'CHRONO_ENGINEERING',
+            'BIOLOGICAL_CONVERSION',
+            'PATHOGEN_MAPPING',
+            'LOGISTIC_HIERARCHY',
+            'HYDRAULIC_MECHANICS'
+          ]
         },
         {
-          id: 'pathogen-mapping',
-          title: 'PATHOGEN_MAPPING',
-          description: 'Spatiotemporal visualization of pandemic expansion across geographic boundaries.',
-          tags: ['UNIT 03-03', 'BLACK DEATH', 'SPREAD VECTOR'],
-          image: 'https://picsum.photos/seed/plague_map/600/400'
-        },
-        {
-          id: 'logistic-hierarchy',
-          title: 'LOGISTIC_HIERARCHY',
-          description: 'Structuring multi-layered historical facts into a high-density vertical timeline.',
-          tags: ['UNIT 03-04', '1932 OLYMPICS', 'DATA GRID'],
-          image: 'https://picsum.photos/seed/olympics_32/600/400'
-        },
-        {
-          id: 'hydraulic-systems',
-          title: 'HYDRAULIC_SYSTEMS',
-          description: 'Functional logic and mechanical principles of large-scale infrastructure.',
-          tags: ['UNIT 03-05', 'DAM MECHANICS', 'TECHNICAL'],
-          image: 'https://picsum.photos/seed/dam_systems/600/400'
+          id: 'tactile-logistics',
+          title: 'TACTILE_LOGISTICS',
+          tagline: '[PHYSICAL_INFORMATION_MAPPING]',
+          description: 'A customized countdown calendar packaging for Blackbirdscookies. This system translates a temporal sequence (13 days) into a physical, interactive structure, managing user experience through a modular unboxing logic.',
+          specs: [
+            { label: 'Context', value: 'Retail Logistics' },
+            { label: 'Logic',   value: 'Tactile Interaction & Temporal Hierarchy (Countdown)' },
+            { label: 'Medium',  value: 'Customized Packaging System' }
+          ]
         }
     ]
   },

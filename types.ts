@@ -17,6 +17,8 @@ export interface ProjectModule {
   localImages?: string[];
   localImageLabels?: string[];
   tagline?: string;
+  subHeader?: string;    // Secondary header line, e.g. "(Commercial_Infographic_Archive)"
+  statusLabel?: string;  // Status label shown after the grid, triggers grayscale-default grid mode
   specs?: { label: string; value: string }[];
 }
 

@@ -260,6 +260,20 @@ const NumericCell: React.FC<{ src: string; label: string }> = ({ src, label }) =
     </div>
 );
 
+// Archive cell — grayscale + dim by default, full color revealed on hover
+const ArchiveCell: React.FC<{ src: string; label: string }> = ({ src, label }) => (
+    <div className="group relative aspect-square overflow-hidden bg-stone-100 cursor-pointer">
+        <img
+            src={src}
+            alt={label}
+            className="w-full h-full object-cover transition-all duration-500 grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100"
+        />
+        <span className="absolute bottom-1.5 left-2 font-mono text-[9px] font-bold z-20 select-none text-black/30">
+            {label}
+        </span>
+    </div>
+);
+
 // ─── Illustration Systems Tab Component ──────────────────────────────────────
 //
 // URL scheme: #/work/work-illustration/{module.id}
@@ -344,11 +358,11 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
             {activeModule && (
                 <div key={activeModule.id}>
 
-                    {/* Fixed-height block so the grid starts at the same position across all tabs */}
-                    <div className="min-h-[300px]">
+                    {/* Content block — min-h only when a grid follows (keeps grid at same Y across tabs) */}
+                    <div className={(activeModule.localImages || activeModule.localVideos) ? 'min-h-[300px]' : ''}>
                         {/* Tagline — supports multi-line via \n */}
                         {activeModule.tagline && (
-                            <div className="mb-3">
+                            <div className="mb-1">
                                 {activeModule.tagline.split('\n').map((line, i) => (
                                     <p key={i} className="font-mono text-[10px] text-stone-400 tracking-[0.2em] uppercase leading-relaxed">
                                         {line}
@@ -357,10 +371,19 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                             </div>
                         )}
 
-                        {/* Description */}
-                        <p className="text-base font-medium text-stone-700 leading-relaxed mb-8 max-w-2xl">
-                            {activeModule.description}
-                        </p>
+                        {/* Sub-header — e.g. "(Commercial_Infographic_Archive)" */}
+                        {activeModule.subHeader && (
+                            <p className="font-mono text-[10px] text-stone-300 tracking-[0.18em] italic mb-3">
+                                {activeModule.subHeader}
+                            </p>
+                        )}
+
+                        {/* Description — only rendered when non-empty */}
+                        {activeModule.description && (
+                            <p className="text-base font-medium text-stone-700 leading-relaxed mb-8 max-w-2xl">
+                                {activeModule.description}
+                            </p>
+                        )}
 
                         {/* Tech specs */}
                         {activeModule.specs && (
@@ -384,9 +407,10 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                     </div>
 
                     {/* Visual grid
-                        - Has localVideos  → LetterCell (static jpg + hover plays mp4)
-                        - Has localImages  → NumericCell (static jpg + CSS hover)
-                        - Fallback         → placeholder with "pending upload" label
+                        - Has localVideos              → LetterCell (static jpg + hover plays mp4)
+                        - Has localImages + statusLabel → ArchiveCell (grayscale default, color on hover)
+                        - Has localImages only          → NumericCell (static jpg + CSS scale hover)
+                        - Fallback                     → placeholder
                     */}
                     {activeModule.localVideos ? (
                         <div className="grid grid-cols-4 gap-1">
@@ -403,6 +427,17 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                                     />
                                 );
                             })}
+                        </div>
+                    ) : activeModule.localImages && activeModule.statusLabel ? (
+                        // Archive mode: grayscale default, hover reveals chroma
+                        <div className="grid grid-cols-5 gap-1">
+                            {activeModule.localImages.map((src, ni) => (
+                                <ArchiveCell
+                                    key={ni}
+                                    src={src}
+                                    label={activeModule.localImageLabels?.[ni] ?? String(ni + 1)}
+                                />
+                            ))}
                         </div>
                     ) : activeModule.localImages ? (
                         <div className="grid grid-cols-4 gap-1">
@@ -422,6 +457,13 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                             </div>
                         </div>
                     ) : null}
+
+                    {/* Status label — shown below archive grid */}
+                    {activeModule.statusLabel && (
+                        <p className="mt-4 font-mono text-[9px] text-stone-400 tracking-[0.2em] uppercase">
+                            {activeModule.statusLabel}
+                        </p>
+                    )}
 
                 </div>
             )}
@@ -1000,8 +1042,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelec
                 >
                     <p className="text-xl font-medium leading-relaxed text-stone-800 mb-12 uppercase">{project.description}</p>
 
-                    {project.id === 'work-illustration' ? (
-                        /* Illustration Systems: Tab-based layout */
+                    {(project.id === 'work-illustration' || project.id === 'work-marketing') ? (
+                        /* Tab-based layout for modular system projects */
                         <IllustrationTabSystem project={project} />
                     ) : (
                         <>
