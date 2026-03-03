@@ -1,7 +1,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Section, Project, AiItem, ProjectModule } from '../types';
+import { Section, Project, AiItem, ProjectModule, ImageGroup, ColorSwatch, MotionAsset } from '../types';
 import { PROJECTS, AI_ITEMS, COLORS } from '../constants';
 
 interface ContentProps {
@@ -260,6 +260,41 @@ const NumericCell: React.FC<{ src: string; label: string }> = ({ src, label }) =
     </div>
 );
 
+// Zodiac accent palette: orange-red, dark green, golden yellow, cobalt blue
+const ZODIAC_PALETTE = ['#E54D1E', '#2A5C3A', '#C9971A', '#1E3A8C'];
+
+const ZodiacCell: React.FC<{ src: string; label: string; colorIndex: number }> = ({ src, label, colorIndex }) => {
+    const [hovered, setHovered] = useState(false);
+    const accent = ZODIAC_PALETTE[colorIndex % 4];
+    return (
+        <div
+            className="relative aspect-square overflow-hidden cursor-pointer transition-all duration-200"
+            style={{
+                backgroundColor: hovered ? accent + '18' : '#f5f5f4',
+                border: `1px solid ${hovered ? accent : '#e7e5e4'}`,
+            }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+        >
+            <img
+                src={src}
+                alt={label}
+                className="w-full h-full object-cover transition-transform duration-200"
+                style={{ transform: hovered ? 'translateY(-2px) scale(1.03)' : 'translateY(0) scale(1)' }}
+            />
+            <span
+                className="absolute bottom-1.5 left-2 font-mono text-[9px] z-20 select-none transition-all duration-200"
+                style={{
+                    color: hovered ? accent : 'rgba(0,0,0,0.3)',
+                    fontWeight: hovered ? 700 : 400,
+                }}
+            >
+                {label}
+            </span>
+        </div>
+    );
+};
+
 // Spatial cell — white box background, grayscale default, color on hover
 // Used for map asset libraries (STR/ENV elements)
 const SpatialCell: React.FC<{ src: string; label: string }> = ({ src, label }) => (
@@ -296,6 +331,101 @@ const ArchiveStrip: React.FC<{ images: string[]; labels: string[] }> = ({ images
         ))}
     </div>
 );
+
+// Archive grid — first image full-width, rest in 2-col grid
+// Default: fixed 450px crop showing top of infographic
+// Hover: expands to full natural height, reveals complete content
+const ArchiveGrid: React.FC<{ images: string[]; labels: string[] }> = ({ images, labels }) => {
+    const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
+    return (
+        <div>
+            {/* UNIT_01 — full-width, full height */}
+            {images[0] && (
+                <div className="group mb-8">
+                    <p className="font-mono text-[9px] text-stone-300 tracking-[0.25em] uppercase mb-2">
+                        {labels[0] ?? 'UNIT_01'}
+                    </p>
+                    <img
+                        src={images[0]}
+                        alt={labels[0]}
+                        className="w-full h-auto block transition-all duration-700 grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100"
+                    />
+                </div>
+            )}
+            {/* UNIT_02 onwards — 2-column grid, hover to expand */}
+            <div className="grid grid-cols-2 gap-2 items-start">
+                {images.slice(1).map((src, ni) => {
+                    const idx = ni + 1;
+                    const label = labels[idx] ?? `UNIT_${String(idx + 1).padStart(2, '0')}`;
+                    const isExpanded = expandedIdx === ni;
+                    return (
+                        <div
+                            key={ni}
+                            onMouseEnter={() => setExpandedIdx(ni)}
+                            onMouseLeave={() => setExpandedIdx(null)}
+                        >
+                            <p className="font-mono text-[9px] text-stone-300 tracking-[0.25em] uppercase mb-1.5 leading-none">
+                                {label}
+                            </p>
+                            <div
+                                className="relative overflow-hidden transition-all duration-500 ease-in-out"
+                                style={{ maxHeight: isExpanded ? '9999px' : '450px' }}
+                            >
+                                <img
+                                    src={src}
+                                    alt={label}
+                                    className={`w-full h-auto block transition-all duration-500 ${
+                                        isExpanded
+                                            ? 'grayscale-0 brightness-100'
+                                            : 'grayscale brightness-90'
+                                    }`}
+                                />
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+};
+
+// Interactive color swatch row for palette display
+const ColorSwatchRow: React.FC<{ swatches: ColorSwatch[] }> = ({ swatches }) => {
+    const [hovered, setHovered] = useState<number | null>(null);
+    return (
+        <div className="mt-4">
+            <p className="font-mono text-[8px] text-stone-400 tracking-[0.15em] uppercase mb-2">
+                [PALETTE // HOVER_TO_ACTIVATE_DESCRIPTOR]
+            </p>
+            <div className="flex gap-1">
+                {swatches.map((s, i) => (
+                    <div
+                        key={i}
+                        className="relative flex-1 cursor-default"
+                        onMouseEnter={() => setHovered(i)}
+                        onMouseLeave={() => setHovered(null)}
+                    >
+                        <div
+                            className="w-full h-10 transition-transform duration-200 hover:scale-y-110 origin-bottom"
+                            style={{
+                                backgroundColor: s.hex,
+                                border: s.hex.toUpperCase() === '#FFFFFF' ? '1px solid #e5e5e5' : 'none'
+                            }}
+                        />
+                        <p className="font-mono text-[7px] text-stone-400 tracking-tight text-center mt-1 truncate px-0.5">
+                            {s.hex}
+                        </p>
+                        {hovered === i && (
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-stone-900 text-white font-mono text-[7px] tracking-[0.08em] px-2 py-1 whitespace-nowrap z-10 pointer-events-none">
+                                {s.role}
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
 
 // ─── Illustration Systems Tab Component ──────────────────────────────────────
 //
@@ -347,22 +477,22 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
             <div className="flex border-b border-[#D9D9D9] mb-10 overflow-x-auto">
                 {modules.map((module, i) => {
                     const isActive = activeTab === i;
-                    const color = TAB_COLORS[i];
+                    const color = TAB_COLORS[i % TAB_COLORS.length];
                     return (
                         <button
                             key={module.id}
                             onMouseEnter={() => handleTabChange(i)}
-                            className="group relative flex flex-col items-start px-6 py-4 font-mono text-xs tracking-[0.28em] uppercase cursor-pointer whitespace-nowrap shrink-0 border-0 outline-none transition-colors duration-150"
+                            className="group relative flex flex-col items-start px-4 py-3 font-mono text-xs tracking-[0.15em] uppercase cursor-pointer whitespace-nowrap shrink-0 border-0 outline-none transition-colors duration-150"
                             style={{
                                 color:           isActive ? color : '#a8a29e',
                                 backgroundColor: isActive ? `${color}10` : 'transparent',
                                 borderBottom:    isActive ? `3px solid ${color}` : '3px solid transparent',
                             }}
                         >
-                            <span className="font-bold text-sm tracking-[0.22em] mb-1">
-                                {`SYS_0${i + 1}`}
+                            <span className="font-bold text-xs tracking-[0.12em] mb-1">
+                                {module.sysLabel ?? `SYS_0${i + 1}`}
                             </span>
-                            <span className="group-hover:text-stone-800 transition-colors duration-100">
+                            <span className="transition-colors duration-100">
                                 {module.title}
                             </span>
                             {/* Animated underline shown only on inactive hover */}
@@ -410,24 +540,29 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                         )}
 
                         {/* Tech specs */}
-                        {activeModule.specs && (
-                            <div className="mb-10 font-mono text-[10px] border-l-2 border-stone-200 pl-4 space-y-2">
-                                <p className="text-stone-400 tracking-[0.15em] mb-3 uppercase">[Tech Specs]</p>
-                                {activeModule.specs.map(spec => (
-                                    <div key={spec.label} className="flex items-center gap-3">
-                                        <span className="text-stone-400 min-w-[8rem] shrink-0">{spec.label}</span>
-                                        {spec.label === 'Medium' ? (
-                                            // Red highlight block — only on the value, label stays grey
-                                            <span className="bg-[#EB431D] text-white px-2 py-0.5 font-bold">
-                                                // {spec.value}
-                                            </span>
-                                        ) : (
-                                            <span className="text-stone-400">// {spec.value}</span>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                        {activeModule.specs && (() => {
+                            const moduleAccent = activeModule.accentColor ?? '#EB431D';
+                            return (
+                                <div
+                                    className="mb-10 font-mono text-[10px] pl-4 space-y-2 border-l-2"
+                                    style={{ borderLeftColor: moduleAccent + '55' }}
+                                >
+                                    <p className="tracking-[0.15em] mb-3 uppercase" style={{ color: moduleAccent + 'bb' }}>[Tech Specs]</p>
+                                    {activeModule.specs.map(spec => (
+                                        <div key={spec.label} className="flex items-center gap-3">
+                                            <span className="text-stone-400 min-w-[8rem] shrink-0">{spec.label}</span>
+                                            {spec.label === 'Medium' ? (
+                                                <span className="text-white px-2 py-0.5 font-bold" style={{ backgroundColor: moduleAccent }}>
+                                                    // {spec.value}
+                                                </span>
+                                            ) : (
+                                                <span className="text-stone-400">// {spec.value}</span>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            );
+                        })()}
                     </div>
 
                     {/* Visual grid
@@ -437,7 +572,39 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                         - Has localImages only          → NumericCell (static jpg + CSS scale hover)
                         - Fallback                     → placeholder
                     */}
-                    {activeModule.gridMode === 'spatial' && activeModule.localImages ? (
+                    {activeModule.gridMode === 'zodiac' && activeModule.localImages ? (
+                        <>
+                            {/* 4×3 grid of 12 individual zodiac animals */}
+                            <div className="grid grid-cols-4 gap-2">
+                                {activeModule.localImages.map((src, ni) => (
+                                    <ZodiacCell
+                                        key={ni}
+                                        src={src}
+                                        label={activeModule.localImageLabels?.[ni] ?? `ZODIAC_${String(ni + 1).padStart(2, '0')}`}
+                                        colorIndex={ni}
+                                    />
+                                ))}
+                            </div>
+                            {/* Wholeset — large display at the end */}
+                            {activeModule.image && (
+                                <div className="mt-16">
+                                    <p className="font-mono text-[9px] text-stone-300 tracking-[0.25em] uppercase mb-3">
+                                        [WHOLESET: COMPLETE_ZODIAC_MATRIX]
+                                    </p>
+                                    <img
+                                        src={activeModule.image}
+                                        alt="Zodiac Wholeset"
+                                        className="w-full h-auto block"
+                                    />
+                                </div>
+                            )}
+                        </>
+                    ) : activeModule.gridMode === 'archive-grid' && activeModule.localImages ? (
+                        <ArchiveGrid
+                            images={activeModule.localImages}
+                            labels={activeModule.localImageLabels ?? []}
+                        />
+                    ) : activeModule.gridMode === 'spatial' && activeModule.localImages ? (
                         <>
                             {/* 4×3 asset grid (STR_01-05 + ENV_06-11) */}
                             <div className="grid grid-cols-4 gap-3">
@@ -515,6 +682,259 @@ const IllustrationTabSystem: React.FC<{ project: Project }> = ({ project }) => {
                                     label={activeModule.localImageLabels?.[ni] ?? String(ni + 1)}
                                 />
                             ))}
+                        </div>
+                    ) : activeModule.imageGroups ? (
+                        <div className="space-y-16">
+                            {activeModule.imageGroups.map((group: ImageGroup, gi: number) => {
+                            const groupAccent = activeModule.accentColor ?? '#888888';
+                            return (
+                                <div key={gi}>
+                                    {/* Group header */}
+                                    <div className="mb-4 pl-3 border-l-2" style={{ borderLeftColor: groupAccent }}>
+                                        <p className="font-mono text-[9px] text-stone-400 tracking-[0.2em] uppercase">
+                                            {group.unitId}
+                                        </p>
+                                        <p className="font-mono text-[9px] text-stone-300 tracking-[0.15em] uppercase mt-0.5">
+                                            // {group.caption}
+                                        </p>
+                                    </div>
+
+                                    {/* Image grid — heroLayout: 60:40 flex, left drives height, right splits equally */}
+                                    {group.images && group.images.length > 0 && group.heroLayout && (
+                                        <div className="flex gap-4">
+                                            {/* Master asset — left 60%, natural height, drives container height */}
+                                            <div className="flex-[3] flex flex-col gap-2">
+                                                <div className={`relative bg-[#F9F9F9] border border-stone-200${group.placeholderAspect ? ` ${group.placeholderAspect} overflow-hidden` : ''}`}>
+                                                    {group.images[0] ? (
+                                                        <img
+                                                            src={group.images[0]}
+                                                            alt={group.imageLabels?.[0]}
+                                                            className={group.placeholderAspect ? 'absolute inset-0 w-full h-full object-cover' : 'w-full h-auto block'}
+                                                        />
+                                                    ) : (
+                                                        <div className={group.placeholderAspect ? 'absolute inset-0 border border-dashed border-stone-300 flex items-center justify-center p-3' : 'w-full aspect-[4/3] border border-dashed border-stone-300 flex items-center justify-center p-3'}>
+                                                            <span className="font-mono text-[7px] text-stone-400 tracking-[0.12em] uppercase text-center leading-loose">
+                                                                {group.imageLabels?.[0] ?? 'MASTER_ASSET_PENDING'}
+                                                            </span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                {group.imageLabels?.[0] && (
+                                                    <p className="font-mono text-[7px] text-stone-400 tracking-[0.1em] uppercase shrink-0">{group.imageLabels[0]}</p>
+                                                )}
+                                            </div>
+                                            {/* Distribution stack — right 40%, stretches to match left, items split height equally */}
+                                            <div className="flex-[2] self-stretch flex flex-col gap-3">
+                                                {group.images.slice(1).map((src, ii) => {
+                                                    const slotIdx = ii + 1;
+                                                    return (
+                                                        <div key={ii} className={group.rightSlotAspect ? 'w-full flex flex-col gap-1' : 'flex-1 flex flex-col gap-1 min-h-0'}>
+                                                            <div className={`relative bg-[#F9F9F9] border border-stone-200${group.rightSlotAspect ? ` ${group.rightSlotAspect} overflow-hidden` : ' flex-1 min-h-0'}`}>
+                                                                {src && src.endsWith('.mp4') ? (
+                                                                    <video
+                                                                        src={src}
+                                                                        autoPlay
+                                                                        loop
+                                                                        muted
+                                                                        playsInline
+                                                                        className="absolute inset-0 w-full h-full object-contain"
+                                                                    />
+                                                                ) : src ? (
+                                                                    <img
+                                                                        src={src}
+                                                                        alt={group.imageLabels?.[slotIdx]}
+                                                                        className={`absolute inset-0 w-full h-full ${group.rightSlotAspect ? 'object-contain' : (group.placeholderAspect ? 'object-cover' : 'object-contain')}`}
+                                                                    />
+                                                                ) : (
+                                                                    <div className="absolute inset-0 border border-dashed border-stone-300 flex items-center justify-center p-2">
+                                                                        <span className="font-mono text-[7px] text-stone-400 tracking-[0.1em] uppercase text-center leading-loose">
+                                                                            {group.imageLabels?.[slotIdx] ?? `SLOT_0${ii + 1}`}
+                                                                        </span>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                            {group.imageLabels?.[slotIdx] && (
+                                                                <p className="font-mono text-[7px] text-stone-400 tracking-[0.1em] uppercase shrink-0">{group.imageLabels[slotIdx]}</p>
+                                                            )}
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Image grid — splitLayout: social posts grid + banners single column */}
+                                    {group.images && group.images.length > 0 && !group.heroLayout && group.splitLayout && (
+                                        <div className="space-y-8">
+                                            {/* Row 1 — social posts (4 col, natural square proportions) */}
+                                            <div className="grid grid-cols-4 gap-3">
+                                                {group.images.slice(0, group.splitLayout.row1Count).map((src, ii) => (
+                                                    <div key={ii} className="flex flex-col gap-2">
+                                                        <div className="group/img relative bg-[#F9F9F9]">
+                                                            {src ? (
+                                                                <img
+                                                                    src={src}
+                                                                    alt={group.imageLabels?.[ii]}
+                                                                    className="w-full h-auto block transition-transform duration-500 group-hover/img:scale-105"
+                                                                />
+                                                            ) : (
+                                                                <div className="w-full aspect-square border border-dashed border-stone-300 flex items-center justify-center">
+                                                                    <span className="font-mono text-[7px] text-stone-400 tracking-[0.1em] uppercase text-center">{group.imageLabels?.[ii]}</span>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                        {group.imageLabels?.[ii] && (
+                                                            <p className="font-mono text-[7px] text-stone-400 tracking-[0.1em] uppercase truncate">{group.imageLabels[ii]}</p>
+                                                        )}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            {/* Row 2 — partner banners (single column, full width, natural proportions) */}
+                                            <div className="flex flex-col gap-6">
+                                                {group.images.slice(group.splitLayout.row1Count).map((src, ii) => {
+                                                    const absIdx = ii + group.splitLayout!.row1Count;
+                                                    return (
+                                                        <div key={ii} className="flex flex-col gap-2">
+                                                            <div className="group/img relative bg-[#F9F9F9]">
+                                                                {src ? (
+                                                                    <img
+                                                                        src={src}
+                                                                        alt={group.imageLabels?.[absIdx]}
+                                                                        className="w-full h-auto block transition-transform duration-500 group-hover/img:scale-105"
+                                                                    />
+                                                                ) : (
+                                                                    <div className="w-full aspect-[16/9] border border-dashed border-stone-300 flex items-center justify-center">
+                                                                        <span className="font-mono text-[7px] text-stone-400 tracking-[0.1em] uppercase text-center">{group.imageLabels?.[absIdx]}</span>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                            {group.imageLabels?.[absIdx] && (
+                                                                <p className="font-mono text-[7px] text-stone-400 tracking-[0.1em] uppercase">{group.imageLabels[absIdx]}</p>
+                                                            )}
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Image grid — uniform columns */}
+                                    {group.images && group.images.length > 0 && !group.heroLayout && !group.splitLayout && (
+                                        <div className={`grid gap-2 ${
+                                            group.gridCols === 1 ? 'grid-cols-1' :
+                                            group.gridCols === 3 ? 'grid-cols-3' :
+                                            group.gridCols === 4 ? 'grid-cols-4' :
+                                            'grid-cols-2'
+                                        }`}>
+                                            {group.images.map((src, ii) => {
+                                                const hasFrame = group.deviceFrameSlots?.includes(ii);
+                                                const isLastOdd = (!group.gridCols || group.gridCols === 2) &&
+                                                    group.images!.length % 2 === 1 && ii === group.images!.length - 1;
+                                                return (
+                                                <div
+                                                    key={ii}
+                                                    className={`flex flex-col${isLastOdd ? ' col-span-2' : ''}`}
+                                                >
+                                                    <div className={`group/img relative bg-[#F9F9F9] border border-stone-200${group.placeholderAspect ? ` ${group.placeholderAspect} overflow-hidden` : ''}`}>
+                                                        {src ? (
+                                                            <img
+                                                                src={src}
+                                                                alt={group.imageLabels?.[ii] ?? `${group.unitId}_${ii + 1}`}
+                                                                className={`${group.placeholderAspect ? 'absolute inset-0 w-full h-full object-cover' : 'w-full h-auto block'} transition-transform duration-500 group-hover/img:scale-105`}
+                                                            />
+                                                        ) : (
+                                                            <div className={group.placeholderAspect ? 'absolute inset-0 border border-dashed border-stone-300 flex items-center justify-center p-2' : 'w-full aspect-[4/3] border border-dashed border-stone-300 flex items-center justify-center p-2'}>
+                                                                <span className="font-mono text-[7px] text-stone-400 tracking-[0.1em] uppercase text-center leading-loose">
+                                                                    {group.imageLabels?.[ii] ?? `${group.unitId}_${String(ii + 1).padStart(2, '0')}`}
+                                                                </span>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                    {src && group.showFileLabel && group.imageLabels?.[ii] && (
+                                                        <p className="mt-1 font-mono text-[8px] text-stone-400 tracking-[0.12em] uppercase">{group.imageLabels[ii]}</p>
+                                                    )}
+                                                </div>
+                                                );
+                                            })}
+                                        </div>
+                                    )}
+
+                                    {/* Perforation annotation — dashed arrow bar below image grid */}
+                                    {group.annotation && (
+                                        <div className="mt-3 flex items-center gap-2">
+                                            <span className="font-mono text-[9px] text-stone-400">&#8592;</span>
+                                            <div className="flex-1 border-t border-dashed border-stone-300" />
+                                            <span className="font-mono text-[8px] text-stone-400 tracking-[0.12em] uppercase whitespace-nowrap shrink-0">
+                                                {group.annotation}
+                                            </span>
+                                            <div className="flex-1 border-t border-dashed border-stone-300" />
+                                            <span className="font-mono text-[9px] text-stone-400">&#8594;</span>
+                                        </div>
+                                    )}
+
+                                    {/* Interactive color swatches */}
+                                    {group.colorSwatches && (
+                                        <ColorSwatchRow swatches={group.colorSwatches} />
+                                    )}
+
+                                    {/* Detail crop — natural proportions, text fills remaining space */}
+                                    {group.detailCrop && (
+                                        <div className="mb-4 flex items-start gap-6">
+                                            <div className="flex-shrink-0 bg-[#F9F9F9] border border-stone-200" style={{ width: '240px' }}>
+                                                <img
+                                                    src={group.detailCrop.src}
+                                                    alt="detail"
+                                                    className="w-full h-auto block"
+                                                    style={{ aspectRatio: 'auto', objectFit: 'contain' }}
+                                                />
+                                            </div>
+                                            <div className="flex-1 flex items-start gap-2 pt-1">
+                                                <div className="w-8 flex-shrink-0" style={{ borderTop: '1px solid #D55736', marginTop: '4px' }} />
+                                                <p className="font-mono text-[8px] text-stone-400 tracking-[0.15em] uppercase leading-relaxed">
+                                                    {group.detailCrop.label}
+                                                    <br />
+                                                    <span className="text-stone-300">// Hand-drawn line weight: variable</span>
+                                                    <br />
+                                                    <span className="text-stone-300">// Texture class: organic / non-repeating</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Archive video — autoplay loop, grid overlay */}
+                                    {group.videoSrc && (
+                                        <div className="relative w-full border border-stone-200">
+                                            <video
+                                                src={group.videoSrc}
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                                className="w-full h-auto block bg-stone-900"
+                                            />
+                                            {/* Grid texture overlay */}
+                                            <div
+                                                className="absolute inset-0 pointer-events-none"
+                                                style={{
+                                                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+                                                    backgroundSize: '24px 24px',
+                                                }}
+                                            />
+                                            <div className="absolute top-2 left-2 font-mono text-[7px] text-white/40 tracking-[0.15em] uppercase">
+                                                [ARCHIVE_VIDEO // AUTO_LOOP]
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Optional process note */}
+                                    {group.note && (
+                                        <p className="mt-3 font-mono text-[9px] text-stone-400 tracking-[0.1em] leading-relaxed italic">
+                                            {group.note}
+                                        </p>
+                                    )}
+                                </div>
+                            );
+                            })}
                         </div>
                     ) : activeModule.image ? (
                         <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm">
@@ -1008,6 +1428,221 @@ const AboutContent: React.FC<AboutContentProps> = ({ onToggleMenu }) => {
   );
 };
 
+// ─── Motion Asset Item (Intersection Observer playback) ─────────────────────
+const MotionItem: React.FC<{ asset: MotionAsset }> = ({ asset }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (videoRef.current) {
+          if (entry.isIntersecting) videoRef.current.play();
+          else videoRef.current.pause();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const isVertical = asset.span === 'vertical';
+  const isAudioVideo = asset.type === 'mp4'; // EUF and IDN are long videos with audio
+
+  const containerStyle: React.CSSProperties = {
+    border: '1px solid rgba(235, 67, 29, 0.15)',
+    borderRadius: '3px',
+    overflow: 'hidden',
+    display: 'flex',
+    flexDirection: 'column',
+    background: 'rgba(253, 252, 250, 0.92)',
+    ...(asset.span === 'full' ? { gridColumn: '1 / -1' } : {}),
+    ...(isVertical ? { gridRow: 'span 2' } : {}),
+  };
+
+  const mediaStyle: React.CSSProperties = {
+    width: '100%',
+    display: 'block',
+    imageRendering: 'crisp-edges' as any,
+    ...(isVertical
+      ? { minHeight: '480px', objectFit: 'contain', flex: 1, background: 'transparent' }
+      : { objectFit: 'cover', flex: 1, minHeight: 0 }),
+  };
+
+  return (
+    <div ref={ref} style={containerStyle}>
+      {asset.type === 'mp4' ? (
+        <video
+          ref={videoRef}
+          src={asset.src}
+          muted
+          loop
+          playsInline
+          controls={isAudioVideo}
+          style={mediaStyle}
+        />
+      ) : (
+        <img src={asset.src} alt={asset.id} style={mediaStyle} />
+      )}
+      <div style={{ padding: '6px 10px', borderTop: '1px solid rgba(235, 67, 29, 0.1)', background: 'rgba(253, 252, 250, 0.92)' }}>
+        <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#EB431D', lineHeight: 1.6, letterSpacing: '0.04em' }}>
+          {asset.idLabel}
+        </div>
+        <div style={{ fontFamily: 'monospace', fontSize: '9px', color: '#a8a29e', lineHeight: 1.6, letterSpacing: '0.04em' }}>
+          {asset.logLabel}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const MODULE_META: Record<string, { label: string; subtitle: string }> = {
+  A: { label: 'MODULE_A: COMMERCIAL_COMMUNICATION', subtitle: '// BRAND & NARRATIVE ASSETS' },
+  B: { label: 'MODULE_B: ORGANIC_MECHANICS', subtitle: '// EXPERIMENTAL_STUDY: NATURAL_MOTION' },
+  C: { label: 'MODULE_C: CEL_ANIMATION_ARCHIVE', subtitle: '// TECH: FRAME_BY_FRAME / DIGITAL_CEL' },
+};
+
+const MotionGridLayout: React.FC<{ assets: MotionAsset[] }> = ({ assets }) => {
+  const modules = (['A', 'B', 'C'] as const).map(mod => ({
+    mod,
+    items: assets.filter(a => a.module === mod),
+  }));
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+      {modules.map(({ mod, items }) => {
+        const meta = MODULE_META[mod];
+        return (
+          <div key={mod}>
+            <div style={{ marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px solid #e7e5e4' }}>
+              <div style={{ fontFamily: 'monospace', fontSize: '11px', color: '#EB431D', letterSpacing: '0.1em' }}>
+                {meta.label}
+              </div>
+              <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#a8a29e', letterSpacing: '0.08em' }}>
+                {meta.subtitle}
+              </div>
+            </div>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gridAutoFlow: 'dense',
+              gap: '1.5rem',
+            }}>
+              {items.map(asset => (
+                <MotionItem key={asset.id} asset={asset} />
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+// ─── Spatial Narrative Layout (work-spatial / Austin Omni) ─────────────────
+const SpatialNarrativeLayout: React.FC<{ project: Project }> = ({ project }) => {
+    const accent = project.accentColor ?? '#EB431D';
+
+    return (
+        <div>
+            {/* Focus line */}
+            {project.focusLine && (
+                <p className="font-mono text-xs tracking-widest mb-10" style={{ color: accent }}>
+                    {project.focusLine}
+                </p>
+            )}
+
+            {/* Narrative Section — 60 / 40 split */}
+            {(project.narrativeImage || project.narrativeText) && (
+                <div className="flex flex-col md:flex-row gap-8 mb-16">
+                    {/* Left 60% — raw input image */}
+                    {project.narrativeImage && (
+                        <div className="md:w-3/5 flex-shrink-0">
+                            <div className="relative">
+                                <img
+                                    src={project.narrativeImage}
+                                    alt="RAW_INPUT"
+                                    className="w-full object-cover"
+                                    style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.12)' }}
+                                />
+                                <span className="absolute bottom-3 left-3 font-mono text-[9px] tracking-widest px-2 py-1"
+                                    style={{ color: accent, background: 'rgba(255,255,255,0.72)' }}>
+                                    // CREATION_LOG: RAW_INPUT
+                                </span>
+                            </div>
+                        </div>
+                    )}
+                    {/* Right 40% — project context text */}
+                    {project.narrativeText && (
+                        <div className="md:w-2/5 flex flex-col justify-center gap-4">
+                            <p className="font-mono text-[10px] tracking-widest uppercase text-stone-400">
+                                // PROJECT_CONTEXT
+                            </p>
+                            <p className="text-sm font-medium text-stone-700 leading-relaxed">
+                                {project.narrativeText}
+                            </p>
+                        </div>
+                    )}
+                </div>
+            )}
+
+            {/* Gallery — THE WORKS */}
+            {project.images && project.images.length > 0 && (
+                <div className="mb-16">
+                    <p className="font-mono text-[10px] tracking-widest uppercase text-stone-400 mb-8">
+                        // CREATION_LOG: THE WORKS
+                    </p>
+
+                    {/* Hero image — full width */}
+                    <div className="mb-8">
+                        <div className="relative">
+                            <img
+                                src={project.images[0]}
+                                alt={project.imageIds?.[0] ?? 'ATX_MAIN'}
+                                className="w-full object-contain"
+                                style={{ boxShadow: '0 12px 48px rgba(0,0,0,0.10)' }}
+                            />
+                        </div>
+                        <p className="font-mono text-[10px] tracking-widest mt-3 uppercase" style={{ color: accent }}>
+                            // CREATION_LOG: REF: {project.imageIds?.[0] ?? 'ATX_2227_PA_MAIN'}
+                        </p>
+                    </div>
+
+                    {/* Remaining images — 2-column alternating grid */}
+                    {project.images.length > 1 && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {project.images.slice(1).map((img, i) => (
+                                <div key={i}>
+                                    <div className="relative">
+                                        <img
+                                            src={img}
+                                            alt={project.imageIds?.[i + 1] ?? `ATX_${i + 1}`}
+                                            className="w-full object-contain"
+                                            style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}
+                                        />
+                                    </div>
+                                    <p className="font-mono text-[10px] tracking-widest mt-3 uppercase" style={{ color: accent }}>
+                                        // CREATION_LOG: REF: {project.imageIds?.[i + 1] ?? `ATX_2227_0${i + 1}`}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            )}
+
+            {/* Written content paragraphs */}
+            <div className="space-y-4 text-base font-medium text-stone-800 leading-relaxed">
+                {project.content.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
+            </div>
+        </div>
+    );
+};
+// ───────────────────────────────────────────────────────────────────────────
+
 interface ProjectDetailProps {
   project: Project;
   onClose: () => void;
@@ -1018,6 +1653,9 @@ interface ProjectDetailProps {
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelectProject, onToggleMenu }) => {
     const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
     const [expandedModuleId, setExpandedModuleId] = useState<string | null>(null);
+    const [hoveredPrev, setHoveredPrev] = useState(false);
+    const [hoveredNext, setHoveredNext] = useState(false);
+    const accent = project.accentColor ?? '#EB431D';
 
     useEffect(() => { if(scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0; setExpandedModuleId(null); }, [project, scrollContainerRef]);
 
@@ -1085,7 +1723,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelec
                     hoverEffect={false}
                 >
                     <span className="text-xs font-mono text-stone-400 mb-4 block tracking-widest uppercase">
-                        {project.id === 'work-personal' ? 'Self-Initiated Work / Ongoing Series' : `${project.year} — ${project.category}`}
+                        {project.id === 'work-personal' ? 'Self-Initiated Work / Ongoing Series' : project.id === 'work-marketing' ? project.category : `${project.year} — ${project.category}`}
                     </span>
                     <h1 className="text-5xl md:text-7xl font-bold text-[#1D3557] leading-[0.9] mb-8 uppercase">{project.title}</h1>
                     <div className="flex flex-wrap gap-4 text-xs font-mono">
@@ -1094,6 +1732,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelec
                             {project.client}
                         </span>
                     </div>
+                    {project.focusLine && (
+                        <p className="font-mono text-[11px] tracking-widest mt-5 uppercase" style={{ color: accent }}>
+                            {project.focusLine}
+                        </p>
+                    )}
                 </GlassCard>
                 
                 {/* CONTENT CARD */}
@@ -1109,7 +1752,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelec
                 >
                     <p className="text-xl font-medium leading-relaxed text-stone-800 mb-12 uppercase">{project.description}</p>
 
-                    {(project.id === 'work-illustration' || project.id === 'work-marketing') ? (
+                    {project.id === 'work-motion' && project.motionAssets ? (
+                        <MotionGridLayout assets={project.motionAssets} />
+                    ) : project.id === 'work-spatial' ? (
+                        /* Curated gallery layout for spatial / scenography projects */
+                        <SpatialNarrativeLayout project={project} />
+                    ) : (project.id === 'work-illustration' || project.id === 'work-marketing' || project.id === 'work-personal') ? (
                         /* Tab-based layout for modular system projects */
                         <IllustrationTabSystem project={project} />
                     ) : (
@@ -1210,33 +1858,51 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelec
                 {/* Navigation Footer */}
                 <div className="w-full mt-12 flex justify-between items-center px-4">
                      {/* PREVIOUS PROJECT */}
-                     <button 
+                     <button
                         onClick={(e) => { e.stopPropagation(); onSelectProject(prevProject); }}
-                        className="group text-left flex items-center justify-start gap-6 cursor-pointer"
+                        className="text-left flex items-center justify-start gap-6 cursor-pointer"
+                        onMouseEnter={() => setHoveredPrev(true)}
+                        onMouseLeave={() => setHoveredPrev(false)}
                      >
-                        <span className="text-2xl text-[#1D3557] group-hover:text-[#EB431D] group-hover:-translate-x-2 transition-all duration-300">
+                        <span
+                            className={`text-2xl transition-all duration-300${hoveredPrev ? ' -translate-x-2' : ''}`}
+                            style={{ color: hoveredPrev ? accent : '#1D3557' }}
+                        >
                            &larr;
                         </span>
                         <div className="flex flex-col items-start">
-                            <span className="block text-xs font-mono text-stone-400 tracking-widest group-hover:text-[#EB431D] transition-colors mb-1">PREV PROJECT</span>
-                             <span className="block text-xs font-mono font-bold tracking-widest text-[#1D3557] group-hover:text-[#EB431D] transition-colors duration-300 uppercase">
-                                {prevProject.title}
-                             </span>
+                            <span
+                                className="block text-xs font-mono tracking-widest transition-colors mb-1"
+                                style={{ color: hoveredPrev ? accent : '#78716c' }}
+                            >PREV PROJECT</span>
+                            <span
+                                className="block text-xs font-mono font-bold tracking-widest transition-colors duration-300 uppercase"
+                                style={{ color: hoveredPrev ? accent : '#1D3557' }}
+                            >{prevProject.title}</span>
                         </div>
                      </button>
 
                      {/* NEXT PROJECT */}
-                     <button 
+                     <button
                         onClick={(e) => { e.stopPropagation(); onSelectProject(nextProject); }}
-                        className="group text-right flex items-center justify-end gap-6 cursor-pointer"
+                        className="text-right flex items-center justify-end gap-6 cursor-pointer"
+                        onMouseEnter={() => setHoveredNext(true)}
+                        onMouseLeave={() => setHoveredNext(false)}
                      >
                         <div className="flex flex-col items-end">
-                            <span className="block text-xs font-mono text-stone-400 tracking-widest group-hover:text-[#EB431D] transition-colors mb-1">NEXT PROJECT</span>
-                             <span className="block text-xs font-mono font-bold tracking-widest text-[#1D3557] group-hover:text-[#EB431D] transition-colors duration-300 uppercase">
-                                {nextProject.title}
-                             </span>
+                            <span
+                                className="block text-xs font-mono tracking-widest transition-colors mb-1"
+                                style={{ color: hoveredNext ? accent : '#78716c' }}
+                            >NEXT PROJECT</span>
+                            <span
+                                className="block text-xs font-mono font-bold tracking-widest transition-colors duration-300 uppercase"
+                                style={{ color: hoveredNext ? accent : '#1D3557' }}
+                            >{nextProject.title}</span>
                         </div>
-                        <span className="text-2xl text-[#1D3557] group-hover:text-[#EB431D] group-hover:translate-x-2 transition-all duration-300">
+                        <span
+                            className={`text-2xl transition-all duration-300${hoveredNext ? ' translate-x-2' : ''}`}
+                            style={{ color: hoveredNext ? accent : '#1D3557' }}
+                        >
                            &rarr;
                         </span>
                      </button>

@@ -1411,7 +1411,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'work-illustration',
     title: 'ILLUSTRATION SYSTEMS',
-    category: 'Alphabet / Numeric / Characters',
+    category: 'Alphabet / Numeric / Characters / Zodiac / Icons',
     year: '2024',
     role: 'SYSTEM ARCHITECT',
     client: 'STATUS: SELF-INITIATED RESEARCH',
@@ -1499,6 +1499,34 @@ export const PROJECTS: Project[] = [
           ]
         },
         {
+          id: 'zodiac',
+          title: 'ZODIAC_SYS',
+          tagline: '[CULTURAL_IDENTITY]\n[12-UNIT_ICON_MATRIX]',
+          description: 'A colored illustration series of the 12 Chinese Zodiac animals, built within the same modular 24-unit icon grid. Each character is fully hand-drawn and independently colored, with the complete set unified in a single composition.',
+          tags: ['ILLUSTRATION', 'CULTURAL', 'CHARACTER'],
+          image: '/images/zodiac/wholeset.jpg',
+          gridMode: 'zodiac',
+          accentColor: '#E54D1E',
+          specs: [
+            { label: 'Medium',    value: '100% Original Hand-drawn Illustration' },
+            { label: 'Color',     value: 'Fully Colored — Individual + Unified Set' },
+            { label: 'Framework', value: '24-unit Icon Matrix' },
+            { label: 'ID',        value: 'Numeric Index 01–12' }
+          ],
+          localImages: [
+            '/images/zodiac/01.jpg', '/images/zodiac/02.jpg', '/images/zodiac/03.jpg',
+            '/images/zodiac/04.jpg', '/images/zodiac/05.jpg', '/images/zodiac/06.jpg',
+            '/images/zodiac/07.jpg', '/images/zodiac/08.jpg', '/images/zodiac/09.jpg',
+            '/images/zodiac/10.jpg', '/images/zodiac/11.jpg', '/images/zodiac/12.jpg'
+          ],
+          localImageLabels: [
+            'ZODIAC_RAT_01', 'ZODIAC_OX_02', 'ZODIAC_TIGER_03',
+            'ZODIAC_RABBIT_04', 'ZODIAC_DRAGON_05', 'ZODIAC_SNAKE_06',
+            'ZODIAC_HORSE_07', 'ZODIAC_GOAT_08', 'ZODIAC_MONKEY_09',
+            'ZODIAC_ROOSTER_10', 'ZODIAC_DOG_11', 'ZODIAC_PIG_12'
+          ]
+        },
+        {
           id: 'iconography',
           title: 'ICON_SET',
           tagline: '[FUNCTIONAL_SYMBOLS]\n[UI_VISUAL_LANGUAGE]',
@@ -1533,14 +1561,15 @@ export const PROJECTS: Project[] = [
   {
     id: 'work-marketing',
     title: 'INFORMATION STRUCTURES',
-    category: 'Maps / Infographics / Packaging',
+    category: 'Maps / Infographics / Packaging / Commercial_Communication',
     year: '2024',
     role: 'VISUAL DESIGNER',
     client: 'STATUS: SELF-INITIATED RESEARCH',
-    description: 'Systematic explorations in modular geometry and visual logic.',
+    accentColor: '#D55736',
+    description: 'Integrated brand systems across spatial, editorial, and multichannel campaign design.',
     content: [
-      "Three systems documented: Spatial navigation, process visualization, and tactile logistics.",
-      "Each module follows a consistent visual DNA protocol governing default state, interaction, and hierarchy."
+      "Four systems documented: Spatial navigation, process visualization, tactile logistics, and commercial communication.",
+      "This section archives the systematic deployment of brand assets across multi-channel marketing platforms. Each unit follows a strict visual hierarchy to optimize information delivery and user engagement."
     ],
     modules: [
         {
@@ -1573,6 +1602,8 @@ export const PROJECTS: Project[] = [
           tagline: '[DATA_CHRONICLES]',
           subHeader: '(Archive_v1.0: Multilayered_Process_Mapping)',
           description: 'Decoding complex systems through visual modeling. This section explores the architectural transition of information across logical, biological, and historical dimensions.',
+          accentColor: '#1156D0',
+          gridMode: 'archive-grid',
           specs: [
             { label: 'Context', value: 'Commercial Production Archive' },
             { label: 'Logic',   value: 'Structural Narrative & Data Hierarchy' },
@@ -1603,12 +1634,141 @@ export const PROJECTS: Project[] = [
         {
           id: 'tactile-logistics',
           title: 'TACTILE_LOGISTICS',
-          tagline: '[PHYSICAL_INFORMATION_MAPPING]',
-          description: 'A customized countdown calendar packaging for Blackbirdscookies. This system translates a temporal sequence (13 days) into a physical, interactive structure, managing user experience through a modular unboxing logic.',
+          accentColor: '#D55736',
+          tagline: '[SYS_03 / TACTILE_LOGISTICS]\n[PHYSICAL_INFORMATION_MAPPING]',
+          description: "Project: Blackbird's Halloween Countdown System. This project explores the intersection of original hand-drawn narrative and tactile information structures. By translating 13 days of temporal sequence into 13 physical \"gateways\" (perforations), the packaging transforms from a static container into a non-linear storytelling device.",
           specs: [
-            { label: 'Context', value: 'Retail Logistics' },
-            { label: 'Logic',   value: 'Tactile Interaction & Temporal Hierarchy (Countdown)' },
-            { label: 'Medium',  value: 'Customized Packaging System' }
+            { label: 'Context',       value: 'Commercial Packaging & Visual Identity' },
+            { label: 'Logic',         value: 'Temporal-to-Spatial Mapping (13-Day System)' },
+            { label: 'Illustration',  value: '100% Original Hand-Drawn Assets' },
+            { label: 'Medium',        value: 'Mixed Media (Analog Sketching + Digital Mastering)' }
+          ],
+          imageGroups: [
+            {
+              unitId: 'UNIT 03-A',
+              caption: 'PHYSICAL_INTERACTION_LOGIC: CLOSED vs. DEPLOYED',
+              images: [
+                '/images/halloween/mockup.jpg',
+                '/images/halloween/door-detail.jpg'
+              ],
+              imageLabels: ['CLOSED_STATE', 'DEPLOYED_STATE'],
+              annotation: 'GATEWAY_COUNT: 13 / INTERACTION_TYPE: MANUAL_TEAR',
+              hideTooltip: true
+            },
+            {
+              unitId: 'UNIT 03-B',
+              caption: 'CHROMATIC_SYSTEM: HALLOWEEN_EDITION_V1.0',
+              images: [
+                '/images/halloween/illustration-front.jpg',
+                '/images/halloween/illustration-back.jpg'
+              ],
+              imageLabels: ['FRONT_FACE', 'BACK_FACE'],
+              hideTooltip: true,
+              colorSwatches: [
+                { hex: '#161E1E', role: 'BACKGROUND_NIGHT' },
+                { hex: '#9C402D', role: 'SHADOW_RUST' },
+                { hex: '#D55736', role: 'ACCENT_PUMPKIN' },
+                { hex: '#DBAA8B', role: 'GROUND_WARM' },
+                { hex: '#E3D1B5', role: 'CREAM_LIGHT' },
+                { hex: '#FFFFFF', role: 'HIGHLIGHT_WHITE' }
+              ]
+            },
+            {
+              unitId: 'UNIT 03-C',
+              caption: 'SOURCE_EVOLUTION: ANALOG_TO_DIGITAL_WORKFLOW',
+              detailCrop: {
+                src: '/images/halloween/detail-crop.jpg',
+                label: 'ASSET_DETAIL: CHARACTER_TEXTURE_04',
+                imgTop: -180,
+                imgLeft: -80
+              },
+              videoSrc: '/images/halloween/process.mp4',
+              note: '// DOCUMENTATION: From initial graphite conceptualization to final vector-aligned digital rendering. All character assets are uniquely developed for this specific logistical structure.'
+            }
+          ]
+        },
+        {
+          id: 'commercial-communication',
+          title: 'COMMERCIAL_COMM',
+          tagline: '[INTEGRATED_MARKETING_SYSTEMS]\n[MULTI_CHANNEL_BRAND_DEPLOYMENT]',
+          description: 'This section archives the systematic deployment of brand assets across multi-channel marketing platforms. From email architecture to social narratives, each unit follows a strict visual hierarchy to optimize information delivery and user engagement.',
+          accentColor: '#EB431D',
+          specs: [
+            { label: 'Context',  value: 'Brand Scalability & Marketing Logic' },
+            { label: 'Logic',    value: 'Multi-Channel Visual Consistency' },
+            { label: 'Medium',   value: 'Digital-First Brand Communication' },
+            { label: 'Surface',  value: 'Email / Social / App / Motion' }
+          ],
+          imageGroups: [
+            {
+              unitId: 'UNIT 04-D1',
+              caption: 'CASE_STUDY: MARDI_GRAS_SYSTEM',
+              heroLayout: true,
+              images: [
+                '/images/commercial/MG24_EML_MASTER_V01.jpg',
+                '/images/commercial/MG24_MOT_SQ_POST.mp4',
+                '/images/commercial/MG24_MKT_STORY_9x16.jpg'
+              ],
+              imageLabels: [
+                'MG24_EML_MASTER_V01',
+                'MG24_MOT_SQ_POST',
+                'MG24_MKT_STORY_9x16'
+              ],
+              note: '// CROSS_PLATFORM_ADAPTATION: Email master asset distributed across motion and story surfaces. Demonstrates channel-specific visual optimization.'
+            },
+            {
+              unitId: 'UNIT 04-D2',
+              caption: 'CASE_STUDY: PAYPAL_CASH_SYSTEM',
+              images: [
+                '/images/commercial/PYPL250_EML_HERO_CONV.jpg',
+                '/images/commercial/PYPL250_UI_APP_FEED_LIVE.jpg'
+              ],
+              imageLabels: [
+                'PYPL250_EML_HERO_CONV',
+                'PYPL250_UI_APP_FEED_LIVE'
+              ],
+              gridCols: 2,
+              hideTooltip: true,
+              note: '// ENV_LOGIC: Documenting direct-to-app conversion. Story adaptation skipped for this specific sprint.'
+            },
+            {
+              unitId: 'UNIT 04-E',
+              caption: 'INTERFACE_PROMOTION: MARKETING_ASSETS',
+              images: [
+                '/images/commercial/AIRBNB_SUMMER_GETAWAY.jpg',
+                '/images/commercial/AMZN250_GIFT_CARD.jpg',
+                '/images/commercial/APPLE_WATCH_ULTRA.jpg',
+                '/images/commercial/PYPL150_WIN_WEDNESDAY.jpg'
+              ],
+              imageLabels: [
+                'AIRBNB_SUMMER_GETAWAY',
+                'AMZN250_GIFT_CARD',
+                'APPLE_WATCH_ULTRA',
+                'PYPL150_WIN_WEDNESDAY'
+              ],
+              gridCols: 2,
+              hideTooltip: true,
+              note: '// MARKETING_ASSET_REPOSITORY: Partner banner components. 2×2 grid, natural proportions.'
+            },
+            {
+              unitId: 'UNIT 04-F',
+              caption: 'MOTION_MARKETING: TEMPORAL_INFORMATION_FLOW',
+              images: [
+                '/images/commercial/SOC_STPAT_LUCKY_SQ.gif',
+                '/images/commercial/SOC_HAL_SPOOKY.gif',
+                '/images/commercial/SOC_MOCHI_HEALTH.gif',
+                '/images/commercial/SOC_1000_MILES.gif'
+              ],
+              imageLabels: [
+                'SOC_STPAT_LUCKY_SQ',
+                'SOC_HAL_SPOOKY',
+                'SOC_MOCHI_HEALTH',
+                'SOC_1000_MILES'
+              ],
+              gridCols: 2,
+              hideTooltip: true,
+              note: '// TEMPORAL_INFORMATION_FLOW: Visual hierarchy optimized for muted autoplay on social channels.'
+            }
           ]
         }
     ]
@@ -1616,86 +1776,175 @@ export const PROJECTS: Project[] = [
   {
     id: 'work-motion',
     title: 'MOTION SYSTEMS',
-    category: 'Loops / Patterns / Generative',
+    category: 'INTEGRATED_KINETICS / CEL_RESEARCH',
     year: '2023',
     role: 'MOTION DESIGNER',
-    client: 'STATUS: SELF-INITIATED RESEARCH',
-    description: 'Systematic explorations in modular geometry and visual logic.',
-    content: [
-      "A series of rule-based experiments defining new visual systems.",
-      "Exploring the temporal dimension of static systems through repetition, rhythm, and procedural generation."
-    ],
-    // New modules for GIF grid
-    modules: [
-        {
-          id: 'loop-01',
-          title: 'KINETIC_01',
-          description: '[SYSTEM_TYPE: RHYTHMIC_LOOP]',
-          tags: ['GENERATIVE', 'PHYSICS'],
-          image: 'https://picsum.photos/seed/motion_gif_1/400/400' 
-        },
-        {
-          id: 'loop-02',
-          title: 'FLUID_SIM',
-          description: '[ENGINE: PARTICLE_FLOW]',
-          tags: ['SIMULATION', 'NOISE'],
-          image: 'https://picsum.photos/seed/motion_gif_2/400/400' 
-        },
-        {
-          id: 'loop-03',
-          title: 'GRID_PULSE',
-          description: '[BEHAVIOR: REACTIVE]',
-          tags: ['AUDIO', 'VISUALIZER'],
-          image: 'https://picsum.photos/seed/motion_gif_3/400/400' 
-        }
-    ],
-    videos: [
-        '_Qt3sRB3gh4', // Main video
-        '1mDwq-1DYBs', // Short
-        'JpTWv7R63s0'  // Short/Video
+    client: 'STATUS: INTEGRATED_KINETICS / CEL_RESEARCH',
+    description: 'Systematic explorations in temporal rhythm and kinetic logic.',
+    focusLine: '// LOGIC: Deconstructing motion through commercial narratives and manual cel animation.',
+    content: [],
+    motionAssets: [
+      { id: 'PROJ_EUF', src: '/images/motion/PROJ_EUF_SUSTAINABLE_NARRATIVE.mp4', type: 'mp4', idLabel: '// ID: PROJ_EUF: SUSTAINABLE_NARRATIVE', logLabel: '[AE / VECTOR_ANIMATION / 30S]', span: 'full', module: 'A' },
+      { id: 'IDN_COVER', src: '/images/motion/EDITORIAL_IDN_SYSTEM_COVER.mp4', type: 'mp4', idLabel: '// ID: EDITORIAL: IDN_SYSTEM_COVER', logLabel: '[AE / VERTICAL_MOTION / 30S]', span: 'vertical', module: 'A' },
+      { id: 'FIBER', src: '/images/motion/BRAND_GOOGLE_FIBER_KINETICS.gif', type: 'gif', idLabel: '// ID: BRAND: GOOGLE_FIBER_KINETICS', logLabel: '[AE / BRAND_IDENTITY / LOOP]', span: 'default', module: 'A' },
+      { id: 'B2B_EMAIL', src: '/images/motion/COMMERCIAL_B2B_EMAIL_GIF.gif', type: 'gif', idLabel: '// ID: COMMERCIAL: B2B_EMAIL_ASSET', logLabel: '[AE / MARKETING_ASSETS / GIF]', span: 'default', module: 'A' },
+      { id: 'BIRDS', src: '/images/motion/STUDY_ORGANIC_FLIGHT_RHYTHM.gif', type: 'gif', idLabel: '// ID: STUDY: ORGANIC_FLIGHT_RHYTHM', logLabel: '[AE / PUPPET_PINS / LOOP]', span: 'default', module: 'B' },
+      { id: 'FLOWER', src: '/images/motion/BOTANICAL_BLOOM_LOGIC.gif', type: 'gif', idLabel: '// ID: BOTANICAL: BLOOM_LOGIC', logLabel: '[AE / PATH_ANIMATION / LOOP]', span: 'default', module: 'B' },
+      { id: 'HAIR', src: '/images/motion/NARRATIVE_CAPILLARY_ADVENTURE.gif', type: 'gif', idLabel: '// ID: NARRATIVE: CAPILLARY_ADVENTURE', logLabel: '[CEL_ANIM / FRAME_BY_FRAME]', span: 'full', module: 'C' },
+      { id: 'TEAR', src: '/images/motion/EXPERIMENTAL_CHARACTER_DISRUPTION.gif', type: 'gif', idLabel: '// ID: EXPERIMENTAL: CHARACTER_DISRUPTION', logLabel: '[CEL_ANIM / DISTORTION_STUDY]', span: 'default', module: 'C' },
+      { id: 'TREE', src: '/images/motion/CHARACTER_XMAS_TREE_LOCOMOTION.gif', type: 'gif', idLabel: '// ID: CHARACTER: XMAS_TREE_LOCOMOTION', logLabel: '[CEL_ANIM / FRAME_BY_FRAME]', span: 'default', module: 'C' }
     ]
   },
   {
     id: 'work-personal',
     title: 'NARRATIVE ARCHIVES',
-    category: 'Memory / Documentation / Portrait',
+    category: 'Personal Research / Published Works',
     year: 'ONGOING',
-    role: 'ARCHIVIST',
-    client: 'STATUS: SELF-INITIATED RESEARCH',
-    description: 'Systematic explorations in modular geometry and visual logic.',
+    role: 'ARCHIVIST / ILLUSTRATOR',
+    client: 'STATUS: ONGOING — RESEARCH + COMMERCIAL',
+    accentColor: '#2C6281',
+    description: 'From personal memory archives and visual research to professionally published illustration.',
     content: [
-      "A series of rule-based experiments defining new visual systems.",
-      "Documenting personal narratives through repeatable visual motifs and structured composition."
+      "04.1 documents the visual research phase — deconstructing personal memory into modular motif systems.",
+      "04.2 documents the commercial output phase — applying those narrative systems to professionally published works."
     ],
-    images: [
-      "https://picsum.photos/seed/p_10/600/600",
-      "https://picsum.photos/seed/p_24/600/600",
-      "https://picsum.photos/seed/p_56/600/600",
-      "https://picsum.photos/seed/p_42/600/600",
-      "https://picsum.photos/seed/p_99/600/600",
-      "https://picsum.photos/seed/p_11/600/600",
-      "https://picsum.photos/seed/p_73/600/600",
-      "https://picsum.photos/seed/p_88/600/600",
-      "https://picsum.photos/seed/p_12/600/600",
-      "https://picsum.photos/seed/p_13/600/600"
+    modules: [
+      {
+        id: 'narrative-memory',
+        title: 'NARRATIVE_MEMORY',
+        sysLabel: 'SYS_04.1',
+        accentColor: '#2C6281',
+        tagline: '[SYS_04.1 / NARRATIVE_MEMORY]\n[FRAGMENTED_CHILDHOOD_ARCHIVE]',
+        description: "Project: Fragmented Childhood Narratives. A systematic deconstruction of childhood memories through modular character assets and chromatic nostalgia. This archive explores how organic, hand-drawn storytelling can be indexed into a repeatable visual motif system.",
+        specs: [
+          { label: 'Context',   value: 'Personal Research & Visual Prototyping' },
+          { label: 'Logic',     value: 'Memory Indexing → Emotion to Fixed Visual Symbol' },
+          { label: 'Texture',   value: 'Analog Charcoal + Digital Grain' },
+          { label: 'Medium',    value: 'Mixed Media — Analog Sketching + Digital Mastering' }
+        ],
+        imageGroups: [
+          {
+            unitId: 'UNIT 04-A',
+            caption: 'CHARACTER_ASSET_INDEXING',
+            images: [
+              '/images/childhood/character-01.jpg',
+              '/images/childhood/character-02.jpg',
+              '/images/childhood/character-03.jpg',
+              '/images/childhood/character-04.jpg',
+              '/images/childhood/character-05.jpg',
+              '/images/childhood/character-06.jpg',
+              '/images/childhood/object-01.jpg',
+              '/images/childhood/object-02.jpg',
+              '/images/childhood/object-03.jpg'
+            ],
+            imageLabels: [
+              'CHAR_01', 'CHAR_02', 'CHAR_03',
+              'CHAR_04', 'CHAR_05', 'CHAR_06',
+              'OBJ_01',  'OBJ_02',  'OBJ_03'
+            ],
+            gridCols: 3
+          },
+          {
+            unitId: 'UNIT 04-B',
+            caption: 'COMPOSITION_ARCHITECTURE: FULL_FRAME_RENDER',
+            images: [
+              '/images/childhood/scene-01.jpg',
+              '/images/childhood/scene-02.jpg',
+              '/images/childhood/scene-03.jpg'
+            ],
+            imageLabels: ['SCENE_01', 'SCENE_02', 'SCENE_03'],
+            gridCols: 1,
+            colorSwatches: [
+              { hex: '#2D2C33', role: 'NIGHT_INK' },
+              { hex: '#29615A', role: 'DEEP_TEAL' },
+              { hex: '#2C6281', role: 'MEMORY_BLUE' },
+              { hex: '#6D5657', role: 'DUSTY_ROSE' },
+              { hex: '#B55D4E', role: 'RUST_WARM' },
+              { hex: '#D99C36', role: 'AMBER_GLOW' },
+              { hex: '#E1DAC5', role: 'PAPER_CREAM' }
+            ]
+          },
+          {
+            unitId: 'UNIT 04-C',
+            caption: 'MATERIAL_DATA: ANALOG_GRAIN_ANALYSIS',
+            images: [
+              '/images/childhood/texture-01.jpg',
+              '/images/childhood/texture-02.jpg'
+            ],
+            imageLabels: ['GRAIN_SAMPLE_01', 'GRAIN_SAMPLE_02'],
+            note: '// TEXTURE_CLASS: analog medium on cartridge paper. Grain frequency: variable. Organic non-repeating pattern indicative of hand-applied medium.'
+          }
+        ]
+      },
+      {
+        id: 'published-works',
+        title: 'PUBLISHED_WORKS',
+        sysLabel: 'SYS_04.2',
+        accentColor: '#2C6281',
+        tagline: '[SYS_04.2 / PUBLISHED_WORKS]\n[COMMERCIAL_LITERATURE_DEPLOYMENT]',
+        description: "Project: Professional Children's Book Illustration. This module documents the application of narrative systems in professional publishing. It focuses on maintaining character consistency across complex layouts, rhythmic pacing of physical page-turns, and the technical logic of printed media.",
+        specs: [
+          { label: 'Context',     value: 'Professional Publishing & Narrative Direction' },
+          { label: 'Platform',    value: 'Physical Distribution (Hardcover / Print)' },
+          { label: 'Consistency', value: 'Character Stability across 32+ Multi-spread Layouts' },
+          { label: 'Status',      value: 'Officially Published' }
+        ],
+        imageGroups: [
+          {
+            unitId: 'UNIT 04.2-A',
+            caption: 'FUSSY_WILLIKERS: THE_BABY_SOCK_THIEF',
+            heroLayout: true,
+            placeholderAspect: 'aspect-square',
+            rightSlotAspect: 'aspect-[2/1]',
+            images: [
+              '/images/published/FUSSY_COVER.jpg',
+              '/images/published/INTERIOR_DETAIL_01.jpg',
+              '/images/published/INTERIOR_DETAIL_02.jpg'
+            ],
+            imageLabels: ['', '', ''],
+            note: '// VOL_01 // AUTHOR: RYAN & ASHLEY MCLEMORE // FORMAT: 8x10 PICTURE BOOK\n// Dynamic Perspective · Texture Layering · Character-Driven Layout'
+          },
+          {
+            unitId: 'UNIT 04.2-B',
+            caption: 'ANDREW_AND_THE_MAGIC_PAINT',
+            heroLayout: true,
+            placeholderAspect: 'aspect-square',
+            images: [
+              '/images/published/ANDREW_01.jpg',
+              '/images/published/ANDREW_02.jpg',
+              '/images/published/ANDREW_03.jpg'
+            ],
+            imageLabels: ['', '', ''],
+            note: '// VOL_02 // AUTHOR: ED TO THE FUTURE // FORMAT: NARRATIVE SPREAD INDEX\n// Sequential Visual Flow · Chromatic Storytelling · Print-Ready Asset Management'
+          }
+        ]
+      }
     ]
   },
   {
     id: 'work-spatial',
     title: 'SPATIAL NARRATIVES',
-    category: 'Scenography / 3D Concepts',
-    year: '2022',
+    category: 'Scenography / Concept Art',
+    year: '2024',
     role: 'CONCEPT ARTIST',
-    client: 'STATUS: SELF-INITIATED RESEARCH',
-    description: 'Systematic explorations in modular geometry and visual logic.',
+    client: 'COMMERCIAL_PROJECT',
+    description: 'OMNI AUSTIN DOWNTOWN // PUBLIC AREA CONCEPT ART',
+    focusLine: '// FOCUS: THE AUSTIN SESSION — TRANSLATING MUSICAL DNA',
+    narrativeImage: '/images/spatial/RAW_INPUT.png',
+    narrativeText: "Austin, Texas carries a sonic identity unlike any American city. The \"Live Music Capital of the World\" isn't a tagline — it's an architectural reality: stages on every block, neon against limestone, the persistent hum of a Fender through an open door. The challenge: translate this into permanent visual language for the Omni Austin Downtown public areas — works that speak to locals and visitors alike without illustration or cliché.",
     content: [
-      "A series of rule-based experiments defining new visual systems.",
-      "Extruding 2D visual logic into 3D environments to test spatial coherence."
+      "Three large-format works commissioned for the hotel's public areas, translating Austin's musical DNA into abstract spatial compositions.",
+      "Each piece deconstructs the geometry of string instruments — bridges, frets, soundholes — into structured geometric systems that hold their own as architectural art."
     ],
     images: [
-      "https://picsum.photos/seed/spatial_1/1200/800",
-      "https://picsum.photos/seed/spatial_2/1200/800",
-      "https://picsum.photos/seed/spatial_3/1200/800"
+      '/images/spatial/ATX_2227_GTR_MAIN.webp',
+      '/images/spatial/ATX_2227_GTR_01.png',
+      '/images/spatial/ATX_2227_GTR_02.avif'
+    ],
+    imageIds: [
+      'ATX_2227_GTR_MAIN',
+      'ATX_2227_GTR_01',
+      'ATX_2227_GTR_02'
     ]
   }
 ];
