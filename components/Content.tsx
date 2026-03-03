@@ -1368,12 +1368,22 @@ const AboutContent: React.FC<AboutContentProps> = ({ onToggleMenu }) => {
                     </div>
                 </div>
                 
-                <div className="hidden md:flex gap-6 mt-auto pt-8">
-                    {['TWITTER', 'GITHUB', 'EMAIL'].map((social) => (
-                        <a key={social} href="#" className="text-xs font-bold text-stone-400 hover:text-stone-600 transition-colors flex">
-                             <ShatterTitle text={social} magnitude={5} enableColor={true} />
+                <div className="hidden md:flex flex-col gap-3 mt-auto pt-8">
+                    <div className="flex gap-6">
+                        <a href="https://www.linkedin.com/in/yuqilu/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-stone-600 transition-colors flex">
+                            <ShatterTitle text="LINKEDIN" magnitude={5} enableColor={true} />
                         </a>
-                    ))}
+                        <a href="https://www.instagram.com/spaceyuqio/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-stone-600 transition-colors flex">
+                            <ShatterTitle text="INSTAGRAM" magnitude={5} enableColor={true} />
+                        </a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=luyuqi0726@gmail.com" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-stone-600 transition-colors flex">
+                            <ShatterTitle text="EMAIL" magnitude={5} enableColor={true} />
+                        </a>
+                    </div>
+                    <a href="http://www.yuqisart.com" target="_blank" rel="noopener noreferrer"
+                       className="text-xs font-mono font-bold text-[#EB431D] hover:opacity-70 transition-opacity tracking-widest">
+                        // ALSO: YUQISART.COM →
+                    </a>
                 </div>
             </div>
             
@@ -1417,10 +1427,11 @@ const AboutContent: React.FC<AboutContentProps> = ({ onToggleMenu }) => {
                 </div>
 
                 {/* Mobile social links */}
-                <div className="flex md:hidden gap-6 mt-8 pt-4 border-t border-stone-200/50">
-                    <a href="#" className="text-xs font-bold text-stone-400 hover:text-[#EB431D]">TWITTER</a>
-                    <a href="#" className="text-xs font-bold text-stone-400 hover:text-[#1156D0]">GITHUB</a>
-                    <a href="#" className="text-xs font-bold text-stone-400 hover:text-[#1A824E]">EMAIL</a>
+                <div className="flex md:hidden flex-wrap gap-4 mt-8 pt-4 border-t border-stone-200/50">
+                    <a href="https://www.linkedin.com/in/yuqilu/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-[#0077B5] transition-colors">LINKEDIN</a>
+                    <a href="https://www.instagram.com/spaceyuqio/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-[#E1306C] transition-colors">INSTAGRAM</a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=luyuqi0726@gmail.com" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-[#EB431D] transition-colors">EMAIL</a>
+                    <a href="http://www.yuqisart.com" target="_blank" rel="noopener noreferrer" className="text-xs font-mono text-stone-400 hover:text-[#EB431D] transition-colors tracking-widest">YUQISART.COM</a>
                 </div>
             </div>
         </GlassCard>
@@ -1432,6 +1443,7 @@ const AboutContent: React.FC<AboutContentProps> = ({ onToggleMenu }) => {
 const MotionItem: React.FC<{ asset: MotionAsset }> = ({ asset }) => {
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -1450,15 +1462,18 @@ const MotionItem: React.FC<{ asset: MotionAsset }> = ({ asset }) => {
   }, []);
 
   const isVertical = asset.span === 'vertical';
-  const isAudioVideo = asset.type === 'mp4'; // EUF and IDN are long videos with audio
+  const isAudioVideo = asset.type === 'mp4';
 
   const containerStyle: React.CSSProperties = {
-    border: '1px solid rgba(235, 67, 29, 0.15)',
+    border: `1px solid ${hovered ? 'rgba(235, 67, 29, 0.55)' : 'rgba(235, 67, 29, 0.15)'}`,
     borderRadius: '3px',
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
     background: 'rgba(253, 252, 250, 0.92)',
+    boxShadow: hovered ? '0 8px 32px rgba(235,67,29,0.10)' : 'none',
+    transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
+    cursor: 'pointer',
     ...(asset.span === 'full' ? { gridColumn: '1 / -1' } : {}),
     ...(isVertical ? { gridRow: 'span 2' } : {}),
   };
@@ -1467,13 +1482,15 @@ const MotionItem: React.FC<{ asset: MotionAsset }> = ({ asset }) => {
     width: '100%',
     display: 'block',
     imageRendering: 'crisp-edges' as any,
+    transform: hovered ? 'scale(1.03)' : 'scale(1)',
+    transition: 'transform 0.4s ease-out',
     ...(isVertical
       ? { minHeight: '480px', objectFit: 'contain', flex: 1, background: 'transparent' }
       : { objectFit: 'cover', flex: 1, minHeight: 0 }),
   };
 
   return (
-    <div ref={ref} style={containerStyle}>
+    <div ref={ref} style={containerStyle} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       {asset.type === 'mp4' ? (
         <video
           ref={videoRef}
@@ -1488,7 +1505,7 @@ const MotionItem: React.FC<{ asset: MotionAsset }> = ({ asset }) => {
         <img src={asset.src} alt={asset.id} style={mediaStyle} />
       )}
       <div style={{ padding: '6px 10px', borderTop: '1px solid rgba(235, 67, 29, 0.1)', background: 'rgba(253, 252, 250, 0.92)' }}>
-        <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#EB431D', lineHeight: 1.6, letterSpacing: '0.04em' }}>
+        <div style={{ fontFamily: 'monospace', fontSize: '10px', color: hovered ? '#EB431D' : '#c8a89e', lineHeight: 1.6, letterSpacing: '0.04em', transition: 'color 0.25s ease' }}>
           {asset.idLabel}
         </div>
         <div style={{ fontFamily: 'monospace', fontSize: '9px', color: '#a8a29e', lineHeight: 1.6, letterSpacing: '0.04em' }}>
@@ -1561,12 +1578,11 @@ const SpatialNarrativeLayout: React.FC<{ project: Project }> = ({ project }) => 
                     {/* Left 60% — raw input image */}
                     {project.narrativeImage && (
                         <div className="md:w-3/5 flex-shrink-0">
-                            <div className="relative">
+                            <div className="relative overflow-hidden group cursor-pointer" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.12)' }}>
                                 <img
                                     src={project.narrativeImage}
                                     alt="RAW_INPUT"
-                                    className="w-full object-cover"
-                                    style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.12)' }}
+                                    className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                                 />
                                 <span className="absolute bottom-3 left-3 font-mono text-[9px] tracking-widest px-2 py-1"
                                     style={{ color: accent, background: 'rgba(255,255,255,0.72)' }}>
@@ -1598,12 +1614,11 @@ const SpatialNarrativeLayout: React.FC<{ project: Project }> = ({ project }) => 
 
                     {/* Hero image — full width */}
                     <div className="mb-8">
-                        <div className="relative">
+                        <div className="relative overflow-hidden group cursor-pointer" style={{ boxShadow: '0 12px 48px rgba(0,0,0,0.10)' }}>
                             <img
                                 src={project.images[0]}
                                 alt={project.imageIds?.[0] ?? 'ATX_MAIN'}
-                                className="w-full object-contain"
-                                style={{ boxShadow: '0 12px 48px rgba(0,0,0,0.10)' }}
+                                className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
                             />
                         </div>
                         <p className="font-mono text-[10px] tracking-widest mt-3 uppercase" style={{ color: accent }}>
@@ -1616,12 +1631,11 @@ const SpatialNarrativeLayout: React.FC<{ project: Project }> = ({ project }) => 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {project.images.slice(1).map((img, i) => (
                                 <div key={i}>
-                                    <div className="relative">
+                                    <div className="relative overflow-hidden group cursor-pointer" style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
                                         <img
                                             src={img}
                                             alt={project.imageIds?.[i + 1] ?? `ATX_${i + 1}`}
-                                            className="w-full object-contain"
-                                            style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}
+                                            className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.04]"
                                         />
                                     </div>
                                     <p className="font-mono text-[10px] tracking-widest mt-3 uppercase" style={{ color: accent }}>
