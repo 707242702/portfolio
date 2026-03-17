@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Section, Project, AiItem, ProjectModule, ImageGroup, ColorSwatch, MotionAsset } from '../types';
 import { PROJECTS, AI_ITEMS, COLORS } from '../constants';
+import AboutPage from './AboutPage';
 
 interface ContentProps {
   section: Section;
@@ -1332,109 +1333,18 @@ const AboutContent: React.FC<AboutContentProps> = ({ onToggleMenu }) => {
   const { scrollContainerRef, handleScroll } = useScrollMenuLogic(onToggleMenu);
 
   return (
-    <div 
-        ref={scrollContainerRef}
-        onScroll={handleScroll}
-        className="w-full h-full flex flex-col items-center justify-start xl:justify-center px-8 md:px-24 pt-56 xl:pt-32 overflow-y-auto overflow-x-hidden" 
+    <div
+      ref={scrollContainerRef}
+      onScroll={handleScroll}
+      className="w-full h-full flex flex-col justify-start px-8 md:px-24 pt-48 md:pt-64 overflow-y-auto overflow-x-hidden"
     >
-        <GlassCard 
-            className="p-8 md:p-12 shadow-xl max-w-5xl w-full flex flex-col md:flex-row gap-12 relative z-10 mb-32 md:mb-12 flex-shrink-0"
-            hoverEffect={true}
-            delay={0.2}
-        >
-            {/* LEFT COLUMN */}
-            <div className="flex-1 flex flex-col">
-                <div>
-                    <span className="block text-xs font-mono text-stone-400 mb-6 tracking-widest">PROFILE</span>
-                    <ShatterTitle 
-                        text="YUQI LU" 
-                        className="text-5xl md:text-7xl font-bold tracking-tight text-[#1D3557] leading-[0.9] mb-6 flex flex-wrap gap-x-4 cursor-default"
-                        magnitude={30} // Less explosive than home
-                        enableColor={true} // Default to true
-                    />
-                    <div className="font-mono text-sm text-[#1D3557] space-y-1 mb-12">
-                        <p className="font-bold">Visual Systems Designer</p>
-                        <p className="text-stone-600">Illustration & Structured Workflows</p>
-                    </div>
-                </div>
-                
-                {/* TOOLS SECTION */}
-                <div className="space-y-4 mb-12 md:mb-0">
-                    <h4 className="text-xs font-mono font-bold text-[#1D3557] pb-2 border-b border-stone-200/50 w-fit">TOOLS & SYSTEMS</h4>
-                    <div className="flex flex-wrap gap-2">
-                        {['Figma', 'Workflow Design', 'Illustration Systems', 'Visual Governance', 'Generative Exploration', 'Cross-Team Collaboration'].map(tag => (
-                            <PlayfulTag key={tag} text={tag} />
-                        ))}
-                    </div>
-                </div>
-                
-                <div className="hidden md:flex flex-col gap-3 mt-auto pt-8">
-                    <div className="flex gap-6">
-                        <a href="https://www.linkedin.com/in/yuqilu/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-stone-600 transition-colors flex">
-                            <ShatterTitle text="LINKEDIN" magnitude={5} enableColor={true} />
-                        </a>
-                        <a href="https://www.instagram.com/spaceyuqio/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-stone-600 transition-colors flex">
-                            <ShatterTitle text="INSTAGRAM" magnitude={5} enableColor={true} />
-                        </a>
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=luyuqi0726@gmail.com" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-stone-600 transition-colors flex">
-                            <ShatterTitle text="EMAIL" magnitude={5} enableColor={true} />
-                        </a>
-                    </div>
-                    <a href="http://www.yuqisart.com" target="_blank" rel="noopener noreferrer"
-                       className="text-xs font-mono font-bold text-[#EB431D] hover:opacity-70 transition-opacity tracking-widest">
-                        // ALSO: YUQISART.COM →
-                    </a>
-                </div>
-            </div>
-            
-            {/* RIGHT COLUMN */}
-            <div className="flex-1 border-t md:border-t-0 md:border-l border-stone-300/50 pt-8 md:pt-0 md:pl-12 flex flex-col">
-                <div className="text-base font-medium text-stone-800 leading-relaxed mb-8 space-y-4">
-                    <motion.p whileHover={{ x: 5, color: COLORS.BLUE }} transition={{ type: 'spring', stiffness: 300 }} className="cursor-default">
-                        I design visual systems that support clarity at scale.
-                    </motion.p>
-                    <motion.p whileHover={{ x: 5, color: COLORS.RED }} transition={{ type: 'spring', stiffness: 300 }} className="cursor-default">
-                        My work centers on building structured illustration frameworks, aligning multi-contributor output, and translating complex ideas into accessible visual language.
-                    </motion.p>
-                    <motion.p whileHover={{ x: 5, color: COLORS.GREEN }} transition={{ type: 'spring', stiffness: 300 }} className="cursor-default">
-                        I’m interested in how design decisions sustain over time — across teams, tools, and evolving production environments.
-                    </motion.p>
-                    
-                    <div className="pt-2">
-                        <p className="mb-2">Rather than focusing on individual outputs, I focus on:</p>
-                        <ul className="list-none space-y-1 text-stone-600 pl-4 border-l-2 border-[#1D3557]/20 hover:border-[#1D3557] transition-colors">
-                            {['repeatable visual logic', 'consistency across contributors', 'documentation that supports alignment', 'workflows that allow iteration without fragmentation'].map(item => (
-                                <motion.li 
-                                    key={item} 
-                                    whileHover={{ x: 5, color: COLORS.ORANGE }}
-                                    className="cursor-default"
-                                >
-                                    • {item}
-                                </motion.li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <motion.p whileHover={{ x: 5, color: COLORS.TEXT }} transition={{ type: 'spring', stiffness: 300 }} className="cursor-default">
-                        Emerging tools are part of my process, but structure remains the foundation.
-                    </motion.p>
-                    <motion.p 
-                        className="font-bold text-[#1D3557] cursor-default"
-                        whileHover={{ scale: 1.02, originX: 0 }}
-                    >
-                        Strong design is not only expressive — it is durable.
-                    </motion.p>
-                </div>
-
-                {/* Mobile social links */}
-                <div className="flex md:hidden flex-wrap gap-4 mt-8 pt-4 border-t border-stone-200/50">
-                    <a href="https://www.linkedin.com/in/yuqilu/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-[#0077B5] transition-colors">LINKEDIN</a>
-                    <a href="https://www.instagram.com/spaceyuqio/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-[#E1306C] transition-colors">INSTAGRAM</a>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=luyuqi0726@gmail.com" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-stone-400 hover:text-[#EB431D] transition-colors">EMAIL</a>
-                    <a href="http://www.yuqisart.com" target="_blank" rel="noopener noreferrer" className="text-xs font-mono text-stone-400 hover:text-[#EB431D] transition-colors tracking-widest">YUQISART.COM</a>
-                </div>
-            </div>
-        </GlassCard>
+      <GlassCard
+        className="w-full max-w-5xl mx-auto mb-32 md:mb-12 flex-shrink-0"
+        hoverEffect={true}
+        delay={0.1}
+      >
+        <AboutPage />
+      </GlassCard>
     </div>
   );
 };
@@ -1764,7 +1674,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose, onSelec
                     hoverScale={1}
                     borderColor="border-[#E5E5E5]"
                 >
-                    <p className="text-xl font-medium leading-relaxed text-stone-800 mb-12 uppercase">{project.description}</p>
+                    <p className="text-xl font-medium leading-relaxed text-stone-800 mb-12">{project.description}</p>
 
                     {project.id === 'work-motion' && project.motionAssets ? (
                         <MotionGridLayout assets={project.motionAssets} />

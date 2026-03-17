@@ -1928,7 +1928,7 @@ export const PROJECTS: Project[] = [
     year: '2024',
     role: 'CONCEPT ARTIST',
     client: 'COMMERCIAL_PROJECT',
-    description: 'OMNI AUSTIN DOWNTOWN // PUBLIC AREA CONCEPT ART',
+    description: 'Omni Austin Downtown // public area concept art',
     focusLine: '// FOCUS: THE AUSTIN SESSION — TRANSLATING MUSICAL DNA',
     narrativeImage: '/images/spatial/RAW_INPUT.png',
     narrativeText: "Austin, Texas carries a sonic identity unlike any American city. The \"Live Music Capital of the World\" isn't a tagline — it's an architectural reality: stages on every block, neon against limestone, the persistent hum of a Fender through an open door. The challenge: translate this into permanent visual language for the Omni Austin Downtown public areas — works that speak to locals and visitors alike without illustration or cliché.",

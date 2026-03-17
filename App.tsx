@@ -60,12 +60,17 @@ const App: React.FC = () => {
   const scrollTimeout = useRef<number | null>(null);
   const lastSwipeTime = useRef(0); // Cooldown between swipes
 
+  // Touch refs for mobile swipe
+  const touchStartY = useRef<number | null>(null);
+  const touchSwipeCount = useRef(0);
+  const lastTouchSwipeTime = useRef(0);
+
   // Threshold for a single swipe gesture
-  const SINGLE_SWIPE_THRESHOLD = 350;
+  const SINGLE_SWIPE_THRESHOLD = 500;
   // Required swipes to trigger navigation
   const REQUIRED_SWIPES = 2;
-  // Minimum pause between counted swipes (ms)
-  const SWIPE_COOLDOWN = 400;
+  // Minimum pause between counted swipes (ms) — high enough to block inertia double-count
+  const SWIPE_COOLDOWN = 800;
 
   // When a project OR an AI item is selected, we switch visual system to DETAIL mode
   const currentVisualState = (selectedProject || selectedAiItem) ? Section.DETAIL : activeSection;
@@ -174,6 +179,54 @@ const App: React.FC = () => {
 
     window.addEventListener('wheel', handleWheel);
     return () => window.removeEventListener('wheel', handleWheel);
+  }, [activeSection, isTransitioning, handleNavigate, selectedProject, selectedAiItem]);
+
+  // Touch support for mobile swipe navigation
+  useEffect(() => {
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (touchStartY.current === null) return;
+      if (isTransitioning || selectedProject || selectedAiItem) {
+        touchStartY.current = null;
+        touchSwipeCount.current = 0;
+        return;
+      }
+
+      const deltaY = touchStartY.current - e.changedTouches[0].clientY;
+      touchStartY.current = null;
+
+      // Minimum swipe distance threshold
+      if (Math.abs(deltaY) < 60) return;
+
+      const now = Date.now();
+      if (now - lastTouchSwipeTime.current < SWIPE_COOLDOWN) return;
+
+      touchSwipeCount.current += 1;
+      lastTouchSwipeTime.current = now;
+
+      // Reset swipe count after idle
+      setTimeout(() => { touchSwipeCount.current = 0; }, 1200);
+
+      if (touchSwipeCount.current >= REQUIRED_SWIPES) {
+        const currentIndex = NAV_ITEMS.findIndex(item => item.id === activeSection);
+        const direction = deltaY > 0 ? 1 : -1;
+        const nextIndex = (currentIndex + direction + NAV_ITEMS.length) % NAV_ITEMS.length;
+        if (nextIndex !== currentIndex) {
+          handleNavigate(NAV_ITEMS[nextIndex].id);
+          touchSwipeCount.current = 0;
+        }
+      }
+    };
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
   }, [activeSection, isTransitioning, handleNavigate, selectedProject, selectedAiItem]);
 
   return (

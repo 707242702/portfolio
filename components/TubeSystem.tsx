@@ -9,6 +9,19 @@ interface TubeSystemProps {
   onNavigate: (section: Section) => void;
 }
 
+const isMobile = (() => {
+  if (typeof window === 'undefined') return false;
+  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+})();
+
+const isSafari = (() => {
+  if (typeof window === 'undefined') return false;
+  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+})();
+
+// Mobile + Safari: skip filter entirely
+const isLowPerfDevice = isMobile || isSafari;
+
 export const TubeSystem: React.FC<TubeSystemProps> = ({ activeSection }) => {
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
 
@@ -25,20 +38,38 @@ export const TubeSystem: React.FC<TubeSystemProps> = ({ activeSection }) => {
               Filter for Hand-Drawn / Rough Paper Effect 
               Creates jagged edges and slight internal noise
             */}
+            {/* Full filter for Chrome/Firefox */}
             <filter id="rough-paper" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
-                <feTurbulence 
-                    type="fractalNoise" 
-                    baseFrequency="0.03" 
-                    numOctaves="3" 
-                    seed="2" 
-                    result="noise" 
+                <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.03"
+                    numOctaves="3"
+                    seed="2"
+                    result="noise"
                 />
-                <feDisplacementMap 
-                    in="SourceGraphic" 
-                    in2="noise" 
-                    scale="8" 
-                    xChannelSelector="R" 
-                    yChannelSelector="G" 
+                <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="noise"
+                    scale="8"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
+                />
+            </filter>
+            {/* Lighter filter for Safari — 1 octave, scale 4 */}
+            <filter id="rough-paper-lite" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+                <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.03"
+                    numOctaves="1"
+                    seed="2"
+                    result="noise"
+                />
+                <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="noise"
+                    scale="4"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
                 />
             </filter>
         </defs>
@@ -70,49 +101,61 @@ export const TubeSystem: React.FC<TubeSystemProps> = ({ activeSection }) => {
                   }}
                 />
 
-                {/* Main Path - With Rough Filter Applied */}
+                {/* Main Path - With Rough Filter Applied (desktop only) */}
                 <motion.path
                   d={path.d[activeSection]}
                   stroke={path.color}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   fill="none"
-                  // Apply the rough paper filter
-                  filter="url(#rough-paper)"
+                  filter={isLowPerfDevice ? undefined : isSafari ? "url(#rough-paper-lite)" : "url(#rough-paper)"}
                   initial={false}
-                  animate={{ 
+                  animate={
+                    isLowPerfDevice ? {
+                      // Mobile: no filter, static stroke
                       d: path.d[activeSection],
-                      // Breathing effect: 
-                      strokeWidth: isHovered ? [38, 50, 38] : [32, 36, 32], 
-                      
-                      // Organic drift:
+                      strokeWidth: isHovered ? 44 : 32,
+                    } : isSafari ? {
+                      // Safari: lite filter, no infinite animations — only morph on section change
+                      d: path.d[activeSection],
+                      strokeWidth: isHovered ? 44 : 32,
+                    } : {
+                      // Chrome/Firefox: full breathing + drift
+                      d: path.d[activeSection],
+                      strokeWidth: isHovered ? [38, 50, 38] : [32, 36, 32],
                       x: isHovered ? 0 : [0, 4, 0],
                       y: isHovered ? 0 : [0, -4, 0],
-                  }}
-                  transition={{
-                    d: { duration: 1.4, ease: [0.4, 0, 0.2, 1] },
-                    strokeWidth: {
-                      duration: isHovered ? 0.8 : 4,
-                      ease: "easeInOut",
-                      repeat: Infinity,
-                      repeatType: "loop", 
-                      delay: isHovered ? 0 : index * 0.7 
-                    },
-                    x: {
-                       duration: 12 + index * 2,
-                       ease: "easeInOut",
-                       repeat: Infinity,
-                       repeatType: "reverse", 
-                       delay: index * 1.5
-                    },
-                    y: {
-                       duration: 14 + index * 2,
-                       ease: "easeInOut",
-                       repeat: Infinity,
-                       repeatType: "reverse", 
-                       delay: index * 2.5
                     }
-                  }}
+                  }
+                  transition={
+                    isLowPerfDevice || isSafari ? {
+                      d: { duration: 1.4, ease: [0.4, 0, 0.2, 1] },
+                      strokeWidth: { duration: 0.3 },
+                    } : {
+                      d: { duration: 1.4, ease: [0.4, 0, 0.2, 1] },
+                      strokeWidth: {
+                        duration: isHovered ? 0.8 : 4,
+                        ease: "easeInOut",
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        delay: isHovered ? 0 : index * 0.7
+                      },
+                      x: {
+                        duration: 12 + index * 2,
+                        ease: "easeInOut",
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: index * 1.5
+                      },
+                      y: {
+                        duration: 14 + index * 2,
+                        ease: "easeInOut",
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: index * 2.5
+                      }
+                    }
+                  }
                 />
               </motion.g>
             );
